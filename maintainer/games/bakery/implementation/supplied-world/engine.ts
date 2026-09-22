@@ -69,6 +69,8 @@ namespace bakery {
     let packetLanes: number[] = []
     let packetBorn: number[] = []
     let packetManual: boolean[] = []
+    let packetImages: Image[] = []
+    let packetFallPhases: number[] = []
     let shots: Sprite[] = []
     let shotKinds: number[] = []
     let shotOps: number[] = []
@@ -202,9 +204,9 @@ namespace bakery {
     }
     function updateChecks(now: number) {
         if (checking < 0) return
-        let phase = Math.idiv(now - checkBegan, 320)
+        let phase = Math.min(3, Math.idiv(now - checkBegan, 320))
         if (phase != checkPhase) { checkPhase = phase; trace("check-highlight") }
-        if (phase >= 3) { let m = checking; checking = -1; checkPhase = -1; finishCheck(m) }
+        if (now - checkBegan >= 1160) { let m = checking; checking = -1; checkPhase = -1; finishCheck(m) }
     }
     function updateVariables(now: number) {
         if (!variablesActive) return
@@ -231,7 +233,8 @@ namespace bakery {
 
     function removePacket(i: number, reason: string) {
         packets[i].destroy(); packets.removeAt(i); packetOps.removeAt(i); packetNumbers.removeAt(i)
-        packetLanes.removeAt(i); packetBorn.removeAt(i); packetManual.removeAt(i); trace(reason)
+        packetLanes.removeAt(i); packetBorn.removeAt(i); packetManual.removeAt(i)
+        packetImages.removeAt(i); packetFallPhases.removeAt(i); trace(reason)
     }
     function clearPackets() { while (packets.length) removePacket(packets.length - 1, "packet-cleared") }
     function removeShot(i: number, reason: string) {
@@ -335,8 +338,9 @@ namespace bakery {
 
     function spawn(lane: number, op: number, rhs: number, manual: boolean) {
         let p = sprites.create(manual ? bakeryArt.looseCake() : bakeryArt.modifier(op, rhs), SpriteKind.Food)
-        p.setPosition(manual ? 212 : [96, 320, 544][lane], manual ? 315 : 70); p.z = 3
+        p.setPosition(manual ? 86 : [96, 320, 544][lane], manual ? 197 : 70); p.z = 3
         packets.push(p); packetOps.push(op); packetNumbers.push(rhs); packetLanes.push(lane); packetBorn.push(control.millis()); packetManual.push(manual)
+        packetImages.push(p.image); packetFallPhases.push(-1)
         trace(manual ? "manual-arrived" : "packet-dropped")
     }
     function conveyorChoice(lane: number) {
@@ -360,8 +364,21 @@ namespace bakery {
         }
         for (let i = packets.length - 1; i >= 0; i--) {
             if (!packetManual[i]) {
-                packets[i].x += dt * [0.0171, 0, -0.0171][packetLanes[i]]; packets[i].y += dt * 0.028
-                if (now - packetBorn[i] > 4300) { removePacket(i, "packet-expired"); continue }
+                let age = now - packetBorn[i], lane = packetLanes[i]
+                if (age >= 4600) { removePacket(i, "packet-expired"); continue }
+                if (age >= 4000) {
+                    let fall = Math.min(1, (age - 4000) / 600), phase = Math.idiv(age - 4000, 50)
+                    packets[i].setPosition([165, 320, 475][lane], 182 + 15 * fall)
+                    if (phase != packetFallPhases[i]) {
+                        packetFallPhases[i] = phase
+                        let width = Math.max(3, Math.floor(112 * (1 - fall))), height = Math.max(2, Math.floor(24 * (1 - fall)))
+                        let frame = image.create(width, height)
+                        frame.blit(0, 0, width, height, packetImages[i], 0, 0, 112, 24, true, false)
+                        packets[i].setImage(frame); trace("packet-falling")
+                    }
+                    continue
+                }
+                packets[i].x += dt * [0.0171, 0, -0.0171][lane]; packets[i].y += dt * 0.028
             }
             if (held == null && Math.abs(chef.x - packets[i].x) < (packetManual[i] ? 25 : 55) && Math.abs(chef.y - 12 - packets[i].y) < 30) {
                 heldOp = packetOps[i]; heldNumber = packetNumbers[i]; heldKind = 0
@@ -415,8 +432,8 @@ namespace bakery {
         bakeryArt.outputStand(screen, mixingValue, held == null && !mixingJammed)
         for (let i = 0; i < 4; i++) bakeryArt.sideStation(screen, i, sideValues[i], sideOps[i], variablesActive, sideChanged[i] - now, 12000 - Math.max(0, nextOperatorChange - now))
         for (let i = 0; i < 3; i++) {
-            let stage = checking == i ? checkPhase : now < resultUntil[i] ? 3 : -1
-            bakeryArt.deliveryOrder(screen, i, hasDelivery[i] ? delivered[i] : -999999, targets[i], relations[i], signals[i], i == m, fulfilledAt[i] >= 0, stage, orderVariables[i], orderBases[i])
+            let stage = checking == i ? checkPhase : now < resultUntil[i] ? 4 : -1
+            bakeryArt.deliveryOrder(screen, i, hasDelivery[i] ? delivered[i] : -999999, targets[i], relations[i], signals[i], i == m, fulfilledAt[i] >= 0, stage, orderVariables[i], orderBases[i], checking == i ? now - checkBegan : -1, now < resultUntil[i] ? 850 - (resultUntil[i] - now) : -1)
         }
         if (held != null) {
             let power = charging ? Math.min(1, (now - chargeBegan) / 1000) : 0

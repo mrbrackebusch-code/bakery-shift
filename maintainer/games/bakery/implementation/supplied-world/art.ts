@@ -98,9 +98,7 @@ namespace bakeryArt {
         p.fillRect(120, 280, 17, 3, 14); p.drawLine(116, 289, 139, 289, 4)
         p.fillCircle(129, 305, 8, 5); p.drawLine(129, 299, 129, 312, 14)
         for (let i = 0; i < 3; i++) { p.fillRect(493 + i * 2, 273 - i * 5, 30, 5, 8); p.fillRect(495 + i * 2, 273 - i * 5, 26, 2, 12) }
-        p.fillRect(106, 353, 39, 5, 14); p.fillRect(109, 358, 3, 16, 8); p.fillRect(138, 358, 3, 16, 8)
-        p.fillCircle(111, 375, 4, 15); p.fillCircle(139, 375, 4, 15)
-        p.drawTransparentImage(looseCake(), 117, 330)
+        bakeryIcons.upperConfectionShelves(p)
         // Dock foundation visually anchors the Boolean blocks.
         p.fillRect(0, 404, 640, 76, 15); p.fillRect(0, 404, 640, 4, 4)
         for (let x = 4; x < 640; x += 16) p.drawLine(x, 404, x + 5, 408, 5)
@@ -123,6 +121,7 @@ namespace bakeryArt {
             for (let x = c - 52; x < c + 56; x += 13) p.fillRect(x, 187, 4, 6, 8)
             p.fillCircle(c - 62, 190, 4, 4); p.fillCircle(c + 62, 190, 4, 4)
         }
+        bakeryIcons.conveyorChutes(p)
     }
     export function mixer(p: Image, value: number, active: boolean, jammed: boolean, tick: number = 0) {
         if (!bowl) {
@@ -184,12 +183,11 @@ namespace bakeryArt {
             if (relation >= 3) p.fillRect(x, y + 21, 19, 2, color)
         }
     }
-    export function deliveryOrder(p: Image, index: number, value: number, target: number, relation: number, signal: number, focused: boolean, complete: boolean, stage: number = -1, variable: number = -1, base: number = 0) {
-        if (complete) variable = -1 // Completed checks retain their evaluated left value.
-        let x = index * 212 + 8, y = 418
-        if (focused) hexagon(p, x - 4, y - 4, 208, 52, 5)
-        hexagon(p, x, y, 200, 44, 9)
-        hexagon(p, x + 2, y + 2, 196, 40, 3)
+    let statementCards: Image[] = []
+    let resultCard: Image = null
+    function drawStatement(p: Image, value: number, target: number, relation: number, stage: number, variable: number, base: number) {
+        let x = 0, y = 0
+        p.fill(0); hexagon(p, 0, 0, 200, 44, 9); hexagon(p, 2, 2, 196, 40, 3)
         // Fully rounded sockets sit inside the native Logic-shaped reporter.
         let leftW = variable >= 0 ? 84 : 53
         capsule(p, x + 24, y + 7, leftW + 2, 30, variable >= 0 ? 11 : 12)
@@ -204,10 +202,6 @@ namespace bakeryArt {
             capsule(p, x + 62, y + 12, 40, 20, 2)
             p.drawTransparentImage(bakeryIcons.ingredient(variable), x + 73, y + 13)
         }
-        if (variable >= 0 && stage == 0) {
-            round(p, x + 27, y - 24, 80, 23, 5)
-            p.print("=", x + 34, y - 18, 15, image.font8); number(p, target, x + 70, y - 20, 15)
-        }
         let symbolX = x + 110
         round(p, symbolX, y + 8, 34, 28, 9)
         round(p, symbolX + 2, y + 10, 30, 24, 3)
@@ -218,9 +212,54 @@ namespace bakeryArt {
         capsule(p, x + 146, y + 8, 32, 28, 1)
         if (stage == 2) p.drawRect(x + 145, y + 7, 34, 30, 5)
         if (value != -999999) number(p, value, x + 162, y + 14, 15)
-        if (stage == 3) p.print(signal == 1 ? "TRUE" : "FALSE", x + 81, 466, signal == 1 ? 6 : 2, image.font8)
-        else if (signal == 1) { p.drawLine(x + 95, 469, x + 99, 473, 6); p.drawLine(x + 99, 473, x + 107, 465, 6) }
-        else if (signal == 0) { p.drawLine(x + 97, 464, x + 103, 474, 2); p.drawLine(x + 103, 464, x + 97, 474, 2) }
+    }
+    function fadeStatement(p: Image, amount: number) {
+        if (amount > 0.22) p.replace(1, 12)
+        if (amount > 0.45) {
+            for (let color of [1, 2, 5, 7, 10, 11, 12, 13, 14, 15]) p.replace(color, 9)
+        }
+        if (amount > 0.7) {
+            p.fill(0); hexagon(p, 0, 0, 200, 44, 9); hexagon(p, 2, 2, 196, 40, 3)
+        }
+    }
+    function booleanResult(p: Image, cx: number, y: number, signal: number, age: number, solved: boolean) {
+        if (!resultCard) resultCard = image.create(124, 44)
+        resultCard.fill(0); hexagon(resultCard, 0, 0, 124, 44, 9); hexagon(resultCard, 2, 2, 120, 40, 3)
+        round(resultCard, 24, 8, 78, 28, 9); round(resultCard, 25, 9, 76, 26, 3)
+        let label = signal == 1 ? "true" : "false"
+        resultCard.print(label, signal == 1 ? 34 : 28, 15, 1, large)
+        resultCard.fillRect(91, 20, 6, 2, 1); resultCard.fillRect(93, 22, 2, 2, 1)
+        // A single gentle unfold, with a small settle for a solved statement.
+        let h = age >= 0 && age < 160 ? Math.max(6, Math.floor(44 * age / 160)) : 44
+        let lift = solved && age >= 160 && age < 420 ? Math.floor(3 * Math.sin((age - 160) * Math.PI / 260)) : 0
+        if (solved) hexagon(p, cx - 65, y + Math.idiv(44 - h, 2) - 3 - lift, 130, h + 6, 5)
+        p.blit(cx - 62, y + Math.idiv(44 - h, 2) - lift, 124, h, resultCard, 0, 0, 124, 44, true, false)
+    }
+    export function deliveryOrder(p: Image, index: number, value: number, target: number, relation: number, signal: number, focused: boolean, complete: boolean, stage: number = -1, variable: number = -1, base: number = 0, checkMs: number = -1, resultMs: number = -1) {
+        let x = index * 212 + 8, y = 418, cx = x + 100
+        let showingResult = complete || stage == 4 && signal >= 0 && (signal == 1 || resultMs < 650)
+        if (showingResult) {
+            booleanResult(p, cx, y, signal, resultMs, complete)
+            let sign = relation == 0 ? "=" : relation == 1 ? "<" : relation == 2 ? ">" : relation == 3 ? "<=" : ">="
+            let evaluated = "" + target + " " + sign + " " + value
+            p.print(evaluated, cx - Math.idiv(evaluated.length * image.font8.charWidth, 2), 468, complete ? 12 : 2, image.font8)
+            return
+        }
+        while (statementCards.length <= index) statementCards.push(image.create(200, 44))
+        let card = statementCards[index]
+        drawStatement(card, value, target, relation, stage, variable, base)
+        let fade = stage == 3 ? Math.min(1, Math.max(0, (checkMs - 960) / 200)) : stage == 4 && signal == 0 ? Math.max(0, (850 - resultMs) / 200) : 0
+        fadeStatement(card, fade)
+        let width = 200 - Math.floor(76 * fade)
+        if (focused && stage != 3) hexagon(p, x - 4, y - 4, 208, 52, 5)
+        p.blit(cx - Math.idiv(width, 2), y, width, 44, card, 0, 0, 200, 44, true, false)
+        if (stage == 3 && fade > 0.7) for (let i = -1; i <= 1; i++) p.fillCircle(cx + i * 10, y + 22, 2, 12)
+        if (variable >= 0 && stage == 0) {
+            round(p, x + 27, y - 24, 80, 23, 5)
+            p.print("=", x + 34, y - 18, 15, image.font8); number(p, target, x + 70, y - 20, 15)
+        }
+        if (stage >= 0 && stage <= 3) p.print("checking", cx - 24, 468, 12, image.font8)
+        else if (signal == 0) { p.drawLine(cx - 3, 466, cx + 3, 472, 2); p.drawLine(cx + 3, 466, cx - 3, 472, 2) }
         else if (focused) p.print("B CHECK", x + 74, 466, 5, image.font8)
     }
 

@@ -88,4 +88,44 @@ namespace bakeryIcons {
         if (frame == 2) { p.setPixel(11, 21, 0); p.setPixel(8, 21, 15) }
         return p.doubled()
     }
+
+    export function upperConfectionShelves(p: Image) {
+        // Compact display shelves occupy the two upper side gaps around the belts.
+        for (let side = 0; side < 2; side++) {
+            let x = side == 0 ? 4 : 552
+            p.fillRect(x + 4, 154, 80, 3, 14)
+            p.fillRect(x + 7, 157, 74, 24, 8)
+            p.fillRect(x + 2, 181, 82, 3, 5)
+            p.fillRect(x + 8, 184, 72, 22, 12)
+            p.fillRect(x + 4, 206, 80, 3, 14)
+            p.fillRect(x + 12, 209, 66, 2, 8)
+            p.fillRect(x + 11, 159, 3, 20, 5)
+            p.fillRect(x + 48, 159, 3, 20, 5)
+            p.fillRect(x + 76, 159, 3, 20, 5)
+            let cake1 = bakeryArt.looseCake()
+            let cake2 = bakeryArt.looseCake()
+            p.drawTransparentImage(cake1, x + 15, 159)
+            p.drawTransparentImage(cake2, x + 53, 159)
+            let cake3 = bakeryArt.looseCake()
+            p.drawTransparentImage(cake3, x + 30, 184)
+            if (side == 0) {
+                // The plate at the shelf edge is reserved for a manually placed cake.
+                p.fillRect(71, 208, 27, 2, 14)
+                p.fillRect(75, 210, 20, 2, 5)
+            }
+        }
+    }
+
+    export function conveyorChutes(p: Image) {
+        let centers = [165, 320, 475]
+        for (let i = 0; i < centers.length; i++) {
+            let cx = centers[i]
+            p.fillRect(cx - 65, 190, 130, 17, 14)
+            p.fillRect(cx - 61, 191, 122, 14, 8)
+            p.fillRect(cx - 57, 192, 114, 11, 15)
+            p.fillRect(cx - 57, 203, 114, 2, 5)
+            p.setPixel(cx - 52, 194, 5)
+            p.setPixel(cx + 51, 194, 5)
+        }
+    }
 }

@@ -27,8 +27,8 @@ export const destination = Object.freeze({
     canonical_remote: 'https://github.com/mrbrackebusch-code/makecode-arcade-tutorials.git',
     target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V9 release and official no-CDN public identity verified in current records'
   },
-  existing_release: {tag:'v0.4.1',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.1',payload_commit:'daf149202bec62430e162b0deb74859f984304b6',served_commit:'daf149202bec62430e162b0deb74859f984304b6'},
-  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1&skipgithubcache=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'daf149202bec62430e162b0deb74859f984304b6',release:'V9',media_revision:'0931d337067cbe08',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
+  existing_release: {tag:'v0.4.2',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.2',payload_commit:'e7db10edf52e1b61413338e5ef9a301eb591bd39',served_commit:'e7db10edf52e1b61413338e5ef9a301eb591bd39'},
+  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1&skipgithubcache=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'e7db10edf52e1b61413338e5ef9a301eb591bd39',release:'V9',media_revision:'16ea3142ce2adb23',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
 });
 
 const canonicalGameFiles = [
@@ -47,6 +47,7 @@ const canonicalGameFiles = [
   'design/RESOLUTION_REVISION_V8.md',
   'design/WORLD_REVISION_V9.md',
   'design/COMPARISON_STYLE_V9.md',
+  'design/FINISHING_V9.md',
   'design/pedagogy/MICROSOFT_MIT_NOTICE.txt'
 ];
 const sourceFiles = [
