@@ -25,10 +25,10 @@ export const destination = Object.freeze({
     transport: 'Existing authenticated GitHub release and public-identity records; no V9 external write',
     authenticated_login: 'mrbrackebusch-code',
     canonical_remote: 'https://github.com/mrbrackebusch-code/makecode-arcade-tutorials.git',
-    target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V7 release and official no-CDN public identity verified in current records'
+    target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V9 release and official no-CDN public identity verified in current records'
   },
-  existing_release: {tag:'v0.3.0',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.3.0',payload_commit:'22068fbf54e0fd81be2fb88af545e4a6592ec15d',served_commit:'ebe3e9612d86391ae21a1cd8d2a6e3575c739ea1'},
-  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'ebe3e9612d86391ae21a1cd8d2a6e3575c739ea1',release:'V7',media_revision:'c0590805184b5b9a',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
+  existing_release: {tag:'v0.4.0',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.0',payload_commit:'55637d4c1a5a6ca67c014e70582c52a250a1ce2b',served_commit:'f47850d6708504cd41502b5acd6d435ec7746302'},
+  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'f47850d6708504cd41502b5acd6d435ec7746302',release:'V9',media_revision:'d70283ad61805189',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
 });
 
 const canonicalGameFiles = [

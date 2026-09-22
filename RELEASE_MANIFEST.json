@@ -16,213 +16,213 @@
     "transport": "Existing authenticated GitHub release and public-identity records; no V9 external write",
     "authenticated_login": "mrbrackebusch-code",
     "canonical_remote": "https://github.com/mrbrackebusch-code/makecode-arcade-tutorials.git",
-    "target_repository_result": "Established public repository mrbrackebusch-code/bakery-shift; V7 release and official no-CDN public identity verified in current records"
+    "target_repository_result": "Established public repository mrbrackebusch-code/bakery-shift; V9 release and official no-CDN public identity verified in current records"
   },
   "existing_release": {
-    "tag": "v0.3.0",
-    "release_url": "https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.3.0",
-    "payload_commit": "22068fbf54e0fd81be2fb88af545e4a6592ec15d",
-    "served_commit": "ebe3e9612d86391ae21a1cd8d2a6e3575c739ea1"
+    "tag": "v0.4.0",
+    "release_url": "https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.0",
+    "payload_commit": "55637d4c1a5a6ca67c014e70582c52a250a1ce2b",
+    "served_commit": "f47850d6708504cd41502b5acd6d435ec7746302"
   },
   "existing_public_identity": {
     "stable_url": "https://arcade.makecode.com/?nocdn=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README",
-    "served_commit": "ebe3e9612d86391ae21a1cd8d2a6e3575c739ea1",
-    "release": "V7",
-    "media_revision": "c0590805184b5b9a",
+    "served_commit": "f47850d6708504cd41502b5acd6d435ec7746302",
+    "release": "V9",
+    "media_revision": "d70283ad61805189",
     "historical_cache_release": "V5",
     "historical_cache_commit": "3340e81fd43547c7b4c17560a75f344aa91a29b0"
   },
   "external_publication_performed": false,
   "student_distribution_ready": false,
-  "local_tutorial_sha256": "c678cbd38e05bf051bf31bef44faa96f9c503e6aee5c84b3491a282efb678b0b",
-  "canonical_tutorial_sha256": "c678cbd38e05bf051bf31bef44faa96f9c503e6aee5c84b3491a282efb678b0b",
-  "tutorial_sha256": "88d22c1de613b4d9f65bef79367f0c750e6a55e57c420888576c4c30d83b8838",
-  "media_revision": "d70283ad61805189",
+  "local_tutorial_sha256": "6f43454e33d962b22540510d326887b6c6d4d61679d60c931cb608ef7cfb7d02",
+  "canonical_tutorial_sha256": "6f43454e33d962b22540510d326887b6c6d4d61679d60c931cb608ef7cfb7d02",
+  "tutorial_sha256": "38e27b0a8758bf2c9d084e4acc2abae8994c396244a4a3ea7c8870df30783482",
+  "media_revision": "0931d337067cbe08",
   "media_mappings": [
     {
       "canonical_path": "assets/demos/01-clean-tray.gif",
-      "publication_path": "assets/d70283ad61805189/demos/01-clean-tray.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/01-clean-tray.gif",
-      "sha256": "e687cb156a3505444ff309a1282c8608a024081d463b6833a22e26b980ea07d4"
+      "publication_path": "assets/0931d337067cbe08/demos/01-clean-tray.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/01-clean-tray.gif",
+      "sha256": "a06b245b660a4f822e987ff5f48de7a6c71ff588cd7085bbc2938c0d4e84d5e4"
     },
     {
       "canonical_path": "assets/demos/02-catch-one.gif",
-      "publication_path": "assets/d70283ad61805189/demos/02-catch-one.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/02-catch-one.gif",
-      "sha256": "c6add744f3dbf800c73fae7f5d8241c4fc02fdab9ef034cfdd901144c11846d3"
+      "publication_path": "assets/0931d337067cbe08/demos/02-catch-one.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/02-catch-one.gif",
+      "sha256": "ef032b3d72290438c845c059272ff1a10b752dee8d0ebd4d8d6db418d68dc00a"
     },
     {
       "canonical_path": "assets/demos/03-discard-one.gif",
-      "publication_path": "assets/d70283ad61805189/demos/03-discard-one.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/03-discard-one.gif",
-      "sha256": "c2835b180e181d51a558c5411214af9586302392d754ef4d0ed968e44a3a0c5f"
+      "publication_path": "assets/0931d337067cbe08/demos/03-discard-one.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/03-discard-one.gif",
+      "sha256": "10a4d7d483bbe4c30c81e6ed3e2471ef0cabefe928ace2db8e6634e9f7044c92"
     },
     {
       "canonical_path": "assets/demos/04-double-batch.gif",
-      "publication_path": "assets/d70283ad61805189/demos/04-double-batch.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/04-double-batch.gif",
-      "sha256": "6c787968291d58e0a7dfb880f1c1d3eb84967606021c9f902d5d567f2093699a"
+      "publication_path": "assets/0931d337067cbe08/demos/04-double-batch.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/04-double-batch.gif",
+      "sha256": "8e030ea918314242e6f70bd8da144582147ed0ab9e50a9c8dc110c79882652d7"
     },
     {
       "canonical_path": "assets/demos/05-pack-pairs.gif",
-      "publication_path": "assets/d70283ad61805189/demos/05-pack-pairs.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/05-pack-pairs.gif",
-      "sha256": "a522ca026009895ed6e0006a7d5a61f8e88bc48f3ea34ce594e571afb9c2e87f"
+      "publication_path": "assets/0931d337067cbe08/demos/05-pack-pairs.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/05-pack-pairs.gif",
+      "sha256": "ef945ea581989603e3558aa9c1834f5c521b4afca2ae015521fba9228ae5f994"
     },
     {
       "canonical_path": "assets/demos/06-delivery.gif",
-      "publication_path": "assets/d70283ad61805189/demos/06-delivery.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/06-delivery.gif",
-      "sha256": "c2968b5ee3e9ef265dbc9d7ab58eb1bb3e0c869234d29af8b8a7102d3db85ae5"
+      "publication_path": "assets/0931d337067cbe08/demos/06-delivery.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/06-delivery.gif",
+      "sha256": "0498bc88c9a52012eed190f5741c387a52525e10ad6f6fe5aa329926927b542e"
     },
     {
       "canonical_path": "assets/demos/07-serve-order.gif",
-      "publication_path": "assets/d70283ad61805189/demos/07-serve-order.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/07-serve-order.gif",
-      "sha256": "3d2fe9c3f77e60c8e712e98354e41634b5a3cdcd2a1acb782c601765ce03f6b1"
+      "publication_path": "assets/0931d337067cbe08/demos/07-serve-order.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/07-serve-order.gif",
+      "sha256": "a7b49e3def12c7077043c9fced3c56bd0b6eb51bf22cd4d98331ebd10ed356b7"
     },
     {
       "canonical_path": "assets/demos/08-bake-trays.gif",
-      "publication_path": "assets/d70283ad61805189/demos/08-bake-trays.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/08-bake-trays.gif",
-      "sha256": "0bbaef09d8ab1be0f57020fe1a18e758c31926832ab5db063858bb9b98a9a994"
+      "publication_path": "assets/0931d337067cbe08/demos/08-bake-trays.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/08-bake-trays.gif",
+      "sha256": "e90fde4ae75645b6c7c236e373f40569a84f6960a6fde7cca3394e85eb4b0d95"
     },
     {
       "canonical_path": "assets/demos/09-pack-boxes.gif",
-      "publication_path": "assets/d70283ad61805189/demos/09-pack-boxes.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/09-pack-boxes.gif",
-      "sha256": "9694348aecccd7180043da76cc73f2b5d19ae901efa6f67f6aaf6c759ae12bdb"
+      "publication_path": "assets/0931d337067cbe08/demos/09-pack-boxes.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/09-pack-boxes.gif",
+      "sha256": "b21caf1ac23940da9c1a8e7e8799382ad3daff8cd49d1f50496417925392a638"
     },
     {
       "canonical_path": "assets/demos/10-equal-check.gif",
-      "publication_path": "assets/d70283ad61805189/demos/10-equal-check.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/10-equal-check.gif",
-      "sha256": "09f9f584f142b8dbbd6204e57258ac14fc252f74aa85e3405d8a01da461c102b"
+      "publication_path": "assets/0931d337067cbe08/demos/10-equal-check.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/10-equal-check.gif",
+      "sha256": "c5cbcf02cb15464d89ca25ee0af2d21f257fb47a449453253c56f7aa13cb0081"
     },
     {
       "canonical_path": "assets/demos/11-less-check.gif",
-      "publication_path": "assets/d70283ad61805189/demos/11-less-check.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/11-less-check.gif",
-      "sha256": "7228cdaff783fdeac6b0284496c88d005e1afc907a1da23ea000f188793d77f3"
+      "publication_path": "assets/0931d337067cbe08/demos/11-less-check.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/11-less-check.gif",
+      "sha256": "f89fe9663402153200226aece110a2973b52548bd16119fae9f8918844f07121"
     },
     {
       "canonical_path": "assets/demos/12-greater-check.gif",
-      "publication_path": "assets/d70283ad61805189/demos/12-greater-check.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/12-greater-check.gif",
-      "sha256": "34ee66200ca083ffa1775eacebb556b9529b90c7ac35064e436b84554257f777"
+      "publication_path": "assets/0931d337067cbe08/demos/12-greater-check.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/12-greater-check.gif",
+      "sha256": "4bbe2763ced4cbd1c207f9550e33e5decee0df6cad8323f8d36a0e1454caf927"
     },
     {
       "canonical_path": "assets/demos/13-less-equal-check.gif",
-      "publication_path": "assets/d70283ad61805189/demos/13-less-equal-check.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/13-less-equal-check.gif",
-      "sha256": "5aef660306de5c17738b982a75c9d9389550e4c24b1b25bc3be87d3c101932d2"
+      "publication_path": "assets/0931d337067cbe08/demos/13-less-equal-check.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/13-less-equal-check.gif",
+      "sha256": "22b95338b48fd355e0f804c3d7654adc214771b3c71acd9dae4aa5a8a6133796"
     },
     {
       "canonical_path": "assets/demos/14-greater-equal-check.gif",
-      "publication_path": "assets/d70283ad61805189/demos/14-greater-equal-check.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/14-greater-equal-check.gif",
-      "sha256": "b140d93010c84b02820314d0edea7c259dff8839c01fb256588878813fc2f309"
+      "publication_path": "assets/0931d337067cbe08/demos/14-greater-equal-check.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/14-greater-equal-check.gif",
+      "sha256": "d5c33e26388028a52b54552acc0ba265514c19756514f326273d11fb948eb327"
     },
     {
       "canonical_path": "assets/demos/15-factory-round.gif",
-      "publication_path": "assets/d70283ad61805189/demos/15-factory-round.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/15-factory-round.gif",
-      "sha256": "375faf142372d5c62af7c48889023e728fc5d2e8ca6b21e51359ab0d382b6154"
+      "publication_path": "assets/0931d337067cbe08/demos/15-factory-round.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/15-factory-round.gif",
+      "sha256": "ca79931ab778c175e83d0b6893fee9ac1638ba9eaa5ab2e92984a4747540ec43"
     },
     {
       "canonical_path": "assets/demos/16-boundary-checks.gif",
-      "publication_path": "assets/d70283ad61805189/demos/16-boundary-checks.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/16-boundary-checks.gif",
-      "sha256": "f8091caf5cae44f731e0497c097f0326a0483ed6d28935cabc1d102f68c90170"
+      "publication_path": "assets/0931d337067cbe08/demos/16-boundary-checks.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/16-boundary-checks.gif",
+      "sha256": "35c09b240c1878449a69f89181bc0d3a1472925fe868a881f08ef1e542c7f23e"
     },
     {
       "canonical_path": "assets/demos/17-reuse-number.gif",
-      "publication_path": "assets/d70283ad61805189/demos/17-reuse-number.gif",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/17-reuse-number.gif",
-      "sha256": "672f0332e5d12da99d3cdf4aee595c8bd1fa0a9698e696231cde461169a8997f"
+      "publication_path": "assets/0931d337067cbe08/demos/17-reuse-number.gif",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/17-reuse-number.gif",
+      "sha256": "450e487a822b222c7389631c0d2ae07d95bf5566fbd6a59348424d21f0402321"
     },
     {
       "canonical_path": "assets/instructions/01-assembled.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/01-assembled.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/01-assembled.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/01-assembled.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/01-assembled.svg",
       "sha256": "cf58ab87d8a5bb1d5469a56f7e830c775f63887433c10acab3c2f8783a0e18d9"
     },
     {
       "canonical_path": "assets/instructions/01-menu.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/01-menu.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/01-menu.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/01-menu.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/01-menu.svg",
       "sha256": "152d71976f1fecb74cbb77ba8f8a0f304aceb40013211516074dcf1c1d6a6fec"
     },
     {
       "canonical_path": "assets/instructions/02-assembled.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/02-assembled.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/02-assembled.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/02-assembled.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/02-assembled.svg",
       "sha256": "7b53325a6ebb05f427804b10aff616a05036f0b8fa574f69eac4c4e5d557360e"
     },
     {
       "canonical_path": "assets/instructions/02-menu.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/02-menu.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/02-menu.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/02-menu.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/02-menu.svg",
       "sha256": "55d9929a66114ecf573514681e621c83a29041cb150bc95faacd77f462a67a62"
     },
     {
       "canonical_path": "assets/instructions/04-assembled.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/04-assembled.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/04-assembled.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/04-assembled.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/04-assembled.svg",
       "sha256": "36940db16449bbf0fd1a883516f9705516bdb0f3ad9354356e1eba9415a76aba"
     },
     {
       "canonical_path": "assets/instructions/04-menu.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/04-menu.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/04-menu.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/04-menu.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/04-menu.svg",
       "sha256": "3742f549c371d7e9088342456a526085ba17875ac04e28b1c2661f6a99abc528"
     },
     {
       "canonical_path": "assets/instructions/05-assembled.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/05-assembled.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/05-assembled.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/05-assembled.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/05-assembled.svg",
       "sha256": "f2d6bf2bac94d014e7ddc88b1da06f8251e62512ff2afa1561c357d1329d7925"
     },
     {
       "canonical_path": "assets/instructions/05-menu.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/05-menu.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/05-menu.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/05-menu.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/05-menu.svg",
       "sha256": "2e879f7818f1242d6fea4b633c46d506199121a5752b659eef3c149e1efabfd9"
     },
     {
       "canonical_path": "assets/instructions/06-assembled.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/06-assembled.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/06-assembled.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/06-assembled.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/06-assembled.svg",
       "sha256": "3d9b6012140a9cc75225080dda3b0f72f4f2b8e90ed0f3a14dbe1ec944a1a35c"
     },
     {
       "canonical_path": "assets/instructions/06-menu.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/06-menu.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/06-menu.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/06-menu.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/06-menu.svg",
       "sha256": "9e73c7cc183771a7432f7b74b932e63d4956198b129a5e6760626db404600846"
     },
     {
       "canonical_path": "assets/instructions/10-assembled.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/10-assembled.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/10-assembled.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/10-assembled.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/10-assembled.svg",
       "sha256": "9e2f5340cadf3f20bbe086c86ada63d9540f3901b7479f266de01b085b7d7ed4"
     },
     {
       "canonical_path": "assets/instructions/10-menu.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/10-menu.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/10-menu.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/10-menu.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/10-menu.svg",
       "sha256": "6a5870de26ef23cafcee57de19e10ca576274bfb02fe07fad408b2a46c4594a7"
     },
     {
       "canonical_path": "assets/instructions/11-assembled.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/11-assembled.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/11-assembled.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/11-assembled.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/11-assembled.svg",
       "sha256": "ef6226707b4c7127c41e1ecccf61f1e2295bc6ac7979e84e2e67bc2ef2c26034"
     },
     {
       "canonical_path": "assets/instructions/11-menu.svg",
-      "publication_path": "assets/d70283ad61805189/instructions/11-menu.svg",
-      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/11-menu.svg",
+      "publication_path": "assets/0931d337067cbe08/instructions/11-menu.svg",
+      "url": "https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/11-menu.svg",
       "sha256": "52a34b7bf13d59fce4e8fc4bf2db846d69e28f5872e6c6d244aa7409a9c70fe1"
     }
   ],
@@ -231,10 +231,10 @@
     "games/bakery/implementation/learner-states/catalog.json": "5e464692c7fbbcfb84ee03fa9fd0a450673e23588c8f66242e58f5d636e6626e",
     "games/bakery/implementation/supplied-world/icons.ts": "4eb42c0cd7774913d2ad28a1e311d3a65a3cc8fb334c7660c33719dbb6893b4b",
     "games/bakery/implementation/supplied-world/engine.ts": "ce6a028669661c28f3961e9e4f1ad64cd9ffbc7163575ade0f2634fffaf94b50",
-    "games/bakery/implementation/supplied-world/art.ts": "3eb0d9c0059c395ba085326124a4483851b6273627988c70519dadc3bd635657",
+    "games/bakery/implementation/supplied-world/art.ts": "2aeb931fbbcd21361a72c3bb837709b31ca708ec7b881f070dc6d6e0ad11f9da",
     "games/bakery/implementation/manifest.json": "f7897508c4996ffb8d0d66dfa0d5878b78cde0bb0188ddb6c4ef7b0898e9ed51",
     "games/bakery/tools/build.mjs": "c19256ff8f22aa87d07335869ebc68b1722da203a32b2828d2b01a6232ba5f08",
-    "games/bakery/tools/build-publication.mjs": "c57bc238a52d68db7d1d42b2a6d8f98fe0e045127965e4a5ae5d55758b2ecb47",
+    "games/bakery/tools/build-publication.mjs": "948666c1ea65a4b7984eb6792982624f065fcd48611645fef6146baaedc35d40",
     "games/bakery/design/pedagogy/FACTORY_SOURCE_PACKET_2026-09-21.md": "8b91aa571203947ab091f0458f1b1a3856c406d7622dc380ccf255ff0ab99cda",
     "games/bakery/design/pedagogy/MIXER_SOURCE_ADDENDUM_V7.md": "9e5100cce65e2c8463a37d207d5c77ce51c8f44e17201def2afe0e90d91a8d11",
     "games/bakery/design/pedagogy/WORLD_SOURCE_ADDENDUM_V9.md": "94949ffffffbed5136b8c45e7d25d9b417357e3c64b0368f3b60b60f0eacce70",
@@ -247,68 +247,68 @@
     "docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/production/1A-043/repository/docs/courses/csintro2/logic/multiplayer.md": "d6663646267dd9380c65fb454df7d602ca600df3c01895a5d7a4ed914055f1fa",
     "docs/pedagogy/corpus/sources/makecode-ap-csp/raw/production/1C-039/boolean-variables.md": "3f78aef8507e18928d59589e63dacdfb3abecab88aa9a7de55048de6551f1fd3",
     "docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/LICENSE-MIT.txt": "c544adf8f0d43453d9fdf6c11da19605d12d89806a7870653169b8cc97f5bb53",
-    "games/bakery/assets/demos/manifest.json": "414f0d2f1e85b2101aec20eec8bcb869014992b327dd03d169bf9ad7fb00be85"
+    "games/bakery/assets/demos/manifest.json": "a647254cf63d13414d523dcee9f092dc13beaf2a34e5995e7f36c397c0096560"
   },
-  "source_build_manifest_sha256": "d1561802555129e273a5e3bad5b909659df516cb144fbc7569ee6edfceed70b6",
+  "source_build_manifest_sha256": "93e3e43a365d6eaecf6cac141c08ae6de1dd9e9a01971fb4fc8991acbfe2ab51",
   "output_sha256": {
-    "assets/d70283ad61805189/demos/01-clean-tray.gif": "e687cb156a3505444ff309a1282c8608a024081d463b6833a22e26b980ea07d4",
-    "assets/d70283ad61805189/demos/02-catch-one.gif": "c6add744f3dbf800c73fae7f5d8241c4fc02fdab9ef034cfdd901144c11846d3",
-    "assets/d70283ad61805189/demos/03-discard-one.gif": "c2835b180e181d51a558c5411214af9586302392d754ef4d0ed968e44a3a0c5f",
-    "assets/d70283ad61805189/demos/04-double-batch.gif": "6c787968291d58e0a7dfb880f1c1d3eb84967606021c9f902d5d567f2093699a",
-    "assets/d70283ad61805189/demos/05-pack-pairs.gif": "a522ca026009895ed6e0006a7d5a61f8e88bc48f3ea34ce594e571afb9c2e87f",
-    "assets/d70283ad61805189/demos/06-delivery.gif": "c2968b5ee3e9ef265dbc9d7ab58eb1bb3e0c869234d29af8b8a7102d3db85ae5",
-    "assets/d70283ad61805189/demos/07-serve-order.gif": "3d2fe9c3f77e60c8e712e98354e41634b5a3cdcd2a1acb782c601765ce03f6b1",
-    "assets/d70283ad61805189/demos/08-bake-trays.gif": "0bbaef09d8ab1be0f57020fe1a18e758c31926832ab5db063858bb9b98a9a994",
-    "assets/d70283ad61805189/demos/09-pack-boxes.gif": "9694348aecccd7180043da76cc73f2b5d19ae901efa6f67f6aaf6c759ae12bdb",
-    "assets/d70283ad61805189/demos/10-equal-check.gif": "09f9f584f142b8dbbd6204e57258ac14fc252f74aa85e3405d8a01da461c102b",
-    "assets/d70283ad61805189/demos/11-less-check.gif": "7228cdaff783fdeac6b0284496c88d005e1afc907a1da23ea000f188793d77f3",
-    "assets/d70283ad61805189/demos/12-greater-check.gif": "34ee66200ca083ffa1775eacebb556b9529b90c7ac35064e436b84554257f777",
-    "assets/d70283ad61805189/demos/13-less-equal-check.gif": "5aef660306de5c17738b982a75c9d9389550e4c24b1b25bc3be87d3c101932d2",
-    "assets/d70283ad61805189/demos/14-greater-equal-check.gif": "b140d93010c84b02820314d0edea7c259dff8839c01fb256588878813fc2f309",
-    "assets/d70283ad61805189/demos/15-factory-round.gif": "375faf142372d5c62af7c48889023e728fc5d2e8ca6b21e51359ab0d382b6154",
-    "assets/d70283ad61805189/demos/16-boundary-checks.gif": "f8091caf5cae44f731e0497c097f0326a0483ed6d28935cabc1d102f68c90170",
-    "assets/d70283ad61805189/demos/17-reuse-number.gif": "672f0332e5d12da99d3cdf4aee595c8bd1fa0a9698e696231cde461169a8997f",
-    "assets/d70283ad61805189/instructions/01-assembled.svg": "cf58ab87d8a5bb1d5469a56f7e830c775f63887433c10acab3c2f8783a0e18d9",
-    "assets/d70283ad61805189/instructions/01-menu.svg": "152d71976f1fecb74cbb77ba8f8a0f304aceb40013211516074dcf1c1d6a6fec",
-    "assets/d70283ad61805189/instructions/02-assembled.svg": "7b53325a6ebb05f427804b10aff616a05036f0b8fa574f69eac4c4e5d557360e",
-    "assets/d70283ad61805189/instructions/02-menu.svg": "55d9929a66114ecf573514681e621c83a29041cb150bc95faacd77f462a67a62",
-    "assets/d70283ad61805189/instructions/04-assembled.svg": "36940db16449bbf0fd1a883516f9705516bdb0f3ad9354356e1eba9415a76aba",
-    "assets/d70283ad61805189/instructions/04-menu.svg": "3742f549c371d7e9088342456a526085ba17875ac04e28b1c2661f6a99abc528",
-    "assets/d70283ad61805189/instructions/05-assembled.svg": "f2d6bf2bac94d014e7ddc88b1da06f8251e62512ff2afa1561c357d1329d7925",
-    "assets/d70283ad61805189/instructions/05-menu.svg": "2e879f7818f1242d6fea4b633c46d506199121a5752b659eef3c149e1efabfd9",
-    "assets/d70283ad61805189/instructions/06-assembled.svg": "3d9b6012140a9cc75225080dda3b0f72f4f2b8e90ed0f3a14dbe1ec944a1a35c",
-    "assets/d70283ad61805189/instructions/06-menu.svg": "9e73c7cc183771a7432f7b74b932e63d4956198b129a5e6760626db404600846",
-    "assets/d70283ad61805189/instructions/10-assembled.svg": "9e2f5340cadf3f20bbe086c86ada63d9540f3901b7479f266de01b085b7d7ed4",
-    "assets/d70283ad61805189/instructions/10-menu.svg": "6a5870de26ef23cafcee57de19e10ca576274bfb02fe07fad408b2a46c4594a7",
-    "assets/d70283ad61805189/instructions/11-assembled.svg": "ef6226707b4c7127c41e1ecccf61f1e2295bc6ac7979e84e2e67bc2ef2c26034",
-    "assets/d70283ad61805189/instructions/11-menu.svg": "52a34b7bf13d59fce4e8fc4bf2db846d69e28f5872e6c6d244aa7409a9c70fe1",
-    "assets/demos/d70283ad61805189/manifest.json": "414f0d2f1e85b2101aec20eec8bcb869014992b327dd03d169bf9ad7fb00be85",
+    "assets/0931d337067cbe08/demos/01-clean-tray.gif": "a06b245b660a4f822e987ff5f48de7a6c71ff588cd7085bbc2938c0d4e84d5e4",
+    "assets/0931d337067cbe08/demos/02-catch-one.gif": "ef032b3d72290438c845c059272ff1a10b752dee8d0ebd4d8d6db418d68dc00a",
+    "assets/0931d337067cbe08/demos/03-discard-one.gif": "10a4d7d483bbe4c30c81e6ed3e2471ef0cabefe928ace2db8e6634e9f7044c92",
+    "assets/0931d337067cbe08/demos/04-double-batch.gif": "8e030ea918314242e6f70bd8da144582147ed0ab9e50a9c8dc110c79882652d7",
+    "assets/0931d337067cbe08/demos/05-pack-pairs.gif": "ef945ea581989603e3558aa9c1834f5c521b4afca2ae015521fba9228ae5f994",
+    "assets/0931d337067cbe08/demos/06-delivery.gif": "0498bc88c9a52012eed190f5741c387a52525e10ad6f6fe5aa329926927b542e",
+    "assets/0931d337067cbe08/demos/07-serve-order.gif": "a7b49e3def12c7077043c9fced3c56bd0b6eb51bf22cd4d98331ebd10ed356b7",
+    "assets/0931d337067cbe08/demos/08-bake-trays.gif": "e90fde4ae75645b6c7c236e373f40569a84f6960a6fde7cca3394e85eb4b0d95",
+    "assets/0931d337067cbe08/demos/09-pack-boxes.gif": "b21caf1ac23940da9c1a8e7e8799382ad3daff8cd49d1f50496417925392a638",
+    "assets/0931d337067cbe08/demos/10-equal-check.gif": "c5cbcf02cb15464d89ca25ee0af2d21f257fb47a449453253c56f7aa13cb0081",
+    "assets/0931d337067cbe08/demos/11-less-check.gif": "f89fe9663402153200226aece110a2973b52548bd16119fae9f8918844f07121",
+    "assets/0931d337067cbe08/demos/12-greater-check.gif": "4bbe2763ced4cbd1c207f9550e33e5decee0df6cad8323f8d36a0e1454caf927",
+    "assets/0931d337067cbe08/demos/13-less-equal-check.gif": "22b95338b48fd355e0f804c3d7654adc214771b3c71acd9dae4aa5a8a6133796",
+    "assets/0931d337067cbe08/demos/14-greater-equal-check.gif": "d5c33e26388028a52b54552acc0ba265514c19756514f326273d11fb948eb327",
+    "assets/0931d337067cbe08/demos/15-factory-round.gif": "ca79931ab778c175e83d0b6893fee9ac1638ba9eaa5ab2e92984a4747540ec43",
+    "assets/0931d337067cbe08/demos/16-boundary-checks.gif": "35c09b240c1878449a69f89181bc0d3a1472925fe868a881f08ef1e542c7f23e",
+    "assets/0931d337067cbe08/demos/17-reuse-number.gif": "450e487a822b222c7389631c0d2ae07d95bf5566fbd6a59348424d21f0402321",
+    "assets/0931d337067cbe08/instructions/01-assembled.svg": "cf58ab87d8a5bb1d5469a56f7e830c775f63887433c10acab3c2f8783a0e18d9",
+    "assets/0931d337067cbe08/instructions/01-menu.svg": "152d71976f1fecb74cbb77ba8f8a0f304aceb40013211516074dcf1c1d6a6fec",
+    "assets/0931d337067cbe08/instructions/02-assembled.svg": "7b53325a6ebb05f427804b10aff616a05036f0b8fa574f69eac4c4e5d557360e",
+    "assets/0931d337067cbe08/instructions/02-menu.svg": "55d9929a66114ecf573514681e621c83a29041cb150bc95faacd77f462a67a62",
+    "assets/0931d337067cbe08/instructions/04-assembled.svg": "36940db16449bbf0fd1a883516f9705516bdb0f3ad9354356e1eba9415a76aba",
+    "assets/0931d337067cbe08/instructions/04-menu.svg": "3742f549c371d7e9088342456a526085ba17875ac04e28b1c2661f6a99abc528",
+    "assets/0931d337067cbe08/instructions/05-assembled.svg": "f2d6bf2bac94d014e7ddc88b1da06f8251e62512ff2afa1561c357d1329d7925",
+    "assets/0931d337067cbe08/instructions/05-menu.svg": "2e879f7818f1242d6fea4b633c46d506199121a5752b659eef3c149e1efabfd9",
+    "assets/0931d337067cbe08/instructions/06-assembled.svg": "3d9b6012140a9cc75225080dda3b0f72f4f2b8e90ed0f3a14dbe1ec944a1a35c",
+    "assets/0931d337067cbe08/instructions/06-menu.svg": "9e73c7cc183771a7432f7b74b932e63d4956198b129a5e6760626db404600846",
+    "assets/0931d337067cbe08/instructions/10-assembled.svg": "9e2f5340cadf3f20bbe086c86ada63d9540f3901b7479f266de01b085b7d7ed4",
+    "assets/0931d337067cbe08/instructions/10-menu.svg": "6a5870de26ef23cafcee57de19e10ca576274bfb02fe07fad408b2a46c4594a7",
+    "assets/0931d337067cbe08/instructions/11-assembled.svg": "ef6226707b4c7127c41e1ecccf61f1e2295bc6ac7979e84e2e67bc2ef2c26034",
+    "assets/0931d337067cbe08/instructions/11-menu.svg": "52a34b7bf13d59fce4e8fc4bf2db846d69e28f5872e6c6d244aa7409a9c70fe1",
+    "assets/demos/0931d337067cbe08/manifest.json": "a647254cf63d13414d523dcee9f092dc13beaf2a34e5995e7f36c397c0096560",
     "LICENSES/Microsoft-MIT.txt": "c544adf8f0d43453d9fdf6c11da19605d12d89806a7870653169b8cc97f5bb53",
     "main.ts": "713f1c94893eb81611042d435586f6e4ddf0eb48960b24b306abb7feaed89fc7",
-    "maintainer/BUILD_MANIFEST.json": "d1561802555129e273a5e3bad5b909659df516cb144fbc7569ee6edfceed70b6",
+    "maintainer/BUILD_MANIFEST.json": "93e3e43a365d6eaecf6cac141c08ae6de1dd9e9a01971fb4fc8991acbfe2ab51",
     "maintainer/docs/pedagogy/corpus/sources/makecode-ap-csp/raw/production/1C-039/boolean-variables.md": "3f78aef8507e18928d59589e63dacdfb3abecab88aa9a7de55048de6551f1fd3",
     "maintainer/docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/LICENSE-MIT.txt": "c544adf8f0d43453d9fdf6c11da19605d12d89806a7870653169b8cc97f5bb53",
     "maintainer/docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/production/1A-005/variable-math.md": "2f4dc0ac5450df06d60ea6c3e2f3dfd9f928fc4d867f88ba7daddd40ab40f063",
     "maintainer/docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/production/1A-041/repository/docs/courses/csintro2/logic/intro.md": "623b45b3bf863c1dc0df0785f2a73b36c7c85c7282f6373f160750d1f552ce25",
     "maintainer/docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/production/1A-043/repository/docs/courses/csintro2/logic/multiplayer.md": "d6663646267dd9380c65fb454df7d602ca600df3c01895a5d7a4ed914055f1fa",
-    "maintainer/games/bakery/assets/demos/01-clean-tray.gif": "e687cb156a3505444ff309a1282c8608a024081d463b6833a22e26b980ea07d4",
-    "maintainer/games/bakery/assets/demos/02-catch-one.gif": "c6add744f3dbf800c73fae7f5d8241c4fc02fdab9ef034cfdd901144c11846d3",
-    "maintainer/games/bakery/assets/demos/03-discard-one.gif": "c2835b180e181d51a558c5411214af9586302392d754ef4d0ed968e44a3a0c5f",
-    "maintainer/games/bakery/assets/demos/04-double-batch.gif": "6c787968291d58e0a7dfb880f1c1d3eb84967606021c9f902d5d567f2093699a",
-    "maintainer/games/bakery/assets/demos/05-pack-pairs.gif": "a522ca026009895ed6e0006a7d5a61f8e88bc48f3ea34ce594e571afb9c2e87f",
-    "maintainer/games/bakery/assets/demos/06-delivery.gif": "c2968b5ee3e9ef265dbc9d7ab58eb1bb3e0c869234d29af8b8a7102d3db85ae5",
-    "maintainer/games/bakery/assets/demos/07-serve-order.gif": "3d2fe9c3f77e60c8e712e98354e41634b5a3cdcd2a1acb782c601765ce03f6b1",
-    "maintainer/games/bakery/assets/demos/08-bake-trays.gif": "0bbaef09d8ab1be0f57020fe1a18e758c31926832ab5db063858bb9b98a9a994",
-    "maintainer/games/bakery/assets/demos/09-pack-boxes.gif": "9694348aecccd7180043da76cc73f2b5d19ae901efa6f67f6aaf6c759ae12bdb",
-    "maintainer/games/bakery/assets/demos/10-equal-check.gif": "09f9f584f142b8dbbd6204e57258ac14fc252f74aa85e3405d8a01da461c102b",
-    "maintainer/games/bakery/assets/demos/11-less-check.gif": "7228cdaff783fdeac6b0284496c88d005e1afc907a1da23ea000f188793d77f3",
-    "maintainer/games/bakery/assets/demos/12-greater-check.gif": "34ee66200ca083ffa1775eacebb556b9529b90c7ac35064e436b84554257f777",
-    "maintainer/games/bakery/assets/demos/13-less-equal-check.gif": "5aef660306de5c17738b982a75c9d9389550e4c24b1b25bc3be87d3c101932d2",
-    "maintainer/games/bakery/assets/demos/14-greater-equal-check.gif": "b140d93010c84b02820314d0edea7c259dff8839c01fb256588878813fc2f309",
-    "maintainer/games/bakery/assets/demos/15-factory-round.gif": "375faf142372d5c62af7c48889023e728fc5d2e8ca6b21e51359ab0d382b6154",
-    "maintainer/games/bakery/assets/demos/16-boundary-checks.gif": "f8091caf5cae44f731e0497c097f0326a0483ed6d28935cabc1d102f68c90170",
-    "maintainer/games/bakery/assets/demos/17-reuse-number.gif": "672f0332e5d12da99d3cdf4aee595c8bd1fa0a9698e696231cde461169a8997f",
-    "maintainer/games/bakery/assets/demos/manifest.json": "414f0d2f1e85b2101aec20eec8bcb869014992b327dd03d169bf9ad7fb00be85",
+    "maintainer/games/bakery/assets/demos/01-clean-tray.gif": "a06b245b660a4f822e987ff5f48de7a6c71ff588cd7085bbc2938c0d4e84d5e4",
+    "maintainer/games/bakery/assets/demos/02-catch-one.gif": "ef032b3d72290438c845c059272ff1a10b752dee8d0ebd4d8d6db418d68dc00a",
+    "maintainer/games/bakery/assets/demos/03-discard-one.gif": "10a4d7d483bbe4c30c81e6ed3e2471ef0cabefe928ace2db8e6634e9f7044c92",
+    "maintainer/games/bakery/assets/demos/04-double-batch.gif": "8e030ea918314242e6f70bd8da144582147ed0ab9e50a9c8dc110c79882652d7",
+    "maintainer/games/bakery/assets/demos/05-pack-pairs.gif": "ef945ea581989603e3558aa9c1834f5c521b4afca2ae015521fba9228ae5f994",
+    "maintainer/games/bakery/assets/demos/06-delivery.gif": "0498bc88c9a52012eed190f5741c387a52525e10ad6f6fe5aa329926927b542e",
+    "maintainer/games/bakery/assets/demos/07-serve-order.gif": "a7b49e3def12c7077043c9fced3c56bd0b6eb51bf22cd4d98331ebd10ed356b7",
+    "maintainer/games/bakery/assets/demos/08-bake-trays.gif": "e90fde4ae75645b6c7c236e373f40569a84f6960a6fde7cca3394e85eb4b0d95",
+    "maintainer/games/bakery/assets/demos/09-pack-boxes.gif": "b21caf1ac23940da9c1a8e7e8799382ad3daff8cd49d1f50496417925392a638",
+    "maintainer/games/bakery/assets/demos/10-equal-check.gif": "c5cbcf02cb15464d89ca25ee0af2d21f257fb47a449453253c56f7aa13cb0081",
+    "maintainer/games/bakery/assets/demos/11-less-check.gif": "f89fe9663402153200226aece110a2973b52548bd16119fae9f8918844f07121",
+    "maintainer/games/bakery/assets/demos/12-greater-check.gif": "4bbe2763ced4cbd1c207f9550e33e5decee0df6cad8323f8d36a0e1454caf927",
+    "maintainer/games/bakery/assets/demos/13-less-equal-check.gif": "22b95338b48fd355e0f804c3d7654adc214771b3c71acd9dae4aa5a8a6133796",
+    "maintainer/games/bakery/assets/demos/14-greater-equal-check.gif": "d5c33e26388028a52b54552acc0ba265514c19756514f326273d11fb948eb327",
+    "maintainer/games/bakery/assets/demos/15-factory-round.gif": "ca79931ab778c175e83d0b6893fee9ac1638ba9eaa5ab2e92984a4747540ec43",
+    "maintainer/games/bakery/assets/demos/16-boundary-checks.gif": "35c09b240c1878449a69f89181bc0d3a1472925fe868a881f08ef1e542c7f23e",
+    "maintainer/games/bakery/assets/demos/17-reuse-number.gif": "450e487a822b222c7389631c0d2ae07d95bf5566fbd6a59348424d21f0402321",
+    "maintainer/games/bakery/assets/demos/manifest.json": "a647254cf63d13414d523dcee9f092dc13beaf2a34e5995e7f36c397c0096560",
     "maintainer/games/bakery/assets/instructions/01-assembled.svg": "cf58ab87d8a5bb1d5469a56f7e830c775f63887433c10acab3c2f8783a0e18d9",
     "maintainer/games/bakery/assets/instructions/01-menu.svg": "152d71976f1fecb74cbb77ba8f8a0f304aceb40013211516074dcf1c1d6a6fec",
     "maintainer/games/bakery/assets/instructions/02-assembled.svg": "7b53325a6ebb05f427804b10aff616a05036f0b8fa574f69eac4c4e5d557360e",
@@ -333,16 +333,16 @@
     "maintainer/games/bakery/design/WORLD_REVISION_V9.md": "b302d07e9728e6c651feb091245a8f1ac9572ed7dfaffc09b2cecbdde7c09cb9",
     "maintainer/games/bakery/implementation/learner-states/catalog.json": "5e464692c7fbbcfb84ee03fa9fd0a450673e23588c8f66242e58f5d636e6626e",
     "maintainer/games/bakery/implementation/manifest.json": "f7897508c4996ffb8d0d66dfa0d5878b78cde0bb0188ddb6c4ef7b0898e9ed51",
-    "maintainer/games/bakery/implementation/supplied-world/art.ts": "3eb0d9c0059c395ba085326124a4483851b6273627988c70519dadc3bd635657",
+    "maintainer/games/bakery/implementation/supplied-world/art.ts": "2aeb931fbbcd21361a72c3bb837709b31ca708ec7b881f070dc6d6e0ad11f9da",
     "maintainer/games/bakery/implementation/supplied-world/engine.ts": "ce6a028669661c28f3961e9e4f1ad64cd9ffbc7163575ade0f2634fffaf94b50",
     "maintainer/games/bakery/implementation/supplied-world/icons.ts": "4eb42c0cd7774913d2ad28a1e311d3a65a3cc8fb334c7660c33719dbb6893b4b",
-    "maintainer/games/bakery/tools/build-publication.mjs": "c57bc238a52d68db7d1d42b2a6d8f98fe0e045127965e4a5ae5d55758b2ecb47",
+    "maintainer/games/bakery/tools/build-publication.mjs": "948666c1ea65a4b7984eb6792982624f065fcd48611645fef6146baaedc35d40",
     "maintainer/games/bakery/tools/build.mjs": "c19256ff8f22aa87d07335869ebc68b1722da203a32b2828d2b01a6232ba5f08",
     "MAINTAINING.md": "2a2b0cabacde1fe3cc9ac42f7b815c77912a7cfb26f0fbeb2cd724c4d9456402",
     "pxt.json": "69ea090cfe3186fab9062a819cf2dda47dbdf54c9b46f4b2a4c5f923d68cc454",
-    "README.md": "88d22c1de613b4d9f65bef79367f0c750e6a55e57c420888576c4c30d83b8838",
+    "README.md": "38e27b0a8758bf2c9d084e4acc2abae8994c396244a4a3ea7c8870df30783482",
     "review/README.md": "3f7f8b3a31aeb4fdf438be8e4947351b801e357772c5df425407827143b80320",
-    "review/solution/engine.ts": "a65554ed4878606247b3963fcbb75f3e46b7cc8cbe8a5d02e832b6f029dd1d36",
+    "review/solution/engine.ts": "0485d79b2f31cd6679817b9d760e78feeeaa84f6384c8a1895a4b4ada741e80c",
     "review/solution/main.ts": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874",
     "review/solution/pxt.json": "e7cee09e0d7167be7456bd131b86fa5797d8efb5f811c4af1c0baec172ee3418",
     "THIRD_PARTY_NOTICES.md": "dfaade401d90857749d02ff20450f46e5439d1415a2fef61b5ff6746f58590f8"

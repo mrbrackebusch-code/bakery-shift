@@ -260,12 +260,12 @@ namespace bakeryArt {
         round(p, x, y + 7, 92, 57, 15); round(p, x + 3, y + 9, 86, 51, 14)
         p.fillRect(x + 5, y + 12, 82, 9, accent); p.fillRect(x + 8, y + 25, 76, 32, 8)
         round(p, x - 2, y, 96, 13, 12); p.fillRect(x + 2, y, 88, 4, 1)
-        p.drawTransparentImage(bakeryIcons.ingredient(id), x + 12, y + 30)
         if (unlocked) {
+            p.drawTransparentImage(bakeryIcons.ingredient(id), x + 12, y + 30)
             number(p, value, x + 49, y + 30, 13)
             round(p, x + 65, y + 29, 17, 17, 11); operator(p, op, x + 68, y + 32, 1, 2)
             p.fillRect(x + 12, y + 52, Math.idiv((12000 - now % 12000) * 67, 12000), 2, accent)
-        } else { p.print("LATER", x + 38, y + 36, 12, image.font5) }
+        }
         if (pulse > 0) p.drawRect(x + 5, y + 22, 82, 36, 5)
     }
     function comparison(p: Image, relation: number, x: number, y: number, color: number) {
