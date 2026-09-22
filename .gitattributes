@@ -1,1 +1,7 @@
 maintainer/games/bakery/copy/tutorial-template.md -text
+maintainer/games/bakery/design/RESOLUTION_REVISION_V8.md -text
+maintainer/games/bakery/design/WORLD_REVISION_V9.md -text
+maintainer/games/bakery/implementation/manifest.json -text
+maintainer/games/bakery/implementation/supplied-world/art.ts -text
+maintainer/games/bakery/implementation/supplied-world/icons.ts -text
+maintainer/games/bakery/tools/build-publication.mjs -text
