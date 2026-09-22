@@ -24,11 +24,11 @@ A ``||variables(noclick):variable||`` is a container used to store values in you
 
 In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):batch||``. Find the event, mixer amount, and display in ``||bakery(noclick):Cake Factory||``. Change the event dropdown to **the mixer is selected**.
 
-![Native menu blocks for creating batch, selecting the mixer, reading its amount and showing a value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/01-menu.svg)
+![Native menu blocks for creating batch, selecting the mixer, reading its amount and showing a value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/01-menu.svg)
 
 ### Make your code look like this
 
-![Read the mixer into batch, then show the value stored in batch](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/01-assembled.svg)
+![Read the mixer into batch, then show the value stored in batch](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/01-assembled.svg)
 
 The small ``||variables(noclick):batch||`` block reads the value you saved. It goes in the display's value slot. In the game, the bowl icon represents this amount without spelling out the variable name on every modifier.
 
@@ -36,7 +36,7 @@ The small ``||variables(noclick):batch||`` block reads the value you saved. It g
 
 With empty hands, stand below the pot and press **A**. Your display shows `2`. Reading the mixer does not change its amount. The bottom checks will be connected later.
 
-![Selecting the mixer shows its current number in a bubble](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/01-clean-tray.gif)
+![Selecting the mixer shows its current number in a bubble](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/01-clean-tray.gif)
 
 #### ~ tutorialhint
 
@@ -57,11 +57,11 @@ A `+ 1` modifier should increase the amount by one. A loose cupcake uses this sa
 
 Add a new ``||bakery(noclick):when||`` event and choose **a + 1 item hits the mixer**. Find ``||math(noclick):0 + 0||`` in ``||math(noclick):Math||``.
 
-![Native event, variable, arithmetic and mixer-result blocks for adding one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/02-menu.svg)
+![Native event, variable, arithmetic and mixer-result blocks for adding one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/02-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, set batch to batch plus one, then put batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/02-assembled.svg)
+![Read batch, set batch to batch plus one, then put batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/02-assembled.svg)
 
 Read the mixer first. Calculate ``||variables(noclick):batch||`` plus `1`, save the result back in ``||variables(noclick):batch||``, and send that value to the mixer. The ``||math(noclick):Math||`` block produces a number.
 
@@ -69,7 +69,7 @@ Read the mixer first. Calculate ``||variables(noclick):batch||`` plus `1`, save 
 
 Catch `+ 1`. Move beside the pot, face it, and press **A**. The modifier flies into the pot and `2` becomes `3` when it hits. Try another addition using the new starting amount.
 
-![A thrown plus-one modifier hits the mixer and changes two to three](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/02-catch-one.gif)
+![A thrown plus-one modifier hits the mixer and changes two to three](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/02-catch-one.gif)
 
 #### ~ tutorialhint
 
@@ -95,7 +95,7 @@ Create **a - 1 modifier hits the mixer**. Use the same read, calculate, and put 
 
 Throw `- 1` into the pot: `2` becomes `1`. With empty hands, press **B** beside the pot to reset its amount, then try a different calculation.
 
-![A thrown minus-one modifier changes the mixer from two to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/03-discard-one.gif)
+![A thrown minus-one modifier changes the mixer from two to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/03-discard-one.gif)
 
 #### ~ tutorialhint
 
@@ -117,17 +117,17 @@ A `× 2` modifier can do in one throw what repeated additions would take longer 
 
 Add **a × 2 modifier hits the mixer**. Choose multiplication from the ``||math(noclick):Math||`` block's dropdown. Use the mixer read and result blocks you already know.
 
-![Native multiplication and factory blocks for the double event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/04-menu.svg)
+![Native multiplication and factory blocks for the double event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/04-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, multiply batch by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/04-assembled.svg)
+![Read batch, multiply batch by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/04-assembled.svg)
 
 ### What you should see
 
 Throw `× 2` into the pot. The amount doubles: `2` becomes `4`. The number on the modifier stays two; the amount it multiplies can change.
 
-![A times-two modifier doubles the mixer amount from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/04-double-batch.gif)
+![A times-two modifier doubles the mixer amount from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/04-double-batch.gif)
 
 #### ~ tutorialhint
 
@@ -149,17 +149,17 @@ Division makes a large amount smaller. A `/ 2` modifier divides it into two equa
 
 Add **a / 2 modifier hits the mixer**. Choose division from the ``||math(noclick):Math||`` block's dropdown.
 
-![Native division and factory blocks for dividing the mixer amount by two](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/05-menu.svg)
+![Native division and factory blocks for dividing the mixer amount by two](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/05-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, divide it by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/05-assembled.svg)
+![Read batch, divide it by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/05-assembled.svg)
 
 ### What you should see
 
 Throw `/ 2` into a mixer holding `2`. The result is `1`. This factory uses whole-number results: a division that would make a fraction leaves the amount unchanged. Adjust the amount before trying that division again.
 
-![Dividing two by two changes the mixer to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/05-pack-pairs.gif)
+![Dividing two by two changes the mixer to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/05-pack-pairs.gif)
 
 #### ~ tutorialhint
 
@@ -181,11 +181,11 @@ The belts can now offer `+ 2` and `+ 3`. One event can use the number printed on
 
 In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):modifierNumber||``. Add **a + 2 or + 3 modifier hits the mixer** and find **number on the modifier** in ``||bakery(noclick):Cake Factory||``.
 
-![Native menu blocks for modifierNumber, its printed-number input and the addition event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/06-menu.svg)
+![Native menu blocks for modifierNumber, its printed-number input and the addition event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/06-menu.svg)
 
 ### Make your code look like this
 
-![Read batch and modifierNumber, add them, then put the saved batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/06-assembled.svg)
+![Read batch and modifierNumber, add them, then put the saved batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/06-assembled.svg)
 
 The variables have different jobs: ``||variables(noclick):batch||`` remembers the mixer amount; ``||variables(noclick):modifierNumber||`` remembers the modifier's printed number.
 
@@ -193,7 +193,7 @@ The variables have different jobs: ``||variables(noclick):batch||`` remembers th
 
 Throw `+ 2` into a mixer holding `2`: the result is `4`. Try `+ 3` or another starting amount and compare the result.
 
-![The plus-two modifier changes the mixer from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/06-delivery.gif)
+![The plus-two modifier changes the mixer from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/06-delivery.gif)
 
 #### ~ tutorialhint
 
@@ -221,7 +221,7 @@ Add **a - 2 or - 3 modifier hits the mixer**. Read the mixer into ``||variables(
 
 Throw `- 2` at an amount of `2`: the result is `0`. Subtracting three from two would give `-1`. Negative numbers are smaller than zero.
 
-![Subtracting the printed two from two changes the mixer to zero](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/07-serve-order.gif)
+![Subtracting the printed two from two changes the mixer to zero](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/07-serve-order.gif)
 
 #### ~ tutorialhint
 
@@ -249,7 +249,7 @@ Add **a × 3 modifier hits the mixer**. Read both inputs into your variables. Mu
 
 Throw `× 3` into a mixer holding `2`: the result is `6`. Compare that one throw with adding one four times.
 
-![Multiplying two by the printed three produces six](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/08-bake-trays.gif)
+![Multiplying two by the printed three produces six](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/08-bake-trays.gif)
 
 #### ~ tutorialhint
 
@@ -277,7 +277,7 @@ Add **a / 3 modifier hits the mixer**. Read both inputs, divide ``||variables(no
 
 This step starts the mixer at `3`. Throw `/ 3` into it: the result is `1`. The next modifier will use that new amount. Remember that division needs a whole-number result here.
 
-![Dividing three by the modifier's printed three leaves one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/09-pack-boxes.gif)
+![Dividing three by the modifier's printed three leaves one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/09-pack-boxes.gif)
 
 #### ~ tutorialhint
 
@@ -305,11 +305,11 @@ In ``||variables(noclick):Variables||``, use **Make a Variable** separately for 
 
 Add **an = order checks a number**. Find the pointed comparison block in ``||logic(noclick):Logic||`` and choose `=` from its dropdown.
 
-![Native comparison, Boolean and factory inputs and output, with variable creation](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/10-menu.svg)
+![Native comparison, Boolean and factory inputs and output, with variable creation](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/10-menu.svg)
 
 ### Make your code look like this
 
-![Read orderTarget and deliveredNumber; set ready to their equality comparison; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/10-assembled.svg)
+![Read orderTarget and deliveredNumber; set ready to their equality comparison; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/10-assembled.svg)
 
 Put ``||variables(noclick):orderTarget||`` first and ``||variables(noclick):deliveredNumber||`` second, just like the bottom order. The pointed ``||logic(noclick):Logic||`` block produces true or false. **set ready** stores that result; **show check** displays it.
 
@@ -317,7 +317,7 @@ Put ``||variables(noclick):orderTarget||`` first and ``||variables(noclick):deli
 
 Collect a numbered container from the number dispenser and throw it down at `3 = □`. Walk to the order and press **B**: its left value, comparison, and right value highlight in order, then the check reports **FALSE** with a quiet cross. Add one in the mixer, collect its new number, and deliver `3`. Press **B** again to see **TRUE** and a quiet checkmark; delivery itself stays neutral. The target stays three throughout.
 
-![Three equals two checks FALSE; making and delivering three checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/10-equal-check.gif)
+![Three equals two checks FALSE; making and delivering three checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/10-equal-check.gif)
 
 #### ~ tutorialhint
 
@@ -342,17 +342,17 @@ bakery.onAction(BakeryAction.EqualCheck, function () {
 
 Add **a < order checks a number**. Use the same input blocks and variables. Choose `<` from the ``||logic(noclick):Logic||`` comparison dropdown.
 
-![Native less-than comparison and its factory check event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/11-menu.svg)
+![Native less-than comparison and its factory check event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/11-menu.svg)
 
 ### Make your code look like this
 
-![Read both inputs; set ready to orderTarget less than deliveredNumber; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/instructions/11-assembled.svg)
+![Read both inputs; set ready to orderTarget less than deliveredNumber; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/instructions/11-assembled.svg)
 
 ### What you should see
 
 The rightmost order asks for `4 < □`. Deliver `4`, then press **B**: the check reports **FALSE** because the numbers are equal. Add one to the mixer and deliver `5`; press **B** again to report **TRUE**. You changed the delivered number on the right.
 
-![Four less than four checks FALSE; four less than five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/11-less-check.gif)
+![Four less than four checks FALSE; four less than five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/11-less-check.gif)
 
 #### ~ tutorialhint
 
@@ -381,7 +381,7 @@ Add **a > order checks a number**. Read both inputs. Set ``||variables(noclick):
 
 The middle order asks for `2 > □`. Delivering `2` stays neutral until you press **B**, which reports **FALSE**. Subtract one in the mixer and deliver `1`; press **B** to report **TRUE**. Matching numbers make `=` true, but make both `<` and `>` false.
 
-![Two greater than two checks FALSE; two greater than one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/12-greater-check.gif)
+![Two greater than two checks FALSE; two greater than one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/12-greater-check.gif)
 
 #### ~ tutorialhint
 
@@ -410,7 +410,7 @@ Add **a ≤ order checks a number**. Keep the same input order and variables. Ch
 
 The rightmost order now asks for `5 ≤ □`. Make and deliver `5`, then press **B** to report **TRUE**. A larger delivered number also works; `4` reports **FALSE** after its check. The sign itself tells you which numbers qualify.
 
-![Five less than or equal to five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/13-less-equal-check.gif)
+![Five less than or equal to five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/13-less-equal-check.gif)
 
 #### ~ tutorialhint
 
@@ -439,7 +439,7 @@ Add **a ≥ order checks a number**. Read the fixed target and delivered number.
 
 The middle order asks for `1 ≥ □`. Deliver `1`, then press **B** to report **TRUE**. Zero or a negative number also works here. A larger delivered number, such as `2`, makes this statement **FALSE** when checked.
 
-![One greater than or equal to one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/14-greater-equal-check.gif)
+![One greater than or equal to one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/14-greater-equal-check.gif)
 
 #### ~ tutorialhint
 
@@ -468,7 +468,7 @@ Read the target and sign before catching a modifier. Make a useful number in the
 
 One route makes `1`, then `3`, then `6`. Press **B** after each delivery to check the statement; each result is briefly **TRUE** or **FALSE**, with a quiet checkmark or cross. Collecting and delivering never empties the mixer: the next calculation starts with the amount you just made.
 
-![Three calculated numbers are delivered and checked at the three different orders](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/15-factory-round.gif)
+![Three calculated numbers are delivered and checked at the three different orders](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/15-factory-round.gif)
 
 After the first three checks finish, press **A** to unlock four side ingredient stations. The next round keeps your mixer amount and brings new checks.
 
@@ -484,7 +484,7 @@ After the first three checks, press **A** to open the side ingredient stations. 
 
 The icon in the order identifies the station value you need. The operators switch every 12 seconds, and a thrown copied number changes a station through its allowed operator. A new order can name a different random icon. Deliver the number, then press **B** at the unfinished order: its left value, comparison, and right value highlight in order before a brief **TRUE** or **FALSE** and quiet checkmark or cross.
 
-![A variable change at a side station is reflected in the order's left value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/16-boundary-checks.gif)
+![A variable change at a side station is reflected in the order's left value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/16-boundary-checks.gif)
 
 ## 17. Keep the amount, change the plan
 
@@ -498,7 +498,7 @@ Make and deliver `3` for the equality order. Look back at the pot: it still hold
 
 A numbered container carries a copy. Your next modifier changes the mixer, while a completed order keeps its delivered number. Try another route through the same three checks, using a different combination of arithmetic operations.
 
-![The mixer keeps three after delivery, then doubling makes six for a different order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/0931d337067cbe08/demos/17-reuse-number.gif)
+![The mixer keeps three after delivery, then doubling makes six for a different order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/16ea3142ce2adb23/demos/17-reuse-number.gif)
 
 ```template
 // Cake Factory
@@ -520,7 +520,7 @@ namespace bakeryIcons {
             p.fillCircle(9, 10, 7, 15); p.fillCircle(9, 10, 6, 2)
             p.fillRect(5, 3, 8, 3, 15); p.fillRect(4, 4, 10, 2, 6)
             p.fillRect(7, 2, 2, 3, 6); p.fillRect(11, 2, 2, 3, 6)
-            p.setPixel(6, 8, 3); p.setPixel(11, 11, 3)
+            p.setPixel(6, 8, 1); p.setPixel(11, 11, 1)
         } else if (id == 1) {
             // Cocoa: square dark-brown block with a cream split and highlight.
             p.fillRect(3, 4, 12, 11, 15); p.fillRect(4, 5, 10, 9, 14)
@@ -534,8 +534,8 @@ namespace bakeryIcons {
         } else {
             // Mint: teal leaf with two pointed lobes and a light central vein.
             p.fillRect(8, 5, 3, 10, 15); p.fillRect(4, 7, 10, 7, 15)
-            p.fillRect(5, 8, 8, 5, 6); p.fillRect(8, 6, 2, 7, 9)
-            p.setPixel(4, 6, 9); p.setPixel(13, 7, 9); p.fillRect(7, 14, 4, 2, 6)
+            p.fillRect(5, 8, 8, 5, 6); p.fillRect(8, 6, 2, 7, 12)
+            p.setPixel(4, 6, 12); p.setPixel(13, 7, 12); p.fillRect(7, 14, 4, 2, 6)
         }
         return p
     }
@@ -604,7 +604,7 @@ namespace bakeryArt {
     let large = image.doubledFont(image.font8)
     let bowl: Image = null
     export function installPalette() {
-        image.setPalette(hex`000000 FFFFFF EC3B59 F7AAC3 D98B46 F6C85F 479AA4 E7AD82 294E5A 9BD7D0 A55EEA 683C91 A8B8B5 F4E6CE 6E4638 243139`)
+        image.setPalette(hex`000000 FFFFFF EC3B59 45AAF2 D98B46 F6C85F 479AA4 E7AD82 294E5A 3480B6 A55EEA 7C47B0 BFBFBF F4E6CE 6E4638 243139`)
     }
     function round(p: Image, x: number, y: number, w: number, h: number, c: number) {
         p.fillRect(x + 3, y, w - 6, h, c); p.fillRect(x, y + 3, w, h - 6, c)
@@ -633,7 +633,7 @@ namespace bakeryArt {
     }
     export function variableTray(p: Image, x: number, y: number) {
         p.fillRect(x, y, 14, 2, 1); p.fillRect(x + 1, y + 2, 12, 5, 1)
-        p.fillRect(x + 3, y + 7, 8, 2, 12); p.fillRect(x + 3, y + 2, 8, 3, 3)
+        p.fillRect(x + 3, y + 7, 8, 2, 12); p.fillRect(x + 3, y + 2, 8, 3, 7)
     }
     export function operator(p: Image, op: number, x: number, y: number, color: number, scale: number = 1) {
         if (op == 0) { p.fillRect(x, y + 2 * scale, 5 * scale, scale, color); p.fillRect(x + 2 * scale, y, scale, 5 * scale, color) }
@@ -654,7 +654,7 @@ namespace bakeryArt {
         let p = image.create(26, 26)
         oval(p, 13, 22, 12, 3, 15); round(p, 6, 12, 16, 10, 14); p.fillRect(7, 14, 14, 6, 5)
         p.fillRect(9, 15, 2, 5, 4); p.fillRect(17, 15, 2, 5, 4)
-        oval(p, 13, 11, 12, 7, 3); oval(p, 13, 8, 9, 5, 1); p.fillCircle(14, 4, 3, 2); p.setPixel(13, 3, 1)
+        oval(p, 13, 11, 12, 7, 7); oval(p, 13, 8, 9, 5, 1); p.fillCircle(14, 4, 3, 2); p.setPixel(13, 3, 1)
         return p
     }
     export function chef(frame: number = 0, carrying: boolean = false): Image { return bakeryIcons.chef(frame, carrying) }
@@ -756,7 +756,7 @@ namespace bakeryArt {
         for (let x = 402; x < 445; x += 9) p.fillRect(x, 287, 3, 4, 8)
         oval(p, 454, 351, 29, 7, 12)
         round(p, 427, 299, 54, 45, 15); round(p, 430, 297, 48, 42, 6)
-        p.fillRect(435, 315, 38, 19, 8); p.fillRect(435, 300, 38, 3, 9)
+        p.fillRect(435, 315, 38, 19, 8); p.fillRect(435, 300, 38, 3, 12)
         p.drawTransparentImage(numericOutput(value), 437, 306)
         p.fillCircle(475, 307, 3, ready ? 5 : 12)
         p.drawLine(440, 354, 447, 360, 6); p.drawLine(447, 360, 454, 354, 6)
@@ -786,34 +786,54 @@ namespace bakeryArt {
     }
     export function deliveryOrder(p: Image, index: number, value: number, target: number, relation: number, signal: number, focused: boolean, complete: boolean, stage: number = -1, variable: number = -1, base: number = 0) {
         if (complete) variable = -1 // Completed checks retain their evaluated left value.
-        let x = index * 212 + 8, y = 414
-        hexagon(p, x, y, 200, 62, complete ? 9 : focused ? 5 : 12)
-        hexagon(p, x + 3, y + 3, 194, 56, complete ? 6 : 8)
-        // Rounded numeric sockets sit inside the pointed Boolean reporter.
-        let leftW = variable >= 0 ? 83 : 53
-        round(p, x + 25, y + 10, leftW, 29, stage == 0 ? 5 : 13)
-        if (variable < 0) number(p, target, x + 51, y + 16, 15)
+        let x = index * 212 + 8, y = 418
+        if (focused) hexagon(p, x - 4, y - 4, 208, 52, 5)
+        hexagon(p, x, y, 200, 44, 9)
+        hexagon(p, x + 2, y + 2, 196, 40, 3)
+        // Fully rounded sockets sit inside the native Logic-shaped reporter.
+        let leftW = variable >= 0 ? 84 : 53
+        capsule(p, x + 24, y + 7, leftW + 2, 30, variable >= 0 ? 11 : 12)
+        capsule(p, x + 25, y + 8, leftW, 28, variable >= 0 ? 10 : 1)
+        if (stage == 0) p.drawRect(x + 24, y + 7, leftW + 2, 30, 5)
+        if (variable < 0) number(p, target, x + 25 + Math.idiv(leftW, 2), y + 14, 15)
         else {
-            number(p, base, x + 39, y + 16, 15)
-            operator(p, 0, x + 54, y + 20, 15)
-            p.drawTransparentImage(bakeryIcons.ingredient(variable), x + 70, y + 15)
+            capsule(p, x + 28, y + 12, 22, 20, 12)
+            capsule(p, x + 29, y + 13, 20, 18, 1)
+            number(p, base, x + 39, y + 14, 15)
+            operator(p, 0, x + 52, y + 18, 1)
+            capsule(p, x + 62, y + 12, 40, 20, 2)
+            p.drawTransparentImage(bakeryIcons.ingredient(variable), x + 73, y + 13)
         }
         if (variable >= 0 && stage == 0) {
             round(p, x + 27, y - 24, 80, 23, 5)
             p.print("=", x + 34, y - 18, 15, image.font8); number(p, target, x + 70, y - 20, 15)
         }
-        let symbolX = variable >= 0 ? x + 115 : x + 94
-        if (stage == 1) round(p, symbolX - 4, y + 9, 28, 30, 5)
-        comparison(p, relation, symbolX, y + 13, stage == 1 ? 15 : 1)
-        round(p, x + 147, y + 10, 29, 29, stage == 2 ? 5 : 13)
-        if (value != -999999) number(p, value, x + 161, y + 16, 15)
-        else { p.fillRect(x + 155, y + 26, 13, 2, 12) }
-        if (stage == 3) p.print(signal == 1 ? "TRUE" : "FALSE", x + 81, y + 45, signal == 1 ? 9 : 3, image.font8)
-        else if (signal == 1) { p.drawLine(x + 95, y + 48, x + 99, y + 52, 9); p.drawLine(x + 99, y + 52, x + 107, y + 44, 9) }
-        else if (signal == 0) { p.drawLine(x + 97, y + 45, x + 103, y + 51, 3); p.drawLine(x + 103, y + 45, x + 97, y + 51, 3) }
-        else if (focused) p.print("B CHECK", x + 74, y + 45, 5, image.font8)
-        else p.drawCircle(x + 100, y + 48, 3, 12)
+        let symbolX = x + 110
+        round(p, symbolX, y + 8, 34, 28, 9)
+        round(p, symbolX + 2, y + 10, 30, 24, 3)
+        comparison(p, relation, symbolX + 4, y + 11, 1)
+        p.fillRect(symbolX + 26, y + 27, 4, 1, 1); p.fillRect(symbolX + 27, y + 28, 2, 1, 1)
+        if (stage == 1) p.drawRect(symbolX, y + 8, 34, 28, 5)
+        capsule(p, x + 145, y + 7, 34, 30, 12)
+        capsule(p, x + 146, y + 8, 32, 28, 1)
+        if (stage == 2) p.drawRect(x + 145, y + 7, 34, 30, 5)
+        if (value != -999999) number(p, value, x + 162, y + 14, 15)
+        if (stage == 3) p.print(signal == 1 ? "TRUE" : "FALSE", x + 81, 466, signal == 1 ? 6 : 2, image.font8)
+        else if (signal == 1) { p.drawLine(x + 95, 469, x + 99, 473, 6); p.drawLine(x + 99, 473, x + 107, 465, 6) }
+        else if (signal == 0) { p.drawLine(x + 97, 464, x + 103, 474, 2); p.drawLine(x + 103, 464, x + 97, 474, 2) }
+        else if (focused) p.print("B CHECK", x + 74, 466, 5, image.font8)
     }
+
+    function capsule(p: Image, x: number, y: number, w: number, h: number, color: number) {
+        let r = h / 2
+        for (let row = 0; row < h; row++) {
+            let dy = row - (h - 1) / 2
+            let inset = Math.ceil(r - Math.sqrt(Math.max(0, r * r - dy * dy)))
+            p.fillRect(x + inset, y + row, w - inset * 2, 1, color)
+        }
+    }
+    export function deliverySocketX(index: number): number { return index * 212 + 170 }
+    export function deliverySocketY(): number { return 440 }
 }
 
 namespace userconfig {
@@ -1100,14 +1120,17 @@ namespace bakery {
         if (!installed(action)) { tell("Build this modifier's event first."); trace("missing-handler"); return }
         activeOp = op; activeNumber = rhs; invoke(action, -1); activeOp = -1; activeNumber = 0
     }
-    function targetX(id: number): number { return id == 0 ? 320 : id <= 3 ? 108 + (id - 1) * 212 : id < 6 ? 44 : 596 }
-    function targetY(id: number): number { return id == 0 ? 247 : id <= 3 ? 439 : (id - 4) % 2 == 0 ? 247 : 343 }
+    function targetX(id: number): number { return id == 0 ? 320 : id <= 3 ? bakeryArt.deliverySocketX(id - 1) : id < 6 ? 44 : 596 }
+    function targetY(id: number): number { return id == 0 ? 247 : id <= 3 ? bakeryArt.deliverySocketY() : (id - 4) % 2 == 0 ? 247 : 343 }
     function chooseTarget(range: number): number {
         let chosen = -1, best = 100000
         for (let id = 0; id < 8; id++) {
             if (heldKind == 0 && id != 0 || heldKind == 1 && id == 0 || id >= 4 && !variablesActive) continue
             if (id >= 1 && id <= 3 && fulfilledAt[id - 1] >= 0) continue
-            let dx = targetX(id) - chef.x, dy = targetY(id) - chef.y
+            // Aim toward the whole statement; the arc and reticle use its receiving socket.
+            let aimX = id >= 1 && id <= 3 ? 108 + (id - 1) * 212 : targetX(id)
+            let aimY = id >= 1 && id <= 3 ? 439 : targetY(id)
+            let dx = aimX - chef.x, dy = aimY - chef.y
             let distance = Math.sqrt(dx * dx + dy * dy)
             let facing = (dx * faceX + dy * faceY) / Math.max(1, distance * Math.sqrt(faceX * faceX + faceY * faceY))
             if (distance <= range && facing > 0.70 && distance < best) { best = distance; chosen = id }
@@ -1223,7 +1246,7 @@ namespace bakery {
         let now = control.millis(), m = nearOrder()
         screen.fillRect(0, 0, 640, 40, 8)
         screen.print("CAKE FACTORY", 10, 3, 13, hudFont)
-        screen.print("HOLD A: TOSS   B: CHECK / DROP", 329, 5, 9, image.font8)
+        screen.print("HOLD A: TOSS   B: CHECK / DROP", 329, 5, 12, image.font8)
         for (let i = 0; i < 3; i++) { screen.drawCircle(207 + i * 21, 11, 6, 5); if (i < stamps) screen.fillCircle(207 + i * 21, 11, 4, 5) }
         if (now < messageUntil) screen.print(message, 10, 26, 13, image.font8)
         bakeryArt.mixer(screen, mixingValue, heldKind == 0, mixingJammed, Math.idiv(now, 180))

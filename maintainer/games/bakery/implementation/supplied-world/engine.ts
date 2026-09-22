@@ -282,14 +282,17 @@ namespace bakery {
         if (!installed(action)) { tell("Build this modifier's event first."); trace("missing-handler"); return }
         activeOp = op; activeNumber = rhs; invoke(action, -1); activeOp = -1; activeNumber = 0
     }
-    function targetX(id: number): number { return id == 0 ? 320 : id <= 3 ? 108 + (id - 1) * 212 : id < 6 ? 44 : 596 }
-    function targetY(id: number): number { return id == 0 ? 247 : id <= 3 ? 439 : (id - 4) % 2 == 0 ? 247 : 343 }
+    function targetX(id: number): number { return id == 0 ? 320 : id <= 3 ? bakeryArt.deliverySocketX(id - 1) : id < 6 ? 44 : 596 }
+    function targetY(id: number): number { return id == 0 ? 247 : id <= 3 ? bakeryArt.deliverySocketY() : (id - 4) % 2 == 0 ? 247 : 343 }
     function chooseTarget(range: number): number {
         let chosen = -1, best = 100000
         for (let id = 0; id < 8; id++) {
             if (heldKind == 0 && id != 0 || heldKind == 1 && id == 0 || id >= 4 && !variablesActive) continue
             if (id >= 1 && id <= 3 && fulfilledAt[id - 1] >= 0) continue
-            let dx = targetX(id) - chef.x, dy = targetY(id) - chef.y
+            // Aim toward the whole statement; the arc and reticle use its receiving socket.
+            let aimX = id >= 1 && id <= 3 ? 108 + (id - 1) * 212 : targetX(id)
+            let aimY = id >= 1 && id <= 3 ? 439 : targetY(id)
+            let dx = aimX - chef.x, dy = aimY - chef.y
             let distance = Math.sqrt(dx * dx + dy * dy)
             let facing = (dx * faceX + dy * faceY) / Math.max(1, distance * Math.sqrt(faceX * faceX + faceY * faceY))
             if (distance <= range && facing > 0.70 && distance < best) { best = distance; chosen = id }
@@ -405,7 +408,7 @@ namespace bakery {
         let now = control.millis(), m = nearOrder()
         screen.fillRect(0, 0, 640, 40, 8)
         screen.print("CAKE FACTORY", 10, 3, 13, hudFont)
-        screen.print("HOLD A: TOSS   B: CHECK / DROP", 329, 5, 9, image.font8)
+        screen.print("HOLD A: TOSS   B: CHECK / DROP", 329, 5, 12, image.font8)
         for (let i = 0; i < 3; i++) { screen.drawCircle(207 + i * 21, 11, 6, 5); if (i < stamps) screen.fillCircle(207 + i * 21, 11, 4, 5) }
         if (now < messageUntil) screen.print(message, 10, 26, 13, image.font8)
         bakeryArt.mixer(screen, mixingValue, heldKind == 0, mixingJammed, Math.idiv(now, 180))

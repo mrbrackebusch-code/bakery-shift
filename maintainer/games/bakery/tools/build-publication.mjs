@@ -17,7 +17,7 @@ export const destination = Object.freeze({
   repository_url: 'https://github.com/mrbrackebusch-code/bakery-shift',
   serving_branch: 'main',
   tutorial_path: 'README.md',
-  stable_student_url: 'https://arcade.makecode.com/?nocdn=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',
+  stable_student_url: 'https://arcade.makecode.com/?nocdn=1&skipgithubcache=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',
   resolution_status: 'ESTABLISHED_PUBLIC_REPOSITORY_UNPROMOTED_CANDIDATE',
   recorded_before_external_write: false,
   read_only_check: {
@@ -27,8 +27,8 @@ export const destination = Object.freeze({
     canonical_remote: 'https://github.com/mrbrackebusch-code/makecode-arcade-tutorials.git',
     target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V9 release and official no-CDN public identity verified in current records'
   },
-  existing_release: {tag:'v0.4.0',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.0',payload_commit:'55637d4c1a5a6ca67c014e70582c52a250a1ce2b',served_commit:'f47850d6708504cd41502b5acd6d435ec7746302'},
-  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'f47850d6708504cd41502b5acd6d435ec7746302',release:'V9',media_revision:'d70283ad61805189',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
+  existing_release: {tag:'v0.4.1',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.1',payload_commit:'daf149202bec62430e162b0deb74859f984304b6',served_commit:'daf149202bec62430e162b0deb74859f984304b6'},
+  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1&skipgithubcache=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'daf149202bec62430e162b0deb74859f984304b6',release:'V9',media_revision:'0931d337067cbe08',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
 });
 
 const canonicalGameFiles = [
@@ -46,6 +46,7 @@ const canonicalGameFiles = [
   'design/FACTORY_MIXER_REVISION_V7.md',
   'design/RESOLUTION_REVISION_V8.md',
   'design/WORLD_REVISION_V9.md',
+  'design/COMPARISON_STYLE_V9.md',
   'design/pedagogy/MICROSOFT_MIT_NOTICE.txt'
 ];
 const sourceFiles = [

@@ -12,7 +12,7 @@ namespace bakeryIcons {
             p.fillCircle(9, 10, 7, 15); p.fillCircle(9, 10, 6, 2)
             p.fillRect(5, 3, 8, 3, 15); p.fillRect(4, 4, 10, 2, 6)
             p.fillRect(7, 2, 2, 3, 6); p.fillRect(11, 2, 2, 3, 6)
-            p.setPixel(6, 8, 3); p.setPixel(11, 11, 3)
+            p.setPixel(6, 8, 1); p.setPixel(11, 11, 1)
         } else if (id == 1) {
             // Cocoa: square dark-brown block with a cream split and highlight.
             p.fillRect(3, 4, 12, 11, 15); p.fillRect(4, 5, 10, 9, 14)
@@ -26,8 +26,8 @@ namespace bakeryIcons {
         } else {
             // Mint: teal leaf with two pointed lobes and a light central vein.
             p.fillRect(8, 5, 3, 10, 15); p.fillRect(4, 7, 10, 7, 15)
-            p.fillRect(5, 8, 8, 5, 6); p.fillRect(8, 6, 2, 7, 9)
-            p.setPixel(4, 6, 9); p.setPixel(13, 7, 9); p.fillRect(7, 14, 4, 2, 6)
+            p.fillRect(5, 8, 8, 5, 6); p.fillRect(8, 6, 2, 7, 12)
+            p.setPixel(4, 6, 12); p.setPixel(13, 7, 12); p.fillRect(7, 14, 4, 2, 6)
         }
         return p
     }
