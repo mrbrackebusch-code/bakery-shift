@@ -95,9 +95,15 @@ export function buildBakery(options = {}) {
   }
   const seen = [];
   const seenExperiments = [];
+  const seenPractice = [];
   const visibleCopy = learnerCopy.split(/(?=^## )/m).map(section=>{
     const number = section.match(/^## (\d+)\./);
     if (!number || Number(number[1]) === catalog.final_play_step) return section.trimEnd();
+    if ((catalog.practice_steps || []).includes(Number(number[1]))) {
+      if (seenPractice.includes(Number(number[1]))) throw Error('Duplicate practice heading.');
+      seenPractice.push(Number(number[1]));
+      return section.trimEnd();
+    }
     const experiment = catalog.experiments.find(item=>item.tutorial_step === Number(number[1]));
     if (experiment) {
       if (seenExperiments.includes(experiment.id)) throw Error('Duplicate experiment heading.');
@@ -111,6 +117,7 @@ export function buildBakery(options = {}) {
   }).join('\n\n');
   if (JSON.stringify(seen) !== JSON.stringify(catalog.states.map(s=>s.id))) throw Error('The twelve numbered learner constructions must match catalog order.');
   if (JSON.stringify(seenExperiments) !== JSON.stringify(catalog.experiments.map(item=>item.id))) throw Error('Declared experiment headings must match the catalog.');
+  if (JSON.stringify(seenPractice) !== JSON.stringify(catalog.practice_steps || [])) throw Error('Declared gameplay practice headings must match the catalog.');
   const starterSource = catalog.starter_source;
   const solutionSource = stateOutputs[catalog.final_play_state];
   const tutorial = `${visibleCopy}\n\n\`\`\`template\n${starterSource}\n\`\`\`\n\n\`\`\`customts\n${engineSource.trimEnd()}\n\`\`\`\n`;

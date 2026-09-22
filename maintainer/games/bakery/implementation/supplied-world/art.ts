@@ -42,6 +42,84 @@ namespace bakeryArt {
         `
     }
 
+    export function largeCake(): Image {
+        let p = image.create(24, 24)
+        rounded(p, 4, 13, 16, 10, 14)
+        p.fillRect(5, 14, 14, 7, 5)
+        for (let x of [7, 11, 15, 19]) p.fillRect(x, 15, 1, 6, 4)
+        rounded(p, 1, 5, 22, 12, 14)
+        rounded(p, 2, 6, 20, 10, 3)
+        p.fillRect(4, 7, 5, 2, 1); p.fillRect(3, 9, 2, 3, 1)
+        p.fillCircle(7, 6, 3, 3); p.fillCircle(16, 6, 3, 3)
+        p.fillRect(5, 14, 3, 3, 3); p.fillRect(14, 14, 3, 2, 3)
+        p.fillCircle(12, 3, 3, 14); p.fillCircle(12, 3, 2, 2)
+        p.setPixel(11, 2, 1); p.drawLine(13, 1, 15, 0, 6)
+        p.fillRect(6, 22, 12, 1, 14)
+        return p
+    }
+
+    function largeCakeLegacy(): Image {
+        return img`
+            . . . . . . 1 1 . . . . . . . . . . . . . . . .
+            . . . . . 1 3 3 3 1 . . . . . . . . . . . . . . .
+            . . . . 1 3 3 3 3 3 1 . . . . . . . . . . . . . .
+            . . . 1 3 3 3 3 3 3 3 1 . . . . . . . . . . . . .
+            . . 1 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . . . .
+            . 1 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . . .
+            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
+            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
+            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
+            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
+            . 1 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
+            . . 1 4 4 4 4 4 4 4 4 4 4 1 . . . . . . . . . .
+            . . 1 4 5 5 5 5 5 5 5 5 5 4 1 . . . . . . . . . .
+            . . 1 4 5 5 5 5 5 5 5 5 5 4 1 . . . . . . . . . .
+            . . . 1 4 4 4 4 4 4 4 4 4 1 . . . . . . . . . . .
+            . . . . 1 1 1 1 1 1 1 1 1 1 . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . . . . . . . . . .
+        `
+    }
+
+    export function looseCake(): Image {
+        let p = image.create(16, 16)
+        rounded(p, 3, 9, 10, 7, 14)
+        p.fillRect(4, 10, 8, 4, 5)
+        for (let x of [6, 9]) p.fillRect(x, 11, 1, 3, 4)
+        rounded(p, 1, 4, 14, 8, 14)
+        rounded(p, 2, 5, 12, 6, 3)
+        p.fillRect(3, 6, 4, 1, 1)
+        p.fillCircle(8, 2, 2, 2)
+        return p
+    }
+
+    function looseCakeLegacy(): Image {
+        return img`
+            . . . 1 1 . . . . . . . . . .
+            . . 1 3 3 3 1 . . . . . . . .
+            . 1 3 3 3 3 3 1 . . . . . . .
+            1 3 3 3 3 3 3 3 1 . . . . . .
+            1 3 3 3 3 3 3 3 1 . . . . . .
+            . 1 4 4 4 4 4 4 1 . . . . . .
+            . 1 4 5 5 5 5 4 1 . . . . . .
+            . . 1 4 4 4 4 1 . . . . . . .
+            . . 1 1 1 1 1 1 . . . . . . .
+            . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . .
+        `
+    }
+
     export function chef(frame: number = 0): Image {
         let p = img`
             . . . . . 1 1 1 1 1 1 . . . . .
@@ -72,51 +150,35 @@ namespace bakeryArt {
         return p
     }
 
-    // The HUD and three bottom stations are drawn separately by the caller.
+    // The HUD, order tabs, and focused workbench are drawn separately by the caller.
     export function drawBackground(): Image {
         let p = image.create(320, 240)
         p.fill(13)
         p.fillRect(0, 0, 320, 19, 14)
-        // A compact cake-factory ceiling: warm lamps, vents, and looping pipes.
         p.fillRect(0, 20, 320, 3, 8)
-        for (let x of [18, 124, 230]) {
-            p.fillRect(x, 24, 30, 3, 8)
-            p.fillRect(x + 4, 27, 22, 2, 9)
-            p.fillRect(x + 8, 29, 14, 2, 6)
-        }
-        p.fillRect(20, 25, 3, 17, 8); p.fillRect(17, 39, 6, 3, 8)
-        p.fillRect(145, 23, 3, 18, 8); p.fillRect(142, 38, 6, 3, 8)
-        p.fillRect(291, 24, 3, 18, 8); p.fillRect(288, 39, 6, 3, 8)
-        for (let y = 27; y < 170; y += 20) for (let x = 4; x < 320; x += 24) {
-            p.setPixel(x, y, 12); p.setPixel(x + 1, y, 12)
-        }
+        for (let x of [32, 138, 244]) { p.fillRect(x, 24, 42, 2, 8); p.fillRect(x + 4, 27, 34, 2, 9) }
         for (let x of [54, 160, 266]) {
-            rounded(p, x - 38, 31, 76, 82, 14)
-            p.fillRect(x - 34, 34, 68, 75, 12)
-            p.fillRect(x - 36, 107, 72, 6, 8)
-            p.fillRect(x - 31, 109, 62, 1, 9)
+            rounded(p, x - 46, 22, 92, 79, 14)
+            p.fillRect(x - 43, 24, 86, 75, 8)
+            p.fillRect(x - 40, 27, 80, 66, 12)
+            p.fillRect(x - 42, 94, 84, 5, 8)
+            p.fillRect(x - 36, 96, 72, 1, 9)
         }
-        // The clear walking floor runs from y=90 through y=157 around the belts.
-        p.fillRect(0, 114, 320, 44, 8)
-        p.fillRect(0, 115, 320, 2, 9)
-        for (let x = 12; x < 320; x += 24) {
-            p.fillRect(x, 151, 11, 2, 12); p.fillRect(x + 5, 153, 1, 4, 12)
-        }
-        p.fillRect(0, 158, 320, 3, 14)
-        for (let x = 8; x < 320; x += 32) {
-            p.fillRect(x, 161, 18, 3, 8)
-            p.fillRect(x + 3, 164, 12, 2, 12)
-        }
+        p.fillRect(0, 101, 320, 36, 8)
+        p.fillRect(0, 135, 320, 2, 9)
+        p.fillRect(0, 153, 320, 3, 14)
+        p.fillRect(0, 156, 320, 3, 8)
         return p
     }
 
     // Call every frame over the static background, before tokens and chef.
     export function conveyorTreads(p: Image, pixelOffset: number) {
-        for (let x of [54, 160, 266]) p.fillRect(x - 34, 34, 68, 73, 12)
+        for (let x of [54, 160, 266]) p.fillRect(x - 40, 27, 80, 66, 12)
         for (let x of [54, 160, 266]) for (let row = 0; row < 5; row++) {
-            let y = 35 + ((row * 15 + pixelOffset) % 71)
-            p.fillRect(x - 32, y, 64, 1, 8)
-            if (y < 102) for (let dx = -24; dx < 30; dx += 16) {
+            let y = 29 + ((row * 13 + pixelOffset) % 63)
+            p.fillRect(x - 37, y, 74, 1, 8)
+            if (y < 89) {
+                let dx = -2
                 p.setPixel(x + dx, y + 2, 8); p.setPixel(x + dx + 1, y + 3, 8)
                 p.setPixel(x + dx + 2, y + 4, 8); p.setPixel(x + dx + 3, y + 3, 8)
                 p.setPixel(x + dx + 4, y + 2, 8)
@@ -133,18 +195,38 @@ namespace bakeryArt {
         if (op == 3) for (let n = 0; n < 5; n++) p.setPixel(x + 4 - n, y + n, color)
     }
 
-    // Exactly 64x20, including its bottom edge. Native font8 has six-pixel pitch.
+    function comparisonGlyph(p: Image, relation: number, x: number, y: number, color: number) {
+        if (relation == 0) { p.fillRect(x, y + 2, 11, 2, color); p.fillRect(x, y + 7, 11, 2, color) }
+        if (relation == 1) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 - n, y + n, color); p.setPixel(x + 5 - n, y + 10 - n, color) }
+        if (relation == 2) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 + n, y + n, color); p.setPixel(x + 5 + n, y + 10 - n, color) }
+    }
+
+    export function variableTray(p: Image, x: number, y: number) {
+        p.fillRect(x, y, 14, 1, 1)
+        p.fillRect(x, y + 1, 2, 7, 1)
+        p.fillRect(x + 12, y + 1, 2, 7, 1)
+        p.fillRect(x + 2, y + 7, 10, 2, 1)
+        p.fillRect(x + 5, y + 3, 4, 3, 3)
+        p.setPixel(x + 4, y + 4, 3); p.setPixel(x + 9, y + 4, 3)
+    }
+
+    // Blockly-style SET card, exactly 64x32.
     export function modifier(op: number, rhs: number): Image {
-        let p = image.create(64, 20)
-        rounded(p, 0, 0, 64, 20, 11)
-        rounded(p, 0, 0, 64, 19, 10)
-        rounded(p, 3, 3, 34, 13, 2)
-        p.print("batch", 5, 5, 1, image.font8)
-        p.fillRect(39, 4, 11, 11, 11)
-        operator(p, op, 40, 7, 1)
-        p.fillRect(46, 10, 3, 1, 1); p.setPixel(47, 11, 1)
-        rounded(p, 52, 3, 10, 13, 1)
-        p.print("" + rhs, 54, 5, 15, image.font8)
+        let p = image.create(64, 32)
+        p.fillRect(3, 0, 58, 32, 2)
+        p.fillRect(1, 2, 62, 28, 2)
+        p.fillRect(0, 5, 64, 22, 2)
+        p.print("set", 4, 3, 1, image.font8)
+        variableTray(p, 25, 3)
+        p.print("to", 44, 3, 1, image.font8)
+        // Nested arithmetic expression: purple socket, red tray reporter, white operator/RHS.
+        rounded(p, 4, 15, 56, 15, 11)
+        rounded(p, 5, 16, 54, 13, 10)
+        rounded(p, 6, 17, 19, 11, 2)
+        variableTray(p, 8, 18)
+        operator(p, op, 29, 20, 1)
+        p.fillRect(45, 17, 12, 11, 12)
+        p.print("" + rhs, 48, 19, 15, image.font8)
         return p
     }
 
@@ -168,6 +250,68 @@ namespace bakeryArt {
         let c = active ? 5 : 1
         p.fillRect(x + 31, y + 5, 2, 7, c)
         p.fillRect(x + 28, y + 10, 8, 1, c); p.fillRect(x + 29, y + 11, 6, 1, c); p.fillRect(x + 30, y + 12, 4, 1, c)
+    }
+
+    export function orderTab(p: Image, index: number, relation: number, signal: number, focused: boolean, complete: boolean, allowedOps: number = 15) {
+        let x = index * 106 + 2
+        rounded(p, x, 137, 104, 16, focused ? 5 : 12)
+        p.fillRect(x + 2, 139, 100, 12, focused ? 6 : 8)
+        if (allowedOps == 15) p.print("ORDER " + (index + 1), x + 5, 141, 1, image.font5)
+        else for (let i = 0; i < 4; i++) if ((allowedOps & (1 << i)) != 0) operator(p, i, x + 8 + i * 8, 141, 1)
+        comparisonGlyph(p, relation, x + 49, 140, 1)
+        let state = signal < 0 ? "CHECK" : signal == 0 ? "FALSE" : "TRUE"
+        p.print(state, x + 62, 141, signal == 1 ? 9 : 1, image.font5)
+        if (complete) {
+            p.fillRect(x + 94, 141, 2, 5, 9); p.fillRect(x + 96, 144, 5, 2, 9)
+        }
+    }
+
+    export function workbench(p: Image, left: number, right: number, relation: number, activeSide: number, signal: number, complete: boolean, allowedOps: number = 15) {
+        p.fillRect(0, 153, 320, 87, 14)
+        p.fillRect(2, 155, 316, 72, 1)
+        p.print("LEFT", 8, 158, 14, image.font8)
+        p.print("RIGHT", 184, 158, 14, image.font8)
+        if (activeSide == 0) { rounded(p, 50, 158, 22, 12, 2); variableTray(p, 54, 159) }
+        if (activeSide == 1) { rounded(p, 238, 158, 22, 12, 2); variableTray(p, 242, 159) }
+
+        let lf = activeSide == 0 ? 5 : 12
+        let rf = activeSide == 1 ? 5 : 12
+        p.fillRect(8, 170, 128, 56, 13); p.drawRect(8, 170, 128, 56, lf)
+        p.fillRect(184, 170, 128, 56, 13); p.drawRect(184, 170, 128, 56, rf)
+        if (activeSide == 0) p.drawRect(9, 171, 126, 54, 5)
+        if (activeSide == 1) p.drawRect(185, 171, 126, 54, 5)
+        if (left > 0 && left <= 6 && Math.floor(left) == left) {
+            let columns = left <= 3 ? left : 3
+            let rows = left <= 3 ? 1 : 2
+            let groupW = columns * 26 - 2
+            let groupH = rows * 26 - 2
+            let originX = 8 + Math.idiv(128 - groupW, 2)
+            let originY = 170 + Math.idiv(56 - groupH, 2)
+            for (let i = 0; i < left; i++) p.drawTransparentImage(largeCake(), originX + (i % 3) * 26, originY + Math.idiv(i, 3) * 26)
+        }
+        if (right > 0 && right <= 6 && Math.floor(right) == right) {
+            let columns = right <= 3 ? right : 3
+            let rows = right <= 3 ? 1 : 2
+            let groupW = columns * 26 - 2
+            let groupH = rows * 26 - 2
+            let originX = 184 + Math.idiv(128 - groupW, 2)
+            let originY = 170 + Math.idiv(56 - groupH, 2)
+            for (let i = 0; i < right; i++) p.drawTransparentImage(largeCake(), originX + (i % 3) * 26, originY + Math.idiv(i, 3) * 26)
+        }
+
+        let bx = 145
+        p.fillRect(bx, 191, 30, 9, 8)
+        p.fillRect(bx + 4, 188, 22, 15, 6)
+        p.fillRect(bx + 9, 185, 12, 21, 6)
+        p.setPixel(bx + 7, 189, 9); p.setPixel(bx + 22, 189, 9)
+        p.setPixel(bx + 7, 201, 9); p.setPixel(bx + 22, 201, 9)
+        comparisonGlyph(p, relation, 155, 190, 1)
+
+        let text = signal < 0 ? "CHECK" : signal == 0 ? "FALSE" : "TRUE"
+        p.print(text, signal < 0 ? 135 : signal == 0 ? 140 : 148, 229, signal == 1 ? 9 : 1, image.font8)
+        if (complete) { p.fillRect(206, 231, 3, 7, 9); p.fillRect(209, 235, 8, 3, 9) }
+        p.print("TOOLS", 210, 231, 1, image.font5)
+        for (let i = 0; i < 4; i++) operator(p, i, 242 + i * 14, 230, (allowedOps & (1 << i)) != 0 ? 1 : 12)
     }
 
     // x=6,110,214. Draw later than floor, earlier than held-card overlay.

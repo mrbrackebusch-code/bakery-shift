@@ -1,0 +1,15 @@
+# Cake Factory: visible assignments and varied jobs
+
+The owner reports that chat-rendered GIFs appear still, that the stations and food are too small/cluttered, and that repeating the word batch wastes space. The owner also asks for more depth and more examples of arithmetic and comparisons. This authorizes the next Bakery revision; the current public v0.1.0 stays intact until its replacement is verified.
+
+The original full-round GIF was checked with FFprobe: GIF codec, 320x240, 833 frames, 41.65 seconds. Two separated decoded frames have different pixel hashes. A local gallery offers ordinary GIF downloads and equivalent MP4 playback controls. Root observed the full-round video playing with advancing currentTime. These facts establish real animation files, not successful animation inside the chat renderer.
+
+Keep the character, three downward conveyors, three simultaneous orders, and two editable sides. Use a compact counter row to choose an order; its pair occupies the large lower workbench. The actual destination has a gold outline, shared red tray icon and an arrow. The modifier is a two-line SET block: set [tray icon] to [tray icon operator number]. Native learner code retains batch; the guide explicitly maps the icon to that variable. The source variable and reported results are not replaced by a drawing.
+
+Use the full 24x24 drawing area for cakes, with at most six distinct cakes per tray. Loose cakes use a 16x16 drawing. Keep the moving item legible beside the character instead of stacking it over other belt entries. Retain native 320x240 output and do not substitute UI screenshots for gameplay GIFs.
+
+The first round keeps all four operators available. Later rounds visibly limit accepted tools: first multiplication/division, then addition/subtraction, then mixed orders. The optional owner preference question remains open; absent a different preference this is the concrete progression chosen under the request for deeper repeated practice. No AND/OR or learner conditional code is introduced. Tool masks are supplied game rules, displayed on order tabs and the workbench. Rejected tools remain held and do not change quantities.
+
+Small job cards are authored from solvable examples. The first restricted equality job is 1 = 4 with multiplication/division: double twice, halve twice, or alter both sides. Its strict comparison partners start 4 < 2 and 2 > 4, making an equal intermediate result visibly insufficient. The addition/subtraction round includes 1 = 5 and mirrored strict comparisons. Later cards vary inputs within zero through six. Solvability and result preservation require checks against the actual engine; arbitrary random numbers are not used as proof of a feasible problem.
+
+Twelve learner constructions remain unchanged. Two additional gameplay pages provide worked visible examples and invite a different route without new code. New recordings must match the final current game. Informed review is root-owned; only exact mechanical tasks go to low-cost agents. The owner-cancelled learner workflow remains cancelled.

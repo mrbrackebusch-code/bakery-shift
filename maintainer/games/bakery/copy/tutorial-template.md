@@ -6,9 +6,9 @@
 
 Three factory orders are waiting. Each machine has a **LEFT** tray and a **RIGHT** tray. Your job is to change the cakes until the statement between them is true. You can change **either side**.
 
-Walk between the conveyor belts and collect one useful modifier. A purple modifier has a variable, an operator, and a small number: for example, `batch + 1`. Here, ``||variables(noclick):batch||`` means the amount on the side where you place it. The modifier changes that side once. Collect another to keep working.
+Walk between the conveyor belts and collect one useful modifier. Its red **set** block holds a purple calculation. The little tray icon represents ``||variables(noclick):batch||``: the amount on the side where you place it. A modifier with `+ 1` means **set that tray's amount to its current amount plus one**. The same tray icon highlights the receiver. Each modifier changes it once.
 
-**Move:** arrow keys. **A:** Space or Z. **B:** Enter or X. At the bottom of the room, the highlighted tray shows where your modifier will go. Press **A** to place it. Press **B** to drop a held item. With empty hands, **A** checks the machine and **B** resets both sides.
+**Move:** arrow keys. **A:** Space or Z. **B:** Enter or X. Approach one of the three orders along the counter. Its two trays appear in the large work area. Move to the left or right side of that order: the gold tray and arrow show where your modifier will go. Press **A** to place it. Press **B** to drop a held item. With empty hands, **A** checks the machine and **B** resets both sides.
 
 Each tray holds up to six whole cakes. Missed modifiers fall off the belts and new ones arrive. A loose cupcake adds one, but loose cakes arrive slowly. You can pause the simulator while you build.
 
@@ -250,4 +250,36 @@ When a machine shows **TRUE**, return with empty hands and press **A** to send i
 
 ![The worker changes both sides across three comparisons, ships true batches and completes the factory round](assets/demos/13-factory-round.gif)
 
-Press **A** for another round with different small starting groups. Can you find a different way to make each statement true?
+Press **A** to take the next three orders. Their bright tool symbols show which modifiers they accept. The next round uses multiplication and division; addition and subtraction follow after that. Later rounds mix these jobs with different small starting groups.
+
+## 14. Make more with fewer tools
+
+Keep the code you have built. In the next round, the orders accept only `×` and `/` modifiers. An addition card or loose cupcake cannot change these orders; you keep it until you drop it with **B**.
+
+### Choose a path
+
+The `=` order starts with one cake and four cakes. You could double the left side twice, divide the right side by two twice, or change both sides until they meet. Every modifier uses the amount that is on its tray **now**.
+
+For `<` and `>`, matching is only an intermediate step: equal groups still make those comparisons **FALSE**. Use another modifier on either side to make the statement true.
+
+### What you should see
+
+After one doubling, the left side has two cakes and the right has four: the `=` check stays **FALSE**. A second doubling makes four on both sides and the check becomes **TRUE**. Ship it with empty-handed **A**. Reset another unfinished order with **B** and try a different path.
+
+![Two successive multiplications use the updated tray amount, turning one cake into two and then four before shipping the matching order](assets/demos/14-multiply-divide-jobs.gif)
+
+## 15. Find another way
+
+Finish the three multiplication/division orders, then press **A**. These next orders accept only `+` and `-` modifiers.
+
+### Choose a path
+
+The `=` order starts with one cake and five cakes. Two `+ 2` modifiers on the left make three and then five. You could instead change both sides: adding two on the left and subtracting two on the right makes three on each side.
+
+Try the same decision on the `<` and `>` orders. Increasing one side and decreasing the other can both help; read the sign before choosing. The slower loose cupcakes are allowed here, but a larger printed modifier can save a trip.
+
+### What you should see
+
+Your code handles each new starting amount without being rewritten. The comparison changes to **TRUE** only when the resulting pictures satisfy its sign. Complete this round to reach mixed-tool orders with more small-number examples.
+
+![Two plus-two modifiers turn one pictured cake into three and then five, making the equality order true](assets/demos/15-add-subtract-jobs.gif)

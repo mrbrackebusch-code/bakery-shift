@@ -18,15 +18,17 @@ export const destination = Object.freeze({
   serving_branch: 'main',
   tutorial_path: 'README.md',
   stable_student_url: 'https://arcade.makecode.com/#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',
-  resolution_status: 'PROVISIONAL_NEW_REPOSITORY_NO_EXTERNAL_WRITE',
-  recorded_before_external_write: true,
+  resolution_status: 'ESTABLISHED_PUBLIC_REPOSITORY_UNPROMOTED_CANDIDATE',
+  recorded_before_external_write: false,
   read_only_check: {
-    date: '2026-09-21',
-    transport: 'Authenticated GitHub CLI user login and fresh target-repository lookup; canonical git remote read',
+    date: '2026-09-22',
+    transport: 'Existing authenticated GitHub release and public-identity records; no V6 external write',
     authenticated_login: 'mrbrackebusch-code',
     canonical_remote: 'https://github.com/mrbrackebusch-code/makecode-arcade-tutorials.git',
-    target_repository_result: 'Fresh authenticated lookup returned not found in this session; repository creation and final conflict check remain unperformed'
-  }
+    target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V5 release and public identity verified in current records'
+  },
+  existing_release: {tag:'v0.1.0',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.1.0',payload_commit:'524f2ba820375ee1ce84c28e9f2d01906769657c',served_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'},
+  existing_public_identity: {served_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0',release:'v0.1.0',media_revision:'598388360692ff16'}
 });
 
 const canonicalGameFiles = [
@@ -38,6 +40,7 @@ const canonicalGameFiles = [
   'tools/build.mjs',
   'tools/build-publication.mjs',
   'design/pedagogy/FACTORY_SOURCE_PACKET_2026-09-21.md',
+  'design/FACTORY_READABILITY_REVISION_2026-09-21.md',
   'design/pedagogy/MICROSOFT_MIT_NOTICE.txt'
 ];
 const sourceFiles = [
@@ -82,7 +85,7 @@ The builder stages a new package under maintainer/games/bakery/generated/publica
 
 Carry the Microsoft MIT notice and source attributions forward. Preserve old Git commits, releases and content-addressed media revision directories when integrating a new package. This candidate remains unpromoted pending current runtime/instruction/GIF review, authenticated destination checks, exact versioned MakeCode release payload verification, and focused public startup/assets/affected-behavior review. Informed developer QA and the owner-cancelled learner audit are distinct; this package makes no human-learning claim.
 
-The provisional destination is ${destination.repository_url}. Its intended explicit-path tutorial identity is ${destination.stable_student_url}. These are destination identities, not a claim that publication or public delivery verification has happened.
+The existing destination is ${destination.repository_url}. Its intended explicit-path tutorial identity is ${destination.stable_student_url}. This generated V6 candidate is unpromoted until its exact payload, conflict state, public startup, assets and affected behavior are checked.
 `;
 
 const notices = `# Source attribution and notices
@@ -156,7 +159,7 @@ export function assemblePublication({requireMedia = true, checkGenerated = true}
   }
   outputs.set('maintainer/BUILD_MANIFEST.json', Buffer.from(json(built.manifest)));
   const manifest = {
-    schema_version: 1, manifest_id: 'BAKERY-PUBLICATION-PACKAGE-V5', game_id: 'GAME-BAKERY',
+    schema_version: 1, manifest_id: 'BAKERY-PUBLICATION-PACKAGE-V6', game_id: 'GAME-BAKERY',
     status: 'NOT_FOR_DISTRIBUTION', ...destination,
     external_publication_performed: false, student_distribution_ready: false,
     local_tutorial_sha256: digest(built.tutorial), canonical_tutorial_sha256: digest(built.tutorial),

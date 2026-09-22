@@ -23,6 +23,7 @@
     {"id":"12-greater-check","through":12,"tutorial_step":12,"action":"GreaterCheck","introduces_variables":[],"uses_variables":["leftCakes","rightCakes","ready"],"operator":null,"comparison":">","statements":["leftCakes = bakery.leftAmount()","rightCakes = bakery.rightAmount()","ready = leftCakes > rightCakes","bakery.showCheck(ready)"],"claim":"The learner changes the comparison to check whether the left tray has more cakes than the right tray."}
   ],
   "final_play_step": 13,
+  "practice_steps": [14, 15],
   "final_play_state": "12-greater-check",
   "experiments": [],
   "excluded_learner_constructs": ["conditionals", "modulus", "loops", "procedure definitions", "arrays", "type conversion", "nested arithmetic", "logical AND/OR/NOT"]

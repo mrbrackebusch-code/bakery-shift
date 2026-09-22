@@ -45,6 +45,7 @@ namespace bakery {
     let quantities = [1, 2, 2, 3, 3, 4]
     let starts = [1, 2, 2, 3, 3, 4]
     let relations = [0, 0, 0]
+    let allowedOps = [15, 15, 15]
     let signals = [-1, -1, -1]
     let jammed = [false, false, false]
     let fulfilledAt = [-1, -1, -1]
@@ -53,6 +54,7 @@ namespace bakery {
     let appliedOps = [0, 0, 0, 0, 0, 0]
     let appliedNumbers = [1, 1, 1, 1, 1, 1]
     let selectedTray = -1
+    let focusedMachine = 0
     let activeTray = -1
     let activeAction = -1
     let activeOp = -1
@@ -192,11 +194,27 @@ namespace bakery {
         relations[m] = m == 1 && installed(BakeryAction.LessCheck) ? 1 : m == 2 && installed(BakeryAction.GreaterCheck) ? 2 : 0
         if (relations[m] == 1) { l = 3; r = 2 }
         if (relations[m] == 2) { l = 2; r = 3 }
+        allowedOps[m] = 15
         if (roundNumber > 0) {
-            // All starts are false and solvable with unlocked +1/-1 modifiers.
-            let seed = Math.randomRange(1, 3)
-            l = seed; r = seed + 1
-            if (relations[m] == 1) { l = seed + 1; r = seed }
+            // New jobs use small, solvable cards rather than arbitrary quantities.
+            // Their visible tool restrictions are supplied game rules, not new learner code.
+            let restricted = installed(BakeryAction.AddModifier) && installed(BakeryAction.SubtractModifier) && installed(BakeryAction.MultiplyModifier) && installed(BakeryAction.DivideModifier)
+            if (restricted) allowedOps[m] = roundNumber == 1 ? 12 : roundNumber == 2 ? 3 : [15, 3, 12][(roundNumber + m) % 3]
+            let choice = roundNumber < 3 ? 0 : Math.randomRange(0, 2)
+            let pair = [1, 2]
+            if (allowedOps[m] == 12) {
+                if (relations[m] == 0) pair = [[1, 4], [2, 6], [3, 2]][choice]
+                else if (relations[m] == 1) pair = [[4, 2], [3, 1], [4, 3]][choice]
+                else pair = [[2, 4], [1, 3], [3, 4]][choice]
+            } else if (allowedOps[m] == 3) {
+                if (relations[m] == 0) pair = [[1, 5], [2, 6], [0, 4]][choice]
+                else if (relations[m] == 1) pair = [[5, 1], [4, 1], [6, 2]][choice]
+                else pair = [[1, 5], [1, 4], [2, 6]][choice]
+            } else {
+                let seed = Math.randomRange(1, 3)
+                pair = relations[m] == 1 ? [seed + 1, seed] : [seed, seed + 1]
+            }
+            l = pair[0]; r = pair[1]
         }
         quantities[m * 2] = l; quantities[m * 2 + 1] = r
         starts[m * 2] = l; starts[m * 2 + 1] = r
@@ -218,7 +236,7 @@ namespace bakery {
     function startShift() {
         clearPackets(); discardHeld()
         stamps = 0; coins = 0; lastBonus = 0; shiftDone = false
-        selectedTray = -1; previewUntil = 0; previewReported = false
+        selectedTray = -1; focusedMachine = 0; previewUntil = 0; previewReported = false
         for (let i = 0; i < 3; i++) {
             configureMachine(i); spawnAt[i] = control.millis() + 200 + i * 600; spawnRound[i] = i
         }
@@ -227,7 +245,7 @@ namespace bakery {
         trace("shift-started")
     }
     function nearTray(): number {
-        if (chef == null || chef.y < 143) return -1
+        if (chef == null || chef.y < 118) return -1
         for (let i = 0; i < 3; i++) if (Math.abs(chef.x - lanes[i]) < 50) return i * 2 + (chef.x < stations[i] + 50 ? 0 : 1)
         return -1
     }
@@ -254,6 +272,10 @@ namespace bakery {
         if (fulfilledAt[m] >= 0) { tell("This factory order is already complete."); return }
         if (jammed[m]) { tell("B: drop item. Empty hands B: reset machine."); return }
         if (held == null) { finishOrder(m); return }
+        if ((allowedOps[m] & (1 << heldOp)) == 0) {
+            tell("Use the bright tools shown on this order.", 3200)
+            trace("tool-rejected"); return
+        }
         if (!eligible(tray)) {
             tell(heldOp == 3 ? "Use a side that divides into whole cakes." : heldOp == 1 ? "Not enough cakes. Try the other side." : "Six cakes fit on each side. Try the other.", 3300)
             trace("application-rejected"); return
@@ -284,15 +306,15 @@ namespace bakery {
     function nudge(dx: number, dy: number) {
         if (!started || chef == null) return
         chef.x = Math.max(12, Math.min(308, chef.x + dx))
-        chef.y = Math.max(90, Math.min(157, chef.y + dy))
+        chef.y = Math.max(90, Math.min(125, chef.y + dy))
     }
     controller.left.onEvent(ControllerButtonEvent.Pressed, function () { nudge(-5, 0) })
     controller.right.onEvent(ControllerButtonEvent.Pressed, function () { nudge(5, 0) })
     controller.up.onEvent(ControllerButtonEvent.Pressed, function () { nudge(0, -5) })
     controller.down.onEvent(ControllerButtonEvent.Pressed, function () { nudge(0, 5) })
     function spawn(lane: number, op: number, rhs: number, manual: boolean) {
-        let p = sprites.create(manual ? bakeryArt.cupcake() : bakeryArt.modifier(op, rhs), SpriteKind.Food)
-        p.setPosition(manual ? (manualSide % 2 == 0 ? 18 : 302) : lanes[lane], manual ? 137 : 37)
+        let p = sprites.create(manual ? bakeryArt.looseCake() : bakeryArt.modifier(op, rhs), SpriteKind.Food)
+        p.setPosition(manual ? (manualSide % 2 == 0 ? 18 : 302) : lanes[lane], manual ? 110 : 37)
         p.z = 3
         packets.push(p); packetOps.push(op); packetNumbers.push(rhs); packetManual.push(manual); packetLanes.push(lane)
         if (manual) manualSide++
@@ -324,11 +346,11 @@ namespace bakery {
         }
         for (let i = packets.length - 1; i >= 0; i--) {
             if (!packetManual[i]) packets[i].y += dt * 0.017
-            if (!packetManual[i] && packets[i].y > 128) { removePacket(i, "packet-expired"); continue }
+            if (!packetManual[i] && packets[i].y > 108) { removePacket(i, "packet-expired"); continue }
             let dx = packetManual[i] ? 14 : 31
-            if (held == null && (!packetManual[i] || chef.y < 147) && Math.abs(chef.x - packets[i].x) < dx && Math.abs(chef.y - 5 - packets[i].y) < 16) {
+            if (held == null && chef.y < 116 && Math.abs(chef.x - packets[i].x) < dx && Math.abs(chef.y - 5 - packets[i].y) < 16) {
                 heldOp = packetOps[i]; heldNumber = packetNumbers[i]; heldManual = packetManual[i]
-                held = sprites.create(heldManual ? bakeryArt.cupcake() : bakeryArt.modifier(heldOp, heldNumber), SpriteKind.Food)
+                held = sprites.create(heldManual ? bakeryArt.looseCake() : bakeryArt.modifier(heldOp, heldNumber), SpriteKind.Food)
                 held.z = 20
                 removePacket(i, "item-picked-up")
                 previewUntil = 0
@@ -342,30 +364,49 @@ namespace bakery {
     }
     function drawHud() {
         let now = control.millis(), near = nearTray()
+        if (near >= 0) focusedMachine = machineOf(near)
+        let m = focusedMachine
+        let side = near >= 0 ? near % 2 : -1
         screen.fillRect(0, 0, 320, 19, 14)
-        screen.print("CAKE FACTORY", 5, 5, 1, image.font8)
+        screen.print("CAKE FACTORY", 5, 1, 1, image.font8)
         for (let i = 0; i < 3; i++) {
-            screen.drawRect(88 + i * 12, 4, 9, 10, 5)
-            if (i < stamps) screen.fillRect(90 + i * 12, 6, 5, 6, 5)
+            screen.drawRect(88 + i * 12, 1, 9, 8, 5)
+            if (i < stamps) screen.fillRect(90 + i * 12, 3, 5, 4, 5)
         }
-        coin(screen, 134, 9, true)
-        screen.fillRect(142, 5, 51, 8, 8); screen.fillRect(142, 5, Math.idiv(coins * 51, 15), 8, 5)
-        screen.print("A PLACE/CHECK B DROP", 202, 6, 1, image.font5)
+        coin(screen, 134, 5, true)
+        screen.fillRect(142, 1, 51, 8, 8); screen.fillRect(142, 1, Math.idiv(coins * 51, 15), 8, 5)
+        screen.print("A PLACE/CHECK B DROP", 202, 2, 1, image.font5)
         for (let i = 0; i < 3; i++) {
-            let active = near >= 0 && machineOf(near) == i ? near % 2 : -1
-            bakeryArt.machine(screen, stations[i], quantities[i * 2], quantities[i * 2 + 1], relations[i], active, signals[i], fulfilledAt[i] >= 0)
-            if (jammed[i]) {
-                screen.fillRect(stations[i] + 3, 218, 94, 18, 11)
-                screen.print("CHECK CODE  B RESET", stations[i] + 7, 222, 1, image.font5)
-                for (let side = 0; side < 2; side++) {
-                    let amount = quantities[i * 2 + side]
-                    if (!smallWhole(amount) || amount < 0 || amount > 6) screen.print(numberText(amount), stations[i] + 5 + side * 56, 198, 2)
-                }
+            bakeryArt.orderTab(screen, i, relations[i], signals[i], i == m, fulfilledAt[i] >= 0, allowedOps[i])
+        }
+        bakeryArt.workbench(screen, quantities[m * 2], quantities[m * 2 + 1], relations[m], side, signals[m], fulfilledAt[m] >= 0, allowedOps[m])
+        if (near >= 0 && !shiftDone) {
+            let targetX = side == 0 ? 82 : 274
+            // Match the highlighted receiver without drawing over the order labels.
+            if (held != null) {
+                screen.drawLine(chef.x - 3, 133, chef.x, 136, 5)
+                screen.drawLine(chef.x + 3, 133, chef.x, 136, 5)
+                screen.fillRect(targetX - 1, 159, 3, 9, 5)
+                screen.drawLine(targetX - 5, 164, targetX, 169, 5)
+                screen.drawLine(targetX + 5, 164, targetX, 169, 5)
             }
+            screen.print(held != null ? (side == 0 ? "A: PLACE LEFT" : "A: PLACE RIGHT") : "A: CHECK", 8, 230, 1, image.font8)
+        } else screen.print("CHOOSE AN ORDER", 8, 230, 1, image.font5)
+        for (let s = 0; s < 2; s++) {
+            let x = s == 0 ? 8 : 184
+            let age = now - appliedAt[m * 2 + s]
+            if (age >= 0 && age < 650 && Math.idiv(age, 110) % 2 == 0) {
+                screen.drawRect(x, 170, 128, 56, 2); screen.drawRect(x + 1, 171, 126, 54, 2)
+            }
+            let amount = quantities[m * 2 + s]
+            if (!smallWhole(amount) || amount < 0 || amount > 6) screen.print(numberText(amount), x + 30, 192, 2)
+        }
+        if (jammed[m]) {
+            screen.fillRect(0, 227, 320, 13, 11)
+            screen.print("CHECK YOUR CODE  B: RESET", 9, 230, 1, image.font8)
         }
         if (now < messageUntil) {
-            screen.fillRect(0, 19, 320, 11, 13)
-            screen.print(message, 3, 21, 14, image.font5)
+            screen.print(message, 3, 12, 1, image.font5)
         }
         if (previewReported && now < previewUntil && held == null) {
             let x = Math.max(2, Math.min(260, chef.x - 30)), y = chef.y - 49
@@ -373,13 +414,14 @@ namespace bakery {
             if (smallWhole(previewValue) && previewValue >= 0 && previewValue <= 6) bakeryArt.goods(screen, previewValue, x + 12, y + 4, 1)
             else screen.print(numberText(previewValue), x + 3, y + 11, 2)
         }
-        if (now - bonusAt < 1600 && !shiftDone) for (let i = 0; i < 5; i++) coin(screen, 145 + i * 10, 9, i < lastBonus)
+        if (now - bonusAt < 1600 && !shiftDone) for (let i = 0; i < 5; i++) coin(screen, 145 + i * 10, 5, i < lastBonus)
         if (shiftDone) {
             screen.fillRect(34, 42, 252, 122, 14); screen.fillRect(37, 45, 246, 116, 1)
             screen.printCenter("THREE TRUE ORDERS!", 56, 14)
             for (let i = 0; i < 3; i++) { screen.fillRect(108 + i * 34, 74, 27, 23, 7); screen.drawTransparentImage(bakeryArt.cupcake(), 116 + i * 34, 80) }
             for (let i = 0; i < 15; i++) coin(screen, 96 + (i % 10) * 14, 108 + Math.idiv(i, 10) * 12, i < coins)
-            screen.printCenter("A: another factory round", 145, 14)
+            screen.printCenter(roundNumber == 0 ? "NEXT: MULTIPLY / DIVIDE" : roundNumber == 1 ? "NEXT: ADD / SUBTRACT" : "NEXT: MIXED TOOL ORDERS", 134, 14, image.font5)
+            screen.printCenter("A: next three orders", 149, 14)
         }
     }
     game.onUpdate(function () {
@@ -387,10 +429,10 @@ namespace bakery {
         let now = control.millis(), dt = Math.min(80, now - lastTick)
         lastTick = now
         bakeryArt.conveyorTreads(scene.backgroundImage(), Math.idiv(now * 17, 1000))
-        chef.x = Math.max(12, Math.min(308, chef.x)); chef.y = Math.max(90, Math.min(157, chef.y))
+        chef.x = Math.max(12, Math.min(308, chef.x)); chef.y = Math.max(90, Math.min(125, chef.y))
         chef.setImage(bakeryArt.chef(Math.abs(chef.vx) + Math.abs(chef.vy) > 1 ? Math.idiv(now, 130) % 3 : 0))
         if (!shiftDone) updatePackets(dt)
-        if (held != null) held.setPosition(Math.max(33, Math.min(287, chef.x)), chef.y - 25)
+        if (held != null) held.setPosition(Math.max(34, Math.min(286, chef.x + (chef.x < 160 ? 43 : -43))), chef.y - 6)
     })
     game.onShade(function () { if (started) drawHud() })
     control.runInParallel(function () {
@@ -398,7 +440,7 @@ namespace bakery {
         bakeryArt.installPalette()
         scene.setBackgroundImage(bakeryArt.drawBackground())
         chef = sprites.create(bakeryArt.chef(), SpriteKind.Player)
-        chef.setPosition(160, 146); chef.z = 10
+        chef.setPosition(160, 112); chef.z = 10
         controller.moveSprite(chef, 100, 100)
         lastTick = control.millis(); started = true; startShift()
         trace("world-ready")
