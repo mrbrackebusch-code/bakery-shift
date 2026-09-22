@@ -72,7 +72,9 @@ export function buildBakery(options = {}) {
   if (options.modelOnly) return {catalog, modelChecks};
   const enginePath = path.join(gameRoot, 'implementation/supplied-world/engine.ts');
   if (!fs.existsSync(enginePath)) throw Error('Canonical bakery engine is not ready; model-only validation is available.');
-  const engineSource = readText(path.join(gameRoot, 'implementation/supplied-world/art.ts')).trimEnd() + '\n\n' + readText(enginePath).trimEnd() + '\n';
+  const iconsPath = path.join(gameRoot, 'implementation/supplied-world/icons.ts');
+  if (!fs.existsSync(iconsPath)) throw Error('Canonical bakery icons are not ready; model-only validation is available.');
+  const engineSource = readText(iconsPath).trimEnd() + '\n\n' + readText(path.join(gameRoot, 'implementation/supplied-world/art.ts')).trimEnd() + '\n\n' + readText(enginePath).trimEnd() + '\n';
   const copyPath = path.join(gameRoot, 'copy/tutorial-template.md');
   const learnerCopy = readText(copyPath).trimEnd();
   const implementationManifestPath = path.join(gameRoot, 'implementation/manifest.json');
@@ -143,9 +145,9 @@ export function buildBakery(options = {}) {
   const instructionMedia = media.filter(item=>item.path.startsWith('assets/instructions/'));
   if (demonstrations.some(item=>!item.path.endsWith('.gif'))) throw Error('Demonstrations must remain GIF-only.');
   if (options.requireMedia && media.some(item=>!item.present)) throw Error('Current referenced media files are incomplete.');
-  const canonicalPaths = ['copy/tutorial-template.md','implementation/learner-states/catalog.json','implementation/supplied-world/engine.ts','implementation/supplied-world/art.ts','implementation/manifest.json','tools/build.mjs'];
+  const canonicalPaths = ['copy/tutorial-template.md','implementation/learner-states/catalog.json','implementation/supplied-world/icons.ts','implementation/supplied-world/engine.ts','implementation/supplied-world/art.ts','implementation/manifest.json','tools/build.mjs'];
   const sourceHashes = Object.fromEntries(canonicalPaths.map(relative=>[`games/bakery/${relative}`,sha256(readText(path.join(gameRoot,relative)))]));
-  const manifest = {schema_version:1,manifest_id:'BAKERY-BUILD-V7',game_id:'GAME-BAKERY',catalog_id:catalog.catalog_id,asset_transport:'INLINE_TYPESCRIPT_IMAGES',learner_variables:catalog.variable_order,model_checks:modelChecks,source_hashes:sourceHashes,output_hashes:{tutorial:sha256(tutorial),starter:sha256(starterSource),solution:sha256(solutionSource),engine:sha256(engineSource),states:Object.fromEntries(Object.entries(stateOutputs).map(([id,s])=>[id,sha256(s)])),hints:Object.fromEntries(Object.entries(hintOutputs).map(([id,s])=>[id,sha256(s)])),experiments:Object.fromEntries(Object.entries(experimentOutputs).map(([id,s])=>[id,sha256(s)]))},outputs:Object.fromEntries([...files.entries()].map(([relative,bytes])=>[relative,{sha256:sha256(bytes),bytes:Buffer.byteLength(bytes)}])),demonstrations,instruction_media:instructionMedia,claim_boundary:'Deterministic assembly and declared scope only; missing referenced media remain explicit. Compile, Blocks, runtime, browser and learner evidence are separate.'};
+  const manifest = {schema_version:1,manifest_id:'BAKERY-BUILD-V9',game_id:'GAME-BAKERY',catalog_id:catalog.catalog_id,asset_transport:'INLINE_TYPESCRIPT_IMAGES',learner_variables:catalog.variable_order,model_checks:modelChecks,source_hashes:sourceHashes,output_hashes:{tutorial:sha256(tutorial),starter:sha256(starterSource),solution:sha256(solutionSource),engine:sha256(engineSource),states:Object.fromEntries(Object.entries(stateOutputs).map(([id,s])=>[id,sha256(s)])),hints:Object.fromEntries(Object.entries(hintOutputs).map(([id,s])=>[id,sha256(s)])),experiments:Object.fromEntries(Object.entries(experimentOutputs).map(([id,s])=>[id,sha256(s)]))},outputs:Object.fromEntries([...files.entries()].map(([relative,bytes])=>[relative,{sha256:sha256(bytes),bytes:Buffer.byteLength(bytes)}])),demonstrations,instruction_media:instructionMedia,claim_boundary:'Deterministic assembly and declared scope only; missing referenced media remain explicit. Compile, Blocks, runtime, browser and learner evidence are separate.'};
   files.set('build-manifest.json',JSON.stringify(manifest,null,2)+'\n');
   if (options.check) {
     const mismatches=[];

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "manifest_id": "BAKERY-IMPLEMENTATION-V7",
+  "manifest_id": "BAKERY-IMPLEMENTATION-V9",
   "game_id": "GAME-BAKERY",
   "target": {
     "name": "arcade",
@@ -12,8 +12,8 @@
   "asset_owner": "games/bakery/implementation/supplied-world/art.ts",
   "asset_factory_dependencies": [],
   "display_resolution": {
-    "width": 320,
-    "height": 240,
+    "width": 640,
+    "height": 480,
     "native": true
   },
   "machine_layout": {
@@ -32,6 +32,7 @@
   "canonical_inputs": [
     "games/bakery/copy/tutorial-template.md",
     "games/bakery/implementation/learner-states/catalog.json",
+    "games/bakery/implementation/supplied-world/icons.ts",
     "games/bakery/implementation/supplied-world/engine.ts",
     "games/bakery/implementation/supplied-world/art.ts",
     "games/bakery/implementation/manifest.json",
@@ -82,7 +83,13 @@
   "durable_publication_target": "INDEPENDENT_GITHUB_REPOSITORY",
   "student_entrypoint": "GITHUB_BACKED_MAKECODE_TUTORIAL",
   "claim_boundary": "Declared implementation ownership and intended behavior; runtime and presentation checks remain separate.",
-  "modifier_representation": "Two-line SET assignment with mixer icon and numeric operand, thrown physically into the pot.",
+  "modifier_representation": "Planned 112x24 single-line SET card with mixer icon and numeric operand; copied numbers are 34x28 in a native640x480 room.",
+  "interaction_presentation": "Four side variables, explicit B check animation, and charged A release throw arcs.",
+  "modifier_card": {"planned_width": 112, "planned_height": 24, "layout": "single-line", "label": "SET"},
+  "copied_number": {"width": 34, "height": 28},
+  "side_variable_count": 4,
+  "check_animation": "explicit B check animation",
+  "release_throw": "charged A release throw arcs",
   "practice_progression": [
     "arithmetic changes mixer",
     "number copy and delivery",

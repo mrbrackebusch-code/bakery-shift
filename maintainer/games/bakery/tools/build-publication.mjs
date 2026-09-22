@@ -17,23 +17,24 @@ export const destination = Object.freeze({
   repository_url: 'https://github.com/mrbrackebusch-code/bakery-shift',
   serving_branch: 'main',
   tutorial_path: 'README.md',
-  stable_student_url: 'https://arcade.makecode.com/#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',
+  stable_student_url: 'https://arcade.makecode.com/?nocdn=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',
   resolution_status: 'ESTABLISHED_PUBLIC_REPOSITORY_UNPROMOTED_CANDIDATE',
   recorded_before_external_write: false,
   read_only_check: {
     date: '2026-09-22',
-    transport: 'Existing authenticated GitHub release and public-identity records; no V7 external write',
+    transport: 'Existing authenticated GitHub release and public-identity records; no V9 external write',
     authenticated_login: 'mrbrackebusch-code',
     canonical_remote: 'https://github.com/mrbrackebusch-code/makecode-arcade-tutorials.git',
-    target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V5 release and public identity verified in current records'
+    target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V7 release and official no-CDN public identity verified in current records'
   },
-  existing_release: {tag:'v0.2.0',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.2.0',payload_commit:'72e14c57a3c1b366b667e59cda3306ae32a31892',served_commit:'4cc04864d4e166e1fe58be8ad0b91932734cb73e'},
-  existing_public_identity: {stable_url:'https://arcade.makecode.com/#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0',release:'V5',observed_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0',media_revision:'598388360692ff16',public_v6_native_verification:'PENDING'}
+  existing_release: {tag:'v0.3.0',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.3.0',payload_commit:'22068fbf54e0fd81be2fb88af545e4a6592ec15d',served_commit:'ebe3e9612d86391ae21a1cd8d2a6e3575c739ea1'},
+  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'ebe3e9612d86391ae21a1cd8d2a6e3575c739ea1',release:'V7',media_revision:'c0590805184b5b9a',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
 });
 
 const canonicalGameFiles = [
   'copy/tutorial-template.md',
   'implementation/learner-states/catalog.json',
+  'implementation/supplied-world/icons.ts',
   'implementation/supplied-world/engine.ts',
   'implementation/supplied-world/art.ts',
   'implementation/manifest.json',
@@ -41,7 +42,10 @@ const canonicalGameFiles = [
   'tools/build-publication.mjs',
   'design/pedagogy/FACTORY_SOURCE_PACKET_2026-09-21.md',
   'design/pedagogy/MIXER_SOURCE_ADDENDUM_V7.md',
+  'design/pedagogy/WORLD_SOURCE_ADDENDUM_V9.md',
   'design/FACTORY_MIXER_REVISION_V7.md',
+  'design/RESOLUTION_REVISION_V8.md',
+  'design/WORLD_REVISION_V9.md',
   'design/pedagogy/MICROSOFT_MIT_NOTICE.txt'
 ];
 const sourceFiles = [
@@ -87,7 +91,7 @@ The builder stages a new package under maintainer/games/bakery/generated/publica
 
 Carry the Microsoft MIT notice and source attributions forward. Preserve old Git commits, releases and content-addressed media revision directories when integrating a new package. This candidate remains unpromoted pending current runtime/instruction/GIF review, authenticated destination checks, exact versioned MakeCode release payload verification, and focused public startup/assets/affected-behavior review. Informed developer QA and the owner-cancelled learner audit are distinct; this package makes no human-learning claim.
 
-The existing destination is ${destination.repository_url}. Its intended explicit-path tutorial identity is ${destination.stable_student_url}. This generated V7 candidate is unpromoted until its exact payload, conflict state, public startup, assets and affected behavior are checked.
+The existing destination is ${destination.repository_url}. Its intended explicit-path tutorial identity is ${destination.stable_student_url}. This generated V9 candidate is unpromoted until its exact payload, conflict state, public startup, assets and affected behavior are checked.
 `;
 
 const notices = `# Source attribution and notices
@@ -161,7 +165,7 @@ export function assemblePublication({requireMedia = true, checkGenerated = true}
   }
   outputs.set('maintainer/BUILD_MANIFEST.json', Buffer.from(json(built.manifest)));
   const manifest = {
-    schema_version: 1, manifest_id: 'BAKERY-PUBLICATION-PACKAGE-V7', game_id: 'GAME-BAKERY',
+    schema_version: 1, manifest_id: 'BAKERY-PUBLICATION-PACKAGE-V9', game_id: 'GAME-BAKERY',
     status: 'NOT_FOR_DISTRIBUTION', ...destination,
     external_publication_performed: false, student_distribution_ready: false,
     local_tutorial_sha256: digest(built.tutorial), canonical_tutorial_sha256: digest(built.tutorial),

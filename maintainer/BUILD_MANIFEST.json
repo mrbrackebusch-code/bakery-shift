@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "manifest_id": "BAKERY-BUILD-V7",
+  "manifest_id": "BAKERY-BUILD-V9",
   "game_id": "GAME-BAKERY",
   "catalog_id": "BAKERY-CUMULATIVE-STATES-V7",
   "asset_transport": "INLINE_TYPESCRIPT_IMAGES",
@@ -38,18 +38,19 @@
     "starter_executable_code": false
   },
   "source_hashes": {
-    "games/bakery/copy/tutorial-template.md": "cea15810317d4837e4662051f1b64aa7c35b1ee5a5c37a58c096c714cfd124aa",
+    "games/bakery/copy/tutorial-template.md": "a9a19a5661e06ebae1863ce36f35ee4cf38016c0f5b3a54f76591851d77ba32d",
     "games/bakery/implementation/learner-states/catalog.json": "5e464692c7fbbcfb84ee03fa9fd0a450673e23588c8f66242e58f5d636e6626e",
-    "games/bakery/implementation/supplied-world/engine.ts": "b5020f31480901b145cc7a3d978ed58fcc95e6a3c026ba75a091d90f8f858382",
-    "games/bakery/implementation/supplied-world/art.ts": "f6baa571916fba80dfec1307963df7391cf577af00b4edb2bdd36a40bb76626e",
-    "games/bakery/implementation/manifest.json": "b6919ffb2b849559da20c6c654f7f69934d74d21a1ffc8e2327afe97599cf326",
-    "games/bakery/tools/build.mjs": "952715b3f8dd37b2bf416bfd551176198f1f50836b82cc04eb257771ea83c34f"
+    "games/bakery/implementation/supplied-world/icons.ts": "76a5af6a6839cebccad74711138e9ffe86bcb182af4e6a0e77ad4abebd541c01",
+    "games/bakery/implementation/supplied-world/engine.ts": "761e9163e5730fbef87d60387f1dd00e24254806d66efd1bd4eb50ab6c6567f0",
+    "games/bakery/implementation/supplied-world/art.ts": "9283c476a32cc7de703987bcb9fba0a45c15f73996874c55a7ac170dc7a1a39d",
+    "games/bakery/implementation/manifest.json": "2bc22a68e79203e5a1808458117722f23ee959f7c43da51b9732d118cb6a3864",
+    "games/bakery/tools/build.mjs": "c19256ff8f22aa87d07335869ebc68b1722da203a32b2828d2b01a6232ba5f08"
   },
   "output_hashes": {
-    "tutorial": "3cfcd6b9ca005b589af5074524803f51cd133f2afd540e84e0fe29697b698584",
+    "tutorial": "c678cbd38e05bf051bf31bef44faa96f9c503e6aee5c84b3491a282efb678b0b",
     "starter": "713f1c94893eb81611042d435586f6e4ddf0eb48960b24b306abb7feaed89fc7",
     "solution": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874",
-    "engine": "7c5455bc51f74a2e7c41496a35683e7ab3893d29fb4f58547371001f363c90e4",
+    "engine": "a65554ed4878606247b3963fcbb75f3e46b7cc8cbe8a5d02e832b6f029dd1d36",
     "states": {
       "01-clean-tray": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",
       "02-catch-one": "d302dc2aa8f117c2ca9a95f9f8b634534828a505ba801a7b033e0b72161282bc",
@@ -86,8 +87,8 @@
   },
   "outputs": {
     "tutorial/README.md": {
-      "sha256": "3cfcd6b9ca005b589af5074524803f51cd133f2afd540e84e0fe29697b698584",
-      "bytes": 59777
+      "sha256": "c678cbd38e05bf051bf31bef44faa96f9c503e6aee5c84b3491a282efb678b0b",
+      "bytes": 66316
     },
     "learner-states/01-clean-tray.ts": {
       "sha256": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",
@@ -206,8 +207,8 @@
       "bytes": 16
     },
     "starter/engine.ts": {
-      "sha256": "7c5455bc51f74a2e7c41496a35683e7ab3893d29fb4f58547371001f363c90e4",
-      "bytes": 39965
+      "sha256": "a65554ed4878606247b3963fcbb75f3e46b7cc8cbe8a5d02e832b6f029dd1d36",
+      "bytes": 44587
     },
     "starter/pxt.json": {
       "sha256": "1324c7cc17879840e51d5570d78f441773515611325d46afc6d97d055841f905",
@@ -218,80 +219,80 @@
       "bytes": 2663
     },
     "solution/engine.ts": {
-      "sha256": "7c5455bc51f74a2e7c41496a35683e7ab3893d29fb4f58547371001f363c90e4",
-      "bytes": 39965
+      "sha256": "a65554ed4878606247b3963fcbb75f3e46b7cc8cbe8a5d02e832b6f029dd1d36",
+      "bytes": 44587
     },
     "solution/pxt.json": {
       "sha256": "e7cee09e0d7167be7456bd131b86fa5797d8efb5f811c4af1c0baec172ee3418",
       "bytes": 248
     },
     "tutorial/assets/demos/01-clean-tray.gif": {
-      "sha256": "303b080e365a25aa898d9cbb99b7cf1dd1b1c1fcbb186fb8b6c43df5c7f31dce",
-      "bytes": 78155
+      "sha256": "e687cb156a3505444ff309a1282c8608a024081d463b6833a22e26b980ea07d4",
+      "bytes": 135107
     },
     "tutorial/assets/demos/02-catch-one.gif": {
-      "sha256": "5ce574320d8e1aa38b3a35f28e22ce6ae4b98701f2341d2c1ea7299f16c88858",
-      "bytes": 145683
+      "sha256": "c6add744f3dbf800c73fae7f5d8241c4fc02fdab9ef034cfdd901144c11846d3",
+      "bytes": 225271
     },
     "tutorial/assets/demos/03-discard-one.gif": {
-      "sha256": "26647a7cb2796c3038b8c085e8f096c9c6c9bfaa14785cec76360b76866aee90",
-      "bytes": 144892
+      "sha256": "c2835b180e181d51a558c5411214af9586302392d754ef4d0ed968e44a3a0c5f",
+      "bytes": 227600
     },
     "tutorial/assets/demos/04-double-batch.gif": {
-      "sha256": "46fe68bc5234541b9b7a114724667d87f1ecf0611b627589a735da7f2a856799",
-      "bytes": 144934
+      "sha256": "6c787968291d58e0a7dfb880f1c1d3eb84967606021c9f902d5d567f2093699a",
+      "bytes": 268594
     },
     "tutorial/assets/demos/05-pack-pairs.gif": {
-      "sha256": "9862d9e642c4fc23b8e2bdb62e876bdcf5253fef1adc87d5015995ac0daa1a62",
-      "bytes": 145687
+      "sha256": "a522ca026009895ed6e0006a7d5a61f8e88bc48f3ea34ce594e571afb9c2e87f",
+      "bytes": 227117
     },
     "tutorial/assets/demos/06-delivery.gif": {
-      "sha256": "32f339ea2c43dac7e4731f90563765cf36e5a798b1b587ab56e14eaf7f78eaa9",
-      "bytes": 146246
+      "sha256": "c2968b5ee3e9ef265dbc9d7ab58eb1bb3e0c869234d29af8b8a7102d3db85ae5",
+      "bytes": 236210
     },
     "tutorial/assets/demos/07-serve-order.gif": {
-      "sha256": "7ce87a280610873580eed0931d0b20af3605eaa8e2001ce8337088a9753b48f8",
-      "bytes": 143996
+      "sha256": "3d2fe9c3f77e60c8e712e98354e41634b5a3cdcd2a1acb782c601765ce03f6b1",
+      "bytes": 228854
     },
     "tutorial/assets/demos/08-bake-trays.gif": {
-      "sha256": "71a41fda00107c92d87d81bb881fa4015827c242457a12560326260fe741fbaf",
-      "bytes": 147299
+      "sha256": "0bbaef09d8ab1be0f57020fe1a18e758c31926832ab5db063858bb9b98a9a994",
+      "bytes": 230578
     },
     "tutorial/assets/demos/09-pack-boxes.gif": {
-      "sha256": "14b46c00334c01e737e89c4561d4c841ddfb5603616d7a994bb5ac3dc205bb83",
-      "bytes": 145728
+      "sha256": "9694348aecccd7180043da76cc73f2b5d19ae901efa6f67f6aaf6c759ae12bdb",
+      "bytes": 228562
     },
     "tutorial/assets/demos/10-equal-check.gif": {
-      "sha256": "641bbe65667e55f09e342dcf9590682ee7d593c215d78dc4a68bbc251b4d1afc",
-      "bytes": 1041137
+      "sha256": "09f9f584f142b8dbbd6204e57258ac14fc252f74aa85e3405d8a01da461c102b",
+      "bytes": 1806223
     },
     "tutorial/assets/demos/11-less-check.gif": {
-      "sha256": "d8202e0fc719f3f56d9858c61c9115b674ee3d76559cebc6edd2315e5e45db8d",
-      "bytes": 753369
+      "sha256": "7228cdaff783fdeac6b0284496c88d005e1afc907a1da23ea000f188793d77f3",
+      "bytes": 1342926
     },
     "tutorial/assets/demos/12-greater-check.gif": {
-      "sha256": "c03c1ec2852fc90549c6b2d9e4e69cc733b5165c0274472b41d0f8a50afcb1da",
-      "bytes": 1061280
+      "sha256": "34ee66200ca083ffa1775eacebb556b9529b90c7ac35064e436b84554257f777",
+      "bytes": 1800020
     },
     "tutorial/assets/demos/13-less-equal-check.gif": {
-      "sha256": "6ffdd3ce4f1ee0d97ed51881334632dc35b14bf97c74357a2f47c249ac2031d8",
-      "bytes": 284927
+      "sha256": "5aef660306de5c17738b982a75c9d9389550e4c24b1b25bc3be87d3c101932d2",
+      "bytes": 584455
     },
     "tutorial/assets/demos/14-greater-equal-check.gif": {
-      "sha256": "5fbef35f9612b8ba554eb4c17fb5bac7290c98695fa79f046de3a1cacf25794c",
-      "bytes": 380866
+      "sha256": "b140d93010c84b02820314d0edea7c259dff8839c01fb256588878813fc2f309",
+      "bytes": 683059
     },
     "tutorial/assets/demos/15-factory-round.gif": {
-      "sha256": "20b9387e97c7cfcf834f3c6ee6f9580084cd81d1741eff839115dfb5dd5a7cfb",
-      "bytes": 1773641
+      "sha256": "375faf142372d5c62af7c48889023e728fc5d2e8ca6b21e51359ab0d382b6154",
+      "bytes": 2975676
     },
     "tutorial/assets/demos/16-boundary-checks.gif": {
-      "sha256": "b46a5de99f080a869e04cafcf8d567522762c3fc281c36e31defc538df241e29",
-      "bytes": 965179
+      "sha256": "f8091caf5cae44f731e0497c097f0326a0483ed6d28935cabc1d102f68c90170",
+      "bytes": 1014582
     },
     "tutorial/assets/demos/17-reuse-number.gif": {
-      "sha256": "33717e6af1be8df0f2d7c4ece2ab706b0ba3d8ac65a24b64e8e6481245c1b646",
-      "bytes": 1208436
+      "sha256": "672f0332e5d12da99d3cdf4aee595c8bd1fa0a9698e696231cde461169a8997f",
+      "bytes": 2067954
     },
     "tutorial/assets/instructions/01-assembled.svg": {
       "sha256": "cf58ab87d8a5bb1d5469a56f7e830c775f63887433c10acab3c2f8783a0e18d9",
@@ -354,87 +355,87 @@
     {
       "path": "assets/demos/01-clean-tray.gif",
       "present": true,
-      "sha256": "303b080e365a25aa898d9cbb99b7cf1dd1b1c1fcbb186fb8b6c43df5c7f31dce"
+      "sha256": "e687cb156a3505444ff309a1282c8608a024081d463b6833a22e26b980ea07d4"
     },
     {
       "path": "assets/demos/02-catch-one.gif",
       "present": true,
-      "sha256": "5ce574320d8e1aa38b3a35f28e22ce6ae4b98701f2341d2c1ea7299f16c88858"
+      "sha256": "c6add744f3dbf800c73fae7f5d8241c4fc02fdab9ef034cfdd901144c11846d3"
     },
     {
       "path": "assets/demos/03-discard-one.gif",
       "present": true,
-      "sha256": "26647a7cb2796c3038b8c085e8f096c9c6c9bfaa14785cec76360b76866aee90"
+      "sha256": "c2835b180e181d51a558c5411214af9586302392d754ef4d0ed968e44a3a0c5f"
     },
     {
       "path": "assets/demos/04-double-batch.gif",
       "present": true,
-      "sha256": "46fe68bc5234541b9b7a114724667d87f1ecf0611b627589a735da7f2a856799"
+      "sha256": "6c787968291d58e0a7dfb880f1c1d3eb84967606021c9f902d5d567f2093699a"
     },
     {
       "path": "assets/demos/05-pack-pairs.gif",
       "present": true,
-      "sha256": "9862d9e642c4fc23b8e2bdb62e876bdcf5253fef1adc87d5015995ac0daa1a62"
+      "sha256": "a522ca026009895ed6e0006a7d5a61f8e88bc48f3ea34ce594e571afb9c2e87f"
     },
     {
       "path": "assets/demos/06-delivery.gif",
       "present": true,
-      "sha256": "32f339ea2c43dac7e4731f90563765cf36e5a798b1b587ab56e14eaf7f78eaa9"
+      "sha256": "c2968b5ee3e9ef265dbc9d7ab58eb1bb3e0c869234d29af8b8a7102d3db85ae5"
     },
     {
       "path": "assets/demos/07-serve-order.gif",
       "present": true,
-      "sha256": "7ce87a280610873580eed0931d0b20af3605eaa8e2001ce8337088a9753b48f8"
+      "sha256": "3d2fe9c3f77e60c8e712e98354e41634b5a3cdcd2a1acb782c601765ce03f6b1"
     },
     {
       "path": "assets/demos/08-bake-trays.gif",
       "present": true,
-      "sha256": "71a41fda00107c92d87d81bb881fa4015827c242457a12560326260fe741fbaf"
+      "sha256": "0bbaef09d8ab1be0f57020fe1a18e758c31926832ab5db063858bb9b98a9a994"
     },
     {
       "path": "assets/demos/09-pack-boxes.gif",
       "present": true,
-      "sha256": "14b46c00334c01e737e89c4561d4c841ddfb5603616d7a994bb5ac3dc205bb83"
+      "sha256": "9694348aecccd7180043da76cc73f2b5d19ae901efa6f67f6aaf6c759ae12bdb"
     },
     {
       "path": "assets/demos/10-equal-check.gif",
       "present": true,
-      "sha256": "641bbe65667e55f09e342dcf9590682ee7d593c215d78dc4a68bbc251b4d1afc"
+      "sha256": "09f9f584f142b8dbbd6204e57258ac14fc252f74aa85e3405d8a01da461c102b"
     },
     {
       "path": "assets/demos/11-less-check.gif",
       "present": true,
-      "sha256": "d8202e0fc719f3f56d9858c61c9115b674ee3d76559cebc6edd2315e5e45db8d"
+      "sha256": "7228cdaff783fdeac6b0284496c88d005e1afc907a1da23ea000f188793d77f3"
     },
     {
       "path": "assets/demos/12-greater-check.gif",
       "present": true,
-      "sha256": "c03c1ec2852fc90549c6b2d9e4e69cc733b5165c0274472b41d0f8a50afcb1da"
+      "sha256": "34ee66200ca083ffa1775eacebb556b9529b90c7ac35064e436b84554257f777"
     },
     {
       "path": "assets/demos/13-less-equal-check.gif",
       "present": true,
-      "sha256": "6ffdd3ce4f1ee0d97ed51881334632dc35b14bf97c74357a2f47c249ac2031d8"
+      "sha256": "5aef660306de5c17738b982a75c9d9389550e4c24b1b25bc3be87d3c101932d2"
     },
     {
       "path": "assets/demos/14-greater-equal-check.gif",
       "present": true,
-      "sha256": "5fbef35f9612b8ba554eb4c17fb5bac7290c98695fa79f046de3a1cacf25794c"
+      "sha256": "b140d93010c84b02820314d0edea7c259dff8839c01fb256588878813fc2f309"
     },
     {
       "path": "assets/demos/15-factory-round.gif",
       "present": true,
-      "sha256": "20b9387e97c7cfcf834f3c6ee6f9580084cd81d1741eff839115dfb5dd5a7cfb"
+      "sha256": "375faf142372d5c62af7c48889023e728fc5d2e8ca6b21e51359ab0d382b6154"
     },
     {
       "path": "assets/demos/16-boundary-checks.gif",
       "present": true,
-      "sha256": "b46a5de99f080a869e04cafcf8d567522762c3fc281c36e31defc538df241e29"
+      "sha256": "f8091caf5cae44f731e0497c097f0326a0483ed6d28935cabc1d102f68c90170"
     },
     {
       "path": "assets/demos/17-reuse-number.gif",
       "present": true,
-      "sha256": "33717e6af1be8df0f2d7c4ece2ab706b0ba3d8ac65a24b64e8e6481245c1b646"
+      "sha256": "672f0332e5d12da99d3cdf4aee595c8bd1fa0a9698e696231cde461169a8997f"
     }
   ],
   "instruction_media": [

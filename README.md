@@ -4,15 +4,15 @@
 
 ## Welcome to the cake factory!
 
-Make a number in the mixing pot. Carry a copy to an order and make its statement true!
+Make a number in the mixing pot. Carry a copy to an order, then check its statement.
 
 Three conveyors bring modifiers. Each red **set** block holds a purple calculation. The bowl icon stands for the amount in the mixer: `+ 1` means **set the amount to its current value plus one**. Catch a modifier, aim at the round pot, and throw. Each hit runs your calculation once.
 
-**Move:** arrow keys. **A:** Space or Z throws in the direction you last moved; the gold line shows your aim. **B:** Enter or X discards what you carry. With empty hands, walk onto the **NUMBER** stand to the pot's right to collect its current number. Aim down and throw that container at a bottom order. Collecting a number leaves the mixer amount available for your next calculation.
+**Move:** arrow keys. **A:** Space or Z throws in the direction you last moved. Hold **A** to charge the throw; the gold ring marks your aim target, and release to send the carried item along its arc. A quick tap also throws. The worker carries a copied number overhead. **B:** Enter or X discards what you carry. With empty hands, walk onto the number dispenser to the pot's right to collect its current number. Aim down and throw that container at a bottom order. Collecting a number leaves the mixer amount available for your next calculation.
 
-For example, `3 < □` asks for a number larger than three. The printed target stays on the **left**; your delivered number fills the **right**. A **YES** activates that order. A **NO** lets you adjust the mixer and try another number. Activate all three orders to finish a round.
+For example, `3 < □` asks for a number larger than three. The printed target stays on the **left**; your delivered number fills the **right**. Delivery stays neutral. With empty hands, walk to an unfinished order and press **B** to check it: the order highlights its left value, comparison, and right value, then briefly shows **TRUE** or **FALSE**. A quiet checkmark or cross follows. A check does not clear the order; you can adjust the mixer and try another number. Finish the first three checks to unlock four side ingredient stations.
 
-Missed modifiers fall off the conveyors and new ones arrive. A loose cupcake also adds one, but arrives slowly. Empty-handed **B** beside the pot resets its amount; beside an unfinished order it clears that delivery. You can pause the simulator while you build.
+Missed modifiers fall off the conveyors and new ones arrive. A loose cupcake also adds one, but arrives slowly. Empty-handed **B** beside the pot resets its amount; beside an unfinished order it checks the delivered statement instead of clearing it. You can pause the simulator while you build.
 
 First you will code the arithmetic that changes the mixer. Then you will connect the orders' true/false checks. The supplied ``||bakery(noclick):Cake Factory||`` drawer provides the events and displays; the calculations and comparisons will be yours.
 
@@ -24,11 +24,11 @@ A ``||variables(noclick):variable||`` is a container used to store values in you
 
 In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):batch||``. Find the event, mixer amount, and display in ``||bakery(noclick):Cake Factory||``. Change the event dropdown to **the mixer is selected**.
 
-![Native menu blocks for creating batch, selecting the mixer, reading its amount and showing a value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/01-menu.svg)
+![Native menu blocks for creating batch, selecting the mixer, reading its amount and showing a value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/01-menu.svg)
 
 ### Make your code look like this
 
-![Read the mixer into batch, then show the value stored in batch](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/01-assembled.svg)
+![Read the mixer into batch, then show the value stored in batch](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/01-assembled.svg)
 
 The small ``||variables(noclick):batch||`` block reads the value you saved. It goes in the display's value slot. In the game, the bowl icon represents this amount without spelling out the variable name on every modifier.
 
@@ -36,7 +36,7 @@ The small ``||variables(noclick):batch||`` block reads the value you saved. It g
 
 With empty hands, stand below the pot and press **A**. Your display shows `2`. Reading the mixer does not change its amount. The bottom checks will be connected later.
 
-![Selecting the mixer shows its current number in a bubble](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/01-clean-tray.gif)
+![Selecting the mixer shows its current number in a bubble](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/01-clean-tray.gif)
 
 #### ~ tutorialhint
 
@@ -57,11 +57,11 @@ A `+ 1` modifier should increase the amount by one. A loose cupcake uses this sa
 
 Add a new ``||bakery(noclick):when||`` event and choose **a + 1 item hits the mixer**. Find ``||math(noclick):0 + 0||`` in ``||math(noclick):Math||``.
 
-![Native event, variable, arithmetic and mixer-result blocks for adding one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/02-menu.svg)
+![Native event, variable, arithmetic and mixer-result blocks for adding one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/02-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, set batch to batch plus one, then put batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/02-assembled.svg)
+![Read batch, set batch to batch plus one, then put batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/02-assembled.svg)
 
 Read the mixer first. Calculate ``||variables(noclick):batch||`` plus `1`, save the result back in ``||variables(noclick):batch||``, and send that value to the mixer. The ``||math(noclick):Math||`` block produces a number.
 
@@ -69,7 +69,7 @@ Read the mixer first. Calculate ``||variables(noclick):batch||`` plus `1`, save 
 
 Catch `+ 1`. Move beside the pot, face it, and press **A**. The modifier flies into the pot and `2` becomes `3` when it hits. Try another addition using the new starting amount.
 
-![A thrown plus-one modifier hits the mixer and changes two to three](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/02-catch-one.gif)
+![A thrown plus-one modifier hits the mixer and changes two to three](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/02-catch-one.gif)
 
 #### ~ tutorialhint
 
@@ -95,7 +95,7 @@ Create **a - 1 modifier hits the mixer**. Use the same read, calculate, and put 
 
 Throw `- 1` into the pot: `2` becomes `1`. With empty hands, press **B** beside the pot to reset its amount, then try a different calculation.
 
-![A thrown minus-one modifier changes the mixer from two to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/03-discard-one.gif)
+![A thrown minus-one modifier changes the mixer from two to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/03-discard-one.gif)
 
 #### ~ tutorialhint
 
@@ -117,17 +117,17 @@ A `× 2` modifier can do in one throw what repeated additions would take longer 
 
 Add **a × 2 modifier hits the mixer**. Choose multiplication from the ``||math(noclick):Math||`` block's dropdown. Use the mixer read and result blocks you already know.
 
-![Native multiplication and factory blocks for the double event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/04-menu.svg)
+![Native multiplication and factory blocks for the double event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/04-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, multiply batch by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/04-assembled.svg)
+![Read batch, multiply batch by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/04-assembled.svg)
 
 ### What you should see
 
 Throw `× 2` into the pot. The amount doubles: `2` becomes `4`. The number on the modifier stays two; the amount it multiplies can change.
 
-![A times-two modifier doubles the mixer amount from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/04-double-batch.gif)
+![A times-two modifier doubles the mixer amount from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/04-double-batch.gif)
 
 #### ~ tutorialhint
 
@@ -149,17 +149,17 @@ Division makes a large amount smaller. A `/ 2` modifier divides it into two equa
 
 Add **a / 2 modifier hits the mixer**. Choose division from the ``||math(noclick):Math||`` block's dropdown.
 
-![Native division and factory blocks for dividing the mixer amount by two](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/05-menu.svg)
+![Native division and factory blocks for dividing the mixer amount by two](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/05-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, divide it by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/05-assembled.svg)
+![Read batch, divide it by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/05-assembled.svg)
 
 ### What you should see
 
 Throw `/ 2` into a mixer holding `2`. The result is `1`. This factory uses whole-number results: a division that would make a fraction leaves the amount unchanged. Adjust the amount before trying that division again.
 
-![Dividing two by two changes the mixer to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/05-pack-pairs.gif)
+![Dividing two by two changes the mixer to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/05-pack-pairs.gif)
 
 #### ~ tutorialhint
 
@@ -181,11 +181,11 @@ The belts can now offer `+ 2` and `+ 3`. One event can use the number printed on
 
 In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):modifierNumber||``. Add **a + 2 or + 3 modifier hits the mixer** and find **number on the modifier** in ``||bakery(noclick):Cake Factory||``.
 
-![Native menu blocks for modifierNumber, its printed-number input and the addition event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/06-menu.svg)
+![Native menu blocks for modifierNumber, its printed-number input and the addition event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/06-menu.svg)
 
 ### Make your code look like this
 
-![Read batch and modifierNumber, add them, then put the saved batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/06-assembled.svg)
+![Read batch and modifierNumber, add them, then put the saved batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/06-assembled.svg)
 
 The variables have different jobs: ``||variables(noclick):batch||`` remembers the mixer amount; ``||variables(noclick):modifierNumber||`` remembers the modifier's printed number.
 
@@ -193,7 +193,7 @@ The variables have different jobs: ``||variables(noclick):batch||`` remembers th
 
 Throw `+ 2` into a mixer holding `2`: the result is `4`. Try `+ 3` or another starting amount and compare the result.
 
-![The plus-two modifier changes the mixer from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/06-delivery.gif)
+![The plus-two modifier changes the mixer from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/06-delivery.gif)
 
 #### ~ tutorialhint
 
@@ -221,7 +221,7 @@ Add **a - 2 or - 3 modifier hits the mixer**. Read the mixer into ``||variables(
 
 Throw `- 2` at an amount of `2`: the result is `0`. Subtracting three from two would give `-1`. Negative numbers are smaller than zero.
 
-![Subtracting the printed two from two changes the mixer to zero](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/07-serve-order.gif)
+![Subtracting the printed two from two changes the mixer to zero](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/07-serve-order.gif)
 
 #### ~ tutorialhint
 
@@ -249,7 +249,7 @@ Add **a × 3 modifier hits the mixer**. Read both inputs into your variables. Mu
 
 Throw `× 3` into a mixer holding `2`: the result is `6`. Compare that one throw with adding one four times.
 
-![Multiplying two by the printed three produces six](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/08-bake-trays.gif)
+![Multiplying two by the printed three produces six](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/08-bake-trays.gif)
 
 #### ~ tutorialhint
 
@@ -277,7 +277,7 @@ Add **a / 3 modifier hits the mixer**. Read both inputs, divide ``||variables(no
 
 This step starts the mixer at `3`. Throw `/ 3` into it: the result is `1`. The next modifier will use that new amount. Remember that division needs a whole-number result here.
 
-![Dividing three by the modifier's printed three leaves one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/09-pack-boxes.gif)
+![Dividing three by the modifier's printed three leaves one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/09-pack-boxes.gif)
 
 #### ~ tutorialhint
 
@@ -297,7 +297,7 @@ bakery.onAction(BakeryAction.DivideModifier, function () {
 
 Connect the orders' checks. A **Boolean** value is either ``||logic(noclick):true||`` or ``||logic(noclick):false||``. A comparison produces a Boolean value.
 
-The ``||logic(noclick):=||`` comparison checks whether two values represent the same quantity. `3 = 3` is true; `3 = 2` is false. The factory shows true as **YES** and false as **NO**.
+The ``||logic(noclick):=||`` comparison checks whether two values represent the same quantity. `3 = 3` is true; `3 = 2` is false. The check reports **TRUE** or **FALSE**, followed by a quiet checkmark or cross.
 
 ### Find these blocks
 
@@ -305,19 +305,19 @@ In ``||variables(noclick):Variables||``, use **Make a Variable** separately for 
 
 Add **an = order checks a number**. Find the pointed comparison block in ``||logic(noclick):Logic||`` and choose `=` from its dropdown.
 
-![Native comparison, Boolean and factory inputs and output, with variable creation](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/10-menu.svg)
+![Native comparison, Boolean and factory inputs and output, with variable creation](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/10-menu.svg)
 
 ### Make your code look like this
 
-![Read orderTarget and deliveredNumber; set ready to their equality comparison; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/10-assembled.svg)
+![Read orderTarget and deliveredNumber; set ready to their equality comparison; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/10-assembled.svg)
 
 Put ``||variables(noclick):orderTarget||`` first and ``||variables(noclick):deliveredNumber||`` second, just like the bottom order. The pointed ``||logic(noclick):Logic||`` block produces true or false. **set ready** stores that result; **show check** displays it.
 
 ### What you should see
 
-Collect a numbered container from the stand and throw it down at `3 = □`. Delivering `2` shows **NO**. Add one in the mixer, collect its new number, and deliver `3`: **YES** activates the order automatically. The target stays three throughout.
+Collect a numbered container from the number dispenser and throw it down at `3 = □`. Walk to the order and press **B**: its left value, comparison, and right value highlight in order, then the check reports **FALSE** with a quiet cross. Add one in the mixer, collect its new number, and deliver `3`. Press **B** again to see **TRUE** and a quiet checkmark; delivery itself stays neutral. The target stays three throughout.
 
-![Three equals two shows NO; making and delivering three shows YES and activates the order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/10-equal-check.gif)
+![Three equals two checks FALSE; making and delivering three checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/10-equal-check.gif)
 
 #### ~ tutorialhint
 
@@ -342,17 +342,17 @@ bakery.onAction(BakeryAction.EqualCheck, function () {
 
 Add **a < order checks a number**. Use the same input blocks and variables. Choose `<` from the ``||logic(noclick):Logic||`` comparison dropdown.
 
-![Native less-than comparison and its factory check event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/11-menu.svg)
+![Native less-than comparison and its factory check event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/11-menu.svg)
 
 ### Make your code look like this
 
-![Read both inputs; set ready to orderTarget less than deliveredNumber; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/11-assembled.svg)
+![Read both inputs; set ready to orderTarget less than deliveredNumber; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/instructions/11-assembled.svg)
 
 ### What you should see
 
-The rightmost order asks for `4 < □`. Deliver `4`: **NO**, because the numbers are equal. Add one to the mixer and deliver `5`: **YES**. You changed the delivered number on the right.
+The rightmost order asks for `4 < □`. Deliver `4`, then press **B**: the check reports **FALSE** because the numbers are equal. Add one to the mixer and deliver `5`; press **B** again to report **TRUE**. You changed the delivered number on the right.
 
-![Four less than four shows NO; four less than five shows YES](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/11-less-check.gif)
+![Four less than four checks FALSE; four less than five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/11-less-check.gif)
 
 #### ~ tutorialhint
 
@@ -379,9 +379,9 @@ Add **a > order checks a number**. Read both inputs. Set ``||variables(noclick):
 
 ### What you should see
 
-The middle order asks for `2 > □`. Delivering `2` gives **NO**. Subtract one in the mixer and deliver `1`: **YES**. Matching numbers make `=` true, but make both `<` and `>` false.
+The middle order asks for `2 > □`. Delivering `2` stays neutral until you press **B**, which reports **FALSE**. Subtract one in the mixer and deliver `1`; press **B** to report **TRUE**. Matching numbers make `=` true, but make both `<` and `>` false.
 
-![Two greater than two shows NO; two greater than one shows YES](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/12-greater-check.gif)
+![Two greater than two checks FALSE; two greater than one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/12-greater-check.gif)
 
 #### ~ tutorialhint
 
@@ -408,9 +408,9 @@ Add **a ≤ order checks a number**. Keep the same input order and variables. Ch
 
 ### What you should see
 
-The rightmost order now asks for `5 ≤ □`. Make and deliver `5`: **YES**. A larger delivered number also works; `4` does not. The sign itself tells you which numbers qualify.
+The rightmost order now asks for `5 ≤ □`. Make and deliver `5`, then press **B** to report **TRUE**. A larger delivered number also works; `4` reports **FALSE** after its check. The sign itself tells you which numbers qualify.
 
-![Five less than or equal to five shows YES and activates the order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/13-less-equal-check.gif)
+![Five less than or equal to five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/13-less-equal-check.gif)
 
 #### ~ tutorialhint
 
@@ -437,9 +437,9 @@ Add **a ≥ order checks a number**. Read the fixed target and delivered number.
 
 ### What you should see
 
-The middle order asks for `1 ≥ □`. Deliver `1`: **YES**. Zero or a negative number also works here. A larger delivered number, such as `2`, makes this statement false.
+The middle order asks for `1 ≥ □`. Deliver `1`, then press **B** to report **TRUE**. Zero or a negative number also works here. A larger delivered number, such as `2`, makes this statement **FALSE** when checked.
 
-![One greater than or equal to one shows YES and activates the order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/14-greater-equal-check.gif)
+![One greater than or equal to one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/14-greater-equal-check.gif)
 
 #### ~ tutorialhint
 
@@ -458,33 +458,33 @@ bakery.onAction(BakeryAction.GreaterEqualCheck, function () {
 
 ## 15. Run the factory
 
-Keep your code. Activate all three orders: `3 = □`, `1 ≥ □`, and `5 ≤ □`.
+Keep your code. Finish the first three order checks: `3 = □`, `1 ≥ □`, and `5 ≤ □`.
 
 ### Choose your route
 
-Read the target and sign before catching a modifier. Make a useful number in the pot, collect a copy from the stand, and throw it at its order. You can use several small calculations or take a shorter route with multiplication or division. Faster orders earn more coins.
+Read the target and sign before catching a modifier. Make a useful number in the pot, collect a copy from the number dispenser, and throw it at its order. Walk to the delivered order and press **B** to run its left value, comparison, and right value before the brief **TRUE** or **FALSE** result. You can use several small calculations or take a shorter route with multiplication or division.
 
 ### What you should see
 
-One route makes `1`, then `3`, then `6`. Each delivered number turns its chosen check to **YES**. Collecting and delivering never empties the mixer: the next calculation starts with the amount you just made.
+One route makes `1`, then `3`, then `6`. Press **B** after each delivery to check the statement; each result is briefly **TRUE** or **FALSE**, with a quiet checkmark or cross. Collecting and delivering never empties the mixer: the next calculation starts with the amount you just made.
 
-![Three calculated numbers activate the three different orders and complete a round](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/15-factory-round.gif)
+![Three calculated numbers are delivered and checked at the three different orders](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/15-factory-round.gif)
 
-Press **A** after all three activate. The next round keeps your mixer amount and brings new checks.
+After the first three checks finish, press **A** to unlock four side ingredient stations. The next round keeps your mixer amount and brings new checks.
 
-## 16. Watch the boundary
+## 16. Use an ingredient variable
 
-The next round uses strict `<` and `>` checks. A matching number is no longer enough for those orders.
+Each side ingredient station has an icon representing the value currently shown on its side counter. The operator at a station switches every 12 seconds. Your supplied factory variables keep these station values separate from your learner variable ``||variables(noclick):batch||``.
 
 ### Choose a path
 
-After finishing with `6` in the pot, the new orders include `5 < □`. Subtract one, collect `5`, and deliver it there. Predict the result before you throw. Then make a number that will turn that same order to **YES**.
+After the first three checks, press **A** to open the side ingredient stations. Throw a copied number at a station to change it with that station's allowed operator. A later order refers to one of the station icons; its left value shows `3 + [icon]`, meaning three plus the value at that station. Use a whole-number division result when division is selected. The supplied code is unchanged while the station's value changes, so use your learner variable ``||variables(noclick):batch||`` to make and deliver the number the order requests.
 
 ### What you should see
 
-`5 < 5` gives **NO**. Add one, collect `6`, and deliver it: `5 < 6` gives **YES**. Compare this with `5 ≤ 5` from the earlier round.
+The icon in the order identifies the station value you need. The operators switch every 12 seconds, and a thrown copied number changes a station through its allowed operator. A new order can name a different random icon. Deliver the number, then press **B** at the unfinished order: its left value, comparison, and right value highlight in order before a brief **TRUE** or **FALSE** and quiet checkmark or cross.
 
-![A strict check rejects its matching boundary, then accepts the larger delivered number](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/16-boundary-checks.gif)
+![A variable change at a side station is reflected in the order's left value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/16-boundary-checks.gif)
 
 ## 17. Keep the amount, change the plan
 
@@ -498,7 +498,7 @@ Make and deliver `3` for the equality order. Look back at the pot: it still hold
 
 A numbered container carries a copy. Your next modifier changes the mixer, while a completed order keeps its delivered number. Try another route through the same three checks, using a different combination of arithmetic operations.
 
-![The mixer keeps three after delivery, then doubling makes six for a different order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/17-reuse-number.gif)
+![The mixer keeps three after delivery, then doubling makes six for a different order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/d70283ad61805189/demos/17-reuse-number.gif)
 
 ```template
 // Cake Factory
@@ -506,129 +506,62 @@ A numbered container carries a copy. Your next modifier changes the mixer, while
 ```
 
 ```customts
-// Canonical code-native Bakery Shift artwork. Included by build.mjs.
-// No learner arithmetic, state mutation, collection or completion logic here.
-namespace bakeryArt {
-    // Index 10 exactly matches pinned Math; index 2 matches Variables.
-    // Install only once at game start if this complete palette is adopted.
-    export function installPalette() {
-        image.setPalette(hex`000000 FFFFFF EC3B59 F7AAC3 D98B46 F6C85F 479AA4 E7AD82 294E5A 9BD7D0 A55EEA 683C91 A8B8B5 D9E2DC 6E4638 243139`)
+// Native V9 supplied-world pixel sprites. No learner logic or arithmetic lives here.
+namespace bakeryIcons {
+    function rounded(p: Image, x: number, y: number, w: number, h: number, color: number) {
+        p.fillRect(x + 2, y, w - 4, h, color)
+        p.fillRect(x, y + 2, w, h - 4, color)
     }
 
-    function rounded(p: Image, x: number, y: number, w: number, h: number, c: number) {
-        p.fillRect(x + 3, y, w - 6, h, c)
-        p.fillRect(x + 1, y + 1, w - 2, h - 2, c)
-        p.fillRect(x, y + 3, w, h - 6, c)
-    }
-
-    export function bun(): Image {
-        return img`
-            . . . e e e e . . .
-            . . e 5 5 5 5 e . .
-            . e 5 5 1 5 5 5 e .
-            e 5 5 1 5 1 5 5 5 e
-            e 5 5 5 5 5 1 5 5 e
-            e 4 5 5 5 5 5 5 4 e
-            . e 4 4 4 4 4 4 e .
-            . . e e e e e e . .
-            . . . e e e e . . .
-        `
-    }
-
-    export function cupcake(): Image {
-        return img`
-            . . . . 2 . . . . .
-            . . . 1 1 1 1 . . .
-            . . 1 3 3 3 3 1 . .
-            . 1 3 3 3 3 3 3 1 .
-            1 3 3 3 3 3 3 3 3 1
-            . e e e e e e e e .
-            . e 4 5 5 5 5 4 e .
-            . . e 4 5 5 4 e . .
-            . . e 4 5 5 4 e . .
-            . . . e e e e . . .
-        `
-    }
-
-    export function largeCake(): Image {
-        let p = image.create(24, 24)
-        rounded(p, 4, 13, 16, 10, 14)
-        p.fillRect(5, 14, 14, 7, 5)
-        for (let x of [7, 11, 15, 19]) p.fillRect(x, 15, 1, 6, 4)
-        rounded(p, 1, 5, 22, 12, 14)
-        rounded(p, 2, 6, 20, 10, 3)
-        p.fillRect(4, 7, 5, 2, 1); p.fillRect(3, 9, 2, 3, 1)
-        p.fillCircle(7, 6, 3, 3); p.fillCircle(16, 6, 3, 3)
-        p.fillRect(5, 14, 3, 3, 3); p.fillRect(14, 14, 3, 2, 3)
-        p.fillCircle(12, 3, 3, 14); p.fillCircle(12, 3, 2, 2)
-        p.setPixel(11, 2, 1); p.drawLine(13, 1, 15, 0, 6)
-        p.fillRect(6, 22, 12, 1, 14)
+    export function ingredient(id: number): Image {
+        let p = image.create(18, 18)
+        if (id == 0) {
+            // Strawberry: red berry, leafy green crown, dark outline, pale highlight.
+            p.fillCircle(9, 10, 7, 15); p.fillCircle(9, 10, 6, 2)
+            p.fillRect(5, 3, 8, 3, 15); p.fillRect(4, 4, 10, 2, 6)
+            p.fillRect(7, 2, 2, 3, 6); p.fillRect(11, 2, 2, 3, 6)
+            p.setPixel(6, 8, 3); p.setPixel(11, 11, 3)
+        } else if (id == 1) {
+            // Cocoa: square dark-brown block with a cream split and highlight.
+            p.fillRect(3, 4, 12, 11, 15); p.fillRect(4, 5, 10, 9, 14)
+            p.fillRect(8, 5, 2, 9, 13); p.fillRect(5, 7, 2, 2, 13)
+            p.setPixel(5, 6, 1); p.setPixel(11, 11, 13)
+        } else if (id == 2) {
+            // Cream: handled bottle with a pale body and gold cap/band.
+            p.fillRect(7, 2, 4, 3, 15); p.fillRect(8, 1, 2, 2, 5)
+            p.fillRect(4, 5, 10, 10, 15); p.fillRect(5, 6, 8, 8, 1)
+            p.fillRect(5, 11, 8, 3, 5); p.setPixel(7, 8, 15); p.setPixel(8, 7, 15)
+        } else {
+            // Mint: teal leaf with two pointed lobes and a light central vein.
+            p.fillRect(8, 5, 3, 10, 15); p.fillRect(4, 7, 10, 7, 15)
+            p.fillRect(5, 8, 8, 5, 6); p.fillRect(8, 6, 2, 7, 9)
+            p.setPixel(4, 6, 9); p.setPixel(13, 7, 9); p.fillRect(7, 14, 4, 2, 6)
+        }
         return p
     }
 
-    function largeCakeLegacy(): Image {
-        return img`
-            . . . . . . 1 1 . . . . . . . . . . . . . . . .
-            . . . . . 1 3 3 3 1 . . . . . . . . . . . . . . .
-            . . . . 1 3 3 3 3 3 1 . . . . . . . . . . . . . .
-            . . . 1 3 3 3 3 3 3 3 1 . . . . . . . . . . . . .
-            . . 1 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . . . .
-            . 1 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . . .
-            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            . 1 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            . . 1 4 4 4 4 4 4 4 4 4 4 1 . . . . . . . . . .
-            . . 1 4 5 5 5 5 5 5 5 5 5 4 1 . . . . . . . . . .
-            . . 1 4 5 5 5 5 5 5 5 5 5 4 1 . . . . . . . . . .
-            . . . 1 4 4 4 4 4 4 4 4 4 1 . . . . . . . . . . .
-            . . . . 1 1 1 1 1 1 1 1 1 1 . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-        `
-    }
-
-    export function looseCake(): Image {
-        let p = image.create(16, 16)
-        rounded(p, 3, 9, 10, 7, 14)
-        p.fillRect(4, 10, 8, 4, 5)
-        for (let x of [6, 9]) p.fillRect(x, 11, 1, 3, 4)
-        rounded(p, 1, 4, 14, 8, 14)
-        rounded(p, 2, 5, 12, 6, 3)
-        p.fillRect(3, 6, 4, 1, 1)
-        p.fillCircle(8, 2, 2, 2)
+    export function carriedNumber(value: number): Image {
+        let p = image.create(34, 28)
+        rounded(p, 3, 6, 28, 20, 15)
+        p.fillRect(5, 8, 24, 16, 13)
+        p.fillRect(1, 11, 4, 9, 14); p.fillRect(29, 11, 4, 9, 14)
+        p.fillRect(2, 13, 2, 5, 5); p.fillRect(30, 13, 2, 5, 5)
+        p.fillRect(9, 3, 16, 4, 5); p.fillRect(11, 1, 12, 3, 14)
+        let text = "" + value
+        if (text.length <= 2) {
+            let temp = image.create(text.length * 6 + 2, 8)
+            temp.print(text, 0, 0, 15, image.font8)
+            let left = 17 - text.length * 6
+            for (let y = 0; y < 8; y++) for (let x = 0; x < temp.width; x++) if (temp.getPixel(x, y) != 0) p.fillRect(left + x * 2, 9 + y * 2, 2, 2, 15)
+        } else {
+            if (text.length > 6) text = text.substr(0, 4) + ".."
+            let font = text.length > 4 ? image.font5 : image.font8
+            p.print(text, 17 - Math.idiv(text.length * font.charWidth, 2), 12, 15, font)
+        }
         return p
     }
 
-    function looseCakeLegacy(): Image {
-        return img`
-            . . . 1 1 . . . . . . . . . .
-            . . 1 3 3 3 1 . . . . . . . .
-            . 1 3 3 3 3 3 1 . . . . . . .
-            1 3 3 3 3 3 3 3 1 . . . . . .
-            1 3 3 3 3 3 3 3 1 . . . . . .
-            . 1 4 4 4 4 4 4 1 . . . . . .
-            . 1 4 5 5 5 5 4 1 . . . . . .
-            . . 1 4 4 4 4 1 . . . . . . .
-            . . 1 1 1 1 1 1 . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-        `
-    }
-
-    export function chef(frame: number = 0): Image {
+    export function chef(frame: number = 0, carrying: boolean = false): Image {
         let p = img`
             . . . . . 1 1 1 1 1 1 . . . . .
             . . . 1 1 1 1 1 1 1 1 1 1 . . .
@@ -643,8 +576,8 @@ namespace bakeryArt {
             . . . . . . 7 7 7 7 . . . . . .
             . . . 1 1 6 1 1 6 1 1 1 1 . . .
             . . 1 1 1 6 6 6 6 6 6 1 1 1 . .
-            . . 7 7 1 6 6 6 6 6 1 7 7 . . .
-            . . 7 7 1 6 6 6 6 6 1 7 7 . . .
+            . . 7 7 1 6 6 6 6 6 1 7 7 . .
+            . . 7 7 1 6 6 6 6 6 1 7 7 . .
             . . . . 6 6 6 6 6 6 6 6 . . . .
             . . . . 6 6 6 6 6 6 6 6 . . . .
             . . . . 6 6 c c 6 6 6 6 . . . .
@@ -653,297 +586,239 @@ namespace bakeryArt {
             . . . f f f . . f f f . . . . .
             . . . f f f . . . f f f . . . .
         `
+        if (carrying) {
+            p.fillRect(1, 4, 3, 5, 15); p.fillRect(2, 5, 2, 3, 1)
+            p.fillRect(12, 4, 3, 5, 15); p.fillRect(12, 5, 2, 3, 1)
+            p.fillRect(3, 8, 3, 4, 6); p.fillRect(10, 8, 3, 4, 6)
+            p.setPixel(5, 10, 15); p.setPixel(10, 10, 15)
+        }
         if (frame == 1) { p.setPixel(3, 21, 0); p.setPixel(6, 21, 15) }
         if (frame == 2) { p.setPixel(11, 21, 0); p.setPixel(8, 21, 15) }
-        return p
+        return p.doubled()
     }
+}
 
-    // The HUD, order tabs, and focused workbench are drawn separately by the caller.
-    export function drawBackground(): Image {
-        let p = image.create(320, 240)
-        p.fill(13)
-        p.fillRect(0, 0, 320, 19, 14)
-        p.fillRect(0, 20, 320, 3, 8)
-        for (let x of [32, 138, 244]) { p.fillRect(x, 24, 42, 2, 8); p.fillRect(x + 4, 27, 34, 2, 9) }
-        for (let y = 24; y <= 84; y++) {
-            let d = Math.floor((y - 24) * 0.8)
-            for (let c of [40 + d, 160, 280 - d]) {
-                p.fillRect(c - 37, y, 74, 1, 14)
-                p.fillRect(c - 33, y, 66, 1, 12)
-                p.setPixel(c - 34, y, 1); p.setPixel(c + 33, y, 1)
-            }
-        }
-        p.fillRect(0, 90, 320, 106, 8)
-        p.fillRect(0, 85, 320, 5, 8)
-        return p
+// Native pixel artwork for the Cake Factory world. No learner calculations.
+namespace bakeryArt {
+    let small = image.doubledFont(image.font5)
+    let large = image.doubledFont(image.font8)
+    let bowl: Image = null
+    export function installPalette() {
+        image.setPalette(hex`000000 FFFFFF EC3B59 F7AAC3 D98B46 F6C85F 479AA4 E7AD82 294E5A 9BD7D0 A55EEA 683C91 A8B8B5 F4E6CE 6E4638 243139`)
     }
-
-    // Call every frame over the static background, before tokens and chef.
-    export function conveyorTreads(p: Image, pixelOffset: number) {
-        for (let y = 24; y <= 84; y++) {
-            let d = Math.floor((y - 24) * 0.8)
-            for (let c of [40 + d, 160, 280 - d]) {
-                p.fillRect(c - 37, y, 74, 1, 14)
-                p.fillRect(c - 33, y, 66, 1, 12)
-                p.setPixel(c - 34, y, 1); p.setPixel(c + 33, y, 1)
-                if ((y + pixelOffset) % 12 == 0) p.fillRect(c - 32, y, 64, 1, 8)
-            }
+    function round(p: Image, x: number, y: number, w: number, h: number, c: number) {
+        p.fillRect(x + 3, y, w - 6, h, c); p.fillRect(x, y + 3, w, h - 6, c)
+        p.fillRect(x + 1, y + 1, w - 2, h - 2, c)
+    }
+    function oval(p: Image, x: number, y: number, rx: number, ry: number, color: number) {
+        for (let row = -ry; row <= ry; row++) {
+            let half = Math.floor(rx * Math.sqrt(Math.max(0, 1 - row * row / (ry * ry))))
+            p.fillRect(x - half, y + row, half * 2 + 1, 1, color)
         }
     }
-
-    // 0 +, 1 -, 2 multiplication cross, 3 forward slash.
-    // PXT overrides vanilla Blockly's division sign to slash; match that UI.
-    function operator(p: Image, op: number, x: number, y: number, color: number) {
-        if (op == 0) { p.fillRect(x, y + 2, 5, 1, color); p.fillRect(x + 2, y, 1, 5, color) }
-        if (op == 1) p.fillRect(x, y + 2, 5, 1, color)
-        if (op == 2) for (let n = 0; n < 5; n++) { p.setPixel(x + n, y + n, color); p.setPixel(x + 4 - n, y + n, color) }
-        if (op == 3) for (let n = 0; n < 5; n++) p.setPixel(x + 4 - n, y + n, color)
+    function bolt(p: Image, x: number, y: number) { p.fillCircle(x, y, 3, 15); p.fillCircle(x, y - 1, 2, 12); p.setPixel(x - 1, y - 2, 1) }
+    function hexagon(p: Image, x: number, y: number, w: number, h: number, color: number) {
+        let tip = Math.idiv(h, 2)
+        // Explicit scan lines preserve the true Boolean reporter silhouette.
+        for (let row = 0; row < h; row++) {
+            let inset = Math.abs(Math.idiv(h, 2) - row)
+            p.fillRect(x + inset, y + row, w - inset * 2, 1, color)
+        }
     }
-
-    function comparisonGlyph(p: Image, relation: number, x: number, y: number, color: number) {
-        if (relation == 0) { p.fillRect(x, y + 2, 11, 2, color); p.fillRect(x, y + 7, 11, 2, color) }
-        if (relation == 1 || relation == 3) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 - n, y + n, color); p.setPixel(x + 5 - n, y + 10 - n, color) }
-        if (relation == 2 || relation == 4) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 + n, y + n, color); p.setPixel(x + 5 + n, y + 10 - n, color) }
-        if (relation == 3 || relation == 4) p.fillRect(x, y + 12, 12, 1, color)
-    }
-
-    function printNumber(p: Image, value: number, centerX: number, topY: number, color: number, maxWidth: number) {
-        if (value - value != 0) return
-        let text = "" + value
+    function number(p: Image, n: number, cx: number, y: number, color: number, big: boolean = true) {
+        let text = "" + n
         if (text.length > 6) text = text.substr(0, 6)
-        let scale = text.length * 12 <= maxWidth ? 2 : 1
-        let temp = image.create(text.length * (scale == 2 ? 6 : 5) + 2, 8)
-        temp.print(text, 0, 0, 1, scale == 2 ? image.font8 : image.font5)
-        let outWidth = text.length * (scale == 2 ? 12 : 5)
-        let left = centerX - Math.idiv(outWidth, 2)
-        for (let sy = 0; sy < 8; sy++) for (let sx = 0; sx < temp.width; sx++) if (temp.getPixel(sx, sy) != 0) {
-            for (let dy = 0; dy < scale; dy++) for (let dx = 0; dx < scale; dx++) p.setPixel(left + sx * scale + dx, topY + sy * scale + dy, color)
-        }
+        let font = big && text.length <= 2 ? large : image.font8
+        p.print(text, cx - Math.idiv(text.length * font.charWidth, 2), y, color, font)
     }
-
     export function variableTray(p: Image, x: number, y: number) {
-        p.fillRect(x, y, 14, 1, 1)
-        p.fillRect(x, y + 1, 2, 7, 1)
-        p.fillRect(x + 12, y + 1, 2, 7, 1)
-        p.fillRect(x + 2, y + 7, 10, 2, 1)
-        p.fillRect(x + 5, y + 3, 4, 3, 3)
-        p.setPixel(x + 4, y + 4, 3); p.setPixel(x + 9, y + 4, 3)
+        p.fillRect(x, y, 14, 2, 1); p.fillRect(x + 1, y + 2, 12, 5, 1)
+        p.fillRect(x + 3, y + 7, 8, 2, 12); p.fillRect(x + 3, y + 2, 8, 3, 3)
     }
-
-    // Blockly-style SET card, exactly 64x32.
+    export function operator(p: Image, op: number, x: number, y: number, color: number, scale: number = 1) {
+        if (op == 0) { p.fillRect(x, y + 2 * scale, 5 * scale, scale, color); p.fillRect(x + 2 * scale, y, scale, 5 * scale, color) }
+        if (op == 1) p.fillRect(x, y + 2 * scale, 5 * scale, scale, color)
+        if (op == 2) for (let i = 0; i < 5; i++) { p.fillRect(x + i * scale, y + i * scale, scale, scale, color); p.fillRect(x + (4 - i) * scale, y + i * scale, scale, scale, color) }
+        if (op == 3) for (let i = 0; i < 5; i++) p.fillRect(x + (4 - i) * scale, y + i * scale, scale, scale, color)
+    }
     export function modifier(op: number, rhs: number): Image {
-        let p = image.create(64, 32)
-        p.fillRect(3, 0, 58, 32, 2)
-        p.fillRect(1, 2, 62, 28, 2)
-        p.fillRect(0, 5, 64, 22, 2)
-        p.print("set", 4, 3, 1, image.font8)
-        variableTray(p, 25, 3)
-        p.print("to", 44, 3, 1, image.font8)
-        // Nested arithmetic expression: purple socket, red tray reporter, white operator/RHS.
-        rounded(p, 4, 15, 56, 15, 11)
-        rounded(p, 5, 16, 54, 13, 10)
-        rounded(p, 6, 17, 19, 11, 2)
-        variableTray(p, 8, 18)
-        operator(p, op, 29, 20, 1)
-        p.fillRect(45, 17, 12, 11, 12)
-        p.print("" + rhs, 48, 19, 15, image.font8)
+        let p = image.create(112, 24)
+        round(p, 0, 0, 112, 24, 15); round(p, 1, 0, 110, 22, 2)
+        p.print("set", 4, 7, 1, image.font8); variableTray(p, 25, 6); p.print("to", 43, 7, 1, image.font8)
+        round(p, 58, 3, 50, 17, 11); round(p, 59, 3, 48, 15, 10)
+        round(p, 61, 5, 18, 12, 2); variableTray(p, 63, 6)
+        operator(p, op, 82, 8, 1); round(p, 93, 5, 12, 12, 13); p.print("" + rhs, 96, 7, 15, image.font8)
         return p
     }
-
-    // Do not use overlapping food or one aggregate number to represent 0..6.
-    // Caller handles unrepresentable learner results explicitly; no clamping.
-    export function goods(p: Image, value: number, x: number, y: number, kind: number) {
-        if (value < 0 || value > 6 || Math.floor(value) != value) return
-        let food = kind == 0 ? bun() : cupcake()
-        for (let i = 0; i < value; i++) {
-            p.drawTransparentImage(food, x + (i % 3) * 12, y + Math.idiv(i, 3) * 12)
-        }
-    }
-
-    export function socket(p: Image, x: number, y: number, active: boolean) {
-        rounded(p, x - 2, y - 2, 68, 24, active ? 5 : 14)
-        rounded(p, x, y, 64, 20, active ? 11 : 12)
-        p.fillRect(x + 4, y + 3, 5, 1, 1); p.fillRect(x + 3, y + 4, 1, 4, 1)
-        p.fillRect(x + 55, y + 3, 5, 1, 1); p.fillRect(x + 60, y + 4, 1, 4, 1)
-        p.fillRect(x + 4, y + 16, 5, 1, 1); p.fillRect(x + 3, y + 12, 1, 4, 1)
-        p.fillRect(x + 55, y + 16, 5, 1, 1); p.fillRect(x + 60, y + 12, 1, 4, 1)
-        let c = active ? 5 : 1
-        p.fillRect(x + 31, y + 5, 2, 7, c)
-        p.fillRect(x + 28, y + 10, 8, 1, c); p.fillRect(x + 29, y + 11, 6, 1, c); p.fillRect(x + 30, y + 12, 4, 1, c)
-    }
-
-    export function orderTab(p: Image, index: number, relation: number, signal: number, focused: boolean, complete: boolean, allowedOps: number = 15) {
-        let x = index * 106 + 2
-        rounded(p, x, 137, 104, 16, focused ? 5 : 12)
-        p.fillRect(x + 2, 139, 100, 12, focused ? 6 : 8)
-        if (allowedOps == 15) p.print("ORDER " + (index + 1), x + 5, 141, 1, image.font5)
-        else for (let i = 0; i < 4; i++) if ((allowedOps & (1 << i)) != 0) operator(p, i, x + 8 + i * 8, 141, 1)
-        comparisonGlyph(p, relation, x + 49, 140, 1)
-        let state = signal < 0 ? "CHECK" : signal == 0 ? "FALSE" : "TRUE"
-        p.print(state, x + 62, 141, signal == 1 ? 9 : 1, image.font5)
-        if (complete) {
-            p.fillRect(x + 94, 141, 2, 5, 9); p.fillRect(x + 96, 144, 5, 2, 9)
-        }
-    }
-
-    export function workbench(p: Image, left: number, right: number, relation: number, activeSide: number, signal: number, complete: boolean, allowedOps: number = 15) {
-        p.fillRect(0, 153, 320, 87, 14)
-        p.fillRect(2, 155, 316, 72, 1)
-        p.print("LEFT", 8, 158, 14, image.font8)
-        p.print("RIGHT", 184, 158, 14, image.font8)
-        if (activeSide == 0) { rounded(p, 50, 158, 22, 12, 2); variableTray(p, 54, 159) }
-        if (activeSide == 1) { rounded(p, 238, 158, 22, 12, 2); variableTray(p, 242, 159) }
-
-        let lf = activeSide == 0 ? 5 : 12
-        let rf = activeSide == 1 ? 5 : 12
-        p.fillRect(8, 170, 128, 56, 13); p.drawRect(8, 170, 128, 56, lf)
-        p.fillRect(184, 170, 128, 56, 13); p.drawRect(184, 170, 128, 56, rf)
-        if (activeSide == 0) p.drawRect(9, 171, 126, 54, 5)
-        if (activeSide == 1) p.drawRect(185, 171, 126, 54, 5)
-        if (left > 0 && left <= 6 && Math.floor(left) == left) {
-            let columns = left <= 3 ? left : 3
-            let rows = left <= 3 ? 1 : 2
-            let groupW = columns * 26 - 2
-            let groupH = rows * 26 - 2
-            let originX = 8 + Math.idiv(128 - groupW, 2)
-            let originY = 170 + Math.idiv(56 - groupH, 2)
-            for (let i = 0; i < left; i++) p.drawTransparentImage(largeCake(), originX + (i % 3) * 26, originY + Math.idiv(i, 3) * 26)
-        }
-        if (right > 0 && right <= 6 && Math.floor(right) == right) {
-            let columns = right <= 3 ? right : 3
-            let rows = right <= 3 ? 1 : 2
-            let groupW = columns * 26 - 2
-            let groupH = rows * 26 - 2
-            let originX = 184 + Math.idiv(128 - groupW, 2)
-            let originY = 170 + Math.idiv(56 - groupH, 2)
-            for (let i = 0; i < right; i++) p.drawTransparentImage(largeCake(), originX + (i % 3) * 26, originY + Math.idiv(i, 3) * 26)
-        }
-
-        let bx = 145
-        p.fillRect(bx, 191, 30, 9, 8)
-        p.fillRect(bx + 4, 188, 22, 15, 6)
-        p.fillRect(bx + 9, 185, 12, 21, 6)
-        p.setPixel(bx + 7, 189, 9); p.setPixel(bx + 22, 189, 9)
-        p.setPixel(bx + 7, 201, 9); p.setPixel(bx + 22, 201, 9)
-        comparisonGlyph(p, relation, 155, 190, 1)
-
-        let text = signal < 0 ? "CHECK" : signal == 0 ? "FALSE" : "TRUE"
-        p.print(text, signal < 0 ? 135 : signal == 0 ? 140 : 148, 229, signal == 1 ? 9 : 1, image.font8)
-        if (complete) { p.fillRect(206, 231, 3, 7, 9); p.fillRect(209, 235, 8, 3, 9) }
-        p.print("TOOLS", 210, 231, 1, image.font5)
-        for (let i = 0; i < 4; i++) operator(p, i, 242 + i * 14, 230, (allowedOps & (1 << i)) != 0 ? 1 : 12)
-    }
-
-    export function mixer(p: Image, value: number, active: boolean, jammed: boolean) {
-        p.fillCircle(160, 132, 31, active ? 5 : 12)
-        p.fillCircle(160, 132, 27, 13)
-        p.fillCircle(160, 132, 23, jammed ? 3 : 4)
-        p.fillRect(126, 127, 8, 10, 14); p.fillRect(128, 129, 4, 6, 12)
-        p.fillRect(186, 127, 8, 10, 14); p.fillRect(188, 129, 4, 6, 12)
-        p.fillRect(140, 118, 5, 1, 1); p.fillRect(137, 120, 3, 1, 1)
-          printNumber(p, value, 160, 122, 15, 54)
-    }
-
-    export function numericOutput(value: number): Image {
-        let p = image.create(28, 30)
-        rounded(p, 2, 3, 24, 25, 14)
-        p.fillRect(5, 8, 18, 16, 13)
-        p.fillRect(8, 5, 12, 4, 8)
-        if (Math.floor(value) == value) printNumber(p, value, 14, 10, 15, 24)
+    export function looseCake(): Image {
+        let p = image.create(26, 26)
+        oval(p, 13, 22, 12, 3, 15); round(p, 6, 12, 16, 10, 14); p.fillRect(7, 14, 14, 6, 5)
+        p.fillRect(9, 15, 2, 5, 4); p.fillRect(17, 15, 2, 5, 4)
+        oval(p, 13, 11, 12, 7, 3); oval(p, 13, 8, 9, 5, 1); p.fillCircle(14, 4, 3, 2); p.setPixel(13, 3, 1)
         return p
     }
-
-    export function outputStand(p: Image, value: number, active: boolean) {
-        rounded(p, 235, 143, 34, 39, 14)
-        p.fillRect(239, 150, 26, 25, active ? 6 : 8)
-        p.fillRect(231, 158, 10, 3, 8)
-        p.fillRect(226, 157, 7, 5, 9)
-        p.drawTransparentImage(numericOutput(value), 238, 146)
-        p.print("NUMBER", 236, 182, 1, image.font5)
-    }
-
-    export function deliveryOrder(p: Image, index: number, value: number, target: number, relation: number, signal: number, focused: boolean, complete: boolean) {
-        let x = index * 106 + 2
-        rounded(p, x, 204, 104, 36, focused ? 5 : 12)
-        p.fillRect(x + 2, 206, 100, 32, focused ? 6 : 8)
-        p.fillRect(x + 7, 210, 24, 17, 13)
-        printNumber(p, target, x + 19, 211, 15, 24)
-        comparisonGlyph(p, relation, x + 45, 211, 1)
-        p.fillRect(x + 74, 210, 24, 17, 13)
-        if (value != -999999) printNumber(p, value, x + 86, 211, 15, 24)
-        let text = signal < 0 ? "CHECK" : signal == 0 ? "NO" : "YES"
-        p.print(text, x + 7, 228, signal == 1 ? 9 : 1, image.font5)
-        if (complete) { p.fillRect(x + 91, 229, 2, 6, 9); p.fillRect(x + 93, 232, 6, 2, 9) }
-    }
-
-    // x=6,110,214. Draw later than floor, earlier than held-card overlay.
-    export function station(p: Image, x: number, target: number, current: number, kind: number, active: boolean) {
-        rounded(p, x, 170, 100, 69, 14)
-        p.fillRect(x + 2, 172, 96, 65, 1)
-        p.print("ORDER", x + 6, 177, 14, image.font5)
-        p.print("TRAY", x + 57, 177, 14, image.font5)
-        p.fillRect(x + 5, 186, 40, 26, 13); p.drawRect(x + 5, 186, 40, 26, 12)
-        rounded(p, x + 53, 186, 42, 26, 12); p.fillRect(x + 56, 188, 36, 22, 13)
-        goods(p, target, x + 8, 188, kind); goods(p, current, x + 59, 188, kind)
-        p.fillRect(x + 47, 190, 1, 20, 4)
-        socket(p, x + 18, 216, active)
-        p.print("A", x + 88, 224, 14, image.font5)
-    }
-
-    // A paired cake machine. Both trays remain equally editable; state is supplied
-    // by the caller so this artwork never performs learner arithmetic.
-    export function machine(p: Image, x: number, left: number, right: number, relation: number, activeSide: number, signal: number, readyToShip: boolean) {
-        rounded(p, x, 170, 100, 69, 14)
-        p.fillRect(x + 2, 172, 96, 65, 1)
-        p.print("LEFT", x + 6, 177, 14, image.font5)
-        p.print("RIGHT", x + 62, 177, 14, image.font5)
-
-        // Both trays use the same frame and socket treatment.
-        let leftFrame = activeSide == 0 ? 5 : 12
-        let rightFrame = activeSide == 1 ? 5 : 12
-        p.fillRect(x + 3, 189, 38, 27, 13)
-        p.drawRect(x + 3, 189, 38, 27, leftFrame)
-        p.fillRect(x + 59, 189, 38, 27, 13)
-        p.drawRect(x + 59, 189, 38, 27, rightFrame)
-        goods(p, left, x + 5, 191, 1)
-        goods(p, right, x + 61, 191, 1)
-
-        // Small pointed placement markers make both modifier sockets discoverable.
-        let leftMarker = activeSide == 0 ? 5 : 6
-        let rightMarker = activeSide == 1 ? 5 : 6
-        p.fillRect(x + 19, 182, 6, 2, leftMarker)
-        p.fillRect(x + 21, 184, 2, 3, leftMarker)
-        p.setPixel(x + 18, 181, leftMarker); p.setPixel(x + 25, 181, leftMarker)
-        p.fillRect(x + 75, 182, 6, 2, rightMarker)
-        p.fillRect(x + 77, 184, 2, 3, rightMarker)
-        p.setPixel(x + 74, 181, rightMarker); p.setPixel(x + 81, 181, rightMarker)
-
-        // Blue/teal comparison badge with a pointed Boolean shape.
-        let bx = x + 43
-        p.fillRect(bx, 196, 14, 11, 8)
-        p.fillRect(bx + 2, 195, 10, 13, 6)
-        p.fillRect(bx + 4, 194, 6, 15, 6)
-        p.setPixel(bx + 3, 196, 9); p.setPixel(bx + 10, 196, 9)
-        p.setPixel(bx + 3, 207, 9); p.setPixel(bx + 10, 207, 9)
-        let relationMark = relation == 0 ? "=" : relation == 1 ? "<" : ">"
-        p.print(relationMark, bx + 5, 197, 1, image.font5)
-
-        let status = signal < 0 ? "CHECK?" : signal == 0 ? "FALSE" : "TRUE"
-        let statusX = signal < 0 ? x + 35 : signal == 0 ? x + 38 : x + 40
-        p.print(status, statusX, 220, signal == 1 ? 8 : 11, image.font5)
-        if (readyToShip) {
-            // A small outgoing package sits below the badge and leaves values clear.
-            p.fillRect(x + 86, 220, 8, 7, 5)
-            p.drawRect(x + 86, 220, 8, 7, 1)
-            p.fillRect(x + 89, 219, 2, 9, 9)
-            p.setPixel(x + 96, 223, 9); p.setPixel(x + 97, 223, 9)
+    export function chef(frame: number = 0, carrying: boolean = false): Image { return bakeryIcons.chef(frame, carrying) }
+    export function numericOutput(value: number): Image { return bakeryIcons.carriedNumber(value) }
+    export function shadow(): Image { let p = image.create(28, 10); oval(p, 14, 5, 13, 4, 12); return p }
+    export function drawBackground(): Image {
+        let p = image.create(640, 480); p.fill(13)
+        // Warm tiled floor with sparse seams. Details stay behind playable objects.
+        for (let y = 184; y < 408; y += 32) {
+            p.drawLine(76, y, 564, y, 1)
+            for (let x = 80 + (Math.idiv(y, 32) % 2) * 32; x < 560; x += 64) p.drawLine(x, y, x, y + 31, 1)
         }
+        p.fillRect(0, 42, 640, 132, 8); p.fillRect(0, 174, 640, 10, 14); p.fillRect(0, 174, 640, 3, 7)
+        // Wall panels, copper pipes, pressure dials, and flour storage.
+        for (let x of [16, 210, 402, 610]) {
+            p.fillRect(x, 54, 8, 100, 14); p.fillRect(x + 1, 54, 3, 100, 4)
+            for (let y of [70, 144]) { p.fillRect(x - 3, y, 14, 4, 12); bolt(p, x + 4, y + 2) }
+        }
+        for (let x of [217, 409]) {
+            round(p, x, 80, 28, 58, 15); round(p, x + 2, 80, 24, 54, 6)
+            p.fillCircle(x + 14, 97, 9, 13); p.drawLine(x + 14, 97, x + 19, 92, 2); bolt(p, x + 7, 127)
+            p.fillRect(x + 17, 119, 4, 12, 5)
+        }
+        for (let c of [96, 320, 544]) {
+            round(p, c - 64, 45, 128, 38, 15); round(p, c - 61, 45, 122, 32, 6)
+            p.fillRect(c - 50, 53, 100, 13, 8); p.fillRect(c - 45, 55, 90, 2, 15)
+            for (let x of [c - 55, c + 55]) bolt(p, x, 52)
+            p.fillCircle(c + 52, 68, 3, 5)
+        }
+        // Low side walls and recessed variable-counter bays.
+        p.fillRect(0, 184, 76, 224, 14); p.fillRect(564, 184, 76, 224, 14)
+        p.fillRect(71, 184, 5, 224, 7); p.fillRect(564, 184, 5, 224, 7)
+        for (let y of [194, 289, 387]) {
+            for (let x of [8, 574]) { round(p, x, y, 58, 12, 4); p.fillRect(x + 5, y + 3, 46, 2, 7) }
+        }
+        // Floor wayfinding: feeds, mixer, output and comparison dock each have an accent.
+        for (let x of [165, 320, 475]) { p.fillRect(x - 11, 199, 22, 3, 12); p.fillRect(x - 7, 204, 14, 2, 12) }
+        for (let x of [284, 296, 344, 356]) p.fillRect(x, 345, 5, 2, 7)
+        // Small bakery landmarks: flour sack, stacked trays and a wheeled rack.
+        round(p, 111, 278, 35, 46, 7); round(p, 113, 276, 31, 43, 13)
+        p.fillRect(120, 280, 17, 3, 14); p.drawLine(116, 289, 139, 289, 4)
+        p.fillCircle(129, 305, 8, 5); p.drawLine(129, 299, 129, 312, 14)
+        for (let i = 0; i < 3; i++) { p.fillRect(493 + i * 2, 273 - i * 5, 30, 5, 8); p.fillRect(495 + i * 2, 273 - i * 5, 26, 2, 12) }
+        p.fillRect(106, 353, 39, 5, 14); p.fillRect(109, 358, 3, 16, 8); p.fillRect(138, 358, 3, 16, 8)
+        p.fillCircle(111, 375, 4, 15); p.fillCircle(139, 375, 4, 15)
+        p.drawTransparentImage(looseCake(), 117, 330)
+        // Dock foundation visually anchors the Boolean blocks.
+        p.fillRect(0, 404, 640, 76, 15); p.fillRect(0, 404, 640, 4, 4)
+        for (let x = 4; x < 640; x += 16) p.drawLine(x, 404, x + 5, 408, 5)
+        conveyorTreads(p, 0)
+        return p
+    }
+    export function conveyorTreads(p: Image, offset: number) {
+        for (let y = 70; y <= 187; y++) {
+            let drift = (y - 70) * 0.59
+            for (let c of [96 + drift, 320, 544 - drift]) {
+                let x = Math.floor(c)
+                p.fillRect(x - 63, y, 126, 1, 15); p.fillRect(x - 60, y, 120, 1, 12); p.fillRect(x - 54, y, 108, 1, 8)
+                p.fillRect(x - 59, y, 2, 1, 1); p.fillRect(x + 57, y, 2, 1, 6)
+                if ((y - offset + 10000) % 18 < 3) p.fillRect(x - 52, y, 104, 1, 6)
+                if (y % 24 < 3) { p.fillRect(x - 62, y, 5, 1, 14); p.fillRect(x + 58, y, 5, 1, 14) }
+            }
+        }
+        for (let c of [165, 320, 475]) {
+            round(p, c - 66, 186, 132, 12, 15); round(p, c - 62, 186, 124, 8, 12)
+            for (let x = c - 52; x < c + 56; x += 13) p.fillRect(x, 187, 4, 6, 8)
+            p.fillCircle(c - 62, 190, 4, 4); p.fillCircle(c + 62, 190, 4, 4)
+        }
+    }
+    export function mixer(p: Image, value: number, active: boolean, jammed: boolean, tick: number = 0) {
+        if (!bowl) {
+            bowl = image.create(180, 148)
+            oval(bowl, 90, 128, 82, 17, 12)
+            // Pedestal, rounded copper body, then a broad open elliptical rim.
+            round(bowl, 57, 103, 67, 30, 14); round(bowl, 61, 103, 59, 25, 6)
+            bowl.fillRect(70, 126, 40, 4, 8)
+            oval(bowl, 90, 94, 69, 29, 14); bowl.fillRect(20, 54, 140, 39, 14)
+            oval(bowl, 90, 88, 65, 29, 4); bowl.fillRect(25, 56, 130, 32, 4)
+            bowl.fillRect(31, 67, 7, 26, 7); bowl.fillRect(40, 93, 8, 8, 7)
+            round(bowl, 4, 60, 24, 16, 15); round(bowl, 7, 61, 20, 10, 12)
+            round(bowl, 152, 60, 24, 16, 15); round(bowl, 152, 61, 20, 10, 12)
+            oval(bowl, 90, 55, 74, 34, 15); oval(bowl, 90, 52, 73, 33, 12)
+            oval(bowl, 90, 50, 67, 28, 1); oval(bowl, 90, 52, 59, 23, 14)
+            oval(bowl, 90, 55, 57, 21, 7); oval(bowl, 90, 55, 48, 16, 5)
+            bowl.drawLine(47, 43, 69, 35, 1); bowl.drawLine(48, 44, 69, 36, 1)
+            round(bowl, 67, 92, 47, 25, 8); round(bowl, 70, 94, 41, 20, 13)
+            bolt(bowl, 61, 104); bolt(bowl, 121, 104)
+        }
+        p.drawTransparentImage(bowl, 230, 188)
+        let spin = tick % 4
+        p.drawLine(304 - spin * 3, 239, 326, 234 + spin, 4); p.drawLine(329, 248, 343 + spin, 244, 4)
+        if (active) { p.drawCircle(251, 249, 4, 5); p.drawCircle(389, 249, 4, 5) }
+        number(p, value, 320, 284, jammed ? 2 : 15)
+        p.fillCircle(368, 296, 4, jammed ? 2 : 6)
+    }
+    export function outputStand(p: Image, value: number, ready: boolean) {
+        // A short real chute connects the bowl to a numbered-output dispenser.
+        p.fillRect(397, 285, 50, 12, 14); p.fillRect(397, 285, 50, 7, 12)
+        for (let x = 402; x < 445; x += 9) p.fillRect(x, 287, 3, 4, 8)
+        oval(p, 454, 351, 29, 7, 12)
+        round(p, 427, 299, 54, 45, 15); round(p, 430, 297, 48, 42, 6)
+        p.fillRect(435, 315, 38, 19, 8); p.fillRect(435, 300, 38, 3, 9)
+        p.drawTransparentImage(numericOutput(value), 437, 306)
+        p.fillCircle(475, 307, 3, ready ? 5 : 12)
+        p.drawLine(440, 354, 447, 360, 6); p.drawLine(447, 360, 454, 354, 6)
+    }
+    export function sideStation(p: Image, id: number, value: number, op: number, unlocked: boolean, pulse: number, now: number) {
+        let left = id < 2, x = left ? -7 : 555, y = id % 2 == 0 ? 215 : 311
+        let accent = [2, 4, 5, 6][id]
+        oval(p, x + 47, y + 64, 48, 8, 12)
+        round(p, x, y + 7, 92, 57, 15); round(p, x + 3, y + 9, 86, 51, 14)
+        p.fillRect(x + 5, y + 12, 82, 9, accent); p.fillRect(x + 8, y + 25, 76, 32, 8)
+        round(p, x - 2, y, 96, 13, 12); p.fillRect(x + 2, y, 88, 4, 1)
+        p.drawTransparentImage(bakeryIcons.ingredient(id), x + 12, y + 30)
+        if (unlocked) {
+            number(p, value, x + 49, y + 30, 13)
+            round(p, x + 65, y + 29, 17, 17, 11); operator(p, op, x + 68, y + 32, 1, 2)
+            p.fillRect(x + 12, y + 52, Math.idiv((12000 - now % 12000) * 67, 12000), 2, accent)
+        } else { p.print("LATER", x + 38, y + 36, 12, image.font5) }
+        if (pulse > 0) p.drawRect(x + 5, y + 22, 82, 36, 5)
+    }
+    function comparison(p: Image, relation: number, x: number, y: number, color: number) {
+        if (relation == 0) { p.fillRect(x, y + 4, 18, 3, color); p.fillRect(x, y + 12, 18, 3, color) }
+        else {
+            let direction = relation == 1 || relation == 3 ? 1 : -1
+            for (let i = 0; i < 9; i++) { p.fillRect(x + 9 + direction * i, y + 8 - i, 2, 2, color); p.fillRect(x + 9 + direction * i, y + 8 + i, 2, 2, color) }
+            if (relation >= 3) p.fillRect(x, y + 21, 19, 2, color)
+        }
+    }
+    export function deliveryOrder(p: Image, index: number, value: number, target: number, relation: number, signal: number, focused: boolean, complete: boolean, stage: number = -1, variable: number = -1, base: number = 0) {
+        if (complete) variable = -1 // Completed checks retain their evaluated left value.
+        let x = index * 212 + 8, y = 414
+        hexagon(p, x, y, 200, 62, complete ? 9 : focused ? 5 : 12)
+        hexagon(p, x + 3, y + 3, 194, 56, complete ? 6 : 8)
+        // Rounded numeric sockets sit inside the pointed Boolean reporter.
+        let leftW = variable >= 0 ? 83 : 53
+        round(p, x + 25, y + 10, leftW, 29, stage == 0 ? 5 : 13)
+        if (variable < 0) number(p, target, x + 51, y + 16, 15)
+        else {
+            number(p, base, x + 39, y + 16, 15)
+            operator(p, 0, x + 54, y + 20, 15)
+            p.drawTransparentImage(bakeryIcons.ingredient(variable), x + 70, y + 15)
+        }
+        if (variable >= 0 && stage == 0) {
+            round(p, x + 27, y - 24, 80, 23, 5)
+            p.print("=", x + 34, y - 18, 15, image.font8); number(p, target, x + 70, y - 20, 15)
+        }
+        let symbolX = variable >= 0 ? x + 115 : x + 94
+        if (stage == 1) round(p, symbolX - 4, y + 9, 28, 30, 5)
+        comparison(p, relation, symbolX, y + 13, stage == 1 ? 15 : 1)
+        round(p, x + 147, y + 10, 29, 29, stage == 2 ? 5 : 13)
+        if (value != -999999) number(p, value, x + 161, y + 16, 15)
+        else { p.fillRect(x + 155, y + 26, 13, 2, 12) }
+        if (stage == 3) p.print(signal == 1 ? "TRUE" : "FALSE", x + 81, y + 45, signal == 1 ? 9 : 3, image.font8)
+        else if (signal == 1) { p.drawLine(x + 95, y + 48, x + 99, y + 52, 9); p.drawLine(x + 99, y + 52, x + 107, y + 44, 9) }
+        else if (signal == 0) { p.drawLine(x + 97, y + 45, x + 103, y + 51, 3); p.drawLine(x + 103, y + 45, x + 97, y + 51, 3) }
+        else if (focused) p.print("B CHECK", x + 74, y + 45, 5, image.font8)
+        else p.drawCircle(x + 100, y + 48, 3, 12)
     }
 }
 
 namespace userconfig {
-    export const ARCADE_SCREEN_WIDTH = 320
-    export const ARCADE_SCREEN_HEIGHT = 240
+    export const ARCADE_SCREEN_WIDTH = 640
+    export const ARCADE_SCREEN_HEIGHT = 480
 }
 
 enum BakeryAction {
@@ -1004,8 +879,8 @@ namespace bakery {
     let heldNumber = 0
     let faceX = 0
     let faceY = -1
-    let oldX = 160
-    let oldY = 190
+    let oldX = 320
+    let oldY = 380
     let packets: Sprite[] = []
     let packetOps: number[] = []
     let packetNumbers: number[] = []
@@ -1017,6 +892,32 @@ namespace bakery {
     let shotOps: number[] = []
     let shotNumbers: number[] = []
     let shotBorn: number[] = []
+    let shotFromX: number[] = []
+    let shotFromY: number[] = []
+    let shotToX: number[] = []
+    let shotToY: number[] = []
+    let shotDuration: number[] = []
+    let shotHeight: number[] = []
+    let shotTargets: number[] = []
+    let shotShadows: Sprite[] = []
+    let sideValues = [1, 2, 1, 3]
+    let sideOps = [0, 2, 1, 3]
+    let sideChanged = [0, 0, 0, 0]
+    let orderVariables = [-1, -1, -1]
+    let orderBases = [0, 0, 0]
+    let variablesActive = false
+    let nextOperatorChange = 0
+    let charging = false
+    let chargeBegan = 0
+    let checking = -1
+    let checkBegan = 0
+    let checkPhase = -1
+    let resultUntil = [0, 0, 0]
+    let popAt = -10000
+    let popX = 320
+    let popY = 256
+    let chefFrames: Image[] = []
+    let carryingFrames: Image[] = []
     let spawnAt = [0, 0, 0]
     let spawnRound = [0, 1, 2]
     let manualAt = 0
@@ -1101,29 +1002,67 @@ namespace bakery {
         return r == 0 ? a == b : r == 1 ? a < b : r == 2 ? a > b : r == 3 ? a <= b : a >= b
     }
     function receiveNumber(m: number, value: number) {
-        if (fulfilledAt[m] >= 0 || jammed[m]) return
-        delivered[m] = value; hasDelivery[m] = true; trace("number-delivered")
-        checkOrder(m)
-        if (signals[m] < 0) { tell("Build this order's check to connect it."); return }
-        if (signals[m] == 0) { tell("NO. Adjust the mixer, then throw a new number.", 3400); trace("order-false"); return }
-        if (!consistent(m)) { jammed[m] = true; tell("YES disagrees with the numbers. Check code.", 4000); trace("check-mismatch"); return }
+        if (fulfilledAt[m] >= 0) return
+        delivered[m] = value; hasDelivery[m] = true; signals[m] = -1; jammed[m] = false; resultUntil[m] = 0
+        if (checking == m) { checking = -1; checkPhase = -1 }
+        tell("Number docked. Walk over and press B to check.", 3400); trace("number-delivered")
+    }
+    function finishCheck(m: number) {
+        checkOrder(m); resultUntil[m] = control.millis() + 850
+        if (signals[m] < 0) { tell("Build this check's event to connect it."); return }
+        if (signals[m] == 0) { tell("Not yet. Change a number, then B to check.", 3000); trace("order-false"); return }
+        if (!consistent(m)) { jammed[m] = true; tell("That TRUE does not match. Check your code.", 4000); trace("check-mismatch"); return }
         stamps++; fulfilledAt[m] = control.millis()
         lastBonus = Math.max(1, 5 - Math.idiv(control.millis() - orderBegan[m], 15000)); coins += lastBonus
-        tell("YES! Order activated."); trace("order-filled")
-        if (stamps == 3) { shiftDone = true; clearPackets(); tell("All three activated! A: next round.", 100000); trace("shift-complete") }
+        popAt = control.millis(); popX = 108 + m * 212; popY = 426
+        tell("TRUE! Statement completed."); trace("order-filled")
+        if (stamps == 3) { shiftDone = true; clearPackets(); tell("Three TRUE statements! A: next round.", 100000); trace("shift-complete") }
     }
+    function updateChecks(now: number) {
+        if (checking < 0) return
+        let phase = Math.idiv(now - checkBegan, 320)
+        if (phase != checkPhase) { checkPhase = phase; trace("check-highlight") }
+        if (phase >= 3) { let m = checking; checking = -1; checkPhase = -1; finishCheck(m) }
+    }
+    function updateVariables(now: number) {
+        if (!variablesActive) return
+        if (now >= nextOperatorChange) {
+            for (let i = 0; i < 4; i++) if (shotTargets.indexOf(i + 4) < 0) sideOps[i] = (sideOps[i] + Math.randomRange(1, 3)) % 4
+            nextOperatorChange = now + 12000; trace("station-operators-changed")
+        }
+        for (let m = 0; m < 3; m++) if (orderVariables[m] >= 0 && fulfilledAt[m] < 0) {
+            let target = orderBases[m] + sideValues[orderVariables[m]]
+            if (target != targets[m]) {
+                targets[m] = target; signals[m] = -1; resultUntil[m] = 0; jammed[m] = false
+                if (checking == m) { checking = -1; checkPhase = -1 }
+            }
+        }
+    }
+    function changeVariable(id: number, operand: number) {
+        let previous = sideValues[id], op = sideOps[id]
+        if (op == 3 && (operand == 0 || previous % operand != 0)) { tell("This station needs a whole-number division."); trace("station-rejected"); return }
+        let value = op == 0 ? previous + operand : op == 1 ? previous - operand : op == 2 ? previous * operand : previous / operand
+        if (!smallWhole(value)) { tell("Use a whole number at this station."); trace("station-rejected"); return }
+        sideValues[id] = value; sideChanged[id] = control.millis() + 1000
+        tell("Variable changed! Find its icon in the statements.", 3400); updateVariables(control.millis()); trace("station-changed")
+    }
+
     function removePacket(i: number, reason: string) {
         packets[i].destroy(); packets.removeAt(i); packetOps.removeAt(i); packetNumbers.removeAt(i)
         packetLanes.removeAt(i); packetBorn.removeAt(i); packetManual.removeAt(i); trace(reason)
     }
     function clearPackets() { while (packets.length) removePacket(packets.length - 1, "packet-cleared") }
     function removeShot(i: number, reason: string) {
-        shots[i].destroy(); shots.removeAt(i); shotKinds.removeAt(i); shotOps.removeAt(i); shotNumbers.removeAt(i); shotBorn.removeAt(i); trace(reason)
+        shots[i].destroy(); shotShadows[i].destroy()
+        shots.removeAt(i); shotKinds.removeAt(i); shotOps.removeAt(i); shotNumbers.removeAt(i); shotBorn.removeAt(i)
+        shotFromX.removeAt(i); shotFromY.removeAt(i); shotToX.removeAt(i); shotToY.removeAt(i)
+        shotDuration.removeAt(i); shotHeight.removeAt(i); shotTargets.removeAt(i); shotShadows.removeAt(i); trace(reason)
     }
-    function discardHeld() { if (held != null) held.destroy(); held = null; heldKind = -1; heldOp = -1; heldNumber = 0 }
+
+    function discardHeld() { if (held != null) held.destroy(); held = null; heldKind = -1; heldOp = -1; heldNumber = 0; charging = false }
     function startShift() {
         clearPackets(); while (shots.length) removeShot(shots.length - 1, "shot-cleared")
-        discardHeld(); stamps = 0; coins = 0; shiftDone = false; previewUntil = 0; mixingJammed = false
+        discardHeld(); checking = -1; checkPhase = -1; stamps = 0; coins = 0; shiftDone = false; previewUntil = 0; mixingJammed = false
         if (roundNumber == 0) mixingValue = installed(BakeryAction.DivideModifier) && !installed(BakeryAction.EqualCheck) ? 3 : 2
         mixingStart = mixingValue
         let center = roundNumber == 0 ? 3 : Math.max(2, Math.min(4, Math.abs(mixingValue)))
@@ -1135,16 +1074,24 @@ namespace bakery {
             signals[i] = -1; delivered[i] = 0; hasDelivery[i] = false; jammed[i] = false; fulfilledAt[i] = -1
             orderBegan[i] = control.millis(); spawnAt[i] = control.millis() + 200 + i * 600; spawnRound[i] = i
         }
+        variablesActive = roundNumber > 0 && installed(BakeryAction.GreaterEqualCheck)
+        if (variablesActive) {
+            for (let m = 0; m < 3; m++) {
+                orderVariables[m] = roundNumber == 1 && m == 0 ? 0 : Math.randomRange(0, 3); orderBases[m] = roundNumber == 1 && m == 0 ? 3 : Math.randomRange(1, 3)
+                targets[m] = orderBases[m] + sideValues[orderVariables[m]]
+            }
+        } else orderVariables = [-1, -1, -1]
+        nextOperatorChange = control.millis() + 12000
         manualAt = control.millis() + 1800; outputCooldown = control.millis() + 500
-        tell("Catch a modifier. Aim at the mixer. A: throw.", 4300); trace("shift-started")
+        tell(variablesActive ? "Icons are variables. Throw numbers at side counters." : "Catch a block. Hold A, aim, release to toss.", 5000); trace("shift-started")
     }
     function nearMixer(): boolean {
-        let dx = chef.x - 160, dy = chef.y - 132
-        return dx * dx + dy * dy < 65 * 65
+        let dx = chef.x - 320, dy = chef.y - 256
+        return dx * dx + dy * dy < 130 * 130
     }
     function nearOrder(): number {
-        if (chef == null || chef.y < 190) return -1
-        return Math.max(0, Math.min(2, Math.idiv(chef.x, 106)))
+        if (chef == null || chef.y < 366) return -1
+        return Math.max(0, Math.min(2, Math.idiv(chef.x, 212)))
     }
     function applyModifier(op: number, rhs: number) {
         if (mixingJammed) { tell("Check your mixer code. Empty hands B resets."); return }
@@ -1153,31 +1100,57 @@ namespace bakery {
         if (!installed(action)) { tell("Build this modifier's event first."); trace("missing-handler"); return }
         activeOp = op; activeNumber = rhs; invoke(action, -1); activeOp = -1; activeNumber = 0
     }
+    function targetX(id: number): number { return id == 0 ? 320 : id <= 3 ? 108 + (id - 1) * 212 : id < 6 ? 44 : 596 }
+    function targetY(id: number): number { return id == 0 ? 247 : id <= 3 ? 439 : (id - 4) % 2 == 0 ? 247 : 343 }
+    function chooseTarget(range: number): number {
+        let chosen = -1, best = 100000
+        for (let id = 0; id < 8; id++) {
+            if (heldKind == 0 && id != 0 || heldKind == 1 && id == 0 || id >= 4 && !variablesActive) continue
+            if (id >= 1 && id <= 3 && fulfilledAt[id - 1] >= 0) continue
+            let dx = targetX(id) - chef.x, dy = targetY(id) - chef.y
+            let distance = Math.sqrt(dx * dx + dy * dy)
+            let facing = (dx * faceX + dy * faceY) / Math.max(1, distance * Math.sqrt(faceX * faceX + faceY * faceY))
+            if (distance <= range && facing > 0.70 && distance < best) { best = distance; chosen = id }
+        }
+        return chosen
+    }
     controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         if (!started) return
         if (shiftDone) { roundNumber++; startShift(); return }
-        if (held == null) {
-            if (nearMixer()) invoke(BakeryAction.TraySelected, -1)
-            else tell("Catch a modifier or collect a numbered container.")
-            return
-        }
-        let shot = sprites.create(held.image.clone(), SpriteKind.Projectile)
-        shot.setPosition(chef.x + faceX * 4, chef.y + faceY * 4); shot.z = 25
+        if (held == null) { if (nearMixer()) invoke(BakeryAction.TraySelected, -1); return }
+        charging = true; chargeBegan = control.millis(); trace("charge-started")
+    })
+    controller.A.onEvent(ControllerButtonEvent.Released, function () {
+        if (!started || !charging || held == null || shiftDone) return
+        let power = Math.min(1000, control.millis() - chargeBegan) / 1000
+        let range = 190 + power * 110, target = chooseTarget(range)
         let length = Math.sqrt(faceX * faceX + faceY * faceY)
-        shot.vx = faceX * 150 / length; shot.vy = faceY * 150 / length
+        let endX = target < 0 ? chef.x + faceX * range / length : targetX(target)
+        let endY = target < 0 ? chef.y + faceY * range / length : targetY(target)
+        let shot = sprites.create(held.image.clone(), SpriteKind.Projectile); shot.z = 30
+        let shadow = sprites.create(bakeryArt.shadow(), SpriteKind.Food); shadow.z = 1
         shots.push(shot); shotKinds.push(heldKind); shotOps.push(heldOp); shotNumbers.push(heldNumber); shotBorn.push(control.millis())
+        shotFromX.push(chef.x); shotFromY.push(chef.y); shotToX.push(endX); shotToY.push(endY)
+        shotDuration.push(450 + power * 300); shotHeight.push(38 + power * 65); shotTargets.push(target); shotShadows.push(shadow)
+        shot.setPosition(chef.x, chef.y - 28); shadow.setPosition(chef.x, chef.y + 15)
         trace("item-thrown"); discardHeld(); previewUntil = 0
     })
     controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         if (!started || shiftDone) return
-        if (held != null) { discardHeld(); outputCooldown = control.millis() + 1200; tell("Hands free. Catch another item."); trace("item-discarded"); return }
         let m = nearOrder()
-        if (m >= 0 && fulfilledAt[m] < 0) { hasDelivery[m] = false; signals[m] = -1; jammed[m] = false; tell("Order cleared. Its target stays the same."); trace("order-reset"); return }
-        if (nearMixer()) { mixingValue = mixingStart; mixingJammed = false; previewUntil = 0; tell("Mixer reset. Completed orders stay complete."); trace("mixer-reset") }
+        if (m >= 0 && fulfilledAt[m] < 0) {
+            if (!hasDelivery[m]) { tell("Toss a number into the empty socket first."); return }
+            if (checking >= 0) return
+            jammed[m] = false; signals[m] = -1; checking = m; checkBegan = control.millis(); checkPhase = 0
+            tell("Read the left, the check, then the right.", 1200); trace("check-started"); return
+        }
+        if (held != null) { discardHeld(); outputCooldown = control.millis() + 1000; tell("Hands free. Catch another item."); trace("item-discarded"); return }
+        if (nearMixer()) { mixingValue = mixingStart; mixingJammed = false; previewUntil = 0; tell("Mixer reset. Completed checks stay complete."); trace("mixer-reset") }
     })
+
     function spawn(lane: number, op: number, rhs: number, manual: boolean) {
         let p = sprites.create(manual ? bakeryArt.looseCake() : bakeryArt.modifier(op, rhs), SpriteKind.Food)
-        p.setPosition(manual ? 22 : [49, 160, 271][lane], manual ? 116 : lane == 1 ? 26 : 35); p.z = 3
+        p.setPosition(manual ? 212 : [96, 320, 544][lane], manual ? 315 : 70); p.z = 3
         packets.push(p); packetOps.push(op); packetNumbers.push(rhs); packetLanes.push(lane); packetBorn.push(control.millis()); packetManual.push(manual)
         trace(manual ? "manual-arrived" : "packet-dropped")
     }
@@ -1202,85 +1175,108 @@ namespace bakery {
         }
         for (let i = packets.length - 1; i >= 0; i--) {
             if (!packetManual[i]) {
-                packets[i].x += dt * [0.012, 0, -0.012][packetLanes[i]]; packets[i].y += dt * 0.015
+                packets[i].x += dt * [0.0171, 0, -0.0171][packetLanes[i]]; packets[i].y += dt * 0.028
                 if (now - packetBorn[i] > 4300) { removePacket(i, "packet-expired"); continue }
             }
-            if (held == null && Math.abs(chef.x - packets[i].x) < (packetManual[i] ? 14 : 30) && Math.abs(chef.y - 5 - packets[i].y) < 16) {
+            if (held == null && Math.abs(chef.x - packets[i].x) < (packetManual[i] ? 25 : 55) && Math.abs(chef.y - 12 - packets[i].y) < 30) {
                 heldOp = packetOps[i]; heldNumber = packetNumbers[i]; heldKind = 0
                 held = sprites.create(packetManual[i] ? bakeryArt.looseCake() : bakeryArt.modifier(heldOp, heldNumber), SpriteKind.Food); held.z = 20
-                removePacket(i, "item-picked-up"); tell("Aim at the round mixer. A: throw."); previewUntil = 0
+                removePacket(i, "item-picked-up"); tell("Hold A to charge. Aim at the bowl, then release."); previewUntil = 0
             }
         }
-        if (held == null && !mixingJammed && installed(BakeryAction.TraySelected) && now >= outputCooldown && Math.abs(chef.x - 252) < 8 && Math.abs(chef.y - 174) < 10) {
+        if (held == null && !mixingJammed && installed(BakeryAction.TraySelected) && now >= outputCooldown && Math.abs(chef.x - 454) < 20 && Math.abs(chef.y - 344) < 19) {
             heldKind = 1; heldOp = -1; heldNumber = mixingValue; held = sprites.create(bakeryArt.numericOutput(heldNumber), SpriteKind.Food); held.z = 20
-            outputCooldown = now + 1200; tell("Number copied! Aim down at a check and throw.", 3200); trace("number-collected")
+            outputCooldown = now + 1200; tell("Number ready! Toss to a check or an open counter.", 3400); trace("number-collected")
         }
     }
     function updateShots() {
         let now = control.millis()
         for (let i = shots.length - 1; i >= 0; i--) {
-            let p = shots[i], dx = p.x - 160, dy = p.y - 132
-            if (shotKinds[i] == 0 && dx * dx + dy * dy < 31 * 31) {
-                let op = shotOps[i], rhs = shotNumbers[i]; removeShot(i, "modifier-hit"); applyModifier(op, rhs); continue
-            }
-            if (p.y >= 204 && p.x >= 2 && p.x < 318) {
-                let m = Math.max(0, Math.min(2, Math.idiv(p.x, 106)))
-                let kind = shotKinds[i], value = shotNumbers[i]; removeShot(i, "order-hit")
-                if (kind == 1) receiveNumber(m, value)
-                else tell("These checks take numbers. Throw tools into the mixer.")
-                continue
-            }
-            if (p.x < -35 || p.x > 355 || p.y < -35 || p.y > 270 || now - shotBorn[i] > 3500) removeShot(i, "throw-missed")
+            let t = Math.min(1, (now - shotBorn[i]) / shotDuration[i])
+            let x = shotFromX[i] + (shotToX[i] - shotFromX[i]) * t
+            let y = shotFromY[i] + (shotToY[i] - shotFromY[i]) * t
+            let height = (1 - t) * 28 + Math.sin(t * Math.PI) * shotHeight[i]
+            shots[i].setPosition(x, y - height); shotShadows[i].setPosition(x, y + 10)
+            if (t < 1) continue
+            let kind = shotKinds[i], op = shotOps[i], rhs = shotNumbers[i], target = shotTargets[i]
+            popX = x; popY = y; popAt = now
+            removeShot(i, target < 0 ? "throw-missed" : "throw-landed")
+            if (kind == 0 && target == 0) { trace("modifier-hit"); applyModifier(op, rhs) }
+            else if (kind == 1 && target >= 1 && target <= 3) receiveNumber(target - 1, rhs)
+            else if (kind == 1 && target >= 4) changeVariable(target - 4, rhs)
         }
     }
+
     function moveAroundPot() {
-        chef.x = Math.max(12, Math.min(308, chef.x)); chef.y = Math.max(82, Math.min(195, chef.y))
-        let dx = chef.x - 160, dy = chef.y - 132, distance = Math.sqrt(dx * dx + dy * dy)
-        if (distance < 42) {
+        chef.x = Math.max(92, Math.min(548, chef.x)); chef.y = Math.max(179, Math.min(381, chef.y))
+        let dx = chef.x - 320, dy = chef.y - 256, distance = Math.sqrt(dx * dx + dy * dy)
+        if (distance < 78) {
             if (distance < 1) { chef.x = oldX; chef.y = oldY }
-            else { chef.x = 160 + dx * 42 / distance; chef.y = 132 + dy * 42 / distance }
+            else { chef.x = 320 + dx * 78 / distance; chef.y = 256 + dy * 78 / distance }
         }
         if (Math.abs(chef.vx) + Math.abs(chef.vy) > 1) { faceX = chef.vx == 0 ? 0 : chef.vx > 0 ? 1 : -1; faceY = chef.vy == 0 ? 0 : chef.vy > 0 ? 1 : -1 }
         oldX = chef.x; oldY = chef.y
     }
+    let hudFont = image.doubledFont(image.font8)
+    let smallFont = image.doubledFont(image.font5)
     function drawHud() {
         let now = control.millis(), m = nearOrder()
-        screen.fillRect(0, 0, 320, 19, 14); screen.print("CAKE FACTORY", 5, 1, 1, image.font8)
-        screen.print("A THROW  B DROP", 221, 2, 1, image.font5)
-        for (let i = 0; i < 3; i++) { screen.drawRect(94 + i * 12, 1, 9, 8, 5); if (i < stamps) screen.fillRect(96 + i * 12, 3, 5, 4, 5) }
-        screen.fillRect(140, 2, 65, 6, 8); screen.fillRect(140, 2, Math.idiv(coins * 65, 15), 6, 5)
-        if (now < messageUntil) screen.print(message, 3, 12, 1, image.font5)
-        bakeryArt.mixer(screen, mixingValue, heldKind == 0, mixingJammed)
+        screen.fillRect(0, 0, 640, 40, 8)
+        screen.print("CAKE FACTORY", 10, 3, 13, hudFont)
+        screen.print("HOLD A: TOSS   B: CHECK / DROP", 329, 5, 9, image.font8)
+        for (let i = 0; i < 3; i++) { screen.drawCircle(207 + i * 21, 11, 6, 5); if (i < stamps) screen.fillCircle(207 + i * 21, 11, 4, 5) }
+        if (now < messageUntil) screen.print(message, 10, 26, 13, image.font8)
+        bakeryArt.mixer(screen, mixingValue, heldKind == 0, mixingJammed, Math.idiv(now, 180))
         bakeryArt.outputStand(screen, mixingValue, held == null && !mixingJammed)
-        for (let i = 0; i < 3; i++) bakeryArt.deliveryOrder(screen, i, hasDelivery[i] ? delivered[i] : -999999, targets[i], relations[i], signals[i], i == m, fulfilledAt[i] >= 0)
+        for (let i = 0; i < 4; i++) bakeryArt.sideStation(screen, i, sideValues[i], sideOps[i], variablesActive, sideChanged[i] - now, 12000 - Math.max(0, nextOperatorChange - now))
+        for (let i = 0; i < 3; i++) {
+            let stage = checking == i ? checkPhase : now < resultUntil[i] ? 3 : -1
+            bakeryArt.deliveryOrder(screen, i, hasDelivery[i] ? delivered[i] : -999999, targets[i], relations[i], signals[i], i == m, fulfilledAt[i] >= 0, stage, orderVariables[i], orderBases[i])
+        }
         if (held != null) {
-            screen.drawLine(chef.x + faceX * 12, chef.y + faceY * 12, chef.x + faceX * 22, chef.y + faceY * 22, 5)
+            let power = charging ? Math.min(1, (now - chargeBegan) / 1000) : 0
+            let target = chooseTarget(190 + power * 110)
+            if (target >= 0) {
+                let tx = targetX(target), ty = targetY(target)
+                screen.drawCircle(tx, ty, 11 + (Math.idiv(now, 120) % 2), 5)
+                screen.drawLine(tx - 17, ty, tx - 12, ty, 5); screen.drawLine(tx + 12, ty, tx + 17, ty, 5)
+            }
+            if (charging) {
+                screen.fillRect(chef.x - 20, chef.y + 23, 40, 5, 15)
+                screen.fillRect(chef.x - 19, chef.y + 24, Math.max(3, Math.floor(power * 38)), 3, 5)
+            }
         }
-        if (now - hitAt < 300) screen.drawCircle(160, 132, 32 + Math.idiv(now - hitAt, 70), 5)
-        if (mixingJammed) screen.print("CHECK CODE  B:RESET", 102, 180, 2, image.font5)
+        if (now - popAt < 420) for (let i = 0; i < 8; i++) {
+            let angle = i * Math.PI / 4, radius = 4 + (now - popAt) / 13
+            screen.fillRect(popX + Math.cos(angle) * radius, popY + Math.sin(angle) * radius - (now - popAt) / 30, 3, 3, i % 2 == 0 ? 5 : 1)
+        }
+        if (mixingJammed) screen.print("B: RESET MIXER", 278, 337, 2, image.font8)
         if (previewReported && now < previewUntil && held == null) {
-            screen.fillRect(130, 91, 60, 18, 1); screen.drawRect(130, 91, 60, 18, 2); screen.print(numberText(previewValue), 149, 96, 2, image.font8)
+            screen.fillRect(295, 183, 50, 25, 1); screen.drawRect(295, 183, 50, 25, 6); screen.print(numberText(previewValue), 309, 188, 8, hudFont)
         }
-        if (shiftDone) {
-            screen.fillRect(39, 60, 242, 113, 14); screen.fillRect(42, 63, 236, 107, 1)
-            screen.printCenter("THREE YES ORDERS!", 77, 14)
-            screen.printCenter("Keep your number. New checks next.", 111, 14, image.font5)
-            screen.printCenter("A: next round", 145, 14)
+        if (shiftDone && now > resultUntil[0] && now > resultUntil[1] && now > resultUntil[2]) {
+            screen.fillRect(111, 130, 418, 160, 15); screen.fillRect(115, 134, 410, 152, 13)
+            screen.printCenter("THREE TRUE STATEMENTS!", 155, 8, hudFont)
+            screen.printCenter(variablesActive ? "Keep mixing. New variable statements next." : "Next: ingredient variables join the factory.", 199, 8, image.font8)
+            screen.printCenter("A: next round", 248, 6, hudFont)
         }
     }
+
     game.onUpdate(function () {
         if (!started) return
         let now = control.millis(), dt = Math.min(80, now - lastTick); lastTick = now
-        moveAroundPot(); bakeryArt.conveyorTreads(scene.backgroundImage(), Math.idiv(now * 15, 1000))
-        chef.setImage(bakeryArt.chef(Math.abs(chef.vx) + Math.abs(chef.vy) > 1 ? Math.idiv(now, 130) % 3 : 0))
-        if (!shiftDone) { updatePackets(dt); updateShots() }
-        if (held != null) held.setPosition(Math.max(34, Math.min(286, chef.x + (chef.x < 160 ? -34 : 34))), chef.y - 16)
+        moveAroundPot(); bakeryArt.conveyorTreads(scene.backgroundImage(), Math.idiv(now * 28, 1000))
+        let frame = Math.abs(chef.vx) + Math.abs(chef.vy) > 1 ? Math.idiv(now, 130) % 3 : 0
+        chef.setImage(held != null ? carryingFrames[frame] : chefFrames[frame])
+        if (!shiftDone) { updatePackets(dt); updateShots(); updateVariables(now); updateChecks(now) }
+        if (held != null) held.setPosition(chef.x, chef.y - 14 - held.height / 2 - (charging ? Math.min(5, Math.idiv(now - chargeBegan, 180)) : 0))
     })
-    game.onShade(function () { if (started) drawHud() })
+    game.onPaint(function () { if (started) drawHud() })
     control.runInParallel(function () {
         pause(100); bakeryArt.installPalette(); scene.setBackgroundImage(bakeryArt.drawBackground())
-        chef = sprites.create(bakeryArt.chef(), SpriteKind.Player); chef.setPosition(160, 190); chef.z = 10
-        controller.moveSprite(chef, 95, 95); lastTick = control.millis(); started = true; startShift(); trace("world-ready")
+        for (let i = 0; i < 3; i++) { chefFrames.push(bakeryArt.chef(i)); carryingFrames.push(bakeryArt.chef(i, true)) }
+        chef = sprites.create(chefFrames[0], SpriteKind.Player); chef.setPosition(320, 375); chef.z = 10
+        controller.moveSprite(chef, 190, 190); lastTick = control.millis(); started = true; startShift(); trace("world-ready")
     })
 }
 ```

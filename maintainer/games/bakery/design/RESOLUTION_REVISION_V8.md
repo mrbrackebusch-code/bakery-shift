@@ -1,0 +1,5 @@
+# Cake Factory V8: native 640 x 480
+
+Owner requested the next resolution tier so existing SET modifiers occupy less of the room without replacing the artwork. The native framebuffer doubles from320x240 to640x480. SET cards remain exactly64x32; chef, loose cake and number container use integer2x pixel art. Room anchors, walkaround collision, movement and throw speeds double to preserve travel time. Conveyors are88pixels wide, giving native cards clearance. The mixer and bottom comparisons remain prominent.
+
+Arithmetic, comparison events, tutorial wording and learner constructions are unchanged. Existing native instruction images remain applicable. Re-record all17 corresponding-state GIFs at actual640x480. Deliver a self-contained local animation HTML, inspect the resulting gameplay and run focused route checks. This is informed development evidence; no learner-agent or classroom acceptance claim. Current owner correction authorizes replacement of the V7 review hold after the replacement is verified.

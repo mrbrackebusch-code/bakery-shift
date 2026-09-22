@@ -1,434 +1,217 @@
-// Canonical code-native Bakery Shift artwork. Included by build.mjs.
-// No learner arithmetic, state mutation, collection or completion logic here.
+// Native pixel artwork for the Cake Factory world. No learner calculations.
 namespace bakeryArt {
-    // Index 10 exactly matches pinned Math; index 2 matches Variables.
-    // Install only once at game start if this complete palette is adopted.
+    let small = image.doubledFont(image.font5)
+    let large = image.doubledFont(image.font8)
+    let bowl: Image = null
     export function installPalette() {
-        image.setPalette(hex`000000 FFFFFF EC3B59 F7AAC3 D98B46 F6C85F 479AA4 E7AD82 294E5A 9BD7D0 A55EEA 683C91 A8B8B5 D9E2DC 6E4638 243139`)
+        image.setPalette(hex`000000 FFFFFF EC3B59 F7AAC3 D98B46 F6C85F 479AA4 E7AD82 294E5A 9BD7D0 A55EEA 683C91 A8B8B5 F4E6CE 6E4638 243139`)
     }
-
-    function rounded(p: Image, x: number, y: number, w: number, h: number, c: number) {
-        p.fillRect(x + 3, y, w - 6, h, c)
+    function round(p: Image, x: number, y: number, w: number, h: number, c: number) {
+        p.fillRect(x + 3, y, w - 6, h, c); p.fillRect(x, y + 3, w, h - 6, c)
         p.fillRect(x + 1, y + 1, w - 2, h - 2, c)
-        p.fillRect(x, y + 3, w, h - 6, c)
     }
-
-    export function bun(): Image {
-        return img`
-            . . . e e e e . . .
-            . . e 5 5 5 5 e . .
-            . e 5 5 1 5 5 5 e .
-            e 5 5 1 5 1 5 5 5 e
-            e 5 5 5 5 5 1 5 5 e
-            e 4 5 5 5 5 5 5 4 e
-            . e 4 4 4 4 4 4 e .
-            . . e e e e e e . .
-            . . . e e e e . . .
-        `
-    }
-
-    export function cupcake(): Image {
-        return img`
-            . . . . 2 . . . . .
-            . . . 1 1 1 1 . . .
-            . . 1 3 3 3 3 1 . .
-            . 1 3 3 3 3 3 3 1 .
-            1 3 3 3 3 3 3 3 3 1
-            . e e e e e e e e .
-            . e 4 5 5 5 5 4 e .
-            . . e 4 5 5 4 e . .
-            . . e 4 5 5 4 e . .
-            . . . e e e e . . .
-        `
-    }
-
-    export function largeCake(): Image {
-        let p = image.create(24, 24)
-        rounded(p, 4, 13, 16, 10, 14)
-        p.fillRect(5, 14, 14, 7, 5)
-        for (let x of [7, 11, 15, 19]) p.fillRect(x, 15, 1, 6, 4)
-        rounded(p, 1, 5, 22, 12, 14)
-        rounded(p, 2, 6, 20, 10, 3)
-        p.fillRect(4, 7, 5, 2, 1); p.fillRect(3, 9, 2, 3, 1)
-        p.fillCircle(7, 6, 3, 3); p.fillCircle(16, 6, 3, 3)
-        p.fillRect(5, 14, 3, 3, 3); p.fillRect(14, 14, 3, 2, 3)
-        p.fillCircle(12, 3, 3, 14); p.fillCircle(12, 3, 2, 2)
-        p.setPixel(11, 2, 1); p.drawLine(13, 1, 15, 0, 6)
-        p.fillRect(6, 22, 12, 1, 14)
-        return p
-    }
-
-    function largeCakeLegacy(): Image {
-        return img`
-            . . . . . . 1 1 . . . . . . . . . . . . . . . .
-            . . . . . 1 3 3 3 1 . . . . . . . . . . . . . . .
-            . . . . 1 3 3 3 3 3 1 . . . . . . . . . . . . . .
-            . . . 1 3 3 3 3 3 3 3 1 . . . . . . . . . . . . .
-            . . 1 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . . . .
-            . 1 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . . .
-            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            1 3 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            . 1 3 3 3 3 3 3 3 3 3 3 3 3 1 . . . . . . . . . .
-            . . 1 4 4 4 4 4 4 4 4 4 4 1 . . . . . . . . . .
-            . . 1 4 5 5 5 5 5 5 5 5 5 4 1 . . . . . . . . . .
-            . . 1 4 5 5 5 5 5 5 5 5 5 4 1 . . . . . . . . . .
-            . . . 1 4 4 4 4 4 4 4 4 4 1 . . . . . . . . . . .
-            . . . . 1 1 1 1 1 1 1 1 1 1 . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . . . . . . . . . . .
-        `
-    }
-
-    export function looseCake(): Image {
-        let p = image.create(16, 16)
-        rounded(p, 3, 9, 10, 7, 14)
-        p.fillRect(4, 10, 8, 4, 5)
-        for (let x of [6, 9]) p.fillRect(x, 11, 1, 3, 4)
-        rounded(p, 1, 4, 14, 8, 14)
-        rounded(p, 2, 5, 12, 6, 3)
-        p.fillRect(3, 6, 4, 1, 1)
-        p.fillCircle(8, 2, 2, 2)
-        return p
-    }
-
-    function looseCakeLegacy(): Image {
-        return img`
-            . . . 1 1 . . . . . . . . . .
-            . . 1 3 3 3 1 . . . . . . . .
-            . 1 3 3 3 3 3 1 . . . . . . .
-            1 3 3 3 3 3 3 3 1 . . . . . .
-            1 3 3 3 3 3 3 3 1 . . . . . .
-            . 1 4 4 4 4 4 4 1 . . . . . .
-            . 1 4 5 5 5 5 4 1 . . . . . .
-            . . 1 4 4 4 4 1 . . . . . . .
-            . . 1 1 1 1 1 1 . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-            . . . . . . . . . . . . . . .
-        `
-    }
-
-    export function chef(frame: number = 0): Image {
-        let p = img`
-            . . . . . 1 1 1 1 1 1 . . . . .
-            . . . 1 1 1 1 1 1 1 1 1 1 . . .
-            . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
-            . . 1 1 1 1 1 1 1 1 1 1 1 1 . .
-            . . . 1 1 1 1 1 1 1 1 1 1 . . .
-            . . . . e e e e e e e e . . . .
-            . . . . e 7 7 7 7 7 7 e . . . .
-            . . . . 7 f 7 7 7 f 7 7 . . . .
-            . . . . 7 7 7 7 7 7 7 7 . . . .
-            . . . . . 7 7 2 2 7 7 . . . . .
-            . . . . . . 7 7 7 7 . . . . . .
-            . . . 1 1 6 1 1 6 1 1 1 1 . . .
-            . . 1 1 1 6 6 6 6 6 6 1 1 1 . .
-            . . 7 7 1 6 6 6 6 6 1 7 7 . . .
-            . . 7 7 1 6 6 6 6 6 1 7 7 . . .
-            . . . . 6 6 6 6 6 6 6 6 . . . .
-            . . . . 6 6 6 6 6 6 6 6 . . . .
-            . . . . 6 6 c c 6 6 6 6 . . . .
-            . . . . 6 6 c c 6 6 6 6 . . . .
-            . . . . f f . . f f . . . . . .
-            . . . f f f . . f f f . . . . .
-            . . . f f f . . . f f f . . . .
-        `
-        if (frame == 1) { p.setPixel(3, 21, 0); p.setPixel(6, 21, 15) }
-        if (frame == 2) { p.setPixel(11, 21, 0); p.setPixel(8, 21, 15) }
-        return p
-    }
-
-    // The HUD, order tabs, and focused workbench are drawn separately by the caller.
-    export function drawBackground(): Image {
-        let p = image.create(320, 240)
-        p.fill(13)
-        p.fillRect(0, 0, 320, 19, 14)
-        p.fillRect(0, 20, 320, 3, 8)
-        for (let x of [32, 138, 244]) { p.fillRect(x, 24, 42, 2, 8); p.fillRect(x + 4, 27, 34, 2, 9) }
-        for (let y = 24; y <= 84; y++) {
-            let d = Math.floor((y - 24) * 0.8)
-            for (let c of [40 + d, 160, 280 - d]) {
-                p.fillRect(c - 37, y, 74, 1, 14)
-                p.fillRect(c - 33, y, 66, 1, 12)
-                p.setPixel(c - 34, y, 1); p.setPixel(c + 33, y, 1)
-            }
-        }
-        p.fillRect(0, 90, 320, 106, 8)
-        p.fillRect(0, 85, 320, 5, 8)
-        return p
-    }
-
-    // Call every frame over the static background, before tokens and chef.
-    export function conveyorTreads(p: Image, pixelOffset: number) {
-        for (let y = 24; y <= 84; y++) {
-            let d = Math.floor((y - 24) * 0.8)
-            for (let c of [40 + d, 160, 280 - d]) {
-                p.fillRect(c - 37, y, 74, 1, 14)
-                p.fillRect(c - 33, y, 66, 1, 12)
-                p.setPixel(c - 34, y, 1); p.setPixel(c + 33, y, 1)
-                if ((y + pixelOffset) % 12 == 0) p.fillRect(c - 32, y, 64, 1, 8)
-            }
+    function oval(p: Image, x: number, y: number, rx: number, ry: number, color: number) {
+        for (let row = -ry; row <= ry; row++) {
+            let half = Math.floor(rx * Math.sqrt(Math.max(0, 1 - row * row / (ry * ry))))
+            p.fillRect(x - half, y + row, half * 2 + 1, 1, color)
         }
     }
-
-    // 0 +, 1 -, 2 multiplication cross, 3 forward slash.
-    // PXT overrides vanilla Blockly's division sign to slash; match that UI.
-    function operator(p: Image, op: number, x: number, y: number, color: number) {
-        if (op == 0) { p.fillRect(x, y + 2, 5, 1, color); p.fillRect(x + 2, y, 1, 5, color) }
-        if (op == 1) p.fillRect(x, y + 2, 5, 1, color)
-        if (op == 2) for (let n = 0; n < 5; n++) { p.setPixel(x + n, y + n, color); p.setPixel(x + 4 - n, y + n, color) }
-        if (op == 3) for (let n = 0; n < 5; n++) p.setPixel(x + 4 - n, y + n, color)
+    function bolt(p: Image, x: number, y: number) { p.fillCircle(x, y, 3, 15); p.fillCircle(x, y - 1, 2, 12); p.setPixel(x - 1, y - 2, 1) }
+    function hexagon(p: Image, x: number, y: number, w: number, h: number, color: number) {
+        let tip = Math.idiv(h, 2)
+        // Explicit scan lines preserve the true Boolean reporter silhouette.
+        for (let row = 0; row < h; row++) {
+            let inset = Math.abs(Math.idiv(h, 2) - row)
+            p.fillRect(x + inset, y + row, w - inset * 2, 1, color)
+        }
     }
-
-    function comparisonGlyph(p: Image, relation: number, x: number, y: number, color: number) {
-        if (relation == 0) { p.fillRect(x, y + 2, 11, 2, color); p.fillRect(x, y + 7, 11, 2, color) }
-        if (relation == 1 || relation == 3) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 - n, y + n, color); p.setPixel(x + 5 - n, y + 10 - n, color) }
-        if (relation == 2 || relation == 4) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 + n, y + n, color); p.setPixel(x + 5 + n, y + 10 - n, color) }
-        if (relation == 3 || relation == 4) p.fillRect(x, y + 12, 12, 1, color)
-    }
-
-    function printNumber(p: Image, value: number, centerX: number, topY: number, color: number, maxWidth: number) {
-        if (value - value != 0) return
-        let text = "" + value
+    function number(p: Image, n: number, cx: number, y: number, color: number, big: boolean = true) {
+        let text = "" + n
         if (text.length > 6) text = text.substr(0, 6)
-        let scale = text.length * 12 <= maxWidth ? 2 : 1
-        let temp = image.create(text.length * (scale == 2 ? 6 : 5) + 2, 8)
-        temp.print(text, 0, 0, 1, scale == 2 ? image.font8 : image.font5)
-        let outWidth = text.length * (scale == 2 ? 12 : 5)
-        let left = centerX - Math.idiv(outWidth, 2)
-        for (let sy = 0; sy < 8; sy++) for (let sx = 0; sx < temp.width; sx++) if (temp.getPixel(sx, sy) != 0) {
-            for (let dy = 0; dy < scale; dy++) for (let dx = 0; dx < scale; dx++) p.setPixel(left + sx * scale + dx, topY + sy * scale + dy, color)
-        }
+        let font = big && text.length <= 2 ? large : image.font8
+        p.print(text, cx - Math.idiv(text.length * font.charWidth, 2), y, color, font)
     }
-
     export function variableTray(p: Image, x: number, y: number) {
-        p.fillRect(x, y, 14, 1, 1)
-        p.fillRect(x, y + 1, 2, 7, 1)
-        p.fillRect(x + 12, y + 1, 2, 7, 1)
-        p.fillRect(x + 2, y + 7, 10, 2, 1)
-        p.fillRect(x + 5, y + 3, 4, 3, 3)
-        p.setPixel(x + 4, y + 4, 3); p.setPixel(x + 9, y + 4, 3)
+        p.fillRect(x, y, 14, 2, 1); p.fillRect(x + 1, y + 2, 12, 5, 1)
+        p.fillRect(x + 3, y + 7, 8, 2, 12); p.fillRect(x + 3, y + 2, 8, 3, 3)
     }
-
-    // Blockly-style SET card, exactly 64x32.
+    export function operator(p: Image, op: number, x: number, y: number, color: number, scale: number = 1) {
+        if (op == 0) { p.fillRect(x, y + 2 * scale, 5 * scale, scale, color); p.fillRect(x + 2 * scale, y, scale, 5 * scale, color) }
+        if (op == 1) p.fillRect(x, y + 2 * scale, 5 * scale, scale, color)
+        if (op == 2) for (let i = 0; i < 5; i++) { p.fillRect(x + i * scale, y + i * scale, scale, scale, color); p.fillRect(x + (4 - i) * scale, y + i * scale, scale, scale, color) }
+        if (op == 3) for (let i = 0; i < 5; i++) p.fillRect(x + (4 - i) * scale, y + i * scale, scale, scale, color)
+    }
     export function modifier(op: number, rhs: number): Image {
-        let p = image.create(64, 32)
-        p.fillRect(3, 0, 58, 32, 2)
-        p.fillRect(1, 2, 62, 28, 2)
-        p.fillRect(0, 5, 64, 22, 2)
-        p.print("set", 4, 3, 1, image.font8)
-        variableTray(p, 25, 3)
-        p.print("to", 44, 3, 1, image.font8)
-        // Nested arithmetic expression: purple socket, red tray reporter, white operator/RHS.
-        rounded(p, 4, 15, 56, 15, 11)
-        rounded(p, 5, 16, 54, 13, 10)
-        rounded(p, 6, 17, 19, 11, 2)
-        variableTray(p, 8, 18)
-        operator(p, op, 29, 20, 1)
-        p.fillRect(45, 17, 12, 11, 12)
-        p.print("" + rhs, 48, 19, 15, image.font8)
+        let p = image.create(112, 24)
+        round(p, 0, 0, 112, 24, 15); round(p, 1, 0, 110, 22, 2)
+        p.print("set", 4, 7, 1, image.font8); variableTray(p, 25, 6); p.print("to", 43, 7, 1, image.font8)
+        round(p, 58, 3, 50, 17, 11); round(p, 59, 3, 48, 15, 10)
+        round(p, 61, 5, 18, 12, 2); variableTray(p, 63, 6)
+        operator(p, op, 82, 8, 1); round(p, 93, 5, 12, 12, 13); p.print("" + rhs, 96, 7, 15, image.font8)
         return p
     }
-
-    // Do not use overlapping food or one aggregate number to represent 0..6.
-    // Caller handles unrepresentable learner results explicitly; no clamping.
-    export function goods(p: Image, value: number, x: number, y: number, kind: number) {
-        if (value < 0 || value > 6 || Math.floor(value) != value) return
-        let food = kind == 0 ? bun() : cupcake()
-        for (let i = 0; i < value; i++) {
-            p.drawTransparentImage(food, x + (i % 3) * 12, y + Math.idiv(i, 3) * 12)
-        }
-    }
-
-    export function socket(p: Image, x: number, y: number, active: boolean) {
-        rounded(p, x - 2, y - 2, 68, 24, active ? 5 : 14)
-        rounded(p, x, y, 64, 20, active ? 11 : 12)
-        p.fillRect(x + 4, y + 3, 5, 1, 1); p.fillRect(x + 3, y + 4, 1, 4, 1)
-        p.fillRect(x + 55, y + 3, 5, 1, 1); p.fillRect(x + 60, y + 4, 1, 4, 1)
-        p.fillRect(x + 4, y + 16, 5, 1, 1); p.fillRect(x + 3, y + 12, 1, 4, 1)
-        p.fillRect(x + 55, y + 16, 5, 1, 1); p.fillRect(x + 60, y + 12, 1, 4, 1)
-        let c = active ? 5 : 1
-        p.fillRect(x + 31, y + 5, 2, 7, c)
-        p.fillRect(x + 28, y + 10, 8, 1, c); p.fillRect(x + 29, y + 11, 6, 1, c); p.fillRect(x + 30, y + 12, 4, 1, c)
-    }
-
-    export function orderTab(p: Image, index: number, relation: number, signal: number, focused: boolean, complete: boolean, allowedOps: number = 15) {
-        let x = index * 106 + 2
-        rounded(p, x, 137, 104, 16, focused ? 5 : 12)
-        p.fillRect(x + 2, 139, 100, 12, focused ? 6 : 8)
-        if (allowedOps == 15) p.print("ORDER " + (index + 1), x + 5, 141, 1, image.font5)
-        else for (let i = 0; i < 4; i++) if ((allowedOps & (1 << i)) != 0) operator(p, i, x + 8 + i * 8, 141, 1)
-        comparisonGlyph(p, relation, x + 49, 140, 1)
-        let state = signal < 0 ? "CHECK" : signal == 0 ? "FALSE" : "TRUE"
-        p.print(state, x + 62, 141, signal == 1 ? 9 : 1, image.font5)
-        if (complete) {
-            p.fillRect(x + 94, 141, 2, 5, 9); p.fillRect(x + 96, 144, 5, 2, 9)
-        }
-    }
-
-    export function workbench(p: Image, left: number, right: number, relation: number, activeSide: number, signal: number, complete: boolean, allowedOps: number = 15) {
-        p.fillRect(0, 153, 320, 87, 14)
-        p.fillRect(2, 155, 316, 72, 1)
-        p.print("LEFT", 8, 158, 14, image.font8)
-        p.print("RIGHT", 184, 158, 14, image.font8)
-        if (activeSide == 0) { rounded(p, 50, 158, 22, 12, 2); variableTray(p, 54, 159) }
-        if (activeSide == 1) { rounded(p, 238, 158, 22, 12, 2); variableTray(p, 242, 159) }
-
-        let lf = activeSide == 0 ? 5 : 12
-        let rf = activeSide == 1 ? 5 : 12
-        p.fillRect(8, 170, 128, 56, 13); p.drawRect(8, 170, 128, 56, lf)
-        p.fillRect(184, 170, 128, 56, 13); p.drawRect(184, 170, 128, 56, rf)
-        if (activeSide == 0) p.drawRect(9, 171, 126, 54, 5)
-        if (activeSide == 1) p.drawRect(185, 171, 126, 54, 5)
-        if (left > 0 && left <= 6 && Math.floor(left) == left) {
-            let columns = left <= 3 ? left : 3
-            let rows = left <= 3 ? 1 : 2
-            let groupW = columns * 26 - 2
-            let groupH = rows * 26 - 2
-            let originX = 8 + Math.idiv(128 - groupW, 2)
-            let originY = 170 + Math.idiv(56 - groupH, 2)
-            for (let i = 0; i < left; i++) p.drawTransparentImage(largeCake(), originX + (i % 3) * 26, originY + Math.idiv(i, 3) * 26)
-        }
-        if (right > 0 && right <= 6 && Math.floor(right) == right) {
-            let columns = right <= 3 ? right : 3
-            let rows = right <= 3 ? 1 : 2
-            let groupW = columns * 26 - 2
-            let groupH = rows * 26 - 2
-            let originX = 184 + Math.idiv(128 - groupW, 2)
-            let originY = 170 + Math.idiv(56 - groupH, 2)
-            for (let i = 0; i < right; i++) p.drawTransparentImage(largeCake(), originX + (i % 3) * 26, originY + Math.idiv(i, 3) * 26)
-        }
-
-        let bx = 145
-        p.fillRect(bx, 191, 30, 9, 8)
-        p.fillRect(bx + 4, 188, 22, 15, 6)
-        p.fillRect(bx + 9, 185, 12, 21, 6)
-        p.setPixel(bx + 7, 189, 9); p.setPixel(bx + 22, 189, 9)
-        p.setPixel(bx + 7, 201, 9); p.setPixel(bx + 22, 201, 9)
-        comparisonGlyph(p, relation, 155, 190, 1)
-
-        let text = signal < 0 ? "CHECK" : signal == 0 ? "FALSE" : "TRUE"
-        p.print(text, signal < 0 ? 135 : signal == 0 ? 140 : 148, 229, signal == 1 ? 9 : 1, image.font8)
-        if (complete) { p.fillRect(206, 231, 3, 7, 9); p.fillRect(209, 235, 8, 3, 9) }
-        p.print("TOOLS", 210, 231, 1, image.font5)
-        for (let i = 0; i < 4; i++) operator(p, i, 242 + i * 14, 230, (allowedOps & (1 << i)) != 0 ? 1 : 12)
-    }
-
-    export function mixer(p: Image, value: number, active: boolean, jammed: boolean) {
-        p.fillCircle(160, 132, 31, active ? 5 : 12)
-        p.fillCircle(160, 132, 27, 13)
-        p.fillCircle(160, 132, 23, jammed ? 3 : 4)
-        p.fillRect(126, 127, 8, 10, 14); p.fillRect(128, 129, 4, 6, 12)
-        p.fillRect(186, 127, 8, 10, 14); p.fillRect(188, 129, 4, 6, 12)
-        p.fillRect(140, 118, 5, 1, 1); p.fillRect(137, 120, 3, 1, 1)
-          printNumber(p, value, 160, 122, 15, 54)
-    }
-
-    export function numericOutput(value: number): Image {
-        let p = image.create(28, 30)
-        rounded(p, 2, 3, 24, 25, 14)
-        p.fillRect(5, 8, 18, 16, 13)
-        p.fillRect(8, 5, 12, 4, 8)
-        if (Math.floor(value) == value) printNumber(p, value, 14, 10, 15, 24)
+    export function looseCake(): Image {
+        let p = image.create(26, 26)
+        oval(p, 13, 22, 12, 3, 15); round(p, 6, 12, 16, 10, 14); p.fillRect(7, 14, 14, 6, 5)
+        p.fillRect(9, 15, 2, 5, 4); p.fillRect(17, 15, 2, 5, 4)
+        oval(p, 13, 11, 12, 7, 3); oval(p, 13, 8, 9, 5, 1); p.fillCircle(14, 4, 3, 2); p.setPixel(13, 3, 1)
         return p
     }
-
-    export function outputStand(p: Image, value: number, active: boolean) {
-        rounded(p, 235, 143, 34, 39, 14)
-        p.fillRect(239, 150, 26, 25, active ? 6 : 8)
-        p.fillRect(231, 158, 10, 3, 8)
-        p.fillRect(226, 157, 7, 5, 9)
-        p.drawTransparentImage(numericOutput(value), 238, 146)
-        p.print("NUMBER", 236, 182, 1, image.font5)
-    }
-
-    export function deliveryOrder(p: Image, index: number, value: number, target: number, relation: number, signal: number, focused: boolean, complete: boolean) {
-        let x = index * 106 + 2
-        rounded(p, x, 204, 104, 36, focused ? 5 : 12)
-        p.fillRect(x + 2, 206, 100, 32, focused ? 6 : 8)
-        p.fillRect(x + 7, 210, 24, 17, 13)
-        printNumber(p, target, x + 19, 211, 15, 24)
-        comparisonGlyph(p, relation, x + 45, 211, 1)
-        p.fillRect(x + 74, 210, 24, 17, 13)
-        if (value != -999999) printNumber(p, value, x + 86, 211, 15, 24)
-        let text = signal < 0 ? "CHECK" : signal == 0 ? "NO" : "YES"
-        p.print(text, x + 7, 228, signal == 1 ? 9 : 1, image.font5)
-        if (complete) { p.fillRect(x + 91, 229, 2, 6, 9); p.fillRect(x + 93, 232, 6, 2, 9) }
-    }
-
-    // x=6,110,214. Draw later than floor, earlier than held-card overlay.
-    export function station(p: Image, x: number, target: number, current: number, kind: number, active: boolean) {
-        rounded(p, x, 170, 100, 69, 14)
-        p.fillRect(x + 2, 172, 96, 65, 1)
-        p.print("ORDER", x + 6, 177, 14, image.font5)
-        p.print("TRAY", x + 57, 177, 14, image.font5)
-        p.fillRect(x + 5, 186, 40, 26, 13); p.drawRect(x + 5, 186, 40, 26, 12)
-        rounded(p, x + 53, 186, 42, 26, 12); p.fillRect(x + 56, 188, 36, 22, 13)
-        goods(p, target, x + 8, 188, kind); goods(p, current, x + 59, 188, kind)
-        p.fillRect(x + 47, 190, 1, 20, 4)
-        socket(p, x + 18, 216, active)
-        p.print("A", x + 88, 224, 14, image.font5)
-    }
-
-    // A paired cake machine. Both trays remain equally editable; state is supplied
-    // by the caller so this artwork never performs learner arithmetic.
-    export function machine(p: Image, x: number, left: number, right: number, relation: number, activeSide: number, signal: number, readyToShip: boolean) {
-        rounded(p, x, 170, 100, 69, 14)
-        p.fillRect(x + 2, 172, 96, 65, 1)
-        p.print("LEFT", x + 6, 177, 14, image.font5)
-        p.print("RIGHT", x + 62, 177, 14, image.font5)
-
-        // Both trays use the same frame and socket treatment.
-        let leftFrame = activeSide == 0 ? 5 : 12
-        let rightFrame = activeSide == 1 ? 5 : 12
-        p.fillRect(x + 3, 189, 38, 27, 13)
-        p.drawRect(x + 3, 189, 38, 27, leftFrame)
-        p.fillRect(x + 59, 189, 38, 27, 13)
-        p.drawRect(x + 59, 189, 38, 27, rightFrame)
-        goods(p, left, x + 5, 191, 1)
-        goods(p, right, x + 61, 191, 1)
-
-        // Small pointed placement markers make both modifier sockets discoverable.
-        let leftMarker = activeSide == 0 ? 5 : 6
-        let rightMarker = activeSide == 1 ? 5 : 6
-        p.fillRect(x + 19, 182, 6, 2, leftMarker)
-        p.fillRect(x + 21, 184, 2, 3, leftMarker)
-        p.setPixel(x + 18, 181, leftMarker); p.setPixel(x + 25, 181, leftMarker)
-        p.fillRect(x + 75, 182, 6, 2, rightMarker)
-        p.fillRect(x + 77, 184, 2, 3, rightMarker)
-        p.setPixel(x + 74, 181, rightMarker); p.setPixel(x + 81, 181, rightMarker)
-
-        // Blue/teal comparison badge with a pointed Boolean shape.
-        let bx = x + 43
-        p.fillRect(bx, 196, 14, 11, 8)
-        p.fillRect(bx + 2, 195, 10, 13, 6)
-        p.fillRect(bx + 4, 194, 6, 15, 6)
-        p.setPixel(bx + 3, 196, 9); p.setPixel(bx + 10, 196, 9)
-        p.setPixel(bx + 3, 207, 9); p.setPixel(bx + 10, 207, 9)
-        let relationMark = relation == 0 ? "=" : relation == 1 ? "<" : ">"
-        p.print(relationMark, bx + 5, 197, 1, image.font5)
-
-        let status = signal < 0 ? "CHECK?" : signal == 0 ? "FALSE" : "TRUE"
-        let statusX = signal < 0 ? x + 35 : signal == 0 ? x + 38 : x + 40
-        p.print(status, statusX, 220, signal == 1 ? 8 : 11, image.font5)
-        if (readyToShip) {
-            // A small outgoing package sits below the badge and leaves values clear.
-            p.fillRect(x + 86, 220, 8, 7, 5)
-            p.drawRect(x + 86, 220, 8, 7, 1)
-            p.fillRect(x + 89, 219, 2, 9, 9)
-            p.setPixel(x + 96, 223, 9); p.setPixel(x + 97, 223, 9)
+    export function chef(frame: number = 0, carrying: boolean = false): Image { return bakeryIcons.chef(frame, carrying) }
+    export function numericOutput(value: number): Image { return bakeryIcons.carriedNumber(value) }
+    export function shadow(): Image { let p = image.create(28, 10); oval(p, 14, 5, 13, 4, 12); return p }
+    export function drawBackground(): Image {
+        let p = image.create(640, 480); p.fill(13)
+        // Warm tiled floor with sparse seams. Details stay behind playable objects.
+        for (let y = 184; y < 408; y += 32) {
+            p.drawLine(76, y, 564, y, 1)
+            for (let x = 80 + (Math.idiv(y, 32) % 2) * 32; x < 560; x += 64) p.drawLine(x, y, x, y + 31, 1)
         }
+        p.fillRect(0, 42, 640, 132, 8); p.fillRect(0, 174, 640, 10, 14); p.fillRect(0, 174, 640, 3, 7)
+        // Wall panels, copper pipes, pressure dials, and flour storage.
+        for (let x of [16, 210, 402, 610]) {
+            p.fillRect(x, 54, 8, 100, 14); p.fillRect(x + 1, 54, 3, 100, 4)
+            for (let y of [70, 144]) { p.fillRect(x - 3, y, 14, 4, 12); bolt(p, x + 4, y + 2) }
+        }
+        for (let x of [217, 409]) {
+            round(p, x, 80, 28, 58, 15); round(p, x + 2, 80, 24, 54, 6)
+            p.fillCircle(x + 14, 97, 9, 13); p.drawLine(x + 14, 97, x + 19, 92, 2); bolt(p, x + 7, 127)
+            p.fillRect(x + 17, 119, 4, 12, 5)
+        }
+        for (let c of [96, 320, 544]) {
+            round(p, c - 64, 45, 128, 38, 15); round(p, c - 61, 45, 122, 32, 6)
+            p.fillRect(c - 50, 53, 100, 13, 8); p.fillRect(c - 45, 55, 90, 2, 15)
+            for (let x of [c - 55, c + 55]) bolt(p, x, 52)
+            p.fillCircle(c + 52, 68, 3, 5)
+        }
+        // Low side walls and recessed variable-counter bays.
+        p.fillRect(0, 184, 76, 224, 14); p.fillRect(564, 184, 76, 224, 14)
+        p.fillRect(71, 184, 5, 224, 7); p.fillRect(564, 184, 5, 224, 7)
+        for (let y of [194, 289, 387]) {
+            for (let x of [8, 574]) { round(p, x, y, 58, 12, 4); p.fillRect(x + 5, y + 3, 46, 2, 7) }
+        }
+        // Floor wayfinding: feeds, mixer, output and comparison dock each have an accent.
+        for (let x of [165, 320, 475]) { p.fillRect(x - 11, 199, 22, 3, 12); p.fillRect(x - 7, 204, 14, 2, 12) }
+        for (let x of [284, 296, 344, 356]) p.fillRect(x, 345, 5, 2, 7)
+        // Small bakery landmarks: flour sack, stacked trays and a wheeled rack.
+        round(p, 111, 278, 35, 46, 7); round(p, 113, 276, 31, 43, 13)
+        p.fillRect(120, 280, 17, 3, 14); p.drawLine(116, 289, 139, 289, 4)
+        p.fillCircle(129, 305, 8, 5); p.drawLine(129, 299, 129, 312, 14)
+        for (let i = 0; i < 3; i++) { p.fillRect(493 + i * 2, 273 - i * 5, 30, 5, 8); p.fillRect(495 + i * 2, 273 - i * 5, 26, 2, 12) }
+        p.fillRect(106, 353, 39, 5, 14); p.fillRect(109, 358, 3, 16, 8); p.fillRect(138, 358, 3, 16, 8)
+        p.fillCircle(111, 375, 4, 15); p.fillCircle(139, 375, 4, 15)
+        p.drawTransparentImage(looseCake(), 117, 330)
+        // Dock foundation visually anchors the Boolean blocks.
+        p.fillRect(0, 404, 640, 76, 15); p.fillRect(0, 404, 640, 4, 4)
+        for (let x = 4; x < 640; x += 16) p.drawLine(x, 404, x + 5, 408, 5)
+        conveyorTreads(p, 0)
+        return p
+    }
+    export function conveyorTreads(p: Image, offset: number) {
+        for (let y = 70; y <= 187; y++) {
+            let drift = (y - 70) * 0.59
+            for (let c of [96 + drift, 320, 544 - drift]) {
+                let x = Math.floor(c)
+                p.fillRect(x - 63, y, 126, 1, 15); p.fillRect(x - 60, y, 120, 1, 12); p.fillRect(x - 54, y, 108, 1, 8)
+                p.fillRect(x - 59, y, 2, 1, 1); p.fillRect(x + 57, y, 2, 1, 6)
+                if ((y - offset + 10000) % 18 < 3) p.fillRect(x - 52, y, 104, 1, 6)
+                if (y % 24 < 3) { p.fillRect(x - 62, y, 5, 1, 14); p.fillRect(x + 58, y, 5, 1, 14) }
+            }
+        }
+        for (let c of [165, 320, 475]) {
+            round(p, c - 66, 186, 132, 12, 15); round(p, c - 62, 186, 124, 8, 12)
+            for (let x = c - 52; x < c + 56; x += 13) p.fillRect(x, 187, 4, 6, 8)
+            p.fillCircle(c - 62, 190, 4, 4); p.fillCircle(c + 62, 190, 4, 4)
+        }
+    }
+    export function mixer(p: Image, value: number, active: boolean, jammed: boolean, tick: number = 0) {
+        if (!bowl) {
+            bowl = image.create(180, 148)
+            oval(bowl, 90, 128, 82, 17, 12)
+            // Pedestal, rounded copper body, then a broad open elliptical rim.
+            round(bowl, 57, 103, 67, 30, 14); round(bowl, 61, 103, 59, 25, 6)
+            bowl.fillRect(70, 126, 40, 4, 8)
+            oval(bowl, 90, 94, 69, 29, 14); bowl.fillRect(20, 54, 140, 39, 14)
+            oval(bowl, 90, 88, 65, 29, 4); bowl.fillRect(25, 56, 130, 32, 4)
+            bowl.fillRect(31, 67, 7, 26, 7); bowl.fillRect(40, 93, 8, 8, 7)
+            round(bowl, 4, 60, 24, 16, 15); round(bowl, 7, 61, 20, 10, 12)
+            round(bowl, 152, 60, 24, 16, 15); round(bowl, 152, 61, 20, 10, 12)
+            oval(bowl, 90, 55, 74, 34, 15); oval(bowl, 90, 52, 73, 33, 12)
+            oval(bowl, 90, 50, 67, 28, 1); oval(bowl, 90, 52, 59, 23, 14)
+            oval(bowl, 90, 55, 57, 21, 7); oval(bowl, 90, 55, 48, 16, 5)
+            bowl.drawLine(47, 43, 69, 35, 1); bowl.drawLine(48, 44, 69, 36, 1)
+            round(bowl, 67, 92, 47, 25, 8); round(bowl, 70, 94, 41, 20, 13)
+            bolt(bowl, 61, 104); bolt(bowl, 121, 104)
+        }
+        p.drawTransparentImage(bowl, 230, 188)
+        let spin = tick % 4
+        p.drawLine(304 - spin * 3, 239, 326, 234 + spin, 4); p.drawLine(329, 248, 343 + spin, 244, 4)
+        if (active) { p.drawCircle(251, 249, 4, 5); p.drawCircle(389, 249, 4, 5) }
+        number(p, value, 320, 284, jammed ? 2 : 15)
+        p.fillCircle(368, 296, 4, jammed ? 2 : 6)
+    }
+    export function outputStand(p: Image, value: number, ready: boolean) {
+        // A short real chute connects the bowl to a numbered-output dispenser.
+        p.fillRect(397, 285, 50, 12, 14); p.fillRect(397, 285, 50, 7, 12)
+        for (let x = 402; x < 445; x += 9) p.fillRect(x, 287, 3, 4, 8)
+        oval(p, 454, 351, 29, 7, 12)
+        round(p, 427, 299, 54, 45, 15); round(p, 430, 297, 48, 42, 6)
+        p.fillRect(435, 315, 38, 19, 8); p.fillRect(435, 300, 38, 3, 9)
+        p.drawTransparentImage(numericOutput(value), 437, 306)
+        p.fillCircle(475, 307, 3, ready ? 5 : 12)
+        p.drawLine(440, 354, 447, 360, 6); p.drawLine(447, 360, 454, 354, 6)
+    }
+    export function sideStation(p: Image, id: number, value: number, op: number, unlocked: boolean, pulse: number, now: number) {
+        let left = id < 2, x = left ? -7 : 555, y = id % 2 == 0 ? 215 : 311
+        let accent = [2, 4, 5, 6][id]
+        oval(p, x + 47, y + 64, 48, 8, 12)
+        round(p, x, y + 7, 92, 57, 15); round(p, x + 3, y + 9, 86, 51, 14)
+        p.fillRect(x + 5, y + 12, 82, 9, accent); p.fillRect(x + 8, y + 25, 76, 32, 8)
+        round(p, x - 2, y, 96, 13, 12); p.fillRect(x + 2, y, 88, 4, 1)
+        p.drawTransparentImage(bakeryIcons.ingredient(id), x + 12, y + 30)
+        if (unlocked) {
+            number(p, value, x + 49, y + 30, 13)
+            round(p, x + 65, y + 29, 17, 17, 11); operator(p, op, x + 68, y + 32, 1, 2)
+            p.fillRect(x + 12, y + 52, Math.idiv((12000 - now % 12000) * 67, 12000), 2, accent)
+        } else { p.print("LATER", x + 38, y + 36, 12, image.font5) }
+        if (pulse > 0) p.drawRect(x + 5, y + 22, 82, 36, 5)
+    }
+    function comparison(p: Image, relation: number, x: number, y: number, color: number) {
+        if (relation == 0) { p.fillRect(x, y + 4, 18, 3, color); p.fillRect(x, y + 12, 18, 3, color) }
+        else {
+            let direction = relation == 1 || relation == 3 ? 1 : -1
+            for (let i = 0; i < 9; i++) { p.fillRect(x + 9 + direction * i, y + 8 - i, 2, 2, color); p.fillRect(x + 9 + direction * i, y + 8 + i, 2, 2, color) }
+            if (relation >= 3) p.fillRect(x, y + 21, 19, 2, color)
+        }
+    }
+    export function deliveryOrder(p: Image, index: number, value: number, target: number, relation: number, signal: number, focused: boolean, complete: boolean, stage: number = -1, variable: number = -1, base: number = 0) {
+        if (complete) variable = -1 // Completed checks retain their evaluated left value.
+        let x = index * 212 + 8, y = 414
+        hexagon(p, x, y, 200, 62, complete ? 9 : focused ? 5 : 12)
+        hexagon(p, x + 3, y + 3, 194, 56, complete ? 6 : 8)
+        // Rounded numeric sockets sit inside the pointed Boolean reporter.
+        let leftW = variable >= 0 ? 83 : 53
+        round(p, x + 25, y + 10, leftW, 29, stage == 0 ? 5 : 13)
+        if (variable < 0) number(p, target, x + 51, y + 16, 15)
+        else {
+            number(p, base, x + 39, y + 16, 15)
+            operator(p, 0, x + 54, y + 20, 15)
+            p.drawTransparentImage(bakeryIcons.ingredient(variable), x + 70, y + 15)
+        }
+        if (variable >= 0 && stage == 0) {
+            round(p, x + 27, y - 24, 80, 23, 5)
+            p.print("=", x + 34, y - 18, 15, image.font8); number(p, target, x + 70, y - 20, 15)
+        }
+        let symbolX = variable >= 0 ? x + 115 : x + 94
+        if (stage == 1) round(p, symbolX - 4, y + 9, 28, 30, 5)
+        comparison(p, relation, symbolX, y + 13, stage == 1 ? 15 : 1)
+        round(p, x + 147, y + 10, 29, 29, stage == 2 ? 5 : 13)
+        if (value != -999999) number(p, value, x + 161, y + 16, 15)
+        else { p.fillRect(x + 155, y + 26, 13, 2, 12) }
+        if (stage == 3) p.print(signal == 1 ? "TRUE" : "FALSE", x + 81, y + 45, signal == 1 ? 9 : 3, image.font8)
+        else if (signal == 1) { p.drawLine(x + 95, y + 48, x + 99, y + 52, 9); p.drawLine(x + 99, y + 52, x + 107, y + 44, 9) }
+        else if (signal == 0) { p.drawLine(x + 97, y + 45, x + 103, y + 51, 3); p.drawLine(x + 103, y + 45, x + 97, y + 51, 3) }
+        else if (focused) p.print("B CHECK", x + 74, y + 45, 5, image.font8)
+        else p.drawCircle(x + 100, y + 48, 3, 12)
     }
 }

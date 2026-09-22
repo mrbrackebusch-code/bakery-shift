@@ -4,15 +4,15 @@
 
 ## Welcome to the cake factory!
 
-Make a number in the mixing pot. Carry a copy to an order and make its statement true!
+Make a number in the mixing pot. Carry a copy to an order, then check its statement.
 
 Three conveyors bring modifiers. Each red **set** block holds a purple calculation. The bowl icon stands for the amount in the mixer: `+ 1` means **set the amount to its current value plus one**. Catch a modifier, aim at the round pot, and throw. Each hit runs your calculation once.
 
-**Move:** arrow keys. **A:** Space or Z throws in the direction you last moved; the gold line shows your aim. **B:** Enter or X discards what you carry. With empty hands, walk onto the **NUMBER** stand to the pot's right to collect its current number. Aim down and throw that container at a bottom order. Collecting a number leaves the mixer amount available for your next calculation.
+**Move:** arrow keys. **A:** Space or Z throws in the direction you last moved. Hold **A** to charge the throw; the gold ring marks your aim target, and release to send the carried item along its arc. A quick tap also throws. The worker carries a copied number overhead. **B:** Enter or X discards what you carry. With empty hands, walk onto the number dispenser to the pot's right to collect its current number. Aim down and throw that container at a bottom order. Collecting a number leaves the mixer amount available for your next calculation.
 
-For example, `3 < □` asks for a number larger than three. The printed target stays on the **left**; your delivered number fills the **right**. A **YES** activates that order. A **NO** lets you adjust the mixer and try another number. Activate all three orders to finish a round.
+For example, `3 < □` asks for a number larger than three. The printed target stays on the **left**; your delivered number fills the **right**. Delivery stays neutral. With empty hands, walk to an unfinished order and press **B** to check it: the order highlights its left value, comparison, and right value, then briefly shows **TRUE** or **FALSE**. A quiet checkmark or cross follows. A check does not clear the order; you can adjust the mixer and try another number. Finish the first three checks to unlock four side ingredient stations.
 
-Missed modifiers fall off the conveyors and new ones arrive. A loose cupcake also adds one, but arrives slowly. Empty-handed **B** beside the pot resets its amount; beside an unfinished order it clears that delivery. You can pause the simulator while you build.
+Missed modifiers fall off the conveyors and new ones arrive. A loose cupcake also adds one, but arrives slowly. Empty-handed **B** beside the pot resets its amount; beside an unfinished order it checks the delivered statement instead of clearing it. You can pause the simulator while you build.
 
 First you will code the arithmetic that changes the mixer. Then you will connect the orders' true/false checks. The supplied ``||bakery(noclick):Cake Factory||`` drawer provides the events and displays; the calculations and comparisons will be yours.
 
@@ -182,7 +182,7 @@ This step starts the mixer at `3`. Throw `/ 3` into it: the result is `1`. The n
 
 Connect the orders' checks. A **Boolean** value is either ``||logic(noclick):true||`` or ``||logic(noclick):false||``. A comparison produces a Boolean value.
 
-The ``||logic(noclick):=||`` comparison checks whether two values represent the same quantity. `3 = 3` is true; `3 = 2` is false. The factory shows true as **YES** and false as **NO**.
+The ``||logic(noclick):=||`` comparison checks whether two values represent the same quantity. `3 = 3` is true; `3 = 2` is false. The check reports **TRUE** or **FALSE**, followed by a quiet checkmark or cross.
 
 ### Find these blocks
 
@@ -200,9 +200,9 @@ Put ``||variables(noclick):orderTarget||`` first and ``||variables(noclick):deli
 
 ### What you should see
 
-Collect a numbered container from the stand and throw it down at `3 = □`. Delivering `2` shows **NO**. Add one in the mixer, collect its new number, and deliver `3`: **YES** activates the order automatically. The target stays three throughout.
+Collect a numbered container from the number dispenser and throw it down at `3 = □`. Walk to the order and press **B**: its left value, comparison, and right value highlight in order, then the check reports **FALSE** with a quiet cross. Add one in the mixer, collect its new number, and deliver `3`. Press **B** again to see **TRUE** and a quiet checkmark; delivery itself stays neutral. The target stays three throughout.
 
-![Three equals two shows NO; making and delivering three shows YES and activates the order](assets/demos/10-equal-check.gif)
+![Three equals two checks FALSE; making and delivering three checks TRUE after B](assets/demos/10-equal-check.gif)
 
 ## 11. Is the left side smaller?
 
@@ -220,9 +220,9 @@ Add **a < order checks a number**. Use the same input blocks and variables. Choo
 
 ### What you should see
 
-The rightmost order asks for `4 < □`. Deliver `4`: **NO**, because the numbers are equal. Add one to the mixer and deliver `5`: **YES**. You changed the delivered number on the right.
+The rightmost order asks for `4 < □`. Deliver `4`, then press **B**: the check reports **FALSE** because the numbers are equal. Add one to the mixer and deliver `5`; press **B** again to report **TRUE**. You changed the delivered number on the right.
 
-![Four less than four shows NO; four less than five shows YES](assets/demos/11-less-check.gif)
+![Four less than four checks FALSE; four less than five checks TRUE after B](assets/demos/11-less-check.gif)
 
 ## 12. Is the left side larger?
 
@@ -234,9 +234,9 @@ Add **a > order checks a number**. Read both inputs. Set ``||variables(noclick):
 
 ### What you should see
 
-The middle order asks for `2 > □`. Delivering `2` gives **NO**. Subtract one in the mixer and deliver `1`: **YES**. Matching numbers make `=` true, but make both `<` and `>` false.
+The middle order asks for `2 > □`. Delivering `2` stays neutral until you press **B**, which reports **FALSE**. Subtract one in the mixer and deliver `1`; press **B** to report **TRUE**. Matching numbers make `=` true, but make both `<` and `>` false.
 
-![Two greater than two shows NO; two greater than one shows YES](assets/demos/12-greater-check.gif)
+![Two greater than two checks FALSE; two greater than one checks TRUE after B](assets/demos/12-greater-check.gif)
 
 ## 13. Include the matching number
 
@@ -248,9 +248,9 @@ Add **a ≤ order checks a number**. Keep the same input order and variables. Ch
 
 ### What you should see
 
-The rightmost order now asks for `5 ≤ □`. Make and deliver `5`: **YES**. A larger delivered number also works; `4` does not. The sign itself tells you which numbers qualify.
+The rightmost order now asks for `5 ≤ □`. Make and deliver `5`, then press **B** to report **TRUE**. A larger delivered number also works; `4` reports **FALSE** after its check. The sign itself tells you which numbers qualify.
 
-![Five less than or equal to five shows YES and activates the order](assets/demos/13-less-equal-check.gif)
+![Five less than or equal to five checks TRUE after B](assets/demos/13-less-equal-check.gif)
 
 ## 14. Include equality the other way
 
@@ -262,39 +262,39 @@ Add **a ≥ order checks a number**. Read the fixed target and delivered number.
 
 ### What you should see
 
-The middle order asks for `1 ≥ □`. Deliver `1`: **YES**. Zero or a negative number also works here. A larger delivered number, such as `2`, makes this statement false.
+The middle order asks for `1 ≥ □`. Deliver `1`, then press **B** to report **TRUE**. Zero or a negative number also works here. A larger delivered number, such as `2`, makes this statement **FALSE** when checked.
 
-![One greater than or equal to one shows YES and activates the order](assets/demos/14-greater-equal-check.gif)
+![One greater than or equal to one checks TRUE after B](assets/demos/14-greater-equal-check.gif)
 
 ## 15. Run the factory
 
-Keep your code. Activate all three orders: `3 = □`, `1 ≥ □`, and `5 ≤ □`.
+Keep your code. Finish the first three order checks: `3 = □`, `1 ≥ □`, and `5 ≤ □`.
 
 ### Choose your route
 
-Read the target and sign before catching a modifier. Make a useful number in the pot, collect a copy from the stand, and throw it at its order. You can use several small calculations or take a shorter route with multiplication or division. Faster orders earn more coins.
+Read the target and sign before catching a modifier. Make a useful number in the pot, collect a copy from the number dispenser, and throw it at its order. Walk to the delivered order and press **B** to run its left value, comparison, and right value before the brief **TRUE** or **FALSE** result. You can use several small calculations or take a shorter route with multiplication or division.
 
 ### What you should see
 
-One route makes `1`, then `3`, then `6`. Each delivered number turns its chosen check to **YES**. Collecting and delivering never empties the mixer: the next calculation starts with the amount you just made.
+One route makes `1`, then `3`, then `6`. Press **B** after each delivery to check the statement; each result is briefly **TRUE** or **FALSE**, with a quiet checkmark or cross. Collecting and delivering never empties the mixer: the next calculation starts with the amount you just made.
 
-![Three calculated numbers activate the three different orders and complete a round](assets/demos/15-factory-round.gif)
+![Three calculated numbers are delivered and checked at the three different orders](assets/demos/15-factory-round.gif)
 
-Press **A** after all three activate. The next round keeps your mixer amount and brings new checks.
+After the first three checks finish, press **A** to unlock four side ingredient stations. The next round keeps your mixer amount and brings new checks.
 
-## 16. Watch the boundary
+## 16. Use an ingredient variable
 
-The next round uses strict `<` and `>` checks. A matching number is no longer enough for those orders.
+Each side ingredient station has an icon representing the value currently shown on its side counter. The operator at a station switches every 12 seconds. Your supplied factory variables keep these station values separate from your learner variable ``||variables(noclick):batch||``.
 
 ### Choose a path
 
-After finishing with `6` in the pot, the new orders include `5 < □`. Subtract one, collect `5`, and deliver it there. Predict the result before you throw. Then make a number that will turn that same order to **YES**.
+After the first three checks, press **A** to open the side ingredient stations. Throw a copied number at a station to change it with that station's allowed operator. A later order refers to one of the station icons; its left value shows `3 + [icon]`, meaning three plus the value at that station. Use a whole-number division result when division is selected. The supplied code is unchanged while the station's value changes, so use your learner variable ``||variables(noclick):batch||`` to make and deliver the number the order requests.
 
 ### What you should see
 
-`5 < 5` gives **NO**. Add one, collect `6`, and deliver it: `5 < 6` gives **YES**. Compare this with `5 ≤ 5` from the earlier round.
+The icon in the order identifies the station value you need. The operators switch every 12 seconds, and a thrown copied number changes a station through its allowed operator. A new order can name a different random icon. Deliver the number, then press **B** at the unfinished order: its left value, comparison, and right value highlight in order before a brief **TRUE** or **FALSE** and quiet checkmark or cross.
 
-![A strict check rejects its matching boundary, then accepts the larger delivered number](assets/demos/16-boundary-checks.gif)
+![A variable change at a side station is reflected in the order's left value](assets/demos/16-boundary-checks.gif)
 
 ## 17. Keep the amount, change the plan
 
