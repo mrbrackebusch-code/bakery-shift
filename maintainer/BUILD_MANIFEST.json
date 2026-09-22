@@ -38,19 +38,19 @@
     "starter_executable_code": false
   },
   "source_hashes": {
-    "games/bakery/copy/tutorial-template.md": "2379ab631d226900e7a334e92b2c73f3e6b1b6367ffb1f176f44991473684ed9",
+    "games/bakery/copy/tutorial-template.md": "3d347adb7438e4589af3e0a543c4986a84232fb7f616c11282c49e3b31fc6e13",
     "games/bakery/implementation/learner-states/catalog.json": "5e464692c7fbbcfb84ee03fa9fd0a450673e23588c8f66242e58f5d636e6626e",
     "games/bakery/implementation/supplied-world/icons.ts": "f3e71bc02b1fea3723694b1fd71f0460cf2b65545ede39e8210540d8372d0df7",
-    "games/bakery/implementation/supplied-world/engine.ts": "45a240b9681abbb76725aa82e041c07f1db6b390f589322aa32d1edb54ac475a",
+    "games/bakery/implementation/supplied-world/engine.ts": "93424e9a467d472c0a650c5675a4ba352e6f95dd00b0de4ec6e89b705e311e41",
     "games/bakery/implementation/supplied-world/art.ts": "ddea5745e867d2f7c637a657913d1f83ad3d09b284aace0f081244e8864ee55d",
     "games/bakery/implementation/manifest.json": "2bc22a68e79203e5a1808458117722f23ee959f7c43da51b9732d118cb6a3864",
     "games/bakery/tools/build.mjs": "c19256ff8f22aa87d07335869ebc68b1722da203a32b2828d2b01a6232ba5f08"
   },
   "output_hashes": {
-    "tutorial": "f08f6dc3bf84281f771e9c7267e5b6005d0b01f9231ce55b0e7f3e5e7be460c4",
+    "tutorial": "d79748d70d8863bae78496d765b17845c32d06f2849a93ee61b365220eefec8f",
     "starter": "713f1c94893eb81611042d435586f6e4ddf0eb48960b24b306abb7feaed89fc7",
     "solution": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874",
-    "engine": "82dae48d868fd3f3422fecb62fdf2397e9f5d634a3c041f70f2c47f7e34afc8c",
+    "engine": "eeb9590cf79c176fa9033ea8ddeb766ba1f1a5a56ae2a03f466b31af18981378",
     "states": {
       "01-clean-tray": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",
       "02-catch-one": "d302dc2aa8f117c2ca9a95f9f8b634534828a505ba801a7b033e0b72161282bc",
@@ -87,8 +87,8 @@
   },
   "outputs": {
     "tutorial/README.md": {
-      "sha256": "f08f6dc3bf84281f771e9c7267e5b6005d0b01f9231ce55b0e7f3e5e7be460c4",
-      "bytes": 72891
+      "sha256": "d79748d70d8863bae78496d765b17845c32d06f2849a93ee61b365220eefec8f",
+      "bytes": 68311
     },
     "learner-states/01-clean-tray.ts": {
       "sha256": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",
@@ -207,8 +207,8 @@
       "bytes": 16
     },
     "starter/engine.ts": {
-      "sha256": "82dae48d868fd3f3422fecb62fdf2397e9f5d634a3c041f70f2c47f7e34afc8c",
-      "bytes": 51006
+      "sha256": "eeb9590cf79c176fa9033ea8ddeb766ba1f1a5a56ae2a03f466b31af18981378",
+      "bytes": 51095
     },
     "starter/pxt.json": {
       "sha256": "1324c7cc17879840e51d5570d78f441773515611325d46afc6d97d055841f905",
@@ -219,8 +219,8 @@
       "bytes": 2663
     },
     "solution/engine.ts": {
-      "sha256": "82dae48d868fd3f3422fecb62fdf2397e9f5d634a3c041f70f2c47f7e34afc8c",
-      "bytes": 51006
+      "sha256": "eeb9590cf79c176fa9033ea8ddeb766ba1f1a5a56ae2a03f466b31af18981378",
+      "bytes": 51095
     },
     "solution/pxt.json": {
       "sha256": "e7cee09e0d7167be7456bd131b86fa5797d8efb5f811c4af1c0baec172ee3418",
@@ -295,60 +295,60 @@
       "bytes": 2076822
     },
     "tutorial/assets/instructions/01-assembled.svg": {
-      "sha256": "cf58ab87d8a5bb1d5469a56f7e830c775f63887433c10acab3c2f8783a0e18d9",
-      "bytes": 75728
+      "sha256": "ff9eab6d3d0d0e4e16ebc36098636885e49b421e56ba00a731ddf225951c3f3e",
+      "bytes": 118600
     },
     "tutorial/assets/instructions/01-menu.svg": {
-      "sha256": "152d71976f1fecb74cbb77ba8f8a0f304aceb40013211516074dcf1c1d6a6fec",
-      "bytes": 132932
+      "sha256": "e62c73fc9af5504aa941ccc9f47e2cceb5f5db362d8bf5af684135ed3b07b271",
+      "bytes": 137708
     },
     "tutorial/assets/instructions/02-assembled.svg": {
-      "sha256": "7b53325a6ebb05f427804b10aff616a05036f0b8fa574f69eac4c4e5d557360e",
-      "bytes": 91993
+      "sha256": "610e548349aff40c7ad5b77c9584c399983f3f8f9b23997667d50e9bf7f8122b",
+      "bytes": 118197
     },
     "tutorial/assets/instructions/02-menu.svg": {
-      "sha256": "55d9929a66114ecf573514681e621c83a29041cb150bc95faacd77f462a67a62",
-      "bytes": 123580
+      "sha256": "c8ae7f5cd756bb087b308ae89010855c1948c8da8301a974ba9b755f6cfec42c",
+      "bytes": 121712
     },
     "tutorial/assets/instructions/04-assembled.svg": {
-      "sha256": "36940db16449bbf0fd1a883516f9705516bdb0f3ad9354356e1eba9415a76aba",
-      "bytes": 98077
+      "sha256": "3204108acce2f1a674a9ee3da8151856d382d1c97f5eb235ae49fe1743d155fc",
+      "bytes": 114077
     },
     "tutorial/assets/instructions/04-menu.svg": {
-      "sha256": "3742f549c371d7e9088342456a526085ba17875ac04e28b1c2661f6a99abc528",
-      "bytes": 124212
+      "sha256": "55a49743658b99c63406ca8f000bb414af6b5ed770d5c08ca99accc926dcc062",
+      "bytes": 124532
     },
     "tutorial/assets/instructions/05-assembled.svg": {
-      "sha256": "f2d6bf2bac94d014e7ddc88b1da06f8251e62512ff2afa1561c357d1329d7925",
-      "bytes": 99609
+      "sha256": "c5f475779d16bdda383833c7ad7883e64e85b70bce461497b19c6b6b7c16f52f",
+      "bytes": 106861
     },
     "tutorial/assets/instructions/05-menu.svg": {
-      "sha256": "2e879f7818f1242d6fea4b633c46d506199121a5752b659eef3c149e1efabfd9",
-      "bytes": 124052
+      "sha256": "71046870c2c56985e28733e3cd4a60113a6da7be0e6acf3c838813920e3b4f2d",
+      "bytes": 123812
     },
     "tutorial/assets/instructions/06-assembled.svg": {
-      "sha256": "3d9b6012140a9cc75225080dda3b0f72f4f2b8e90ed0f3a14dbe1ec944a1a35c",
-      "bytes": 252712
+      "sha256": "8445b31f22405a44f95d03c91d598827e283e5fdf2eb626d9499896a15a82093",
+      "bytes": 314968
     },
     "tutorial/assets/instructions/06-menu.svg": {
-      "sha256": "9e73c7cc183771a7432f7b74b932e63d4956198b129a5e6760626db404600846",
-      "bytes": 142312
+      "sha256": "5a251ef4a97301ca86bbd794347b88bc3e8be588e5ead6b8b4219050b9703d22",
+      "bytes": 144680
     },
     "tutorial/assets/instructions/10-assembled.svg": {
-      "sha256": "9e2f5340cadf3f20bbe086c86ada63d9540f3901b7479f266de01b085b7d7ed4",
-      "bytes": 231812
+      "sha256": "dde5caf6cd0ad8770c73fe53ab02f700d18ed0c172f7886145e1c9b3d57e8fc8",
+      "bytes": 291084
     },
     "tutorial/assets/instructions/10-menu.svg": {
-      "sha256": "6a5870de26ef23cafcee57de19e10ca576274bfb02fe07fad408b2a46c4594a7",
-      "bytes": 149056
+      "sha256": "aae8e2bd68cb591a141f93e67186298cfc0598b0dd3fc85ca5c3180ad643d5c0",
+      "bytes": 159872
     },
     "tutorial/assets/instructions/11-assembled.svg": {
-      "sha256": "ef6226707b4c7127c41e1ecccf61f1e2295bc6ac7979e84e2e67bc2ef2c26034",
-      "bytes": 229776
+      "sha256": "814a721dfa13cdaa1aee7ece31a2a538609b5f65ab1e16aca1d6b92432db3d89",
+      "bytes": 260428
     },
     "tutorial/assets/instructions/11-menu.svg": {
-      "sha256": "52a34b7bf13d59fce4e8fc4bf2db846d69e28f5872e6c6d244aa7409a9c70fe1",
-      "bytes": 81452
+      "sha256": "6fcc9d9303e2a554f89764cff9c2684dabaf5468c2cc86b9c1a92ec95c6317f9",
+      "bytes": 84944
     }
   },
   "demonstrations": [
@@ -442,72 +442,72 @@
     {
       "path": "assets/instructions/01-assembled.svg",
       "present": true,
-      "sha256": "cf58ab87d8a5bb1d5469a56f7e830c775f63887433c10acab3c2f8783a0e18d9"
+      "sha256": "ff9eab6d3d0d0e4e16ebc36098636885e49b421e56ba00a731ddf225951c3f3e"
     },
     {
       "path": "assets/instructions/01-menu.svg",
       "present": true,
-      "sha256": "152d71976f1fecb74cbb77ba8f8a0f304aceb40013211516074dcf1c1d6a6fec"
+      "sha256": "e62c73fc9af5504aa941ccc9f47e2cceb5f5db362d8bf5af684135ed3b07b271"
     },
     {
       "path": "assets/instructions/02-assembled.svg",
       "present": true,
-      "sha256": "7b53325a6ebb05f427804b10aff616a05036f0b8fa574f69eac4c4e5d557360e"
+      "sha256": "610e548349aff40c7ad5b77c9584c399983f3f8f9b23997667d50e9bf7f8122b"
     },
     {
       "path": "assets/instructions/02-menu.svg",
       "present": true,
-      "sha256": "55d9929a66114ecf573514681e621c83a29041cb150bc95faacd77f462a67a62"
+      "sha256": "c8ae7f5cd756bb087b308ae89010855c1948c8da8301a974ba9b755f6cfec42c"
     },
     {
       "path": "assets/instructions/04-assembled.svg",
       "present": true,
-      "sha256": "36940db16449bbf0fd1a883516f9705516bdb0f3ad9354356e1eba9415a76aba"
+      "sha256": "3204108acce2f1a674a9ee3da8151856d382d1c97f5eb235ae49fe1743d155fc"
     },
     {
       "path": "assets/instructions/04-menu.svg",
       "present": true,
-      "sha256": "3742f549c371d7e9088342456a526085ba17875ac04e28b1c2661f6a99abc528"
+      "sha256": "55a49743658b99c63406ca8f000bb414af6b5ed770d5c08ca99accc926dcc062"
     },
     {
       "path": "assets/instructions/05-assembled.svg",
       "present": true,
-      "sha256": "f2d6bf2bac94d014e7ddc88b1da06f8251e62512ff2afa1561c357d1329d7925"
+      "sha256": "c5f475779d16bdda383833c7ad7883e64e85b70bce461497b19c6b6b7c16f52f"
     },
     {
       "path": "assets/instructions/05-menu.svg",
       "present": true,
-      "sha256": "2e879f7818f1242d6fea4b633c46d506199121a5752b659eef3c149e1efabfd9"
+      "sha256": "71046870c2c56985e28733e3cd4a60113a6da7be0e6acf3c838813920e3b4f2d"
     },
     {
       "path": "assets/instructions/06-assembled.svg",
       "present": true,
-      "sha256": "3d9b6012140a9cc75225080dda3b0f72f4f2b8e90ed0f3a14dbe1ec944a1a35c"
+      "sha256": "8445b31f22405a44f95d03c91d598827e283e5fdf2eb626d9499896a15a82093"
     },
     {
       "path": "assets/instructions/06-menu.svg",
       "present": true,
-      "sha256": "9e73c7cc183771a7432f7b74b932e63d4956198b129a5e6760626db404600846"
+      "sha256": "5a251ef4a97301ca86bbd794347b88bc3e8be588e5ead6b8b4219050b9703d22"
     },
     {
       "path": "assets/instructions/10-assembled.svg",
       "present": true,
-      "sha256": "9e2f5340cadf3f20bbe086c86ada63d9540f3901b7479f266de01b085b7d7ed4"
+      "sha256": "dde5caf6cd0ad8770c73fe53ab02f700d18ed0c172f7886145e1c9b3d57e8fc8"
     },
     {
       "path": "assets/instructions/10-menu.svg",
       "present": true,
-      "sha256": "6a5870de26ef23cafcee57de19e10ca576274bfb02fe07fad408b2a46c4594a7"
+      "sha256": "aae8e2bd68cb591a141f93e67186298cfc0598b0dd3fc85ca5c3180ad643d5c0"
     },
     {
       "path": "assets/instructions/11-assembled.svg",
       "present": true,
-      "sha256": "ef6226707b4c7127c41e1ecccf61f1e2295bc6ac7979e84e2e67bc2ef2c26034"
+      "sha256": "814a721dfa13cdaa1aee7ece31a2a538609b5f65ab1e16aca1d6b92432db3d89"
     },
     {
       "path": "assets/instructions/11-menu.svg",
       "present": true,
-      "sha256": "52a34b7bf13d59fce4e8fc4bf2db846d69e28f5872e6c6d244aa7409a9c70fe1"
+      "sha256": "6fcc9d9303e2a554f89764cff9c2684dabaf5468c2cc86b9c1a92ec95c6317f9"
     }
   ],
   "claim_boundary": "Deterministic assembly and declared scope only; missing referenced media remain explicit. Compile, Blocks, runtime, browser and learner evidence are separate."

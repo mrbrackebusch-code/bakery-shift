@@ -431,15 +431,15 @@ enum BakeryAction {
     MultiplyModifier,
     //% block="a / 3 modifier hits the mixer"
     DivideModifier,
-    //% block="an = order checks a number"
+    //% block="an equal to (=) order checks a number"
     EqualCheck,
-    //% block="a < order checks a number"
+    //% block="a less than (<) order checks a number"
     LessCheck,
-    //% block="a > order checks a number"
+    //% block="a greater than (>) order checks a number"
     GreaterCheck,
-    //% block="a ≤ order checks a number"
+    //% block="a less than or equal to (≤) order checks a number"
     LessEqualCheck,
-    //% block="a ≥ order checks a number"
+    //% block="a greater than or equal to (≥) order checks a number"
     GreaterEqualCheck
 }
 

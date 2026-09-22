@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "source_capture_dir": "games/bakery/generated/evidence/instruction-layer-native-captures-03",
+  "method": "PUBLIC_RENDERBLOCKS_DOM",
+  "callouts": {
+    "10": [
+      {
+        "text": "The comparison uses orderTarget on the left and deliveredNumber on the right, just like the statement in the game.",
+        "target": {
+          "kind": "label",
+          "text": "orderTarget",
+          "occurrence": 0
+        }
+      },
+      {
+        "text": "The = block answers true or false. Setting ready keeps that answer; show check uses it to animate the order.",
+        "target": {
+          "kind": "label",
+          "text": "=",
+          "occurrence": 0
+        }
+      }
+    ],
+    "11": [
+      {
+        "text": "Read left to right: is orderTarget less than deliveredNumber? 4 < 4 is false; 4 < 5 is true. Swapping the values changes the question.",
+        "target": {
+          "kind": "label",
+          "text": "<",
+          "occurrence": 0
+        }
+      }
+    ],
+    "01": [
+      {
+        "text": "This block reads the pot's current amount. Setting batch keeps that number for us.",
+        "target": {
+          "kind": "label",
+          "text": "amount in the mixer",
+          "occurrence": 0
+        }
+      },
+      {
+        "text": "When we give batch to show, we send the saved number to the worker's display.",
+        "target": {
+          "kind": "label",
+          "text": "batch",
+          "occurrence": 0
+        }
+      }
+    ],
+    "02": [
+      {
+        "text": "Here batch supplies 2 to +. The calculation makes 3, and set batch saves 3. Giving batch to put sends 3 to the pot.",
+        "target": {
+          "kind": "label",
+          "text": "+",
+          "occurrence": 0
+        }
+      }
+    ],
+    "04": [
+      {
+        "text": "If batch holds 2, multiplying by 2 makes 4. The same code doubles each new amount we read from the pot.",
+        "target": {
+          "kind": "label",
+          "text": "×",
+          "occurrence": 0
+        }
+      }
+    ],
+    "05": [
+      {
+        "text": "Dividing batch by 2 gives us half its value: 2 / 2 makes 1, while 4 / 2 makes 2.",
+        "target": {
+          "kind": "label",
+          "text": "/",
+          "occurrence": 0
+        }
+      }
+    ],
+    "06": [
+      {
+        "text": "We save the modifier's printed number here. This event can use either 2 or 3 without changing our code.",
+        "target": {
+          "kind": "label",
+          "text": "number on the modifier",
+          "occurrence": 0
+        }
+      },
+      {
+        "text": "modifierNumber gives the calculation that saved number. If batch is 2 and modifierNumber is 3, their sum is 5.",
+        "target": {
+          "kind": "label",
+          "text": "modifierNumber",
+          "occurrence": 0
+        }
+      }
+    ]
+  },
+  "claim_boundary": "Callout text is an editorial adaptation of the retained variable and comparison progression. Native target labels and occurrence positions come from the listed capture metadata; rendered placement remains pending root verification."
+}
