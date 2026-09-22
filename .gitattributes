@@ -5,3 +5,5 @@ maintainer/games/bakery/implementation/manifest.json -text
 maintainer/games/bakery/implementation/supplied-world/art.ts -text
 maintainer/games/bakery/implementation/supplied-world/icons.ts -text
 maintainer/games/bakery/tools/build-publication.mjs -text
+
+maintainer/games/bakery/design/FINISHING_V9.md -text
