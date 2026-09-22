@@ -22,13 +22,13 @@ export const destination = Object.freeze({
   recorded_before_external_write: false,
   read_only_check: {
     date: '2026-09-22',
-    transport: 'Existing authenticated GitHub release and public-identity records; no V6 external write',
+    transport: 'Existing authenticated GitHub release and public-identity records; no V7 external write',
     authenticated_login: 'mrbrackebusch-code',
     canonical_remote: 'https://github.com/mrbrackebusch-code/makecode-arcade-tutorials.git',
     target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V5 release and public identity verified in current records'
   },
-  existing_release: {tag:'v0.1.0',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.1.0',payload_commit:'524f2ba820375ee1ce84c28e9f2d01906769657c',served_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'},
-  existing_public_identity: {served_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0',release:'v0.1.0',media_revision:'598388360692ff16'}
+  existing_release: {tag:'v0.2.0',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.2.0',payload_commit:'72e14c57a3c1b366b667e59cda3306ae32a31892',served_commit:'4cc04864d4e166e1fe58be8ad0b91932734cb73e'},
+  existing_public_identity: {stable_url:'https://arcade.makecode.com/#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0',release:'V5',observed_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0',media_revision:'598388360692ff16',public_v6_native_verification:'PENDING'}
 });
 
 const canonicalGameFiles = [
@@ -40,12 +40,14 @@ const canonicalGameFiles = [
   'tools/build.mjs',
   'tools/build-publication.mjs',
   'design/pedagogy/FACTORY_SOURCE_PACKET_2026-09-21.md',
-  'design/FACTORY_READABILITY_REVISION_2026-09-21.md',
+  'design/pedagogy/MIXER_SOURCE_ADDENDUM_V7.md',
+  'design/FACTORY_MIXER_REVISION_V7.md',
   'design/pedagogy/MICROSOFT_MIT_NOTICE.txt'
 ];
 const sourceFiles = [
   'docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/production/1A-005/variable-math.md',
   'docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/production/1A-041/repository/docs/courses/csintro2/logic/intro.md',
+  'docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/production/1A-043/repository/docs/courses/csintro2/logic/multiplayer.md',
   'docs/pedagogy/corpus/sources/makecode-ap-csp/raw/production/1C-039/boolean-variables.md',
   'docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/LICENSE-MIT.txt'
 ];
@@ -72,7 +74,7 @@ function filesBelow(root, prefix = '') {
 
 const maintainers = `# Maintaining Cake Factory
 
-This is one independent MakeCode tutorial package. The student project is the root pxt.json plus comment-only main.ts and README.md. Both main.ts and the tutorial template contain only // Cake Factory followed by a newline: no executable learner code. README.md contains the hidden customts game resource and twelve recoverable Blocks hints. The complete game under review/solution is an informed review aid, outside the student project file list.
+This is one independent MakeCode tutorial package. The student project is the root pxt.json plus comment-only main.ts and README.md. Both main.ts and the tutorial template contain only // Cake Factory followed by a newline: no executable learner code. README.md contains the hidden customts game resource, fourteen recoverable Blocks hints, and 17 demos. The complete game under review/solution is an informed review aid, outside the student project file list.
 
 Canonical authoring inputs are preserved under maintainer/games/bakery, with only the narrowly required source texts under maintainer/docs. They can rebuild the tutorial and solution without another game's source or the complete curriculum corpus. Node.js supplies the dependency-free authoring tools.
 
@@ -85,16 +87,16 @@ The builder stages a new package under maintainer/games/bakery/generated/publica
 
 Carry the Microsoft MIT notice and source attributions forward. Preserve old Git commits, releases and content-addressed media revision directories when integrating a new package. This candidate remains unpromoted pending current runtime/instruction/GIF review, authenticated destination checks, exact versioned MakeCode release payload verification, and focused public startup/assets/affected-behavior review. Informed developer QA and the owner-cancelled learner audit are distinct; this package makes no human-learning claim.
 
-The existing destination is ${destination.repository_url}. Its intended explicit-path tutorial identity is ${destination.stable_student_url}. This generated V6 candidate is unpromoted until its exact payload, conflict state, public startup, assets and affected behavior are checked.
+The existing destination is ${destination.repository_url}. Its intended explicit-path tutorial identity is ${destination.stable_student_url}. This generated V7 candidate is unpromoted until its exact payload, conflict state, public startup, assets and affected behavior are checked.
 `;
 
 const notices = `# Source attribution and notices
 
-Cake Factory adapts arithmetic source from Microsoft MakeCode Arcade CS Intro [Math Operators with Variables](https://arcade.makecode.com/courses/csintro1/intro/variable-math), comparison definitions from [CSIntro2 Logic Intro](https://arcade.makecode.com/courses/csintro2/logic/intro), and Boolean variable material from [AP CSP Unit 3 Day 11: Boolean Variables](https://microsoft.github.io/makecode-csp/unit-3/day-11/boolean-variables/). AP-CSP prose is used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Microsoft-authored material is attributed to Microsoft and retained with its source notice.
+Cake Factory adapts arithmetic source from Microsoft MakeCode Arcade CS Intro [Math Operators with Variables](https://arcade.makecode.com/courses/csintro1/intro/variable-math), strict comparison definitions from [CSIntro2 Logic Intro](https://arcade.makecode.com/courses/csintro2/logic/intro), inclusive comparison context from [CSIntro2 Multiplayer](https://arcade.makecode.com/courses/csintro2/logic/multiplayer), and Boolean variable material from [AP CSP Unit 3 Day 11: Boolean Variables](https://microsoft.github.io/makecode-csp/unit-3/day-11/boolean-variables/). AP-CSP prose is used under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Microsoft-authored material is attributed to Microsoft and retained with its source notice.
 
 The CSIntro source and MakeCode code material are retained under the MIT notices in LICENSES/Microsoft-MIT.txt and maintainer/docs. AP-CSP prose is attributed separately under CC BY 4.0. The package includes only the named source texts and the project factory source packet.
 
-Changes adapt the source to a moving cake factory with tiny whole numbers, eight arithmetic expressions, three ordered comparisons, and Boolean reports. Learner code excludes AND, OR, if statements, loops and modulus. Game art and mechanics are this project's authored implementation. The adapted game is not represented as authored, reviewed or endorsed by Microsoft. No MakeCode Share payload or third-party image is included.
+Changes adapt the source to a moving cake factory with tiny whole numbers, eight arithmetic expressions, five ordered comparisons, and Boolean reports. Learner code excludes AND, OR, if statements, loops and modulus. Game art and mechanics are this project's authored implementation. The adapted game is not represented as authored, reviewed or endorsed by Microsoft. No MakeCode Share payload or third-party image is included.
 `;
 
 export function assemblePublication({requireMedia = true, checkGenerated = true} = {}) {
@@ -103,7 +105,7 @@ export function assemblePublication({requireMedia = true, checkGenerated = true}
   assert.equal((built.tutorial.match(/^```customts$/gm) || []).length, 1);
   assert.equal((built.tutorial.match(/^```template$/gm) || []).length, 1);
   assert.match(built.tutorial, /^```template\r?\n\/\/ Cake Factory\r?\n\s*```$/m, 'The tutorial template must contain only the harmless Cake Factory comment.');
-  assert.equal((built.tutorial.match(/^```blocks$/gm) || []).length, 12);
+  assert.equal((built.tutorial.match(/^```blocks$/gm) || []).length, built.catalog.states.length);
   const allMedia = [...built.manifest.demonstrations, ...(built.manifest.instruction_media || [])];
   const missingMedia = allMedia.filter(item => !item.present).map(item => item.path);
   const mediaIdentity = allMedia.map(item => [item.path, item.sha256]);
@@ -159,7 +161,7 @@ export function assemblePublication({requireMedia = true, checkGenerated = true}
   }
   outputs.set('maintainer/BUILD_MANIFEST.json', Buffer.from(json(built.manifest)));
   const manifest = {
-    schema_version: 1, manifest_id: 'BAKERY-PUBLICATION-PACKAGE-V6', game_id: 'GAME-BAKERY',
+    schema_version: 1, manifest_id: 'BAKERY-PUBLICATION-PACKAGE-V7', game_id: 'GAME-BAKERY',
     status: 'NOT_FOR_DISTRIBUTION', ...destination,
     external_publication_performed: false, student_distribution_ready: false,
     local_tutorial_sha256: digest(built.tutorial), canonical_tutorial_sha256: digest(built.tutorial),

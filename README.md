@@ -4,37 +4,39 @@
 
 ## Welcome to the cake factory!
 
-Three factory orders are waiting. Each machine has a **LEFT** tray and a **RIGHT** tray. Your job is to change the cakes until the statement between them is true. You can change **either side**.
+Make a number in the mixing pot. Carry a copy to an order and make its statement true!
 
-Walk between the conveyor belts and collect one useful modifier. Its red **set** block holds a purple calculation. The little tray icon represents ``||variables(noclick):batch||``: the amount on the side where you place it. A modifier with `+ 1` means **set that tray's amount to its current amount plus one**. The same tray icon highlights the receiver. Each modifier changes it once.
+Three conveyors bring modifiers. Each red **set** block holds a purple calculation. The bowl icon stands for the amount in the mixer: `+ 1` means **set the amount to its current value plus one**. Catch a modifier, aim at the round pot, and throw. Each hit runs your calculation once.
 
-**Move:** arrow keys. **A:** Space or Z. **B:** Enter or X. Approach one of the three orders along the counter. Its two trays appear in the large work area. Move to the left or right side of that order: the gold tray and arrow show where your modifier will go. Press **A** to place it. Press **B** to drop a held item. With empty hands, **A** checks the machine and **B** resets both sides.
+**Move:** arrow keys. **A:** Space or Z throws in the direction you last moved; the gold line shows your aim. **B:** Enter or X discards what you carry. With empty hands, walk onto the **NUMBER** stand to the pot's right to collect its current number. Aim down and throw that container at a bottom order. Collecting a number leaves the mixer amount available for your next calculation.
 
-Each tray holds up to six whole cakes. Missed modifiers fall off the belts and new ones arrive. A loose cupcake adds one, but loose cakes arrive slowly. You can pause the simulator while you build.
+For example, `3 < □` asks for a number larger than three. The printed target stays on the **left**; your delivered number fills the **right**. A **YES** activates that order. A **NO** lets you adjust the mixer and try another number. Activate all three orders to finish a round.
 
-First you will code the arithmetic that changes the cakes. Then you will connect the machines' TRUE/FALSE checks. The supplied ``||bakery(noclick):Cake Factory||`` drawer provides the events and displays; the calculations and checks will be yours.
+Missed modifiers fall off the conveyors and new ones arrive. A loose cupcake also adds one, but arrives slowly. Empty-handed **B** beside the pot resets its amount; beside an unfinished order it clears that delivery. You can pause the simulator while you build.
 
-## 1. Read either tray
+First you will code the arithmetic that changes the mixer. Then you will connect the orders' true/false checks. The supplied ``||bakery(noclick):Cake Factory||`` drawer provides the events and displays; the calculations and comparisons will be yours.
 
-A ``||variables(noclick):variable||`` is a container used to store values in your code. Give the worker somewhere to remember the amount on the tray you select.
+## 1. Read the mixer
+
+A ``||variables(noclick):variable||`` is a container used to store values in your code. Give the worker somewhere to remember the amount in the mixer.
 
 ### Find these blocks
 
-In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):batch||``. Find the event, tray amount, and tray display in ``||bakery(noclick):Cake Factory||``. Change the event dropdown to **a tray is selected**.
+In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):batch||``. Find the event, mixer amount, and display in ``||bakery(noclick):Cake Factory||``. Change the event dropdown to **the mixer is selected**.
 
-![Native menu blocks for creating batch, selecting a tray, reading its amount and showing a value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/01-menu.svg)
+![Native menu blocks for creating batch, selecting the mixer, reading its amount and showing a value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/01-menu.svg)
 
 ### Make your code look like this
 
-![Connected tray-selection event: read the tray into batch, then show the value stored in batch](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/01-assembled.svg)
+![Read the mixer into batch, then show the value stored in batch](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/01-assembled.svg)
 
-The small ``||variables(noclick):batch||`` block reads the value you saved. It goes in the display's value slot.
+The small ``||variables(noclick):batch||`` block reads the value you saved. It goes in the display's value slot. In the game, the bowl icon represents this amount without spelling out the variable name on every modifier.
 
 ### What you should see
 
-Run the game. With empty hands, walk down to the left side of a machine and press **A**. A bubble shows that tray's cakes. Try the right side too. Reading a tray does not change its cakes. The machine's check will be connected later.
+With empty hands, stand below the pot and press **A**. Your display shows `2`. Reading the mixer does not change its amount. The bottom checks will be connected later.
 
-![Selecting the left and right trays shows their different cake amounts in the worker's bubble](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/01-clean-tray.gif)
+![Selecting the mixer shows its current number in a bubble](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/01-clean-tray.gif)
 
 #### ~ tutorialhint
 
@@ -47,27 +49,27 @@ bakery.onAction(BakeryAction.TraySelected, function () {
 })
 ```
 
-## 2. Add one cake
+## 2. Add one
 
-A `+ 1` modifier should add one cake to the side you choose. A loose cupcake uses this same event.
+A `+ 1` modifier should increase the amount by one. A loose cupcake uses this same event.
 
 ### Find these blocks
 
-Add a new ``||bakery(noclick):when||`` event from ``||bakery(noclick):Cake Factory||`` and choose **a + 1 item is placed**. Find the ``||math(noclick):0 + 0||`` block in ``||math(noclick):Math||``.
+Add a new ``||bakery(noclick):when||`` event and choose **a + 1 item hits the mixer**. Find ``||math(noclick):0 + 0||`` in ``||math(noclick):Math||``.
 
-![Native event, variable, arithmetic and tray-result blocks for adding one cake](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/02-menu.svg)
+![Native event, variable, arithmetic and mixer-result blocks for adding one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/02-menu.svg)
 
 ### Make your code look like this
 
-![Read the selected tray into batch, set batch to batch plus one, and put batch on that tray](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/02-assembled.svg)
+![Read batch, set batch to batch plus one, then put batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/02-assembled.svg)
 
-Read the tray first. Calculate ``||variables(noclick):batch||`` plus `1`, save the result back in ``||variables(noclick):batch||``, and send that value to the tray. The ``||math(noclick):Math||`` block produces a number.
+Read the mixer first. Calculate ``||variables(noclick):batch||`` plus `1`, save the result back in ``||variables(noclick):batch||``, and send that value to the mixer. The ``||math(noclick):Math||`` block produces a number.
 
 ### What you should see
 
-Collect `+ 1`, walk to either tray, and press **A**. That side gains one pictured cake. The other side stays the same. Try another addition on the other side.
+Catch `+ 1`. Move beside the pot, face it, and press **A**. The modifier flies into the pot and `2` becomes `3` when it hits. Try another addition using the new starting amount.
 
-![One modifier adds one cake to the selected side and leaves the opposite side unchanged](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/02-catch-one.gif)
+![A thrown plus-one modifier hits the mixer and changes two to three](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/02-catch-one.gif)
 
 #### ~ tutorialhint
 
@@ -81,19 +83,19 @@ bakery.onAction(BakeryAction.AddOne, function () {
 })
 ```
 
-## 3. Take one cake away
+## 3. Take one away
 
-Sometimes the easier way to match two sides is to make one smaller.
+Sometimes a smaller number is more useful.
 
 ### Build the next event
 
-Create **a - 1 modifier is placed** in ``||bakery(noclick):Cake Factory||``. Use the same read, calculate, and put sequence. This time, choose subtraction from the ``||math(noclick):Math||`` block's operator dropdown and subtract `1` from ``||variables(noclick):batch||``.
+Create **a - 1 modifier hits the mixer**. Use the same read, calculate, and put sequence. Choose subtraction from the ``||math(noclick):Math||`` block's operator dropdown and subtract `1` from ``||variables(noclick):batch||``.
 
 ### What you should see
 
-Collect `- 1` and place it on a side that has cakes. One cake disappears from that side. You can reset both sides with empty hands and **B**, then try a different route.
+Throw `- 1` into the pot: `2` becomes `1`. With empty hands, press **B** beside the pot to reset its amount, then try a different calculation.
 
-![A minus-one modifier removes one pictured cake from the chosen side](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/03-discard-one.gif)
+![A thrown minus-one modifier changes the mixer from two to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/03-discard-one.gif)
 
 #### ~ tutorialhint
 
@@ -107,25 +109,25 @@ bakery.onAction(BakeryAction.RemoveOne, function () {
 })
 ```
 
-## 4. Double a side
+## 4. Double the amount
 
-A `× 2` modifier can do in one visit what repeated additions would take longer to do.
+A `× 2` modifier can do in one throw what repeated additions would take longer to do.
 
 ### Find these blocks
 
-Add **a × 2 modifier is placed**. In the ``||math(noclick):Math||`` block's dropdown, choose multiplication. Use the tray read and result blocks you already know.
+Add **a × 2 modifier hits the mixer**. Choose multiplication from the ``||math(noclick):Math||`` block's dropdown. Use the mixer read and result blocks you already know.
 
-![Native multiplication and factory blocks for the double event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/04-menu.svg)
+![Native multiplication and factory blocks for the double event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/04-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, multiply batch by two, store the new batch and put it on the selected tray](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/04-assembled.svg)
+![Read batch, multiply batch by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/04-assembled.svg)
 
 ### What you should see
 
-Collect `× 2` and place it on a tray with one, two, or three cakes. The cakes double. For example, one becomes two. Choose which side makes the modifier useful.
+Throw `× 2` into the pot. The amount doubles: `2` becomes `4`. The number on the modifier stays two; the amount it multiplies can change.
 
-![A times-two modifier doubles the cake group on one side](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/04-double-batch.gif)
+![A times-two modifier doubles the mixer amount from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/04-double-batch.gif)
 
 #### ~ tutorialhint
 
@@ -139,25 +141,25 @@ bakery.onAction(BakeryAction.Double, function () {
 })
 ```
 
-## 5. Divide a side
+## 5. Divide the amount
 
-Division makes a large group smaller. A `/ 2` modifier divides the selected amount into two equal groups and keeps one group.
+Division makes a large amount smaller. A `/ 2` modifier divides it into two equal parts and keeps one part.
 
 ### Find these blocks
 
-Add **a / 2 modifier is placed**. Choose division from the ``||math(noclick):Math||`` block's dropdown.
+Add **a / 2 modifier hits the mixer**. Choose division from the ``||math(noclick):Math||`` block's dropdown.
 
-![Native division and factory blocks for dividing a tray by two](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/05-menu.svg)
+![Native division and factory blocks for dividing the mixer amount by two](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/05-menu.svg)
 
 ### Make your code look like this
 
-![Read the selected batch, divide it by two, save it and put that result on the tray](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/05-assembled.svg)
+![Read batch, divide it by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/05-assembled.svg)
 
 ### What you should see
 
-Place `/ 2` on a side with two cakes. One remains. The factory uses whole cakes, so a division that would split a cake asks you to choose another side.
+Throw `/ 2` into a mixer holding `2`. The result is `1`. This factory uses whole-number results: a division that would make a fraction leaves the amount unchanged. Adjust the amount before trying that division again.
 
-![Dividing two pictured cakes by two leaves one on the selected tray](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/05-pack-pairs.gif)
+![Dividing two by two changes the mixer to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/05-pack-pairs.gif)
 
 #### ~ tutorialhint
 
@@ -177,21 +179,21 @@ The belts can now offer `+ 2` and `+ 3`. One event can use the number printed on
 
 ### Find these blocks
 
-In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):modifierNumber||``. Add **a + 2 or + 3 modifier is placed** and find **number on the modifier** in ``||bakery(noclick):Cake Factory||``.
+In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):modifierNumber||``. Add **a + 2 or + 3 modifier hits the mixer** and find **number on the modifier** in ``||bakery(noclick):Cake Factory||``.
 
-![Native menu blocks for modifierNumber, its printed-number input and the addition event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/06-menu.svg)
+![Native menu blocks for modifierNumber, its printed-number input and the addition event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/06-menu.svg)
 
 ### Make your code look like this
 
-![Read batch and modifierNumber, add those two variables, then put the saved batch on the tray](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/06-assembled.svg)
+![Read batch and modifierNumber, add them, then put the saved batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/06-assembled.svg)
 
-The two variables have different jobs: ``||variables(noclick):batch||`` remembers the selected side; ``||variables(noclick):modifierNumber||`` remembers the carried modifier's number.
+The variables have different jobs: ``||variables(noclick):batch||`` remembers the mixer amount; ``||variables(noclick):modifierNumber||`` remembers the modifier's printed number.
 
 ### What you should see
 
-Place `+ 2` on one cake. Three cakes appear. Use another printed number or another starting amount and compare the result.
+Throw `+ 2` into a mixer holding `2`: the result is `4`. Try `+ 3` or another starting amount and compare the result.
 
-![The plus-two modifier changes one pictured cake into three](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/06-delivery.gif)
+![The plus-two modifier changes the mixer from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/06-delivery.gif)
 
 #### ~ tutorialhint
 
@@ -209,17 +211,17 @@ bakery.onAction(BakeryAction.AddModifier, function () {
 
 ## 7. Subtract the printed number
 
-A `- 2` or `- 3` modifier removes its printed amount from the side you choose.
+A `- 2` or `- 3` modifier subtracts its printed amount.
 
 ### Build the next event
 
-Add **a - 2 or - 3 modifier is placed**. Read the tray into ``||variables(noclick):batch||`` and the modifier's number into ``||variables(noclick):modifierNumber||``. Calculate the difference, save it in ``||variables(noclick):batch||``, and put that result on the tray.
+Add **a - 2 or - 3 modifier hits the mixer**. Read the mixer into ``||variables(noclick):batch||`` and the printed number into ``||variables(noclick):modifierNumber||``. Subtract the modifier's number from the batch, save the result in ``||variables(noclick):batch||``, and put it in the mixer.
 
 ### What you should see
 
-Place `- 2` on three cakes. One remains. Compare changing the larger side with changing the smaller side: which gets you closer to making the statement true?
+Throw `- 2` at an amount of `2`: the result is `0`. Subtracting three from two would give `-1`. Negative numbers are smaller than zero.
 
-![Subtracting the modifier's printed two from three cakes leaves one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/07-serve-order.gif)
+![Subtracting the printed two from two changes the mixer to zero](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/07-serve-order.gif)
 
 #### ~ tutorialhint
 
@@ -237,17 +239,17 @@ bakery.onAction(BakeryAction.SubtractModifier, function () {
 
 ## 8. Multiply by the printed number
 
-A `× 3` modifier offers another way to change a small group quickly.
+A `× 3` modifier offers another way to change a small amount quickly.
 
 ### Build the next event
 
-Add **a × 3 modifier is placed**. Read both inputs into your variables. This time, multiply ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``, save the result, and put it on the selected tray.
+Add **a × 3 modifier hits the mixer**. Read both inputs into your variables. Multiply ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``, save the result, and put it in the mixer.
 
 ### What you should see
 
-Place `× 3` on one cake. Three appear. The tray still has room for at most six cakes, so choose a useful starting group.
+Throw `× 3` into a mixer holding `2`: the result is `6`. Compare that one throw with adding one four times.
 
-![Multiplying one cake by the printed three produces three cakes](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/08-bake-trays.gif)
+![Multiplying two by the printed three produces six](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/08-bake-trays.gif)
 
 #### ~ tutorialhint
 
@@ -269,13 +271,13 @@ You now have all four arithmetic operations with two variable inputs.
 
 ### Build the next event
 
-Add **a / 3 modifier is placed**. Read both inputs, divide ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``, save the result, and put it on the tray.
+Add **a / 3 modifier hits the mixer**. Read both inputs, divide ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``, save the result, and put it in the mixer.
 
 ### What you should see
 
-Place `/ 3` on three cakes. One remains. Try solving a pictured match by changing the left side, then reset and try changing the right side.
+This step starts the mixer at `3`. Throw `/ 3` into it: the result is `1`. The next modifier will use that new amount. Remember that division needs a whole-number result here.
 
-![Dividing three cakes by the modifier's printed three leaves one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/09-pack-boxes.gif)
+![Dividing three by the modifier's printed three leaves one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/09-pack-boxes.gif)
 
 #### ~ tutorialhint
 
@@ -293,156 +295,210 @@ bakery.onAction(BakeryAction.DivideModifier, function () {
 
 ## 10. Is the statement true?
 
-Connect the machines' checks. A **Boolean** value is either ``||logic(noclick):true||`` or ``||logic(noclick):false||``. A comparison produces a Boolean value.
+Connect the orders' checks. A **Boolean** value is either ``||logic(noclick):true||`` or ``||logic(noclick):false||``. A comparison produces a Boolean value.
 
-The ``||logic(noclick):=||`` comparison checks whether two values represent the same quantity. Two cakes on the left and two on the right make an equal statement true. Two on the left and three on the right make it false.
+The ``||logic(noclick):=||`` comparison checks whether two values represent the same quantity. `3 = 3` is true; `3 = 2` is false. The factory shows true as **YES** and false as **NO**.
 
 ### Find these blocks
 
-In ``||variables(noclick):Variables||``, use **Make a Variable** separately for ``||variables(noclick):leftCakes||``, ``||variables(noclick):rightCakes||``, and ``||variables(noclick):ready||``. The first two will hold numbers. ``||variables(noclick):ready||`` will hold the comparison's true/false result.
+In ``||variables(noclick):Variables||``, use **Make a Variable** separately for ``||variables(noclick):orderTarget||``, ``||variables(noclick):deliveredNumber||``, and ``||variables(noclick):ready||``. The first two hold numbers. ``||variables(noclick):ready||`` holds the comparison's true/false result.
 
-Add **an = machine checks its trays** from ``||bakery(noclick):Cake Factory||``. Find the pointed comparison block in ``||logic(noclick):Logic||`` and choose `=` from its dropdown.
+Add **an = order checks a number**. Find the pointed comparison block in ``||logic(noclick):Logic||`` and choose `=` from its dropdown.
 
-![Native comparison, Boolean and factory input/output blocks, with variable creation](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/10-menu.svg)
+![Native comparison, Boolean and factory inputs and output, with variable creation](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/10-menu.svg)
 
 ### Make your code look like this
 
-![Read leftCakes and rightCakes; set ready to the equals comparison; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/10-assembled.svg)
+![Read orderTarget and deliveredNumber; set ready to their equality comparison; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/10-assembled.svg)
 
-The pointed ``||logic(noclick):Logic||`` block produces true or false. The ``||variables(noclick):set||`` block stores that result in ``||variables(noclick):ready||``. **show check** displays your result on the machine.
+Put ``||variables(noclick):orderTarget||`` first and ``||variables(noclick):deliveredNumber||`` second, just like the bottom order. The pointed ``||logic(noclick):Logic||`` block produces true or false. **set ready** stores that result; **show check** displays it.
 
 ### What you should see
 
-The machines show **FALSE** when their sides differ. Change either side until the pictures match: the check becomes **TRUE**. With empty hands, press **A** at that machine to complete its order.
+Collect a numbered container from the stand and throw it down at `3 = □`. Delivering `2` shows **NO**. Add one in the mixer, collect its new number, and deliver `3`: **YES** activates the order automatically. The target stays three throughout.
 
-![Unequal cakes show FALSE; a modifier makes the groups equal, the learner's check turns TRUE, and A completes the order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/10-equal-check.gif)
+![Three equals two shows NO; making and delivering three shows YES and activates the order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/10-equal-check.gif)
 
 #### ~ tutorialhint
 
 ```blocks
-let leftCakes = 0
-let rightCakes = 0
+let deliveredNumber = 0
+let orderTarget = 0
 let ready = false
 
 bakery.onAction(BakeryAction.EqualCheck, function () {
-    leftCakes = bakery.leftAmount()
-    rightCakes = bakery.rightAmount()
-    ready = leftCakes == rightCakes
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget == deliveredNumber
     bakery.showCheck(ready)
 })
 ```
 
-## 11. Make the left side smaller
+## 11. Is the left side smaller?
 
-The second machine now asks for ``||logic(noclick):<||``. **Less than** checks whether the first value represents a smaller quantity than the second. Order matters: read the left side first.
+**Less than** checks whether the first value represents a smaller quantity than the second. Order matters: `4 < 5` is true, but `5 < 4` is false.
 
 ### Find these blocks
 
-Add **a < machine checks its trays**. Use the same two cake inputs, variables, and check output. Choose `<` from the ``||logic(noclick):Logic||`` comparison dropdown.
+Add **a < order checks a number**. Use the same input blocks and variables. Choose `<` from the ``||logic(noclick):Logic||`` comparison dropdown.
 
-![Native less-than comparison and the corresponding factory check event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/11-menu.svg)
+![Native less-than comparison and its factory check event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/11-menu.svg)
 
 ### Make your code look like this
 
-![Read both sides; set ready to leftCakes less than rightCakes; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/instructions/11-assembled.svg)
+![Read both inputs; set ready to orderTarget less than deliveredNumber; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/instructions/11-assembled.svg)
 
 ### What you should see
 
-Make the left side smaller than the right. You could remove cakes from the left or add cakes to the right. The lamp shows **TRUE** when your comparison is true; empty-handed **A** completes the order.
+The rightmost order asks for `4 < □`. Deliver `4`: **NO**, because the numbers are equal. Add one to the mixer and deliver `5`: **YES**. You changed the delivered number on the right.
 
-![Changing one side makes the left cake group smaller and changes the less-than check from FALSE to TRUE](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/11-less-check.gif)
+![Four less than four shows NO; four less than five shows YES](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/11-less-check.gif)
 
 #### ~ tutorialhint
 
 ```blocks
-let leftCakes = 0
-let rightCakes = 0
+let deliveredNumber = 0
+let orderTarget = 0
 let ready = false
 
 bakery.onAction(BakeryAction.LessCheck, function () {
-    leftCakes = bakery.leftAmount()
-    rightCakes = bakery.rightAmount()
-    ready = leftCakes < rightCakes
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget < deliveredNumber
     bakery.showCheck(ready)
 })
 ```
 
-## 12. Make the left side larger
+## 12. Is the left side larger?
 
-The third machine asks for ``||logic(noclick):>||``. **Greater than** checks whether the first value represents a larger quantity than the second.
+**Greater than** checks whether the first value represents a larger quantity than the second.
 
 ### Build the next event
 
-Add **a > machine checks its trays**. Read both cake amounts into their variables. Set ``||variables(noclick):ready||`` to the greater-than comparison, with ``||variables(noclick):leftCakes||`` first and ``||variables(noclick):rightCakes||`` second. Show that Boolean result with **show check**.
+Add **a > order checks a number**. Read both inputs. Set ``||variables(noclick):ready||`` to the greater-than comparison, with ``||variables(noclick):orderTarget||`` first and ``||variables(noclick):deliveredNumber||`` second. Show that Boolean result.
 
 ### What you should see
 
-Make the left side larger. You can increase the left or decrease the right. Matching groups make `=` true, but they make both `<` and `>` false.
+The middle order asks for `2 > □`. Delivering `2` gives **NO**. Subtract one in the mixer and deliver `1`: **YES**. Matching numbers make `=` true, but make both `<` and `>` false.
 
-![Increasing the left cake group beyond the right changes the greater-than check to TRUE](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/12-greater-check.gif)
+![Two greater than two shows NO; two greater than one shows YES](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/12-greater-check.gif)
 
 #### ~ tutorialhint
 
 ```blocks
-let leftCakes = 0
-let rightCakes = 0
+let deliveredNumber = 0
+let orderTarget = 0
 let ready = false
 
 bakery.onAction(BakeryAction.GreaterCheck, function () {
-    leftCakes = bakery.leftAmount()
-    rightCakes = bakery.rightAmount()
-    ready = leftCakes > rightCakes
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget > deliveredNumber
     bakery.showCheck(ready)
 })
 ```
 
-## 13. Run the factory
+## 13. Include the matching number
 
-All three kinds of order are ready. Complete the `=`, `<`, and `>` orders using your arithmetic modifiers and checks.
+**Less than or equal to**, ``||logic(noclick):≤||``, accepts equality too. Both `5 ≤ 5` and `5 ≤ 6` are true.
+
+### Build the next event
+
+Add **a ≤ order checks a number**. Keep the same input order and variables. Choose `≤` from the comparison dropdown, save the Boolean in ``||variables(noclick):ready||``, and show it.
+
+### What you should see
+
+The rightmost order now asks for `5 ≤ □`. Make and deliver `5`: **YES**. A larger delivered number also works; `4` does not. The sign itself tells you which numbers qualify.
+
+![Five less than or equal to five shows YES and activates the order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/13-less-equal-check.gif)
+
+#### ~ tutorialhint
+
+```blocks
+let deliveredNumber = 0
+let orderTarget = 0
+let ready = false
+
+bakery.onAction(BakeryAction.LessEqualCheck, function () {
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget <= deliveredNumber
+    bakery.showCheck(ready)
+})
+```
+
+## 14. Include equality the other way
+
+**Greater than or equal to**, ``||logic(noclick):≥||``, also accepts matching numbers. Both `1 ≥ 1` and `1 ≥ 0` are true.
+
+### Build the next event
+
+Add **a ≥ order checks a number**. Read the fixed target and delivered number. Compare them with `≥`, keeping the target first. Save and show the result.
+
+### What you should see
+
+The middle order asks for `1 ≥ □`. Deliver `1`: **YES**. Zero or a negative number also works here. A larger delivered number, such as `2`, makes this statement false.
+
+![One greater than or equal to one shows YES and activates the order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/14-greater-equal-check.gif)
+
+#### ~ tutorialhint
+
+```blocks
+let deliveredNumber = 0
+let orderTarget = 0
+let ready = false
+
+bakery.onAction(BakeryAction.GreaterEqualCheck, function () {
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget >= deliveredNumber
+    bakery.showCheck(ready)
+})
+```
+
+## 15. Run the factory
+
+Keep your code. Activate all three orders: `3 = □`, `1 ≥ □`, and `5 ≤ □`.
 
 ### Choose your route
 
-Read the pictured amounts and sign before choosing a modifier. Work on either side. Several small changes can work; a useful multiplication or division may get there faster. Drop an unhelpful modifier with **B**. Empty-handed **B** resets an unfinished machine so you can try another plan.
+Read the target and sign before catching a modifier. Make a useful number in the pot, collect a copy from the stand, and throw it at its order. You can use several small calculations or take a shorter route with multiplication or division. Faster orders earn more coins.
 
 ### What you should see
 
-When a machine shows **TRUE**, return with empty hands and press **A** to send its batch. Complete all three orders to finish the round. Faster orders earn more coins.
+One route makes `1`, then `3`, then `6`. Each delivered number turns its chosen check to **YES**. Collecting and delivering never empties the mixer: the next calculation starts with the amount you just made.
 
-![The worker changes both sides across three comparisons, ships true batches and completes the factory round](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/13-factory-round.gif)
+![Three calculated numbers activate the three different orders and complete a round](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/15-factory-round.gif)
 
-Press **A** to take the next three orders. Their bright tool symbols show which modifiers they accept. The next round uses multiplication and division; addition and subtraction follow after that. Later rounds mix these jobs with different small starting groups.
+Press **A** after all three activate. The next round keeps your mixer amount and brings new checks.
 
-## 14. Make more with fewer tools
+## 16. Watch the boundary
 
-Keep the code you have built. In the next round, the orders accept only `×` and `/` modifiers. An addition card or loose cupcake cannot change these orders; you keep it until you drop it with **B**.
+The next round uses strict `<` and `>` checks. A matching number is no longer enough for those orders.
 
 ### Choose a path
 
-The `=` order starts with one cake and four cakes. You could double the left side twice, divide the right side by two twice, or change both sides until they meet. Every modifier uses the amount that is on its tray **now**.
-
-For `<` and `>`, matching is only an intermediate step: equal groups still make those comparisons **FALSE**. Use another modifier on either side to make the statement true.
+After finishing with `6` in the pot, the new orders include `5 < □`. Subtract one, collect `5`, and deliver it there. Predict the result before you throw. Then make a number that will turn that same order to **YES**.
 
 ### What you should see
 
-After one doubling, the left side has two cakes and the right has four: the `=` check stays **FALSE**. A second doubling makes four on both sides and the check becomes **TRUE**. Ship it with empty-handed **A**. Reset another unfinished order with **B** and try a different path.
+`5 < 5` gives **NO**. Add one, collect `6`, and deliver it: `5 < 6` gives **YES**. Compare this with `5 ≤ 5` from the earlier round.
 
-![Two successive multiplications use the updated tray amount, turning one cake into two and then four before shipping the matching order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/14-multiply-divide-jobs.gif)
+![A strict check rejects its matching boundary, then accepts the larger delivered number](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/16-boundary-checks.gif)
 
-## 15. Find another way
+## 17. Keep the amount, change the plan
 
-Finish the three multiplication/division orders, then press **A**. These next orders accept only `+` and `-` modifiers.
+Your code can use each new mixer amount without being rewritten.
 
 ### Choose a path
 
-The `=` order starts with one cake and five cakes. Two `+ 2` modifiers on the left make three and then five. You could instead change both sides: adding two on the left and subtracting two on the right makes three on each side.
-
-Try the same decision on the `<` and `>` orders. Increasing one side and decreasing the other can both help; read the sign before choosing. The slower loose cupcakes are allowed here, but a larger printed modifier can save a trip.
+Make and deliver `3` for the equality order. Look back at the pot: it still holds `3`. Find a useful next calculation for another order. Doubling gives `6`; subtracting two gives `1`. Both use the amount already there.
 
 ### What you should see
 
-Your code handles each new starting amount without being rewritten. The comparison changes to **TRUE** only when the resulting pictures satisfy its sign. Complete this round to reach mixed-tool orders with more small-number examples.
+A numbered container carries a copy. Your next modifier changes the mixer, while a completed order keeps its delivered number. Try another route through the same three checks, using a different combination of arithmetic operations.
 
-![Two plus-two modifiers turn one pictured cake into three and then five, making the equality order true](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/87bb93f9da804a78/demos/15-add-subtract-jobs.gif)
+![The mixer keeps three after delivery, then doubling makes six for a different order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c0590805184b5b9a/demos/17-reuse-number.gif)
 
 ```template
 // Cake Factory
@@ -609,31 +665,28 @@ namespace bakeryArt {
         p.fillRect(0, 0, 320, 19, 14)
         p.fillRect(0, 20, 320, 3, 8)
         for (let x of [32, 138, 244]) { p.fillRect(x, 24, 42, 2, 8); p.fillRect(x + 4, 27, 34, 2, 9) }
-        for (let x of [54, 160, 266]) {
-            rounded(p, x - 46, 22, 92, 79, 14)
-            p.fillRect(x - 43, 24, 86, 75, 8)
-            p.fillRect(x - 40, 27, 80, 66, 12)
-            p.fillRect(x - 42, 94, 84, 5, 8)
-            p.fillRect(x - 36, 96, 72, 1, 9)
+        for (let y = 24; y <= 84; y++) {
+            let d = Math.floor((y - 24) * 0.8)
+            for (let c of [40 + d, 160, 280 - d]) {
+                p.fillRect(c - 37, y, 74, 1, 14)
+                p.fillRect(c - 33, y, 66, 1, 12)
+                p.setPixel(c - 34, y, 1); p.setPixel(c + 33, y, 1)
+            }
         }
-        p.fillRect(0, 101, 320, 36, 8)
-        p.fillRect(0, 135, 320, 2, 9)
-        p.fillRect(0, 153, 320, 3, 14)
-        p.fillRect(0, 156, 320, 3, 8)
+        p.fillRect(0, 90, 320, 106, 8)
+        p.fillRect(0, 85, 320, 5, 8)
         return p
     }
 
     // Call every frame over the static background, before tokens and chef.
     export function conveyorTreads(p: Image, pixelOffset: number) {
-        for (let x of [54, 160, 266]) p.fillRect(x - 40, 27, 80, 66, 12)
-        for (let x of [54, 160, 266]) for (let row = 0; row < 5; row++) {
-            let y = 29 + ((row * 13 + pixelOffset) % 63)
-            p.fillRect(x - 37, y, 74, 1, 8)
-            if (y < 89) {
-                let dx = -2
-                p.setPixel(x + dx, y + 2, 8); p.setPixel(x + dx + 1, y + 3, 8)
-                p.setPixel(x + dx + 2, y + 4, 8); p.setPixel(x + dx + 3, y + 3, 8)
-                p.setPixel(x + dx + 4, y + 2, 8)
+        for (let y = 24; y <= 84; y++) {
+            let d = Math.floor((y - 24) * 0.8)
+            for (let c of [40 + d, 160, 280 - d]) {
+                p.fillRect(c - 37, y, 74, 1, 14)
+                p.fillRect(c - 33, y, 66, 1, 12)
+                p.setPixel(c - 34, y, 1); p.setPixel(c + 33, y, 1)
+                if ((y + pixelOffset) % 12 == 0) p.fillRect(c - 32, y, 64, 1, 8)
             }
         }
     }
@@ -649,8 +702,23 @@ namespace bakeryArt {
 
     function comparisonGlyph(p: Image, relation: number, x: number, y: number, color: number) {
         if (relation == 0) { p.fillRect(x, y + 2, 11, 2, color); p.fillRect(x, y + 7, 11, 2, color) }
-        if (relation == 1) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 - n, y + n, color); p.setPixel(x + 5 - n, y + 10 - n, color) }
-        if (relation == 2) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 + n, y + n, color); p.setPixel(x + 5 + n, y + 10 - n, color) }
+        if (relation == 1 || relation == 3) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 - n, y + n, color); p.setPixel(x + 5 - n, y + 10 - n, color) }
+        if (relation == 2 || relation == 4) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 + n, y + n, color); p.setPixel(x + 5 + n, y + 10 - n, color) }
+        if (relation == 3 || relation == 4) p.fillRect(x, y + 12, 12, 1, color)
+    }
+
+    function printNumber(p: Image, value: number, centerX: number, topY: number, color: number, maxWidth: number) {
+        if (value - value != 0) return
+        let text = "" + value
+        if (text.length > 6) text = text.substr(0, 6)
+        let scale = text.length * 12 <= maxWidth ? 2 : 1
+        let temp = image.create(text.length * (scale == 2 ? 6 : 5) + 2, 8)
+        temp.print(text, 0, 0, 1, scale == 2 ? image.font8 : image.font5)
+        let outWidth = text.length * (scale == 2 ? 12 : 5)
+        let left = centerX - Math.idiv(outWidth, 2)
+        for (let sy = 0; sy < 8; sy++) for (let sx = 0; sx < temp.width; sx++) if (temp.getPixel(sx, sy) != 0) {
+            for (let dy = 0; dy < scale; dy++) for (let dx = 0; dx < scale; dx++) p.setPixel(left + sx * scale + dx, topY + sy * scale + dy, color)
+        }
     }
 
     export function variableTray(p: Image, x: number, y: number) {
@@ -766,6 +834,48 @@ namespace bakeryArt {
         for (let i = 0; i < 4; i++) operator(p, i, 242 + i * 14, 230, (allowedOps & (1 << i)) != 0 ? 1 : 12)
     }
 
+    export function mixer(p: Image, value: number, active: boolean, jammed: boolean) {
+        p.fillCircle(160, 132, 31, active ? 5 : 12)
+        p.fillCircle(160, 132, 27, 13)
+        p.fillCircle(160, 132, 23, jammed ? 3 : 4)
+        p.fillRect(126, 127, 8, 10, 14); p.fillRect(128, 129, 4, 6, 12)
+        p.fillRect(186, 127, 8, 10, 14); p.fillRect(188, 129, 4, 6, 12)
+        p.fillRect(140, 118, 5, 1, 1); p.fillRect(137, 120, 3, 1, 1)
+          printNumber(p, value, 160, 122, 15, 54)
+    }
+
+    export function numericOutput(value: number): Image {
+        let p = image.create(28, 30)
+        rounded(p, 2, 3, 24, 25, 14)
+        p.fillRect(5, 8, 18, 16, 13)
+        p.fillRect(8, 5, 12, 4, 8)
+        if (Math.floor(value) == value) printNumber(p, value, 14, 10, 15, 24)
+        return p
+    }
+
+    export function outputStand(p: Image, value: number, active: boolean) {
+        rounded(p, 235, 143, 34, 39, 14)
+        p.fillRect(239, 150, 26, 25, active ? 6 : 8)
+        p.fillRect(231, 158, 10, 3, 8)
+        p.fillRect(226, 157, 7, 5, 9)
+        p.drawTransparentImage(numericOutput(value), 238, 146)
+        p.print("NUMBER", 236, 182, 1, image.font5)
+    }
+
+    export function deliveryOrder(p: Image, index: number, value: number, target: number, relation: number, signal: number, focused: boolean, complete: boolean) {
+        let x = index * 106 + 2
+        rounded(p, x, 204, 104, 36, focused ? 5 : 12)
+        p.fillRect(x + 2, 206, 100, 32, focused ? 6 : 8)
+        p.fillRect(x + 7, 210, 24, 17, 13)
+        printNumber(p, target, x + 19, 211, 15, 24)
+        comparisonGlyph(p, relation, x + 45, 211, 1)
+        p.fillRect(x + 74, 210, 24, 17, 13)
+        if (value != -999999) printNumber(p, value, x + 86, 211, 15, 24)
+        let text = signal < 0 ? "CHECK" : signal == 0 ? "NO" : "YES"
+        p.print(text, x + 7, 228, signal == 1 ? 9 : 1, image.font5)
+        if (complete) { p.fillRect(x + 91, 229, 2, 6, 9); p.fillRect(x + 93, 232, 6, 2, 9) }
+    }
+
     // x=6,110,214. Draw later than floor, earlier than held-card overlay.
     export function station(p: Image, x: number, target: number, current: number, kind: number, active: boolean) {
         rounded(p, x, 170, 100, 69, 14)
@@ -837,104 +947,101 @@ namespace userconfig {
 }
 
 enum BakeryAction {
-    //% block="a tray is selected"
+    //% block="the mixer is selected"
     TraySelected,
-    //% block="a + 1 item is placed"
+    //% block="a + 1 item hits the mixer"
     AddOne,
-    //% block="a - 1 modifier is placed"
+    //% block="a - 1 modifier hits the mixer"
     RemoveOne,
-    //% block="a × 2 modifier is placed"
+    //% block="a × 2 modifier hits the mixer"
     Double,
-    //% block="a / 2 modifier is placed"
+    //% block="a / 2 modifier hits the mixer"
     Halve,
-    //% block="a + 2 or + 3 modifier is placed"
+    //% block="a + 2 or + 3 modifier hits the mixer"
     AddModifier,
-    //% block="a - 2 or - 3 modifier is placed"
+    //% block="a - 2 or - 3 modifier hits the mixer"
     SubtractModifier,
-    //% block="a × 3 modifier is placed"
+    //% block="a × 3 modifier hits the mixer"
     MultiplyModifier,
-    //% block="a / 3 modifier is placed"
+    //% block="a / 3 modifier hits the mixer"
     DivideModifier,
-    //% block="an = machine checks its trays"
+    //% block="an = order checks a number"
     EqualCheck,
-    //% block="a < machine checks its trays"
+    //% block="a < order checks a number"
     LessCheck,
-    //% block="a > machine checks its trays"
-    GreaterCheck
+    //% block="a > order checks a number"
+    GreaterCheck,
+    //% block="a ≤ order checks a number"
+    LessEqualCheck,
+    //% block="a ≥ order checks a number"
+    GreaterEqualCheck
 }
 
 //% color=#bf693d icon="\uf1fd" block="Cake Factory" weight=90
 namespace bakery {
     let handlers: (() => void)[] = []
     let chef: Sprite = null
-    let packets: Sprite[] = []
-    let packetOps: number[] = []
-    let packetNumbers: number[] = []
-    let packetManual: boolean[] = []
-    let packetLanes: number[] = []
-    const lanes = [54, 160, 266]
-    const stations = [6, 110, 214]
-    // Left/right pairs; only learner reports and explicit reset alter these.
-    let quantities = [1, 2, 2, 3, 3, 4]
-    let starts = [1, 2, 2, 3, 3, 4]
+    let mixingValue = 2
+    let mixingStart = 2
+    let mixingJammed = false
+    let targets = [3, 1, 5]
+    let delivered = [0, 0, 0]
+    let hasDelivery = [false, false, false]
     let relations = [0, 0, 0]
-    let allowedOps = [15, 15, 15]
     let signals = [-1, -1, -1]
     let jammed = [false, false, false]
     let fulfilledAt = [-1, -1, -1]
     let orderBegan = [0, 0, 0]
-    let appliedAt = [-10000, -10000, -10000, -10000, -10000, -10000]
-    let appliedOps = [0, 0, 0, 0, 0, 0]
-    let appliedNumbers = [1, 1, 1, 1, 1, 1]
-    let selectedTray = -1
-    let focusedMachine = 0
-    let activeTray = -1
+    let activeMachine = -1
     let activeAction = -1
     let activeOp = -1
     let activeNumber = 0
     let beforeAction = 0
     let reported = false
     let held: Sprite = null
+    let heldKind = -1
     let heldOp = -1
     let heldNumber = 0
-    let heldManual = false
-    let previewValue = 0
-    let previewUntil = 0
-    let previewReported = false
-    let started = false
-    let shiftDone = false
-    let stamps = 0
-    let coins = 0
-    let lastBonus = 0
-    let bonusAt = -10000
-    let roundNumber = 0
+    let faceX = 0
+    let faceY = -1
+    let oldX = 160
+    let oldY = 190
+    let packets: Sprite[] = []
+    let packetOps: number[] = []
+    let packetNumbers: number[] = []
+    let packetLanes: number[] = []
+    let packetBorn: number[] = []
+    let packetManual: boolean[] = []
+    let shots: Sprite[] = []
+    let shotKinds: number[] = []
+    let shotOps: number[] = []
+    let shotNumbers: number[] = []
+    let shotBorn: number[] = []
     let spawnAt = [0, 0, 0]
     let spawnRound = [0, 1, 2]
     let manualAt = 0
-    let manualSide = 0
+    let outputCooldown = 0
+    let previewValue = 0
+    let previewUntil = 0
+    let previewReported = false
+    let hitAt = -10000
+    let started = false
+    let shiftDone = false
+    let roundNumber = 0
+    let stamps = 0
+    let coins = 0
+    let lastBonus = 0
     let lastTick = 0
-    let message = "Carry a modifier to either side. A: place."
+    let message = "Catch. Aim. A: throw into the mixer."
     let messageUntil = 0
 
-    // Student builds contain no instrumentation.
     function trace(reason: string) {
         // @bakery-test-trace
     }
-    function tell(words: string, duration: number = 2300) {
-        message = words; messageUntil = control.millis() + duration
-    }
     function installed(action: number): boolean { return handlers[action] != null }
-    function smallWhole(value: number): boolean {
-        return value == value && Math.abs(value) < 10000 && Math.floor(value) == value
-    }
-    function numberText(value: number): string {
-        let text = "" + value
-        return text.length > 9 ? text.substr(0, 9) : text
-    }
-    function machineOf(tray: number): number { return Math.idiv(tray, 2) }
-    function currentMachine(): number {
-        return machineOf(activeTray >= 0 ? activeTray : selectedTray >= 0 ? selectedTray : 0)
-    }
+    function tell(words: string, duration: number = 2600) { message = words; messageUntil = control.millis() + duration }
+    function smallWhole(value: number): boolean { return value - value == 0 && Math.floor(value) == value }
+    function numberText(value: number): string { let text = "" + value; return text.length > 9 ? text.substr(0, 9) : text }
     function actionFor(op: number, rhs: number): BakeryAction {
         if (op == 0) return rhs == 1 ? BakeryAction.AddOne : BakeryAction.AddModifier
         if (op == 1) return rhs == 1 ? BakeryAction.RemoveOne : BakeryAction.SubtractModifier
@@ -943,214 +1050,135 @@ namespace bakery {
     }
     //% blockId=bakery_on_action block="when $action" weight=100
     export function onAction(action: BakeryAction, handler: () => void) { handlers[action] = handler }
-    //% blockId=bakery_tray_amount block="amount on this tray" weight=70
-    export function trayAmount(): number {
-        return activeTray >= 0 ? quantities[activeTray] : selectedTray >= 0 ? quantities[selectedTray] : 0
-    }
+    //% blockId=bakery_tray_amount block="amount in the mixer" weight=70
+    export function trayAmount(): number { return mixingValue }
     //% blockId=bakery_modifier_number block="number on the modifier" weight=65
     export function modifierNumber(): number { return activeNumber }
-    //% blockId=bakery_left_amount block="cakes on the left" weight=64
-    export function leftAmount(): number { return quantities[currentMachine() * 2] }
-    //% blockId=bakery_right_amount block="cakes on the right" weight=63
-    export function rightAmount(): number { return quantities[currentMachine() * 2 + 1] }
+    //% blockId=bakery_left_amount block="order target on the left" weight=64
+    export function leftAmount(): number { return activeMachine >= 0 ? targets[activeMachine] : 0 }
+    //% blockId=bakery_right_amount block="delivered number on the right" weight=63
+    export function rightAmount(): number { return activeMachine >= 0 ? delivered[activeMachine] : 0 }
     //% blockId=bakery_show_check block="show check $value" weight=80
     export function showCheck(value: boolean) {
-        if (activeAction < BakeryAction.EqualCheck || activeTray < 0) return
-        reported = true
-        // Display the learner's submitted Boolean; never substitute an answer.
-        signals[currentMachine()] = value ? 1 : 0
+        if (activeAction < BakeryAction.EqualCheck || activeMachine < 0) return
+        reported = true; signals[activeMachine] = value ? 1 : 0
         trace("check-reported")
     }
-    //% blockId=bakery_show_tray block="show $value from this tray" weight=90
+    //% blockId=bakery_show_tray block="show $value from the mixer" weight=90
     export function showTray(value: number) {
         if (activeAction != BakeryAction.TraySelected) return
-        reported = true; previewValue = value; previewReported = true
-        previewUntil = control.millis() + 2100
-        trace("tray-read")
+        reported = true; previewValue = value; previewReported = true; previewUntil = control.millis() + 2100
+        trace("mixer-read")
     }
-    //% blockId=bakery_apply_result block="put $value on this tray" weight=85
+    //% blockId=bakery_apply_result block="put $value in the mixer" weight=85
     export function applyResult(value: number) {
-        if (activeTray < 0 || activeAction <= BakeryAction.TraySelected || activeAction >= BakeryAction.EqualCheck || reported) return
-        reported = true
-        quantities[activeTray] = value
-        let valid = smallWhole(value) && value >= 0 && value <= 6
-        // Nonmutating conservation observer. Never substitutes the answer.
+        if (activeAction <= BakeryAction.TraySelected || activeAction >= BakeryAction.EqualCheck || reported) return
+        reported = true; mixingValue = value
+        let valid = smallWhole(value)
+        // Nonmutating observer: display the learner result, never replace it.
         if (activeOp == 0) valid = valid && value - beforeAction == activeNumber
         if (activeOp == 1) valid = valid && beforeAction - value == activeNumber
         if (activeOp == 2) valid = valid && (beforeAction == 0 ? value == 0 : value / beforeAction == activeNumber)
         if (activeOp == 3) valid = valid && value * activeNumber == beforeAction
-        let m = currentMachine()
-        jammed[m] = jammed[m] || !valid
-        if (jammed[m]) tell("Result does not match the modifier. B: reset.", 4400)
-        else tell("Both sides can change. Make the statement true.")
-        trace("result-applied")
+        mixingJammed = mixingJammed || !valid
+        tell(mixingJammed ? "Check your calculation. Empty hands B: reset." : "New amount! Collect its numbered container.", 3400)
+        hitAt = control.millis(); trace("result-applied")
     }
-    function invoke(action: BakeryAction, tray: number) {
-        activeAction = action; activeTray = tray; beforeAction = quantities[tray]; reported = false
+    function invoke(action: BakeryAction, machine: number) {
+        activeAction = action; activeMachine = machine; beforeAction = mixingValue; reported = false
         if (installed(action)) handlers[action]()
         if (!reported && action > BakeryAction.TraySelected && action < BakeryAction.EqualCheck) {
-            jammed[machineOf(tray)] = true; tell("No new tray result. Reset to retry.", 4000)
+            mixingJammed = true; tell("No mixer result. Check your code; B resets.", 4000)
         }
-        trace("action-" + action)
-        activeAction = -1; activeTray = -1
+        trace("action-" + action); activeAction = -1; activeMachine = -1
     }
-    function checkMachine(m: number) {
+    function checkOrder(m: number) {
         signals[m] = -1
-        if (!jammed[m]) invoke(BakeryAction.EqualCheck + relations[m], m * 2)
+        if (hasDelivery[m] && !jammed[m]) invoke(BakeryAction.EqualCheck + relations[m], m)
     }
-    function finishOrder(m: number) {
-        checkMachine(m)
-        if (signals[m] < 0) { tell("Build this machine's check to connect its gate.", 3600); return }
-        if (signals[m] == 0) { tell("FALSE: change either side, then check again.", 3200); return }
-        // Shipping quality control only rejects; it cannot create the learner's signal.
-        let difference = quantities[m * 2] - quantities[m * 2 + 1]
-        let consistent = relations[m] == 0 ? difference == 0 : relations[m] == 1 ? difference < 0 : difference > 0
-        if (!consistent) { jammed[m] = true; tell("TRUE does not match these cakes. Check your code.", 4400); trace("check-mismatch"); return }
-        stamps++
-        lastBonus = Math.max(1, 5 - Math.idiv(control.millis() - orderBegan[m], 15000))
-        coins += lastBonus; bonusAt = control.millis(); fulfilledAt[m] = bonusAt
-        tell("TRUE! This factory order is complete.", 2600)
-        trace("order-filled")
-        if (stamps == 3) {
-            shiftDone = true; clearPackets(); tell("Three orders complete! A: another round.", 100000)
-            trace("shift-complete")
-        }
+    function consistent(m: number): boolean {
+        let a = targets[m], b = delivered[m], r = relations[m]
+        return r == 0 ? a == b : r == 1 ? a < b : r == 2 ? a > b : r == 3 ? a <= b : a >= b
     }
-    function configureMachine(m: number) {
-        let l = m + 1, r = m + 2
-        if (installed(BakeryAction.Double)) { l = m + 1; r = l * 2 }
-        if (installed(BakeryAction.Halve) && m == 0) { l = 2; r = 1 }
-        if (installed(BakeryAction.AddModifier)) { l = m + 1; r = l == 3 ? 6 : l + 2 }
-        if (installed(BakeryAction.SubtractModifier) && m == 2) { l = 3; r = 1 }
-        if (installed(BakeryAction.MultiplyModifier) && m == 0) { l = 1; r = 3 }
-        if (installed(BakeryAction.DivideModifier) && m == 2) { l = 3; r = 2 }
-        relations[m] = m == 1 && installed(BakeryAction.LessCheck) ? 1 : m == 2 && installed(BakeryAction.GreaterCheck) ? 2 : 0
-        if (relations[m] == 1) { l = 3; r = 2 }
-        if (relations[m] == 2) { l = 2; r = 3 }
-        allowedOps[m] = 15
-        if (roundNumber > 0) {
-            // New jobs use small, solvable cards rather than arbitrary quantities.
-            // Their visible tool restrictions are supplied game rules, not new learner code.
-            let restricted = installed(BakeryAction.AddModifier) && installed(BakeryAction.SubtractModifier) && installed(BakeryAction.MultiplyModifier) && installed(BakeryAction.DivideModifier)
-            if (restricted) allowedOps[m] = roundNumber == 1 ? 12 : roundNumber == 2 ? 3 : [15, 3, 12][(roundNumber + m) % 3]
-            let choice = roundNumber < 3 ? 0 : Math.randomRange(0, 2)
-            let pair = [1, 2]
-            if (allowedOps[m] == 12) {
-                if (relations[m] == 0) pair = [[1, 4], [2, 6], [3, 2]][choice]
-                else if (relations[m] == 1) pair = [[4, 2], [3, 1], [4, 3]][choice]
-                else pair = [[2, 4], [1, 3], [3, 4]][choice]
-            } else if (allowedOps[m] == 3) {
-                if (relations[m] == 0) pair = [[1, 5], [2, 6], [0, 4]][choice]
-                else if (relations[m] == 1) pair = [[5, 1], [4, 1], [6, 2]][choice]
-                else pair = [[1, 5], [1, 4], [2, 6]][choice]
-            } else {
-                let seed = Math.randomRange(1, 3)
-                pair = relations[m] == 1 ? [seed + 1, seed] : [seed, seed + 1]
-            }
-            l = pair[0]; r = pair[1]
-        }
-        quantities[m * 2] = l; quantities[m * 2 + 1] = r
-        starts[m * 2] = l; starts[m * 2 + 1] = r
-        signals[m] = -1; jammed[m] = false; fulfilledAt[m] = -1; orderBegan[m] = control.millis()
-        appliedAt[m * 2] = -10000; appliedAt[m * 2 + 1] = -10000
-        checkMachine(m); trace("order-ready")
+    function receiveNumber(m: number, value: number) {
+        if (fulfilledAt[m] >= 0 || jammed[m]) return
+        delivered[m] = value; hasDelivery[m] = true; trace("number-delivered")
+        checkOrder(m)
+        if (signals[m] < 0) { tell("Build this order's check to connect it."); return }
+        if (signals[m] == 0) { tell("NO. Adjust the mixer, then throw a new number.", 3400); trace("order-false"); return }
+        if (!consistent(m)) { jammed[m] = true; tell("YES disagrees with the numbers. Check code.", 4000); trace("check-mismatch"); return }
+        stamps++; fulfilledAt[m] = control.millis()
+        lastBonus = Math.max(1, 5 - Math.idiv(control.millis() - orderBegan[m], 15000)); coins += lastBonus
+        tell("YES! Order activated."); trace("order-filled")
+        if (stamps == 3) { shiftDone = true; clearPackets(); tell("All three activated! A: next round.", 100000); trace("shift-complete") }
     }
-    function removePacket(index: number, reason: string) {
-        packets[index].destroy()
-        packets.removeAt(index); packetOps.removeAt(index); packetNumbers.removeAt(index)
-        packetManual.removeAt(index); packetLanes.removeAt(index)
-        trace(reason)
+    function removePacket(i: number, reason: string) {
+        packets[i].destroy(); packets.removeAt(i); packetOps.removeAt(i); packetNumbers.removeAt(i)
+        packetLanes.removeAt(i); packetBorn.removeAt(i); packetManual.removeAt(i); trace(reason)
     }
     function clearPackets() { while (packets.length) removePacket(packets.length - 1, "packet-cleared") }
-    function discardHeld() {
-        if (held != null) held.destroy()
-        held = null; heldOp = -1; heldNumber = 0; heldManual = false
+    function removeShot(i: number, reason: string) {
+        shots[i].destroy(); shots.removeAt(i); shotKinds.removeAt(i); shotOps.removeAt(i); shotNumbers.removeAt(i); shotBorn.removeAt(i); trace(reason)
     }
+    function discardHeld() { if (held != null) held.destroy(); held = null; heldKind = -1; heldOp = -1; heldNumber = 0 }
     function startShift() {
-        clearPackets(); discardHeld()
-        stamps = 0; coins = 0; lastBonus = 0; shiftDone = false
-        selectedTray = -1; focusedMachine = 0; previewUntil = 0; previewReported = false
+        clearPackets(); while (shots.length) removeShot(shots.length - 1, "shot-cleared")
+        discardHeld(); stamps = 0; coins = 0; shiftDone = false; previewUntil = 0; mixingJammed = false
+        if (roundNumber == 0) mixingValue = installed(BakeryAction.DivideModifier) && !installed(BakeryAction.EqualCheck) ? 3 : 2
+        mixingStart = mixingValue
+        let center = roundNumber == 0 ? 3 : Math.max(2, Math.min(4, Math.abs(mixingValue)))
+        relations = [0, installed(BakeryAction.GreaterCheck) ? 2 : 0, installed(BakeryAction.LessCheck) ? 1 : 0]
+        if (installed(BakeryAction.LessEqualCheck) && (roundNumber % 2 == 0)) relations[2] = 3
+        if (installed(BakeryAction.GreaterEqualCheck) && (roundNumber % 2 == 0)) relations[1] = 4
+        targets = [center, relations[1] == 2 ? center - 1 : center - 2, relations[2] == 1 ? center + 1 : center + 2]
         for (let i = 0; i < 3; i++) {
-            configureMachine(i); spawnAt[i] = control.millis() + 200 + i * 600; spawnRound[i] = i
+            signals[i] = -1; delivered[i] = 0; hasDelivery[i] = false; jammed[i] = false; fulfilledAt[i] = -1
+            orderBegan[i] = control.millis(); spawnAt[i] = control.millis() + 200 + i * 600; spawnRound[i] = i
         }
-        manualAt = control.millis() + 1800; manualSide = 0
-        tell("Carry a modifier to either side. A: place.", 4500)
-        trace("shift-started")
+        manualAt = control.millis() + 1800; outputCooldown = control.millis() + 500
+        tell("Catch a modifier. Aim at the mixer. A: throw.", 4300); trace("shift-started")
     }
-    function nearTray(): number {
-        if (chef == null || chef.y < 118) return -1
-        for (let i = 0; i < 3; i++) if (Math.abs(chef.x - lanes[i]) < 50) return i * 2 + (chef.x < stations[i] + 50 ? 0 : 1)
-        return -1
+    function nearMixer(): boolean {
+        let dx = chef.x - 160, dy = chef.y - 132
+        return dx * dx + dy * dy < 65 * 65
     }
-    function eligible(tray: number): boolean {
-        let v = quantities[tray], m = machineOf(tray)
-        if (jammed[m] || fulfilledAt[m] >= 0) return false
-        if (heldOp == 0) return v + heldNumber <= 6
-        if (heldOp == 1) return v >= heldNumber
-        if (heldOp == 2) return v * heldNumber <= 6
-        return heldNumber > 0 && v % heldNumber == 0
+    function nearOrder(): number {
+        if (chef == null || chef.y < 190) return -1
+        return Math.max(0, Math.min(2, Math.idiv(chef.x, 106)))
     }
-    function select(tray: number) {
-        selectedTray = tray
-        if (installed(BakeryAction.TraySelected)) invoke(BakeryAction.TraySelected, tray)
-        else tell("Read this tray with its selection event.")
+    function applyModifier(op: number, rhs: number) {
+        if (mixingJammed) { tell("Check your mixer code. Empty hands B resets."); return }
+        if (op == 3 && (rhs == 0 || mixingValue % rhs != 0)) { tell("That division needs a whole-number result."); trace("application-rejected"); return }
+        let action = actionFor(op, rhs)
+        if (!installed(action)) { tell("Build this modifier's event first."); trace("missing-handler"); return }
+        activeOp = op; activeNumber = rhs; invoke(action, -1); activeOp = -1; activeNumber = 0
     }
     controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         if (!started) return
         if (shiftDone) { roundNumber++; startShift(); return }
-        let tray = nearTray()
-        if (tray < 0) { tell("Walk down to either side of a machine."); return }
-        let m = machineOf(tray)
-        select(tray)
-        if (fulfilledAt[m] >= 0) { tell("This factory order is already complete."); return }
-        if (jammed[m]) { tell("B: drop item. Empty hands B: reset machine."); return }
-        if (held == null) { finishOrder(m); return }
-        if ((allowedOps[m] & (1 << heldOp)) == 0) {
-            tell("Use the bright tools shown on this order.", 3200)
-            trace("tool-rejected"); return
+        if (held == null) {
+            if (nearMixer()) invoke(BakeryAction.TraySelected, -1)
+            else tell("Catch a modifier or collect a numbered container.")
+            return
         }
-        if (!eligible(tray)) {
-            tell(heldOp == 3 ? "Use a side that divides into whole cakes." : heldOp == 1 ? "Not enough cakes. Try the other side." : "Six cakes fit on each side. Try the other.", 3300)
-            trace("application-rejected"); return
-        }
-        let action = actionFor(heldOp, heldNumber)
-        if (!installed(action)) { tell("Build this modifier's event first.", 3500); trace("missing-handler"); return }
-        // Capture destination and RHS; consume before dispatch to prevent reuse.
-        activeOp = heldOp; activeNumber = heldNumber
-        appliedOps[tray] = heldOp; appliedNumbers[tray] = heldNumber; appliedAt[tray] = control.millis()
-        discardHeld()
-        previewUntil = 0
-        invoke(action, tray)
-        activeOp = -1; activeNumber = 0
-        checkMachine(m)
+        let shot = sprites.create(held.image.clone(), SpriteKind.Projectile)
+        shot.setPosition(chef.x + faceX * 4, chef.y + faceY * 4); shot.z = 25
+        let length = Math.sqrt(faceX * faceX + faceY * faceY)
+        shot.vx = faceX * 150 / length; shot.vy = faceY * 150 / length
+        shots.push(shot); shotKinds.push(heldKind); shotOps.push(heldOp); shotNumbers.push(heldNumber); shotBorn.push(control.millis())
+        trace("item-thrown"); discardHeld(); previewUntil = 0
     })
     controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         if (!started || shiftDone) return
-        if (held != null) { discardHeld(); tell("Hands free. Choose another item."); trace("item-discarded"); return }
-        let tray = nearTray()
-        if (tray < 0) { tell("Empty hands B at a machine resets both sides."); return }
-        let m = machineOf(tray)
-        if (fulfilledAt[m] >= 0) { tell("This factory order is already complete."); return }
-        quantities[m * 2] = starts[m * 2]; quantities[m * 2 + 1] = starts[m * 2 + 1]
-        jammed[m] = false; appliedAt[m * 2] = -10000; appliedAt[m * 2 + 1] = -10000
-        select(tray); checkMachine(m); tell("Both sides reset. Try another way.")
-        trace("tray-reset")
+        if (held != null) { discardHeld(); outputCooldown = control.millis() + 1200; tell("Hands free. Catch another item."); trace("item-discarded"); return }
+        let m = nearOrder()
+        if (m >= 0 && fulfilledAt[m] < 0) { hasDelivery[m] = false; signals[m] = -1; jammed[m] = false; tell("Order cleared. Its target stays the same."); trace("order-reset"); return }
+        if (nearMixer()) { mixingValue = mixingStart; mixingJammed = false; previewUntil = 0; tell("Mixer reset. Completed orders stay complete."); trace("mixer-reset") }
     })
-    function nudge(dx: number, dy: number) {
-        if (!started || chef == null) return
-        chef.x = Math.max(12, Math.min(308, chef.x + dx))
-        chef.y = Math.max(90, Math.min(125, chef.y + dy))
-    }
-    controller.left.onEvent(ControllerButtonEvent.Pressed, function () { nudge(-5, 0) })
-    controller.right.onEvent(ControllerButtonEvent.Pressed, function () { nudge(5, 0) })
-    controller.up.onEvent(ControllerButtonEvent.Pressed, function () { nudge(0, -5) })
-    controller.down.onEvent(ControllerButtonEvent.Pressed, function () { nudge(0, 5) })
     function spawn(lane: number, op: number, rhs: number, manual: boolean) {
         let p = sprites.create(manual ? bakeryArt.looseCake() : bakeryArt.modifier(op, rhs), SpriteKind.Food)
-        p.setPosition(manual ? (manualSide % 2 == 0 ? 18 : 302) : lanes[lane], manual ? 110 : 37)
-        p.z = 3
-        packets.push(p); packetOps.push(op); packetNumbers.push(rhs); packetManual.push(manual); packetLanes.push(lane)
-        if (manual) manualSide++
+        p.setPosition(manual ? 22 : [49, 160, 271][lane], manual ? 116 : lane == 1 ? 26 : 35); p.z = 3
+        packets.push(p); packetOps.push(op); packetNumbers.push(rhs); packetLanes.push(lane); packetBorn.push(control.millis()); packetManual.push(manual)
         trace(manual ? "manual-arrived" : "packet-dropped")
     }
     function conveyorChoice(lane: number) {
@@ -1162,121 +1190,97 @@ namespace bakery {
         if (installed(BakeryAction.SubtractModifier)) { ops.push(1); nums.push(2); ops.push(1); nums.push(3) }
         if (installed(BakeryAction.MultiplyModifier)) { ops.push(2); nums.push(3) }
         if (installed(BakeryAction.DivideModifier)) { ops.push(3); nums.push(3) }
-        let index = spawnRound[lane] % ops.length
-        spawnRound[lane] += 3
-        spawn(lane, ops[index], nums[index], false)
+        let index = spawnRound[lane] % ops.length; spawnRound[lane] += 1; spawn(lane, ops[index], nums[index], false)
     }
     function updatePackets(dt: number) {
         let now = control.millis()
-        for (let lane = 0; lane < 3; lane++) if (now >= spawnAt[lane]) {
-            conveyorChoice(lane); spawnAt[lane] = now + 2300
-        }
+        for (let lane = 0; lane < 3; lane++) if (now >= spawnAt[lane]) { conveyorChoice(lane); spawnAt[lane] = now + 2300 }
         if (now >= manualAt) {
-            let present = false
-            for (let flag of packetManual) if (flag) present = true
-            if (!present) spawn(0, 0, 1, true)
+            let exists = false; for (let flag of packetManual) if (flag) exists = true
+            if (!exists) spawn(0, 0, 1, true)
             manualAt = now + 8000
         }
         for (let i = packets.length - 1; i >= 0; i--) {
-            if (!packetManual[i]) packets[i].y += dt * 0.017
-            if (!packetManual[i] && packets[i].y > 108) { removePacket(i, "packet-expired"); continue }
-            let dx = packetManual[i] ? 14 : 31
-            if (held == null && chef.y < 116 && Math.abs(chef.x - packets[i].x) < dx && Math.abs(chef.y - 5 - packets[i].y) < 16) {
-                heldOp = packetOps[i]; heldNumber = packetNumbers[i]; heldManual = packetManual[i]
-                held = sprites.create(heldManual ? bakeryArt.looseCake() : bakeryArt.modifier(heldOp, heldNumber), SpriteKind.Food)
-                held.z = 20
-                removePacket(i, "item-picked-up")
-                previewUntil = 0
-                tell("Choose LEFT or RIGHT. A: place. B: drop.")
+            if (!packetManual[i]) {
+                packets[i].x += dt * [0.012, 0, -0.012][packetLanes[i]]; packets[i].y += dt * 0.015
+                if (now - packetBorn[i] > 4300) { removePacket(i, "packet-expired"); continue }
+            }
+            if (held == null && Math.abs(chef.x - packets[i].x) < (packetManual[i] ? 14 : 30) && Math.abs(chef.y - 5 - packets[i].y) < 16) {
+                heldOp = packetOps[i]; heldNumber = packetNumbers[i]; heldKind = 0
+                held = sprites.create(packetManual[i] ? bakeryArt.looseCake() : bakeryArt.modifier(heldOp, heldNumber), SpriteKind.Food); held.z = 20
+                removePacket(i, "item-picked-up"); tell("Aim at the round mixer. A: throw."); previewUntil = 0
             }
         }
+        if (held == null && !mixingJammed && installed(BakeryAction.TraySelected) && now >= outputCooldown && Math.abs(chef.x - 252) < 8 && Math.abs(chef.y - 174) < 10) {
+            heldKind = 1; heldOp = -1; heldNumber = mixingValue; held = sprites.create(bakeryArt.numericOutput(heldNumber), SpriteKind.Food); held.z = 20
+            outputCooldown = now + 1200; tell("Number copied! Aim down at a check and throw.", 3200); trace("number-collected")
+        }
     }
-    function coin(p: Image, x: number, y: number, full: boolean) {
-        p.fillCircle(x, y, 4, full ? 5 : 12)
-        if (full) p.fillRect(x - 1, y - 2, 2, 5, 1)
+    function updateShots() {
+        let now = control.millis()
+        for (let i = shots.length - 1; i >= 0; i--) {
+            let p = shots[i], dx = p.x - 160, dy = p.y - 132
+            if (shotKinds[i] == 0 && dx * dx + dy * dy < 31 * 31) {
+                let op = shotOps[i], rhs = shotNumbers[i]; removeShot(i, "modifier-hit"); applyModifier(op, rhs); continue
+            }
+            if (p.y >= 204 && p.x >= 2 && p.x < 318) {
+                let m = Math.max(0, Math.min(2, Math.idiv(p.x, 106)))
+                let kind = shotKinds[i], value = shotNumbers[i]; removeShot(i, "order-hit")
+                if (kind == 1) receiveNumber(m, value)
+                else tell("These checks take numbers. Throw tools into the mixer.")
+                continue
+            }
+            if (p.x < -35 || p.x > 355 || p.y < -35 || p.y > 270 || now - shotBorn[i] > 3500) removeShot(i, "throw-missed")
+        }
+    }
+    function moveAroundPot() {
+        chef.x = Math.max(12, Math.min(308, chef.x)); chef.y = Math.max(82, Math.min(195, chef.y))
+        let dx = chef.x - 160, dy = chef.y - 132, distance = Math.sqrt(dx * dx + dy * dy)
+        if (distance < 42) {
+            if (distance < 1) { chef.x = oldX; chef.y = oldY }
+            else { chef.x = 160 + dx * 42 / distance; chef.y = 132 + dy * 42 / distance }
+        }
+        if (Math.abs(chef.vx) + Math.abs(chef.vy) > 1) { faceX = chef.vx == 0 ? 0 : chef.vx > 0 ? 1 : -1; faceY = chef.vy == 0 ? 0 : chef.vy > 0 ? 1 : -1 }
+        oldX = chef.x; oldY = chef.y
     }
     function drawHud() {
-        let now = control.millis(), near = nearTray()
-        if (near >= 0) focusedMachine = machineOf(near)
-        let m = focusedMachine
-        let side = near >= 0 ? near % 2 : -1
-        screen.fillRect(0, 0, 320, 19, 14)
-        screen.print("CAKE FACTORY", 5, 1, 1, image.font8)
-        for (let i = 0; i < 3; i++) {
-            screen.drawRect(88 + i * 12, 1, 9, 8, 5)
-            if (i < stamps) screen.fillRect(90 + i * 12, 3, 5, 4, 5)
+        let now = control.millis(), m = nearOrder()
+        screen.fillRect(0, 0, 320, 19, 14); screen.print("CAKE FACTORY", 5, 1, 1, image.font8)
+        screen.print("A THROW  B DROP", 221, 2, 1, image.font5)
+        for (let i = 0; i < 3; i++) { screen.drawRect(94 + i * 12, 1, 9, 8, 5); if (i < stamps) screen.fillRect(96 + i * 12, 3, 5, 4, 5) }
+        screen.fillRect(140, 2, 65, 6, 8); screen.fillRect(140, 2, Math.idiv(coins * 65, 15), 6, 5)
+        if (now < messageUntil) screen.print(message, 3, 12, 1, image.font5)
+        bakeryArt.mixer(screen, mixingValue, heldKind == 0, mixingJammed)
+        bakeryArt.outputStand(screen, mixingValue, held == null && !mixingJammed)
+        for (let i = 0; i < 3; i++) bakeryArt.deliveryOrder(screen, i, hasDelivery[i] ? delivered[i] : -999999, targets[i], relations[i], signals[i], i == m, fulfilledAt[i] >= 0)
+        if (held != null) {
+            screen.drawLine(chef.x + faceX * 12, chef.y + faceY * 12, chef.x + faceX * 22, chef.y + faceY * 22, 5)
         }
-        coin(screen, 134, 5, true)
-        screen.fillRect(142, 1, 51, 8, 8); screen.fillRect(142, 1, Math.idiv(coins * 51, 15), 8, 5)
-        screen.print("A PLACE/CHECK B DROP", 202, 2, 1, image.font5)
-        for (let i = 0; i < 3; i++) {
-            bakeryArt.orderTab(screen, i, relations[i], signals[i], i == m, fulfilledAt[i] >= 0, allowedOps[i])
-        }
-        bakeryArt.workbench(screen, quantities[m * 2], quantities[m * 2 + 1], relations[m], side, signals[m], fulfilledAt[m] >= 0, allowedOps[m])
-        if (near >= 0 && !shiftDone) {
-            let targetX = side == 0 ? 82 : 274
-            // Match the highlighted receiver without drawing over the order labels.
-            if (held != null) {
-                screen.drawLine(chef.x - 3, 133, chef.x, 136, 5)
-                screen.drawLine(chef.x + 3, 133, chef.x, 136, 5)
-                screen.fillRect(targetX - 1, 159, 3, 9, 5)
-                screen.drawLine(targetX - 5, 164, targetX, 169, 5)
-                screen.drawLine(targetX + 5, 164, targetX, 169, 5)
-            }
-            screen.print(held != null ? (side == 0 ? "A: PLACE LEFT" : "A: PLACE RIGHT") : "A: CHECK", 8, 230, 1, image.font8)
-        } else screen.print("CHOOSE AN ORDER", 8, 230, 1, image.font5)
-        for (let s = 0; s < 2; s++) {
-            let x = s == 0 ? 8 : 184
-            let age = now - appliedAt[m * 2 + s]
-            if (age >= 0 && age < 650 && Math.idiv(age, 110) % 2 == 0) {
-                screen.drawRect(x, 170, 128, 56, 2); screen.drawRect(x + 1, 171, 126, 54, 2)
-            }
-            let amount = quantities[m * 2 + s]
-            if (!smallWhole(amount) || amount < 0 || amount > 6) screen.print(numberText(amount), x + 30, 192, 2)
-        }
-        if (jammed[m]) {
-            screen.fillRect(0, 227, 320, 13, 11)
-            screen.print("CHECK YOUR CODE  B: RESET", 9, 230, 1, image.font8)
-        }
-        if (now < messageUntil) {
-            screen.print(message, 3, 12, 1, image.font5)
-        }
+        if (now - hitAt < 300) screen.drawCircle(160, 132, 32 + Math.idiv(now - hitAt, 70), 5)
+        if (mixingJammed) screen.print("CHECK CODE  B:RESET", 102, 180, 2, image.font5)
         if (previewReported && now < previewUntil && held == null) {
-            let x = Math.max(2, Math.min(260, chef.x - 30)), y = chef.y - 49
-            screen.fillRect(x, y, 60, 30, 1); screen.drawRect(x, y, 60, 30, 2)
-            if (smallWhole(previewValue) && previewValue >= 0 && previewValue <= 6) bakeryArt.goods(screen, previewValue, x + 12, y + 4, 1)
-            else screen.print(numberText(previewValue), x + 3, y + 11, 2)
+            screen.fillRect(130, 91, 60, 18, 1); screen.drawRect(130, 91, 60, 18, 2); screen.print(numberText(previewValue), 149, 96, 2, image.font8)
         }
-        if (now - bonusAt < 1600 && !shiftDone) for (let i = 0; i < 5; i++) coin(screen, 145 + i * 10, 5, i < lastBonus)
         if (shiftDone) {
-            screen.fillRect(34, 42, 252, 122, 14); screen.fillRect(37, 45, 246, 116, 1)
-            screen.printCenter("THREE TRUE ORDERS!", 56, 14)
-            for (let i = 0; i < 3; i++) { screen.fillRect(108 + i * 34, 74, 27, 23, 7); screen.drawTransparentImage(bakeryArt.cupcake(), 116 + i * 34, 80) }
-            for (let i = 0; i < 15; i++) coin(screen, 96 + (i % 10) * 14, 108 + Math.idiv(i, 10) * 12, i < coins)
-            screen.printCenter(roundNumber == 0 ? "NEXT: MULTIPLY / DIVIDE" : roundNumber == 1 ? "NEXT: ADD / SUBTRACT" : "NEXT: MIXED TOOL ORDERS", 134, 14, image.font5)
-            screen.printCenter("A: next three orders", 149, 14)
+            screen.fillRect(39, 60, 242, 113, 14); screen.fillRect(42, 63, 236, 107, 1)
+            screen.printCenter("THREE YES ORDERS!", 77, 14)
+            screen.printCenter("Keep your number. New checks next.", 111, 14, image.font5)
+            screen.printCenter("A: next round", 145, 14)
         }
     }
     game.onUpdate(function () {
         if (!started) return
-        let now = control.millis(), dt = Math.min(80, now - lastTick)
-        lastTick = now
-        bakeryArt.conveyorTreads(scene.backgroundImage(), Math.idiv(now * 17, 1000))
-        chef.x = Math.max(12, Math.min(308, chef.x)); chef.y = Math.max(90, Math.min(125, chef.y))
+        let now = control.millis(), dt = Math.min(80, now - lastTick); lastTick = now
+        moveAroundPot(); bakeryArt.conveyorTreads(scene.backgroundImage(), Math.idiv(now * 15, 1000))
         chef.setImage(bakeryArt.chef(Math.abs(chef.vx) + Math.abs(chef.vy) > 1 ? Math.idiv(now, 130) % 3 : 0))
-        if (!shiftDone) updatePackets(dt)
-        if (held != null) held.setPosition(Math.max(34, Math.min(286, chef.x + (chef.x < 160 ? 43 : -43))), chef.y - 6)
+        if (!shiftDone) { updatePackets(dt); updateShots() }
+        if (held != null) held.setPosition(Math.max(34, Math.min(286, chef.x + (chef.x < 160 ? -34 : 34))), chef.y - 16)
     })
     game.onShade(function () { if (started) drawHud() })
     control.runInParallel(function () {
-        pause(100)
-        bakeryArt.installPalette()
-        scene.setBackgroundImage(bakeryArt.drawBackground())
-        chef = sprites.create(bakeryArt.chef(), SpriteKind.Player)
-        chef.setPosition(160, 112); chef.z = 10
-        controller.moveSprite(chef, 100, 100)
-        lastTick = control.millis(); started = true; startShift()
-        trace("world-ready")
+        pause(100); bakeryArt.installPalette(); scene.setBackgroundImage(bakeryArt.drawBackground())
+        chef = sprites.create(bakeryArt.chef(), SpriteKind.Player); chef.setPosition(160, 190); chef.z = 10
+        controller.moveSprite(chef, 95, 95); lastTick = control.millis(); started = true; startShift(); trace("world-ready")
     })
 }
 ```

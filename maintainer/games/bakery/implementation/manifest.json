@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "manifest_id": "BAKERY-IMPLEMENTATION-V6",
+  "manifest_id": "BAKERY-IMPLEMENTATION-V7",
   "game_id": "GAME-BAKERY",
   "target": {
     "name": "arcade",
@@ -17,15 +17,17 @@
     "native": true
   },
   "machine_layout": {
-    "machines": 3,
-    "trays_per_machine": 2,
-    "editable_trays": 6,
+    "mixers": 1,
+    "output_stands": 1,
+    "orders": 3,
     "comparison_signs": [
       "=",
       "<",
-      ">"
+      ">",
+      "<=",
+      ">="
     ],
-    "presentation": "Three counter orders with one enlarged focused two-sided workbench"
+    "presentation": "Three angled feeds, round central mixer with walkaround path, carried numeric output, and three compact bottom checks."
   },
   "canonical_inputs": [
     "games/bakery/copy/tutorial-template.md",
@@ -42,8 +44,8 @@
     "tutorial/README.md",
     "tutorial/assets/demos/<referenced-demo>.gif",
     "tutorial/assets/instructions/<referenced-instruction>.svg|png",
-    "learner-states/<01-through-12-state>.ts",
-    "hints/<01-through-12-state>.ts",
+    "learner-states/<01-through-14-state>.ts",
+    "hints/<01-through-14-state>.ts",
     "solution/main.ts",
     "solution/engine.ts",
     "solution/pxt.json",
@@ -56,15 +58,15 @@
   "learner_variable_owners": [
     "batch",
     "modifierNumber",
-    "leftCakes",
-    "rightCakes",
+    "deliveredNumber",
+    "orderTarget",
     "ready"
   ],
   "learner_variable_types": {
     "batch": "number",
     "modifierNumber": "number",
-    "leftCakes": "number",
-    "rightCakes": "number",
+    "deliveredNumber": "number",
+    "orderTarget": "number",
     "ready": "Boolean"
   },
   "arithmetic_constructions": {
@@ -73,18 +75,19 @@
     "*": 2,
     "/": 2
   },
-  "supplied_boundary": "The hidden customts engine supplies conveyor transport, one held modifier, slow manual cakes, three machines with six editable trays, comparison display and three orders per round. Arithmetic and comparison handlers report exact learner results; nonmutating observers may reject only and never repair quantities, Boolean values or learner variables. Later rounds display and enforce operator masks with small solvable job cards; twelve learner constructions are unchanged.",
+  "supplied_boundary": "Supplied engine handles angled feeds, movement, circular mixer collision, directional projectile throws, numeric output snapshots, and three check destinations. Arithmetic only changes the central mixer through exact learner results. Copying a number preserves the mixer. Each order has a fixed left target and delivered right operand. Learner Boolean controls YES/NO; a nonmutating observer may reject inconsistent YES but never repair it. Targets stay fixed during a round.",
   "starter_policy": "A comment-only template resource and starter main.ts use // Cake Factory while supplying no executable learner code, variables or solution events.",
-  "hint_policy": "Each numbered construction step1-12 has its complete current-event Blocks example. Comparison hints introduce leftCakes, rightCakes and ready, with ready initialized false.",
-  "comparison_policy": "Comparison states use ==, < and > metadata and Boolean output; they are excluded from arithmetic counts.",
+  "hint_policy": "Fourteen constructions have current native Blocks hints. Pages15-17 reuse code for gameplay practice.",
+  "comparison_policy": "Five comparisons ==, <, >, <=, >= return Boolean; no compound logical operators.",
   "durable_publication_target": "INDEPENDENT_GITHUB_REPOSITORY",
   "student_entrypoint": "GITHUB_BACKED_MAKECODE_TUTORIAL",
-  "claim_boundary": "The manifest declares ownership, the 320×240 inline boundary, machine/tray counts and expected outputs. It does not establish compilation, native Blocks fidelity, gameplay, learner quality or publication readiness.",
-  "modifier_representation": "Two-line SET assignment with matching tray icons and a numeric right operand",
+  "claim_boundary": "Declared implementation ownership and intended behavior; runtime and presentation checks remain separate.",
+  "modifier_representation": "Two-line SET assignment with mixer icon and numeric operand, thrown physically into the pot.",
   "practice_progression": [
-    "all four tools",
-    "multiplication and division",
-    "addition and subtraction",
-    "mixed tool-limited orders"
+    "arithmetic changes mixer",
+    "number copy and delivery",
+    "strict comparisons",
+    "inclusive comparisons",
+    "varied fixed check targets"
   ]
 }

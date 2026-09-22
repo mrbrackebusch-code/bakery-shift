@@ -4,113 +4,115 @@
 
 ## Welcome to the cake factory!
 
-Three factory orders are waiting. Each machine has a **LEFT** tray and a **RIGHT** tray. Your job is to change the cakes until the statement between them is true. You can change **either side**.
+Make a number in the mixing pot. Carry a copy to an order and make its statement true!
 
-Walk between the conveyor belts and collect one useful modifier. Its red **set** block holds a purple calculation. The little tray icon represents ``||variables(noclick):batch||``: the amount on the side where you place it. A modifier with `+ 1` means **set that tray's amount to its current amount plus one**. The same tray icon highlights the receiver. Each modifier changes it once.
+Three conveyors bring modifiers. Each red **set** block holds a purple calculation. The bowl icon stands for the amount in the mixer: `+ 1` means **set the amount to its current value plus one**. Catch a modifier, aim at the round pot, and throw. Each hit runs your calculation once.
 
-**Move:** arrow keys. **A:** Space or Z. **B:** Enter or X. Approach one of the three orders along the counter. Its two trays appear in the large work area. Move to the left or right side of that order: the gold tray and arrow show where your modifier will go. Press **A** to place it. Press **B** to drop a held item. With empty hands, **A** checks the machine and **B** resets both sides.
+**Move:** arrow keys. **A:** Space or Z throws in the direction you last moved; the gold line shows your aim. **B:** Enter or X discards what you carry. With empty hands, walk onto the **NUMBER** stand to the pot's right to collect its current number. Aim down and throw that container at a bottom order. Collecting a number leaves the mixer amount available for your next calculation.
 
-Each tray holds up to six whole cakes. Missed modifiers fall off the belts and new ones arrive. A loose cupcake adds one, but loose cakes arrive slowly. You can pause the simulator while you build.
+For example, `3 < □` asks for a number larger than three. The printed target stays on the **left**; your delivered number fills the **right**. A **YES** activates that order. A **NO** lets you adjust the mixer and try another number. Activate all three orders to finish a round.
 
-First you will code the arithmetic that changes the cakes. Then you will connect the machines' TRUE/FALSE checks. The supplied ``||bakery(noclick):Cake Factory||`` drawer provides the events and displays; the calculations and checks will be yours.
+Missed modifiers fall off the conveyors and new ones arrive. A loose cupcake also adds one, but arrives slowly. Empty-handed **B** beside the pot resets its amount; beside an unfinished order it clears that delivery. You can pause the simulator while you build.
 
-## 1. Read either tray
+First you will code the arithmetic that changes the mixer. Then you will connect the orders' true/false checks. The supplied ``||bakery(noclick):Cake Factory||`` drawer provides the events and displays; the calculations and comparisons will be yours.
 
-A ``||variables(noclick):variable||`` is a container used to store values in your code. Give the worker somewhere to remember the amount on the tray you select.
+## 1. Read the mixer
 
-### Find these blocks
-
-In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):batch||``. Find the event, tray amount, and tray display in ``||bakery(noclick):Cake Factory||``. Change the event dropdown to **a tray is selected**.
-
-![Native menu blocks for creating batch, selecting a tray, reading its amount and showing a value](assets/instructions/01-menu.svg)
-
-### Make your code look like this
-
-![Connected tray-selection event: read the tray into batch, then show the value stored in batch](assets/instructions/01-assembled.svg)
-
-The small ``||variables(noclick):batch||`` block reads the value you saved. It goes in the display's value slot.
-
-### What you should see
-
-Run the game. With empty hands, walk down to the left side of a machine and press **A**. A bubble shows that tray's cakes. Try the right side too. Reading a tray does not change its cakes. The machine's check will be connected later.
-
-![Selecting the left and right trays shows their different cake amounts in the worker's bubble](assets/demos/01-clean-tray.gif)
-
-## 2. Add one cake
-
-A `+ 1` modifier should add one cake to the side you choose. A loose cupcake uses this same event.
+A ``||variables(noclick):variable||`` is a container used to store values in your code. Give the worker somewhere to remember the amount in the mixer.
 
 ### Find these blocks
 
-Add a new ``||bakery(noclick):when||`` event from ``||bakery(noclick):Cake Factory||`` and choose **a + 1 item is placed**. Find the ``||math(noclick):0 + 0||`` block in ``||math(noclick):Math||``.
+In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):batch||``. Find the event, mixer amount, and display in ``||bakery(noclick):Cake Factory||``. Change the event dropdown to **the mixer is selected**.
 
-![Native event, variable, arithmetic and tray-result blocks for adding one cake](assets/instructions/02-menu.svg)
+![Native menu blocks for creating batch, selecting the mixer, reading its amount and showing a value](assets/instructions/01-menu.svg)
 
 ### Make your code look like this
 
-![Read the selected tray into batch, set batch to batch plus one, and put batch on that tray](assets/instructions/02-assembled.svg)
+![Read the mixer into batch, then show the value stored in batch](assets/instructions/01-assembled.svg)
 
-Read the tray first. Calculate ``||variables(noclick):batch||`` plus `1`, save the result back in ``||variables(noclick):batch||``, and send that value to the tray. The ``||math(noclick):Math||`` block produces a number.
+The small ``||variables(noclick):batch||`` block reads the value you saved. It goes in the display's value slot. In the game, the bowl icon represents this amount without spelling out the variable name on every modifier.
 
 ### What you should see
 
-Collect `+ 1`, walk to either tray, and press **A**. That side gains one pictured cake. The other side stays the same. Try another addition on the other side.
+With empty hands, stand below the pot and press **A**. Your display shows `2`. Reading the mixer does not change its amount. The bottom checks will be connected later.
 
-![One modifier adds one cake to the selected side and leaves the opposite side unchanged](assets/demos/02-catch-one.gif)
+![Selecting the mixer shows its current number in a bubble](assets/demos/01-clean-tray.gif)
 
-## 3. Take one cake away
+## 2. Add one
 
-Sometimes the easier way to match two sides is to make one smaller.
+A `+ 1` modifier should increase the amount by one. A loose cupcake uses this same event.
+
+### Find these blocks
+
+Add a new ``||bakery(noclick):when||`` event and choose **a + 1 item hits the mixer**. Find ``||math(noclick):0 + 0||`` in ``||math(noclick):Math||``.
+
+![Native event, variable, arithmetic and mixer-result blocks for adding one](assets/instructions/02-menu.svg)
+
+### Make your code look like this
+
+![Read batch, set batch to batch plus one, then put batch in the mixer](assets/instructions/02-assembled.svg)
+
+Read the mixer first. Calculate ``||variables(noclick):batch||`` plus `1`, save the result back in ``||variables(noclick):batch||``, and send that value to the mixer. The ``||math(noclick):Math||`` block produces a number.
+
+### What you should see
+
+Catch `+ 1`. Move beside the pot, face it, and press **A**. The modifier flies into the pot and `2` becomes `3` when it hits. Try another addition using the new starting amount.
+
+![A thrown plus-one modifier hits the mixer and changes two to three](assets/demos/02-catch-one.gif)
+
+## 3. Take one away
+
+Sometimes a smaller number is more useful.
 
 ### Build the next event
 
-Create **a - 1 modifier is placed** in ``||bakery(noclick):Cake Factory||``. Use the same read, calculate, and put sequence. This time, choose subtraction from the ``||math(noclick):Math||`` block's operator dropdown and subtract `1` from ``||variables(noclick):batch||``.
+Create **a - 1 modifier hits the mixer**. Use the same read, calculate, and put sequence. Choose subtraction from the ``||math(noclick):Math||`` block's operator dropdown and subtract `1` from ``||variables(noclick):batch||``.
 
 ### What you should see
 
-Collect `- 1` and place it on a side that has cakes. One cake disappears from that side. You can reset both sides with empty hands and **B**, then try a different route.
+Throw `- 1` into the pot: `2` becomes `1`. With empty hands, press **B** beside the pot to reset its amount, then try a different calculation.
 
-![A minus-one modifier removes one pictured cake from the chosen side](assets/demos/03-discard-one.gif)
+![A thrown minus-one modifier changes the mixer from two to one](assets/demos/03-discard-one.gif)
 
-## 4. Double a side
+## 4. Double the amount
 
-A `× 2` modifier can do in one visit what repeated additions would take longer to do.
+A `× 2` modifier can do in one throw what repeated additions would take longer to do.
 
 ### Find these blocks
 
-Add **a × 2 modifier is placed**. In the ``||math(noclick):Math||`` block's dropdown, choose multiplication. Use the tray read and result blocks you already know.
+Add **a × 2 modifier hits the mixer**. Choose multiplication from the ``||math(noclick):Math||`` block's dropdown. Use the mixer read and result blocks you already know.
 
 ![Native multiplication and factory blocks for the double event](assets/instructions/04-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, multiply batch by two, store the new batch and put it on the selected tray](assets/instructions/04-assembled.svg)
+![Read batch, multiply batch by two, save it and put the result in the mixer](assets/instructions/04-assembled.svg)
 
 ### What you should see
 
-Collect `× 2` and place it on a tray with one, two, or three cakes. The cakes double. For example, one becomes two. Choose which side makes the modifier useful.
+Throw `× 2` into the pot. The amount doubles: `2` becomes `4`. The number on the modifier stays two; the amount it multiplies can change.
 
-![A times-two modifier doubles the cake group on one side](assets/demos/04-double-batch.gif)
+![A times-two modifier doubles the mixer amount from two to four](assets/demos/04-double-batch.gif)
 
-## 5. Divide a side
+## 5. Divide the amount
 
-Division makes a large group smaller. A `/ 2` modifier divides the selected amount into two equal groups and keeps one group.
+Division makes a large amount smaller. A `/ 2` modifier divides it into two equal parts and keeps one part.
 
 ### Find these blocks
 
-Add **a / 2 modifier is placed**. Choose division from the ``||math(noclick):Math||`` block's dropdown.
+Add **a / 2 modifier hits the mixer**. Choose division from the ``||math(noclick):Math||`` block's dropdown.
 
-![Native division and factory blocks for dividing a tray by two](assets/instructions/05-menu.svg)
+![Native division and factory blocks for dividing the mixer amount by two](assets/instructions/05-menu.svg)
 
 ### Make your code look like this
 
-![Read the selected batch, divide it by two, save it and put that result on the tray](assets/instructions/05-assembled.svg)
+![Read batch, divide it by two, save it and put the result in the mixer](assets/instructions/05-assembled.svg)
 
 ### What you should see
 
-Place `/ 2` on a side with two cakes. One remains. The factory uses whole cakes, so a division that would split a cake asks you to choose another side.
+Throw `/ 2` into a mixer holding `2`. The result is `1`. This factory uses whole-number results: a division that would make a fraction leaves the amount unchanged. Adjust the amount before trying that division again.
 
-![Dividing two pictured cakes by two leaves one on the selected tray](assets/demos/05-pack-pairs.gif)
+![Dividing two by two changes the mixer to one](assets/demos/05-pack-pairs.gif)
 
 ## 6. Read the modifier's number
 
@@ -118,49 +120,49 @@ The belts can now offer `+ 2` and `+ 3`. One event can use the number printed on
 
 ### Find these blocks
 
-In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):modifierNumber||``. Add **a + 2 or + 3 modifier is placed** and find **number on the modifier** in ``||bakery(noclick):Cake Factory||``.
+In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):modifierNumber||``. Add **a + 2 or + 3 modifier hits the mixer** and find **number on the modifier** in ``||bakery(noclick):Cake Factory||``.
 
 ![Native menu blocks for modifierNumber, its printed-number input and the addition event](assets/instructions/06-menu.svg)
 
 ### Make your code look like this
 
-![Read batch and modifierNumber, add those two variables, then put the saved batch on the tray](assets/instructions/06-assembled.svg)
+![Read batch and modifierNumber, add them, then put the saved batch in the mixer](assets/instructions/06-assembled.svg)
 
-The two variables have different jobs: ``||variables(noclick):batch||`` remembers the selected side; ``||variables(noclick):modifierNumber||`` remembers the carried modifier's number.
+The variables have different jobs: ``||variables(noclick):batch||`` remembers the mixer amount; ``||variables(noclick):modifierNumber||`` remembers the modifier's printed number.
 
 ### What you should see
 
-Place `+ 2` on one cake. Three cakes appear. Use another printed number or another starting amount and compare the result.
+Throw `+ 2` into a mixer holding `2`: the result is `4`. Try `+ 3` or another starting amount and compare the result.
 
-![The plus-two modifier changes one pictured cake into three](assets/demos/06-delivery.gif)
+![The plus-two modifier changes the mixer from two to four](assets/demos/06-delivery.gif)
 
 ## 7. Subtract the printed number
 
-A `- 2` or `- 3` modifier removes its printed amount from the side you choose.
+A `- 2` or `- 3` modifier subtracts its printed amount.
 
 ### Build the next event
 
-Add **a - 2 or - 3 modifier is placed**. Read the tray into ``||variables(noclick):batch||`` and the modifier's number into ``||variables(noclick):modifierNumber||``. Calculate the difference, save it in ``||variables(noclick):batch||``, and put that result on the tray.
+Add **a - 2 or - 3 modifier hits the mixer**. Read the mixer into ``||variables(noclick):batch||`` and the printed number into ``||variables(noclick):modifierNumber||``. Subtract the modifier's number from the batch, save the result in ``||variables(noclick):batch||``, and put it in the mixer.
 
 ### What you should see
 
-Place `- 2` on three cakes. One remains. Compare changing the larger side with changing the smaller side: which gets you closer to making the statement true?
+Throw `- 2` at an amount of `2`: the result is `0`. Subtracting three from two would give `-1`. Negative numbers are smaller than zero.
 
-![Subtracting the modifier's printed two from three cakes leaves one](assets/demos/07-serve-order.gif)
+![Subtracting the printed two from two changes the mixer to zero](assets/demos/07-serve-order.gif)
 
 ## 8. Multiply by the printed number
 
-A `× 3` modifier offers another way to change a small group quickly.
+A `× 3` modifier offers another way to change a small amount quickly.
 
 ### Build the next event
 
-Add **a × 3 modifier is placed**. Read both inputs into your variables. This time, multiply ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``, save the result, and put it on the selected tray.
+Add **a × 3 modifier hits the mixer**. Read both inputs into your variables. Multiply ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``, save the result, and put it in the mixer.
 
 ### What you should see
 
-Place `× 3` on one cake. Three appear. The tray still has room for at most six cakes, so choose a useful starting group.
+Throw `× 3` into a mixer holding `2`: the result is `6`. Compare that one throw with adding one four times.
 
-![Multiplying one cake by the printed three produces three cakes](assets/demos/08-bake-trays.gif)
+![Multiplying two by the printed three produces six](assets/demos/08-bake-trays.gif)
 
 ## 9. Divide by the printed number
 
@@ -168,118 +170,142 @@ You now have all four arithmetic operations with two variable inputs.
 
 ### Build the next event
 
-Add **a / 3 modifier is placed**. Read both inputs, divide ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``, save the result, and put it on the tray.
+Add **a / 3 modifier hits the mixer**. Read both inputs, divide ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``, save the result, and put it in the mixer.
 
 ### What you should see
 
-Place `/ 3` on three cakes. One remains. Try solving a pictured match by changing the left side, then reset and try changing the right side.
+This step starts the mixer at `3`. Throw `/ 3` into it: the result is `1`. The next modifier will use that new amount. Remember that division needs a whole-number result here.
 
-![Dividing three cakes by the modifier's printed three leaves one](assets/demos/09-pack-boxes.gif)
+![Dividing three by the modifier's printed three leaves one](assets/demos/09-pack-boxes.gif)
 
 ## 10. Is the statement true?
 
-Connect the machines' checks. A **Boolean** value is either ``||logic(noclick):true||`` or ``||logic(noclick):false||``. A comparison produces a Boolean value.
+Connect the orders' checks. A **Boolean** value is either ``||logic(noclick):true||`` or ``||logic(noclick):false||``. A comparison produces a Boolean value.
 
-The ``||logic(noclick):=||`` comparison checks whether two values represent the same quantity. Two cakes on the left and two on the right make an equal statement true. Two on the left and three on the right make it false.
-
-### Find these blocks
-
-In ``||variables(noclick):Variables||``, use **Make a Variable** separately for ``||variables(noclick):leftCakes||``, ``||variables(noclick):rightCakes||``, and ``||variables(noclick):ready||``. The first two will hold numbers. ``||variables(noclick):ready||`` will hold the comparison's true/false result.
-
-Add **an = machine checks its trays** from ``||bakery(noclick):Cake Factory||``. Find the pointed comparison block in ``||logic(noclick):Logic||`` and choose `=` from its dropdown.
-
-![Native comparison, Boolean and factory input/output blocks, with variable creation](assets/instructions/10-menu.svg)
-
-### Make your code look like this
-
-![Read leftCakes and rightCakes; set ready to the equals comparison; show check ready](assets/instructions/10-assembled.svg)
-
-The pointed ``||logic(noclick):Logic||`` block produces true or false. The ``||variables(noclick):set||`` block stores that result in ``||variables(noclick):ready||``. **show check** displays your result on the machine.
-
-### What you should see
-
-The machines show **FALSE** when their sides differ. Change either side until the pictures match: the check becomes **TRUE**. With empty hands, press **A** at that machine to complete its order.
-
-![Unequal cakes show FALSE; a modifier makes the groups equal, the learner's check turns TRUE, and A completes the order](assets/demos/10-equal-check.gif)
-
-## 11. Make the left side smaller
-
-The second machine now asks for ``||logic(noclick):<||``. **Less than** checks whether the first value represents a smaller quantity than the second. Order matters: read the left side first.
+The ``||logic(noclick):=||`` comparison checks whether two values represent the same quantity. `3 = 3` is true; `3 = 2` is false. The factory shows true as **YES** and false as **NO**.
 
 ### Find these blocks
 
-Add **a < machine checks its trays**. Use the same two cake inputs, variables, and check output. Choose `<` from the ``||logic(noclick):Logic||`` comparison dropdown.
+In ``||variables(noclick):Variables||``, use **Make a Variable** separately for ``||variables(noclick):orderTarget||``, ``||variables(noclick):deliveredNumber||``, and ``||variables(noclick):ready||``. The first two hold numbers. ``||variables(noclick):ready||`` holds the comparison's true/false result.
 
-![Native less-than comparison and the corresponding factory check event](assets/instructions/11-menu.svg)
+Add **an = order checks a number**. Find the pointed comparison block in ``||logic(noclick):Logic||`` and choose `=` from its dropdown.
+
+![Native comparison, Boolean and factory inputs and output, with variable creation](assets/instructions/10-menu.svg)
 
 ### Make your code look like this
 
-![Read both sides; set ready to leftCakes less than rightCakes; show check ready](assets/instructions/11-assembled.svg)
+![Read orderTarget and deliveredNumber; set ready to their equality comparison; show check ready](assets/instructions/10-assembled.svg)
+
+Put ``||variables(noclick):orderTarget||`` first and ``||variables(noclick):deliveredNumber||`` second, just like the bottom order. The pointed ``||logic(noclick):Logic||`` block produces true or false. **set ready** stores that result; **show check** displays it.
 
 ### What you should see
 
-Make the left side smaller than the right. You could remove cakes from the left or add cakes to the right. The lamp shows **TRUE** when your comparison is true; empty-handed **A** completes the order.
+Collect a numbered container from the stand and throw it down at `3 = □`. Delivering `2` shows **NO**. Add one in the mixer, collect its new number, and deliver `3`: **YES** activates the order automatically. The target stays three throughout.
 
-![Changing one side makes the left cake group smaller and changes the less-than check from FALSE to TRUE](assets/demos/11-less-check.gif)
+![Three equals two shows NO; making and delivering three shows YES and activates the order](assets/demos/10-equal-check.gif)
 
-## 12. Make the left side larger
+## 11. Is the left side smaller?
 
-The third machine asks for ``||logic(noclick):>||``. **Greater than** checks whether the first value represents a larger quantity than the second.
+**Less than** checks whether the first value represents a smaller quantity than the second. Order matters: `4 < 5` is true, but `5 < 4` is false.
+
+### Find these blocks
+
+Add **a < order checks a number**. Use the same input blocks and variables. Choose `<` from the ``||logic(noclick):Logic||`` comparison dropdown.
+
+![Native less-than comparison and its factory check event](assets/instructions/11-menu.svg)
+
+### Make your code look like this
+
+![Read both inputs; set ready to orderTarget less than deliveredNumber; show check ready](assets/instructions/11-assembled.svg)
+
+### What you should see
+
+The rightmost order asks for `4 < □`. Deliver `4`: **NO**, because the numbers are equal. Add one to the mixer and deliver `5`: **YES**. You changed the delivered number on the right.
+
+![Four less than four shows NO; four less than five shows YES](assets/demos/11-less-check.gif)
+
+## 12. Is the left side larger?
+
+**Greater than** checks whether the first value represents a larger quantity than the second.
 
 ### Build the next event
 
-Add **a > machine checks its trays**. Read both cake amounts into their variables. Set ``||variables(noclick):ready||`` to the greater-than comparison, with ``||variables(noclick):leftCakes||`` first and ``||variables(noclick):rightCakes||`` second. Show that Boolean result with **show check**.
+Add **a > order checks a number**. Read both inputs. Set ``||variables(noclick):ready||`` to the greater-than comparison, with ``||variables(noclick):orderTarget||`` first and ``||variables(noclick):deliveredNumber||`` second. Show that Boolean result.
 
 ### What you should see
 
-Make the left side larger. You can increase the left or decrease the right. Matching groups make `=` true, but they make both `<` and `>` false.
+The middle order asks for `2 > □`. Delivering `2` gives **NO**. Subtract one in the mixer and deliver `1`: **YES**. Matching numbers make `=` true, but make both `<` and `>` false.
 
-![Increasing the left cake group beyond the right changes the greater-than check to TRUE](assets/demos/12-greater-check.gif)
+![Two greater than two shows NO; two greater than one shows YES](assets/demos/12-greater-check.gif)
 
-## 13. Run the factory
+## 13. Include the matching number
 
-All three kinds of order are ready. Complete the `=`, `<`, and `>` orders using your arithmetic modifiers and checks.
+**Less than or equal to**, ``||logic(noclick):≤||``, accepts equality too. Both `5 ≤ 5` and `5 ≤ 6` are true.
+
+### Build the next event
+
+Add **a ≤ order checks a number**. Keep the same input order and variables. Choose `≤` from the comparison dropdown, save the Boolean in ``||variables(noclick):ready||``, and show it.
+
+### What you should see
+
+The rightmost order now asks for `5 ≤ □`. Make and deliver `5`: **YES**. A larger delivered number also works; `4` does not. The sign itself tells you which numbers qualify.
+
+![Five less than or equal to five shows YES and activates the order](assets/demos/13-less-equal-check.gif)
+
+## 14. Include equality the other way
+
+**Greater than or equal to**, ``||logic(noclick):≥||``, also accepts matching numbers. Both `1 ≥ 1` and `1 ≥ 0` are true.
+
+### Build the next event
+
+Add **a ≥ order checks a number**. Read the fixed target and delivered number. Compare them with `≥`, keeping the target first. Save and show the result.
+
+### What you should see
+
+The middle order asks for `1 ≥ □`. Deliver `1`: **YES**. Zero or a negative number also works here. A larger delivered number, such as `2`, makes this statement false.
+
+![One greater than or equal to one shows YES and activates the order](assets/demos/14-greater-equal-check.gif)
+
+## 15. Run the factory
+
+Keep your code. Activate all three orders: `3 = □`, `1 ≥ □`, and `5 ≤ □`.
 
 ### Choose your route
 
-Read the pictured amounts and sign before choosing a modifier. Work on either side. Several small changes can work; a useful multiplication or division may get there faster. Drop an unhelpful modifier with **B**. Empty-handed **B** resets an unfinished machine so you can try another plan.
+Read the target and sign before catching a modifier. Make a useful number in the pot, collect a copy from the stand, and throw it at its order. You can use several small calculations or take a shorter route with multiplication or division. Faster orders earn more coins.
 
 ### What you should see
 
-When a machine shows **TRUE**, return with empty hands and press **A** to send its batch. Complete all three orders to finish the round. Faster orders earn more coins.
+One route makes `1`, then `3`, then `6`. Each delivered number turns its chosen check to **YES**. Collecting and delivering never empties the mixer: the next calculation starts with the amount you just made.
 
-![The worker changes both sides across three comparisons, ships true batches and completes the factory round](assets/demos/13-factory-round.gif)
+![Three calculated numbers activate the three different orders and complete a round](assets/demos/15-factory-round.gif)
 
-Press **A** to take the next three orders. Their bright tool symbols show which modifiers they accept. The next round uses multiplication and division; addition and subtraction follow after that. Later rounds mix these jobs with different small starting groups.
+Press **A** after all three activate. The next round keeps your mixer amount and brings new checks.
 
-## 14. Make more with fewer tools
+## 16. Watch the boundary
 
-Keep the code you have built. In the next round, the orders accept only `×` and `/` modifiers. An addition card or loose cupcake cannot change these orders; you keep it until you drop it with **B**.
+The next round uses strict `<` and `>` checks. A matching number is no longer enough for those orders.
 
 ### Choose a path
 
-The `=` order starts with one cake and four cakes. You could double the left side twice, divide the right side by two twice, or change both sides until they meet. Every modifier uses the amount that is on its tray **now**.
-
-For `<` and `>`, matching is only an intermediate step: equal groups still make those comparisons **FALSE**. Use another modifier on either side to make the statement true.
+After finishing with `6` in the pot, the new orders include `5 < □`. Subtract one, collect `5`, and deliver it there. Predict the result before you throw. Then make a number that will turn that same order to **YES**.
 
 ### What you should see
 
-After one doubling, the left side has two cakes and the right has four: the `=` check stays **FALSE**. A second doubling makes four on both sides and the check becomes **TRUE**. Ship it with empty-handed **A**. Reset another unfinished order with **B** and try a different path.
+`5 < 5` gives **NO**. Add one, collect `6`, and deliver it: `5 < 6` gives **YES**. Compare this with `5 ≤ 5` from the earlier round.
 
-![Two successive multiplications use the updated tray amount, turning one cake into two and then four before shipping the matching order](assets/demos/14-multiply-divide-jobs.gif)
+![A strict check rejects its matching boundary, then accepts the larger delivered number](assets/demos/16-boundary-checks.gif)
 
-## 15. Find another way
+## 17. Keep the amount, change the plan
 
-Finish the three multiplication/division orders, then press **A**. These next orders accept only `+` and `-` modifiers.
+Your code can use each new mixer amount without being rewritten.
 
 ### Choose a path
 
-The `=` order starts with one cake and five cakes. Two `+ 2` modifiers on the left make three and then five. You could instead change both sides: adding two on the left and subtracting two on the right makes three on each side.
-
-Try the same decision on the `<` and `>` orders. Increasing one side and decreasing the other can both help; read the sign before choosing. The slower loose cupcakes are allowed here, but a larger printed modifier can save a trip.
+Make and deliver `3` for the equality order. Look back at the pot: it still holds `3`. Find a useful next calculation for another order. Doubling gives `6`; subtracting two gives `1`. Both use the amount already there.
 
 ### What you should see
 
-Your code handles each new starting amount without being rewritten. The comparison changes to **TRUE** only when the resulting pictures satisfy its sign. Complete this round to reach mixed-tool orders with more small-number examples.
+A numbered container carries a copy. Your next modifier changes the mixer, while a completed order keeps its delivered number. Try another route through the same three checks, using a different combination of arithmetic operations.
 
-![Two plus-two modifiers turn one pictured cake into three and then five, making the equality order true](assets/demos/15-add-subtract-jobs.gif)
+![The mixer keeps three after delivery, then doubling makes six for a different order](assets/demos/17-reuse-number.gif)

@@ -1,7 +1,7 @@
 let batch = 0
 let modifierNumber = 0
-let leftCakes = 0
-let rightCakes = 0
+let deliveredNumber = 0
+let orderTarget = 0
 let ready = false
 
 bakery.onAction(BakeryAction.TraySelected, function () {
@@ -62,22 +62,36 @@ bakery.onAction(BakeryAction.DivideModifier, function () {
 })
 
 bakery.onAction(BakeryAction.EqualCheck, function () {
-    leftCakes = bakery.leftAmount()
-    rightCakes = bakery.rightAmount()
-    ready = leftCakes == rightCakes
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget == deliveredNumber
     bakery.showCheck(ready)
 })
 
 bakery.onAction(BakeryAction.LessCheck, function () {
-    leftCakes = bakery.leftAmount()
-    rightCakes = bakery.rightAmount()
-    ready = leftCakes < rightCakes
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget < deliveredNumber
     bakery.showCheck(ready)
 })
 
 bakery.onAction(BakeryAction.GreaterCheck, function () {
-    leftCakes = bakery.leftAmount()
-    rightCakes = bakery.rightAmount()
-    ready = leftCakes > rightCakes
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget > deliveredNumber
+    bakery.showCheck(ready)
+})
+
+bakery.onAction(BakeryAction.LessEqualCheck, function () {
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget <= deliveredNumber
+    bakery.showCheck(ready)
+})
+
+bakery.onAction(BakeryAction.GreaterEqualCheck, function () {
+    orderTarget = bakery.leftAmount()
+    deliveredNumber = bakery.rightAmount()
+    ready = orderTarget >= deliveredNumber
     bakery.showCheck(ready)
 })

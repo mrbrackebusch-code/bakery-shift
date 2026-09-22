@@ -157,31 +157,28 @@ namespace bakeryArt {
         p.fillRect(0, 0, 320, 19, 14)
         p.fillRect(0, 20, 320, 3, 8)
         for (let x of [32, 138, 244]) { p.fillRect(x, 24, 42, 2, 8); p.fillRect(x + 4, 27, 34, 2, 9) }
-        for (let x of [54, 160, 266]) {
-            rounded(p, x - 46, 22, 92, 79, 14)
-            p.fillRect(x - 43, 24, 86, 75, 8)
-            p.fillRect(x - 40, 27, 80, 66, 12)
-            p.fillRect(x - 42, 94, 84, 5, 8)
-            p.fillRect(x - 36, 96, 72, 1, 9)
+        for (let y = 24; y <= 84; y++) {
+            let d = Math.floor((y - 24) * 0.8)
+            for (let c of [40 + d, 160, 280 - d]) {
+                p.fillRect(c - 37, y, 74, 1, 14)
+                p.fillRect(c - 33, y, 66, 1, 12)
+                p.setPixel(c - 34, y, 1); p.setPixel(c + 33, y, 1)
+            }
         }
-        p.fillRect(0, 101, 320, 36, 8)
-        p.fillRect(0, 135, 320, 2, 9)
-        p.fillRect(0, 153, 320, 3, 14)
-        p.fillRect(0, 156, 320, 3, 8)
+        p.fillRect(0, 90, 320, 106, 8)
+        p.fillRect(0, 85, 320, 5, 8)
         return p
     }
 
     // Call every frame over the static background, before tokens and chef.
     export function conveyorTreads(p: Image, pixelOffset: number) {
-        for (let x of [54, 160, 266]) p.fillRect(x - 40, 27, 80, 66, 12)
-        for (let x of [54, 160, 266]) for (let row = 0; row < 5; row++) {
-            let y = 29 + ((row * 13 + pixelOffset) % 63)
-            p.fillRect(x - 37, y, 74, 1, 8)
-            if (y < 89) {
-                let dx = -2
-                p.setPixel(x + dx, y + 2, 8); p.setPixel(x + dx + 1, y + 3, 8)
-                p.setPixel(x + dx + 2, y + 4, 8); p.setPixel(x + dx + 3, y + 3, 8)
-                p.setPixel(x + dx + 4, y + 2, 8)
+        for (let y = 24; y <= 84; y++) {
+            let d = Math.floor((y - 24) * 0.8)
+            for (let c of [40 + d, 160, 280 - d]) {
+                p.fillRect(c - 37, y, 74, 1, 14)
+                p.fillRect(c - 33, y, 66, 1, 12)
+                p.setPixel(c - 34, y, 1); p.setPixel(c + 33, y, 1)
+                if ((y + pixelOffset) % 12 == 0) p.fillRect(c - 32, y, 64, 1, 8)
             }
         }
     }
@@ -197,8 +194,23 @@ namespace bakeryArt {
 
     function comparisonGlyph(p: Image, relation: number, x: number, y: number, color: number) {
         if (relation == 0) { p.fillRect(x, y + 2, 11, 2, color); p.fillRect(x, y + 7, 11, 2, color) }
-        if (relation == 1) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 - n, y + n, color); p.setPixel(x + 5 - n, y + 10 - n, color) }
-        if (relation == 2) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 + n, y + n, color); p.setPixel(x + 5 + n, y + 10 - n, color) }
+        if (relation == 1 || relation == 3) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 - n, y + n, color); p.setPixel(x + 5 - n, y + 10 - n, color) }
+        if (relation == 2 || relation == 4) for (let n = 0; n < 6; n++) { p.setPixel(x + 5 + n, y + n, color); p.setPixel(x + 5 + n, y + 10 - n, color) }
+        if (relation == 3 || relation == 4) p.fillRect(x, y + 12, 12, 1, color)
+    }
+
+    function printNumber(p: Image, value: number, centerX: number, topY: number, color: number, maxWidth: number) {
+        if (value - value != 0) return
+        let text = "" + value
+        if (text.length > 6) text = text.substr(0, 6)
+        let scale = text.length * 12 <= maxWidth ? 2 : 1
+        let temp = image.create(text.length * (scale == 2 ? 6 : 5) + 2, 8)
+        temp.print(text, 0, 0, 1, scale == 2 ? image.font8 : image.font5)
+        let outWidth = text.length * (scale == 2 ? 12 : 5)
+        let left = centerX - Math.idiv(outWidth, 2)
+        for (let sy = 0; sy < 8; sy++) for (let sx = 0; sx < temp.width; sx++) if (temp.getPixel(sx, sy) != 0) {
+            for (let dy = 0; dy < scale; dy++) for (let dx = 0; dx < scale; dx++) p.setPixel(left + sx * scale + dx, topY + sy * scale + dy, color)
+        }
     }
 
     export function variableTray(p: Image, x: number, y: number) {
@@ -312,6 +324,48 @@ namespace bakeryArt {
         if (complete) { p.fillRect(206, 231, 3, 7, 9); p.fillRect(209, 235, 8, 3, 9) }
         p.print("TOOLS", 210, 231, 1, image.font5)
         for (let i = 0; i < 4; i++) operator(p, i, 242 + i * 14, 230, (allowedOps & (1 << i)) != 0 ? 1 : 12)
+    }
+
+    export function mixer(p: Image, value: number, active: boolean, jammed: boolean) {
+        p.fillCircle(160, 132, 31, active ? 5 : 12)
+        p.fillCircle(160, 132, 27, 13)
+        p.fillCircle(160, 132, 23, jammed ? 3 : 4)
+        p.fillRect(126, 127, 8, 10, 14); p.fillRect(128, 129, 4, 6, 12)
+        p.fillRect(186, 127, 8, 10, 14); p.fillRect(188, 129, 4, 6, 12)
+        p.fillRect(140, 118, 5, 1, 1); p.fillRect(137, 120, 3, 1, 1)
+          printNumber(p, value, 160, 122, 15, 54)
+    }
+
+    export function numericOutput(value: number): Image {
+        let p = image.create(28, 30)
+        rounded(p, 2, 3, 24, 25, 14)
+        p.fillRect(5, 8, 18, 16, 13)
+        p.fillRect(8, 5, 12, 4, 8)
+        if (Math.floor(value) == value) printNumber(p, value, 14, 10, 15, 24)
+        return p
+    }
+
+    export function outputStand(p: Image, value: number, active: boolean) {
+        rounded(p, 235, 143, 34, 39, 14)
+        p.fillRect(239, 150, 26, 25, active ? 6 : 8)
+        p.fillRect(231, 158, 10, 3, 8)
+        p.fillRect(226, 157, 7, 5, 9)
+        p.drawTransparentImage(numericOutput(value), 238, 146)
+        p.print("NUMBER", 236, 182, 1, image.font5)
+    }
+
+    export function deliveryOrder(p: Image, index: number, value: number, target: number, relation: number, signal: number, focused: boolean, complete: boolean) {
+        let x = index * 106 + 2
+        rounded(p, x, 204, 104, 36, focused ? 5 : 12)
+        p.fillRect(x + 2, 206, 100, 32, focused ? 6 : 8)
+        p.fillRect(x + 7, 210, 24, 17, 13)
+        printNumber(p, target, x + 19, 211, 15, 24)
+        comparisonGlyph(p, relation, x + 45, 211, 1)
+        p.fillRect(x + 74, 210, 24, 17, 13)
+        if (value != -999999) printNumber(p, value, x + 86, 211, 15, 24)
+        let text = signal < 0 ? "CHECK" : signal == 0 ? "NO" : "YES"
+        p.print(text, x + 7, 228, signal == 1 ? 9 : 1, image.font5)
+        if (complete) { p.fillRect(x + 91, 229, 2, 6, 9); p.fillRect(x + 93, 232, 6, 2, 9) }
     }
 
     // x=6,110,214. Draw later than floor, earlier than held-card overlay.

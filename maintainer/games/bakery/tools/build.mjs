@@ -10,19 +10,19 @@ const normalize = s => s.replace(/\r\n/g, '\n');
 const readText = p => normalize(fs.readFileSync(p, 'utf8'));
 export const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
 const readJson = p => JSON.parse(readText(p));
-const expectedActions = ['TraySelected', 'AddOne', 'RemoveOne', 'Double', 'Halve', 'AddModifier', 'SubtractModifier', 'MultiplyModifier', 'DivideModifier', 'EqualCheck', 'LessCheck', 'GreaterCheck'];
-const expectedVariables = ['batch', 'modifierNumber', 'leftCakes', 'rightCakes', 'ready'];
-const expectedComparisons = ['==', '<', '>'];
-const allowedCall = /^(?:bakery\.(?:showTray|applyResult|showCheck)\([A-Za-z][A-Za-z0-9]*\)|[A-Za-z][A-Za-z0-9]* = (?:[A-Za-z][A-Za-z0-9]* [\+\-*\/] (?:[A-Za-z][A-Za-z0-9]*|[123])|[A-Za-z][A-Za-z0-9]* (?:==|<|>) [A-Za-z][A-Za-z0-9]*|bakery\.(?:trayAmount|modifierNumber|leftAmount|rightAmount)\(\)))$/;
+const expectedActions = ['TraySelected', 'AddOne', 'RemoveOne', 'Double', 'Halve', 'AddModifier', 'SubtractModifier', 'MultiplyModifier', 'DivideModifier', 'EqualCheck', 'LessCheck', 'GreaterCheck', 'LessEqualCheck', 'GreaterEqualCheck'];
+const expectedVariables = ['batch', 'modifierNumber', 'deliveredNumber', 'orderTarget', 'ready'];
+const expectedComparisons = ['==', '<', '>', '<=', '>='];
+const allowedCall = /^(?:bakery\.(?:showTray|applyResult|showCheck)\([A-Za-z][A-Za-z0-9]*\)|[A-Za-z][A-Za-z0-9]* = (?:[A-Za-z][A-Za-z0-9]* [\+\-*\/] (?:[A-Za-z][A-Za-z0-9]*|[123])|[A-Za-z][A-Za-z0-9]* (?:==|<=|>=|<|>) [A-Za-z][A-Za-z0-9]*|bakery\.(?:trayAmount|modifierNumber|leftAmount|rightAmount)\(\)))$/;
 
 export function validateCatalog(catalog) {
-  if (catalog.catalog_id !== 'BAKERY-CUMULATIVE-STATES-V5' || catalog.states?.length !== 12 || !/^\/\/ Cake Factory\n?$/.test(catalog.starter_source)) throw Error('Bakery catalog must contain twelve constructions and the Cake Factory comment-only starter carrier.');
+  if (catalog.catalog_id !== 'BAKERY-CUMULATIVE-STATES-V7' || catalog.activity_contract_id !== 'GLAC.BAKERY.V7' || catalog.states?.length !== 14 || !/^\/\/ Cake Factory\n?$/.test(catalog.starter_source)) throw Error('Bakery catalog must contain fourteen V7 constructions and the Cake Factory comment-only starter carrier.');
   if (JSON.stringify(catalog.variable_order) !== JSON.stringify(expectedVariables)) throw Error('The catalog must preserve the five reviewed variable names and order.');
-  if (JSON.stringify(catalog.variable_types) !== JSON.stringify({batch:'number',modifierNumber:'number',leftCakes:'number',rightCakes:'number',ready:'Boolean'})) throw Error('The catalog must declare the reviewed variable types.');
+  if (JSON.stringify(catalog.variable_types) !== JSON.stringify({batch:'number',modifierNumber:'number',deliveredNumber:'number',orderTarget:'number',ready:'Boolean'})) throw Error('The catalog must declare the V7 variable types.');
   const introduced = new Set();
   const counts = {'+':0, '-':0, '*':0, '/':0};
   for (const [index, state] of catalog.states.entries()) {
-    if (state.through !== index + 1 || state.tutorial_step !== index + 1 || state.action !== expectedActions[index] || !/^(?:0[1-9]|1[0-2])-[a-z][a-z-]+$/.test(state.id)) throw Error(`Unexpected state identity/order: ${state.id}`);
+    if (state.through !== index + 1 || state.tutorial_step !== index + 1 || state.action !== expectedActions[index] || !/^(?:0[1-9]|1[0-4])-[a-z][a-z-]+$/.test(state.id)) throw Error(`Unexpected state identity/order: ${state.id}`);
     for (const name of state.introduces_variables) {
       if (introduced.has(name) || !expectedVariables.includes(name)) throw Error(`Invalid first-use variable: ${name}`);
       introduced.add(name);
@@ -37,13 +37,13 @@ export function validateCatalog(catalog) {
     }
     const arithmetic = state.statements.filter(line=>/ = [A-Za-z][A-Za-z0-9]* [\+\-*\/] /.test(line));
     if (state.operator === null ? arithmetic.length !== 0 : arithmetic.length !== 1 || !arithmetic[0].includes(` ${state.operator} `)) throw Error(`${state.id} must contain exactly its declared one-operation expression.`);
-    const comparison = state.statements.filter(line=>/ = [A-Za-z][A-Za-z0-9]* (?:==|<|>) [A-Za-z][A-Za-z0-9]*$/.test(line));
+    const comparison = state.statements.filter(line=>/ = [A-Za-z][A-Za-z0-9]* (?:==|<=|>=|<|>) [A-Za-z][A-Za-z0-9]*$/.test(line));
     if (state.comparison === null ? comparison.length !== 0 : comparison.length !== 1 || !comparison[0].includes(` ${state.comparison} `)) throw Error(`${state.id} must contain exactly its declared comparison expression.`);
     if (state.operator) counts[state.operator]++;
   }
-  if (introduced.size !== 5 || Object.values(counts).some(n=>n!==2) || JSON.stringify(catalog.states.slice(9).map(s=>s.comparison)) !== JSON.stringify(expectedComparisons)) throw Error('Five variables, two authored uses per arithmetic operator and EQ/LT/GT comparisons are required.');
-  if (!Array.isArray(catalog.experiments) || catalog.experiments.length !== 0) throw Error('V5 must not contain experiments.');
-  return {states:12, experiments:0, variables:[...introduced], arithmetic_constructions:counts, comparison_constructions:{'==':1,'<':1,'>':1}, starter_comment_only:true, starter_executable_code:false};
+  if (introduced.size !== 5 || Object.values(counts).some(n=>n!==2) || JSON.stringify(catalog.states.slice(9).map(s=>s.comparison)) !== JSON.stringify(expectedComparisons)) throw Error('Five variables, two authored uses per arithmetic operator and EQ/LT/GT/LE/GE comparisons are required.');
+  if (!Array.isArray(catalog.experiments) || catalog.experiments.length !== 0) throw Error('V7 must not contain experiments.');
+  return {states:14, experiments:0, variables:[...introduced], arithmetic_constructions:counts, comparison_constructions:{'==':1,'<':1,'>':1,'<=':1,'>=':1}, starter_comment_only:true, starter_executable_code:false};
 }
 
 const handler = state => `bakery.onAction(BakeryAction.${state.action}, function () {\n${state.statements.map(line=>'    '+line).join('\n')}\n})`;
@@ -115,13 +115,13 @@ export function buildBakery(options = {}) {
     seen.push(state.id);
     return `${section.trimEnd()}\n\n#### ~ tutorialhint\n\n\`\`\`blocks\n${hintOutputs[state.id].trimEnd()}\n\`\`\``;
   }).join('\n\n');
-  if (JSON.stringify(seen) !== JSON.stringify(catalog.states.map(s=>s.id))) throw Error('The twelve numbered learner constructions must match catalog order.');
+  if (JSON.stringify(seen) !== JSON.stringify(catalog.states.map(s=>s.id))) throw Error('The fourteen numbered learner constructions must match catalog order.');
   if (JSON.stringify(seenExperiments) !== JSON.stringify(catalog.experiments.map(item=>item.id))) throw Error('Declared experiment headings must match the catalog.');
   if (JSON.stringify(seenPractice) !== JSON.stringify(catalog.practice_steps || [])) throw Error('Declared gameplay practice headings must match the catalog.');
   const starterSource = catalog.starter_source;
   const solutionSource = stateOutputs[catalog.final_play_state];
   const tutorial = `${visibleCopy}\n\n\`\`\`template\n${starterSource}\n\`\`\`\n\n\`\`\`customts\n${engineSource.trimEnd()}\n\`\`\`\n`;
-  if ((tutorial.match(/^```customts$/gm)||[]).length!==1 || (tutorial.match(/^```template$/gm)||[]).length!==1 || (tutorial.match(/^```blocks$/gm)||[]).length!==12) throw Error('Tutorial resource cardinality changed.');
+  if ((tutorial.match(/^```customts$/gm)||[]).length!==1 || (tutorial.match(/^```template$/gm)||[]).length!==1 || (tutorial.match(/^```blocks$/gm)||[]).length!==14) throw Error('Tutorial resource cardinality changed.');
   const files = new Map([['tutorial/README.md', tutorial]]);
   for (const [id, source] of Object.entries(stateOutputs)) files.set(`learner-states/${id}.ts`, source);
   for (const [id, source] of Object.entries(hintOutputs)) files.set(`hints/${id}.ts`, source);
@@ -145,7 +145,7 @@ export function buildBakery(options = {}) {
   if (options.requireMedia && media.some(item=>!item.present)) throw Error('Current referenced media files are incomplete.');
   const canonicalPaths = ['copy/tutorial-template.md','implementation/learner-states/catalog.json','implementation/supplied-world/engine.ts','implementation/supplied-world/art.ts','implementation/manifest.json','tools/build.mjs'];
   const sourceHashes = Object.fromEntries(canonicalPaths.map(relative=>[`games/bakery/${relative}`,sha256(readText(path.join(gameRoot,relative)))]));
-  const manifest = {schema_version:1,manifest_id:'BAKERY-BUILD-V5',game_id:'GAME-BAKERY',catalog_id:catalog.catalog_id,asset_transport:'INLINE_TYPESCRIPT_IMAGES',learner_variables:catalog.variable_order,model_checks:modelChecks,source_hashes:sourceHashes,output_hashes:{tutorial:sha256(tutorial),starter:sha256(starterSource),solution:sha256(solutionSource),engine:sha256(engineSource),states:Object.fromEntries(Object.entries(stateOutputs).map(([id,s])=>[id,sha256(s)])),hints:Object.fromEntries(Object.entries(hintOutputs).map(([id,s])=>[id,sha256(s)])),experiments:Object.fromEntries(Object.entries(experimentOutputs).map(([id,s])=>[id,sha256(s)]))},outputs:Object.fromEntries([...files.entries()].map(([relative,bytes])=>[relative,{sha256:sha256(bytes),bytes:Buffer.byteLength(bytes)}])),demonstrations,instruction_media:instructionMedia,claim_boundary:'Deterministic assembly and declared scope only; missing referenced media remain explicit. Compile, Blocks, runtime, browser and learner evidence are separate.'};
+  const manifest = {schema_version:1,manifest_id:'BAKERY-BUILD-V7',game_id:'GAME-BAKERY',catalog_id:catalog.catalog_id,asset_transport:'INLINE_TYPESCRIPT_IMAGES',learner_variables:catalog.variable_order,model_checks:modelChecks,source_hashes:sourceHashes,output_hashes:{tutorial:sha256(tutorial),starter:sha256(starterSource),solution:sha256(solutionSource),engine:sha256(engineSource),states:Object.fromEntries(Object.entries(stateOutputs).map(([id,s])=>[id,sha256(s)])),hints:Object.fromEntries(Object.entries(hintOutputs).map(([id,s])=>[id,sha256(s)])),experiments:Object.fromEntries(Object.entries(experimentOutputs).map(([id,s])=>[id,sha256(s)]))},outputs:Object.fromEntries([...files.entries()].map(([relative,bytes])=>[relative,{sha256:sha256(bytes),bytes:Buffer.byteLength(bytes)}])),demonstrations,instruction_media:instructionMedia,claim_boundary:'Deterministic assembly and declared scope only; missing referenced media remain explicit. Compile, Blocks, runtime, browser and learner evidence are separate.'};
   files.set('build-manifest.json',JSON.stringify(manifest,null,2)+'\n');
   if (options.check) {
     const mismatches=[];
