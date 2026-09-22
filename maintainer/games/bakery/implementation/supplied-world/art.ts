@@ -59,6 +59,14 @@ namespace bakeryArt {
     }
     export function chef(frame: number = 0, carrying: boolean = false): Image { return bakeryIcons.chef(frame, carrying) }
     export function numericOutput(value: number): Image { return bakeryIcons.carriedNumber(value) }
+    export function resetCake(value: number): Image {
+        let p = image.create(34, 34)
+        p.drawTransparentImage(looseCake(), 4, 0)
+        number(p, value, 17, 7, 15)
+        round(p, 7, 27, 20, 7, 2)
+        p.print("set", 11, 28, 1, image.font5)
+        return p
+    }
     export function shadow(): Image { let p = image.create(28, 10); oval(p, 14, 5, 13, 4, 12); return p }
     export function drawBackground(): Image {
         let p = image.create(640, 480); p.fill(13)
@@ -102,19 +110,23 @@ namespace bakeryArt {
         // Dock foundation visually anchors the Boolean blocks.
         p.fillRect(0, 404, 640, 76, 15); p.fillRect(0, 404, 640, 4, 4)
         for (let x = 4; x < 640; x += 16) p.drawLine(x, 404, x + 5, 408, 5)
-        conveyorTreads(p, 0)
+        conveyorTreads(p, 0, 0)
         return p
     }
-    export function conveyorTreads(p: Image, offset: number) {
+    export function conveyorTreads(p: Image, offset: number, runningMask: number = 7) {
+        let lane = 0
         for (let y = 70; y <= 187; y++) {
             let drift = (y - 70) * 0.59
             for (let c of [96 + drift, 320, 544 - drift]) {
                 let x = Math.floor(c)
+                let laneOffset = (runningMask & (1 << lane)) != 0 ? offset : 0
                 p.fillRect(x - 63, y, 126, 1, 15); p.fillRect(x - 60, y, 120, 1, 12); p.fillRect(x - 54, y, 108, 1, 8)
                 p.fillRect(x - 59, y, 2, 1, 1); p.fillRect(x + 57, y, 2, 1, 6)
-                if ((y - offset + 10000) % 18 < 3) p.fillRect(x - 52, y, 104, 1, 6)
+                if ((y - laneOffset + 10000) % 18 < 3) p.fillRect(x - 52, y, 104, 1, 6)
                 if (y % 24 < 3) { p.fillRect(x - 62, y, 5, 1, 14); p.fillRect(x + 58, y, 5, 1, 14) }
+                lane++
             }
+            lane = 0
         }
         for (let c of [165, 320, 475]) {
             round(p, c - 66, 186, 132, 12, 15); round(p, c - 62, 186, 124, 8, 12)
@@ -146,18 +158,19 @@ namespace bakeryArt {
         let spin = tick % 4
         p.drawLine(304 - spin * 3, 239, 326, 234 + spin, 4); p.drawLine(329, 248, 343 + spin, 244, 4)
         if (active) { p.drawCircle(251, 249, 4, 5); p.drawCircle(389, 249, 4, 5) }
-        number(p, value, 320, 284, jammed ? 2 : 15)
         p.fillCircle(368, 296, 4, jammed ? 2 : 6)
     }
-    export function outputStand(p: Image, value: number, ready: boolean) {
+    export function outputStand(p: Image, value: number, ready: boolean, revealed: boolean = true) {
         // A short real chute connects the bowl to a numbered-output dispenser.
         p.fillRect(397, 285, 50, 12, 14); p.fillRect(397, 285, 50, 7, 12)
         for (let x = 402; x < 445; x += 9) p.fillRect(x, 287, 3, 4, 8)
         oval(p, 454, 351, 29, 7, 12)
         round(p, 427, 299, 54, 45, 15); round(p, 430, 297, 48, 42, 6)
         p.fillRect(435, 315, 38, 19, 8); p.fillRect(435, 300, 38, 3, 12)
-        p.drawTransparentImage(numericOutput(value), 437, 306)
-        p.fillCircle(475, 307, 3, ready ? 5 : 12)
+        if (revealed) {
+            p.drawTransparentImage(numericOutput(value), 434, 308)
+            p.fillCircle(475, 307, 3, ready ? 5 : 12)
+        }
         p.drawLine(440, 354, 447, 360, 6); p.drawLine(447, 360, 454, 354, 6)
     }
     export function sideStation(p: Image, id: number, value: number, op: number, unlocked: boolean, pulse: number, now: number) {

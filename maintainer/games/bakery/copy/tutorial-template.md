@@ -4,290 +4,274 @@
 
 ## Welcome to the cake factory!
 
-Make a number in the mixing pot, then carry a copy to an order.
+Build the factory one useful capability at a time. The supplied ``||bakery(noclick):Cake Factory||`` drawer provides events and displays; your code will remember numbers, change them, and check orders.
 
-**Move:** arrow keys. Catch a modifier, face the round pot, and press **A** (Space or Z) to throw. Hold **A** to charge; the gold ring shows your aim. Release to throw. A quick tap also throws. **B** (Enter or X) discards what you carry. You can pause the simulator while you build.
+## 1. Show the batch
 
-First you will code the arithmetic that changes the mixer. Then you will connect the orders' true/false checks. The supplied ``||bakery(noclick):Cake Factory||`` drawer provides the events and displays; the calculations and comparisons will be yours.
-
-## 1. Read the mixer
-
-A ``||variables(noclick):variable||`` is a container used to store values in your code. Give the worker somewhere to remember the amount in the mixer.
+Make ``||variables(noclick):batch||``. The startup code sets it to `2` and shows that value at the batch dispenser beside the pot.
 
 ### Find these blocks
 
-In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):batch||``.
+In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):batch||``. Find the ``||loops(noclick):on start||`` block in ``||loops(noclick):Loops||``, ``||variables(noclick):set batch to||`` in ``||variables(noclick):Variables||``, and **show** in ``||bakery(noclick):Cake Factory||``.
 
-![Native menu blocks for creating batch, selecting the mixer, reading its amount and showing a value](assets/instructions/01-menu.svg)
+![Native menu blocks for batch and the startup display](assets/instructions/01-menu.svg)
 
 ### Make your code look like this
 
-![Read the mixer into batch, then show the value stored in batch](assets/instructions/01-assembled.svg)
+![Set batch to two and show batch at startup](assets/instructions/01-assembled.svg)
 
 ### What you should see
 
-With empty hands, stand below the pot and press **A**. Your display shows `2`. Reading the mixer does not change its amount. The bottom checks will be connected later.
+When the game starts, the batch dispenser shows `2`. The pot is ready for the first modifier.
 
-![Selecting the mixer shows its current number in a bubble](assets/demos/01-clean-tray.gif)
+![The batch dispenser shows two at startup](assets/demos/01-show-batch.gif)
 
-## 2. Add one
+## 2. Start the belt
 
-Keep your first event. This new event adds one when a `+ 1` item hits the pot. The bowl icon in a modifier stands for the current mixer amount. The slow cupcake on the upper-left shelf uses this event too.
+Add to the existing ``||loops(noclick):on start||`` stack the ``||bakery(noclick):set conveyor belt on [true]||`` block. The middle belt begins with a `+ 1` item and one `3 = □` order appears.
 
 ### Find these blocks
 
-![Native event, variable, arithmetic and mixer-result blocks for adding one](assets/instructions/02-menu.svg)
+In ``||bakery(noclick):Cake Factory||``, find **set conveyor belt on [true]**. The Boolean dropdown can be `true` to run the belt or `false` to stop it.
+
+![Native menu blocks for enabling the conveyor](assets/instructions/02-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, set batch to batch plus one, then put batch in the mixer](assets/instructions/02-assembled.svg)
+![Enable the conveyor at startup](assets/instructions/02-assembled.svg)
 
 ### What you should see
 
-Catch `+ 1`. Move beside the pot, face it, and press **A**. The modifier flies into the pot and `2` becomes `3` when it hits. Try another addition using the new starting amount.
+The middle belt moves and brings `+ 1`. The first order asks for a number equal to `3`.
 
-![A thrown plus-one modifier hits the mixer and changes two to three](assets/demos/02-catch-one.gif)
+![The middle belt starts with one plus-one modifier and a three equals blank order](assets/demos/02-start-belt.gif)
 
-## 3. Take one away
+## 3. Add one
 
-Sometimes a smaller number is more useful.
-
-### Copy and change the event
-
-Right-click the top block of your step 2 event and choose **Duplicate**. Keep the original event.
-
-![Copy step 2's +1 event; change it to a -1 mixer event and subtraction](assets/instructions/03-adapt.svg)
-
-### What you should see
-
-Throw `- 1` into the pot: `2` becomes `1`. With empty hands, press **B** beside the pot to reset its amount, then try a different calculation.
-
-![A thrown minus-one modifier changes the mixer from two to one](assets/demos/03-discard-one.gif)
-
-## 4. Double the amount
-
-A `× 2` modifier can do in one throw what repeated additions would take longer to do.
+With empty hands, use the arrow keys to move near an item. Press and release **A** to pick it up; press and release **A** again while facing the pot to throw it.
 
 ### Find these blocks
 
-![Native multiplication and factory blocks for the double event](assets/instructions/04-menu.svg)
+Add **a + 1 item hits the mixer** from ``||bakery(noclick):Cake Factory||``. Find **amount in the mixer** and **put [batch] in the mixer** in that drawer, ``||variables(noclick):batch||`` in ``||variables(noclick):Variables||``, and Math `+` in ``||math(noclick):Math||``.
+
+![Native menu blocks for the first arithmetic event](assets/instructions/03-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, multiply batch by two, save it and put the result in the mixer](assets/instructions/04-assembled.svg)
+![Read batch, add one, save it, and put it in the mixer](assets/instructions/03-assembled.svg)
 
 ### What you should see
 
-Throw `× 2` into the pot. The amount doubles: `2` becomes `4`. The number on the modifier stays two; the amount it multiplies can change.
+Pick up `+ 1`, throw it into the pot, and watch `2` become `3`. The mixer keeps the new amount.
 
-![A times-two modifier doubles the mixer amount from two to four](assets/demos/04-double-batch.gif)
+![Picking up and throwing plus one changes two to three](assets/demos/03-add-one.gif)
 
-## 5. Divide the amount
+## 4. Check equality
 
-Division makes a large amount smaller. A `/ 2` modifier divides it into two equal parts and keeps one part.
+Connect the first order check. A Boolean is ``||logic(noclick):true||`` or ``||logic(noclick):false||``. Use the order target on the left and delivered number on the right.
 
 ### Find these blocks
 
-![Native division and factory blocks for dividing the mixer amount by two](assets/instructions/05-menu.svg)
+Use **Make a Variable** for ``||variables(noclick):orderTarget||``, ``||variables(noclick):deliveredNumber||``, and ``||variables(noclick):ready||``. Add **an equal to (=) order checks a number**.
+
+![Native menu blocks for the first equality check](assets/instructions/04-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, divide it by two, save it and put the result in the mixer](assets/instructions/05-assembled.svg)
+![Read both values, save equality in ready, and show the check](assets/instructions/04-assembled.svg)
 
 ### What you should see
 
-Throw `/ 2` into a mixer holding `2`. The result is `1`. This factory uses whole-number results: a division that would make a fraction leaves the amount unchanged. Adjust the amount before trying that division again.
+At the dispenser, press **A** to pick up a copy of batch; face the order and press **A** to throw it. Deliver `3` to `3 = □`. The order checks automatically when the number lands.
 
-![Dividing two by two changes the mixer to one](assets/demos/05-pack-pairs.gif)
+![Delivering three completes the first equality check](assets/demos/04-equal-check.gif)
 
-## 6. Read the modifier's number
+## 5. Take one away
 
-The belts can now offer `+ 2` and `+ 3`. One event can use the number printed on either modifier.
+Duplicate your step 3 addition event and keep the original. Change the event and operator in the duplicate as shown.
 
-### Find these blocks
+![Copy step 3's addition event and change it to subtraction](assets/instructions/05-adapt.svg)
 
-In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):modifierNumber||``.
+### What you should see
 
-![Native menu blocks for modifierNumber, its printed-number input and the addition event](assets/instructions/06-menu.svg)
+Starting from `2`, throw `- 1`; the mixer becomes `1` for the equality target `1`.
+
+![Subtracting one changes two to one](assets/demos/05-subtract-one.gif)
+
+## 6. Check greater than
+
+Duplicate your step 4 equality event and keep the original. Change the event and comparison as shown.
+
+![Copy step 4's equality event and change it to greater than](assets/instructions/06-adapt.svg)
+
+### What you should see
+
+The target is `2`. Starting from `2`, subtract one and deliver `1` so `2 > 1` checks true.
+
+![A greater-than order checks the delivered number](assets/demos/06-greater-check.gif)
+
+## 7. Double the batch
+
+Add a multiplication event. Read the current batch, multiply by `2`, save the result, and put it in the mixer.
+
+![Native menu blocks for doubling the batch](assets/instructions/07-menu.svg)
 
 ### Make your code look like this
 
-![Read batch and modifierNumber, add them, then put the saved batch in the mixer](assets/instructions/06-assembled.svg)
-
-``||variables(noclick):batch||`` remembers the mixer amount; ``||variables(noclick):modifierNumber||`` remembers the modifier's printed number for this event.
+![Multiply batch by two and put the result in the mixer](assets/instructions/07-assembled.svg)
 
 ### What you should see
 
-Throw `+ 2` into a mixer holding `2`: the result is `4`. Try `+ 3` or another starting amount and compare the result.
+Starting from `2`, throw `× 2` to make `4` for the equality order.
 
-![The plus-two modifier changes the mixer from two to four](assets/demos/06-delivery.gif)
+![Doubling the batch makes four](assets/demos/07-double.gif)
 
-## 7. Subtract the printed number
+## 8. Check less than
 
-A `- 2` or `- 3` modifier subtracts its printed amount.
+Duplicate your step 6 greater-than event and keep the original. Change the event and comparison as shown.
 
-### Copy and change the event
-
-Duplicate your step 6 printed-number event and keep the original.
-
-![Copy step 6's printed-number event; change it to a -2 or -3 event and subtraction](assets/instructions/07-adapt.svg)
+![Copy step 6's greater-than event and change it to less than](assets/instructions/08-adapt.svg)
 
 ### What you should see
 
-Throw `- 2` at an amount of `2`: the result is `0`. Subtracting three from two would give `-1`. Negative numbers are smaller than zero.
+The target is `3`. Starting from `2`, double to `4`, deliver it, and let `3 < 4` check.
 
-![Subtracting the printed two from two changes the mixer to zero](assets/demos/07-serve-order.gif)
+![A less-than order checks the delivered number](assets/demos/08-less-check.gif)
 
-## 8. Multiply by the printed number
+## 9. Halve the batch
 
-A `× 3` modifier offers another way to change a small amount quickly.
+Add division by `2` using the current batch, then put the result in the mixer. This factory keeps whole-number results.
 
-### Copy and change the event
-
-Duplicate your step 6 printed-number event and keep the original.
-
-![Copy step 6's printed-number event; change it to a ×3 event and multiplication](assets/instructions/08-adapt.svg)
-
-### What you should see
-
-Throw `× 3` into a mixer holding `2`: the result is `6`. Compare that one throw with adding one four times.
-
-![Multiplying two by the printed three produces six](assets/demos/08-bake-trays.gif)
-
-## 9. Divide by the printed number
-
-You now have all four arithmetic operations with two variable inputs.
-
-### Copy and change the event
-
-Duplicate your step 6 printed-number event and keep the original.
-
-![Copy step 6's printed-number event; change it to a /3 event and division](assets/instructions/09-adapt.svg)
-
-### What you should see
-
-This step starts the mixer at `3`. Throw `/ 3` into it: the result is `1`. The next modifier will use that new amount. Remember that division needs a whole-number result here.
-
-![Dividing three by the modifier's printed three leaves one](assets/demos/09-pack-boxes.gif)
-
-## 10. Is the statement true?
-
-Connect the orders' checks. A **Boolean** value is either ``||logic(noclick):true||`` or ``||logic(noclick):false||``. A comparison produces a Boolean value.
-
-**Equal to (=)** checks whether two values represent the same quantity. `3 = 3` is true; `3 = 2` is false.
-
-### Find these blocks
-
-In ``||variables(noclick):Variables||``, use **Make a Variable** separately for ``||variables(noclick):orderTarget||``, ``||variables(noclick):deliveredNumber||``, and ``||variables(noclick):ready||``.
-
-![Native comparison, Boolean and factory inputs and output, with variable creation](assets/instructions/10-menu.svg)
+![Native menu blocks for halving the batch](assets/instructions/09-menu.svg)
 
 ### Make your code look like this
 
-![Read orderTarget and deliveredNumber; set ready to their equality comparison; show check ready](assets/instructions/10-assembled.svg)
+![Divide batch by two and put the result in the mixer](assets/instructions/09-assembled.svg)
 
 ### What you should see
 
-With empty hands, touch the number dispenser to the pot's right to collect its current number, then throw that container down at `3 = □`. Walk to the order and press **B**: its left value, comparison, and right value highlight in order, then **FALSE** appears briefly and the original expression returns with a quiet cross. Add one in the mixer, collect its new number, and deliver `3`. Press **B** again to see **TRUE** and a blue Boolean block; delivery itself stays neutral. The target stays three throughout.
+Starting from `2`, throw `/ 2` to make `1` for the equality order.
 
-![Three equals two checks FALSE; making and delivering three checks TRUE after B](assets/demos/10-equal-check.gif)
+![Halving two makes one](assets/demos/09-halve.gif)
 
-## 11. Is the left side smaller?
+## 10. Add the modifier's number
 
-**Less than (<)** checks whether the first value represents a smaller quantity than the second. Order matters: `4 < 5` is true, but `5 < 4` is false.
+Create ``||variables(noclick):modifierNumber||``. Read the number printed on the modifier, add it to ``||variables(noclick):batch||``, save the result, and put it in the mixer.
 
-### Find these blocks
-
-![Native less-than comparison and its factory check event](assets/instructions/11-menu.svg)
+![Native menu blocks for the printed modifier number](assets/instructions/10-menu.svg)
 
 ### Make your code look like this
 
-![Read both inputs; set ready to orderTarget less than deliveredNumber; show check ready](assets/instructions/11-assembled.svg)
+![Read batch and modifierNumber, add them, and put batch in the mixer](assets/instructions/10-assembled.svg)
 
 ### What you should see
 
-The rightmost order asks for `4 < □`. Deliver `4` and press **B**: **FALSE**, because the numbers are equal. Add one, deliver `5`, and check again: **TRUE**. The number on the right has changed.
+The left belt now offers printed-number modifiers. Starting from `2`, a `+ 2` modifier makes `4` for the equality order.
 
-![Four less than four checks FALSE; four less than five checks TRUE after B](assets/demos/11-less-check.gif)
+![Adding the modifier's number changes the batch](assets/demos/10-add-modifier.gif)
 
-## 12. Is the left side larger?
+## 11. Subtract the modifier's number
 
-**Greater than (>)** checks whether the first value represents a larger quantity than the second.
+Duplicate your step 10 printed-number event and keep the original. Change the event and operator as shown.
 
-### Copy and change the event
-
-Duplicate your step 11 less-than event and keep the original.
-
-![Copy step 11's less-than event; change it to greater-than and the greater-than comparison](assets/instructions/12-adapt.svg)
+![Copy step 10's printed-number event and change it to subtraction](assets/instructions/11-adapt.svg)
 
 ### What you should see
 
-The middle order asks for `2 > □`. Deliver `2`, then press **B** for **FALSE**. Subtract one in the mixer, deliver `1`, and press **B** again for **TRUE**. Matching numbers make `=` true, but make both `<` and `>` false.
+Starting from `2`, use `- 2` to make `0` for the equality target `0`.
 
-![Two greater than two checks FALSE; two greater than one checks TRUE after B](assets/demos/12-greater-check.gif)
+![Subtracting a printed modifier number](assets/demos/11-subtract-modifier.gif)
 
-## 13. Include the matching number
+## 12. Multiply by the modifier's number
 
-**Less than or equal to (≤)** accepts equality too. Both `5 ≤ 5` and `5 ≤ 6` are true.
+Duplicate your step 10 printed-number event and keep the original. Change the event and operator as shown.
 
-### Copy and change the event
-
-Duplicate your step 11 less-than event and keep the original.
-
-![Copy step 11's less-than event; change it to less-than-or-equal and the inclusive comparison](assets/instructions/13-adapt.svg)
+![Copy step 10's printed-number event and change it to multiplication](assets/instructions/12-adapt.svg)
 
 ### What you should see
 
-The rightmost order now asks for `5 ≤ □`. Make and deliver `5`, then press **B** for **TRUE**. A larger delivered number also works; `4` does not. The sign itself tells you which numbers qualify.
+Starting from `2`, use `× 3` to make `6` for the equality order.
 
-![Five less than or equal to five checks TRUE after B](assets/demos/13-less-equal-check.gif)
+![Multiplying by a printed modifier number](assets/demos/12-multiply-modifier.gif)
 
-## 14. Include equality the other way
+## 13. Divide by the modifier's number
 
-**Greater than or equal to (≥)** also accepts matching numbers. Both `1 ≥ 1` and `1 ≥ 0` are true.
+Duplicate your step 10 printed-number event and keep the original. Change the event and operator as shown.
 
-### Copy and change the event
-
-Duplicate your step 11 less-than event and keep the original.
-
-![Copy step 11's less-than event; change it to greater-than-or-equal and the inclusive comparison](assets/instructions/14-adapt.svg)
+![Copy step 10's printed-number event and change it to division](assets/instructions/13-adapt.svg)
 
 ### What you should see
 
-The middle order asks for `1 ≥ □`. Deliver `1` and press **B** for **TRUE**. Zero or a negative number also works here. A larger delivered number, such as `2`, makes this statement **FALSE** after the check.
+Starting from `2`, use `× 3` to make `6`, then `/ 3` to make `2` for the equality target `2`.
 
-![One greater than or equal to one checks TRUE after B](assets/demos/14-greater-equal-check.gif)
+![Dividing by a printed modifier number](assets/demos/13-divide-modifier.gif)
 
-## 15. Run the factory
+## 14. Include equality below
 
-Finish `3 = □`, `1 ≥ □`, and `5 ≤ □`; pressing **B** checks each delivery while the mixer keeps its amount for the next calculation.
+Duplicate your step 8 less-than event and keep the original. Change the event and comparison as shown.
 
-### What you should see
-
-One route makes `1`, then `3`, then `6`. Press **B** after each delivery; solved checks stay **TRUE**, while false checks return to the original expression for retry.
-
-![Three calculated numbers are delivered and checked at the three different orders](assets/demos/15-factory-round.gif)
-
-After the first three checks finish, press **A** once to unlock four side ingredient stations. The next round keeps your mixer amount and brings new checks.
-
-## 16. Use an ingredient variable
-
-Throw a copied number at an ingredient station to change its value, then solve an order that uses that station's icon.
-
-The order can show `3 + [icon]`, meaning three plus the station value. The operator switches every 12 seconds, and the supplied station variables stay separate from learner ``||variables(noclick):batch||``.
+![Copy step 8's less-than event and change it to less-than-or-equal](assets/instructions/14-adapt.svg)
 
 ### What you should see
 
-The matching icon shows the station value to use. Make a number for the changed statement, deliver it, and press **B** to check it.
+The target is `2`; `2 ≤ 2` is true because equality counts.
 
-![A variable change at a side station is reflected in the order's left value](assets/demos/16-boundary-checks.gif)
+![A less-than-or-equal order accepts equality](assets/demos/14-less-equal-check.gif)
 
-## 17. Keep the amount, change the plan
+## 15. Include equality above
 
-Fill one order, then use the amount still in the mixer to make a number for another order.
+Duplicate your step 6 greater-than event and keep the original. Change the event and comparison as shown.
+
+![Copy step 6's greater-than event and change it to greater-than-or-equal](assets/instructions/15-adapt.svg)
 
 ### What you should see
 
-A numbered container carries a copy. Your next modifier changes the mixer, while a completed order keeps its delivered number. Try another route through the same three checks, using a different combination of arithmetic operations.
+The target is `2`; `2 ≥ 2` is true because equality counts in the other direction.
 
-![The mixer keeps three after delivery, then doubling makes six for a different order](assets/demos/17-reuse-number.gif)
+![A greater-than-or-equal order accepts equality](assets/demos/15-greater-equal-check.gif)
+
+## 16. Set the batch directly
+
+Add **a set 2 cake hits the mixer**. The numbered cake `2` uses direct assignment: set ``||variables(noclick):batch||`` to literal `2`, then use **put [batch] in the mixer** with ``||variables(noclick):batch||``.
+
+![Native menu blocks for direct batch assignment](assets/instructions/16-menu.svg)
+
+### Make your code look like this
+
+![Set batch to the literal two and put batch in the mixer](assets/instructions/16-assembled.svg)
+
+### What you should see
+
+The numbered cake replaces the batch with `2`. All three orders and the full learned set are now available.
+
+![Setting the batch directly with numbered cake two](assets/demos/16-set-batch.gif)
+
+## 17. Finish three orders
+
+Fill all three orders using the arithmetic and comparisons you built. Automatic delivery checks each number as it lands.
+
+### What you should see
+
+The first complete three-order round unlocks the side ingredient stations.
+
+![Three orders are completed in one round](assets/demos/17-three-orders.gif)
+
+## 18. Use station variables
+
+Throw a copied number at an ingredient station, then solve an order that uses that station's icon. The supplied station variables stay separate from your ``||variables(noclick):batch||``.
+
+### What you should see
+
+The station operator changes every 12 seconds. The order can show `3 + [icon]`; use the icon's current value and check the order. The demo shows the station value changing before the later check.
+
+![Ingredient stations change and feed a later order](assets/demos/18-variable-stations.gif)
+
+## 19. Reuse the batch
+
+Fill one order, then use the amount still in the mixer to make a number for another order. The mixer keeps its amount when you deliver a copy.
+
+### What you should see
+
+Your next modifier starts from the amount that remains in the mixer.
+
+![A copied batch is delivered while the mixer value is reused](assets/demos/19-reuse-batch.gif)

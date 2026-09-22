@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "manifest_id": "BAKERY-IMPLEMENTATION-V9",
+  "manifest_id": "BAKERY-IMPLEMENTATION-V12",
   "game_id": "GAME-BAKERY",
   "target": {
     "name": "arcade",
@@ -45,8 +45,8 @@
     "tutorial/README.md",
     "tutorial/assets/demos/<referenced-demo>.gif",
     "tutorial/assets/instructions/<referenced-instruction>.svg|png",
-    "learner-states/<01-through-14-state>.ts",
-    "hints/<01-through-14-state>.ts",
+    "learner-states/<01-through-16-state>.ts",
+    "hints/<01-through-16-state>.ts",
     "solution/main.ts",
     "solution/engine.ts",
     "solution/pxt.json",
@@ -85,8 +85,16 @@
   "claim_boundary": "Declared implementation ownership and intended behavior; runtime and presentation checks remain separate.",
   "modifier_representation": "Planned 112x24 single-line SET card with mixer icon and numeric operand; copied numbers are 34x28 in a native640x480 room.",
   "interaction_presentation": "Four side variables, explicit B check animation, and charged A release throw arcs.",
-  "modifier_card": {"planned_width": 112, "planned_height": 24, "layout": "single-line", "label": "SET"},
-  "copied_number": {"width": 34, "height": 28},
+  "modifier_card": {
+    "planned_width": 112,
+    "planned_height": 24,
+    "layout": "single-line",
+    "label": "SET"
+  },
+  "copied_number": {
+    "width": 34,
+    "height": 28
+  },
   "side_variable_count": 4,
   "check_animation": "explicit B check animation",
   "release_throw": "charged A release throw arcs",
@@ -96,5 +104,13 @@
     "strict comparisons",
     "inclusive comparisons",
     "varied fixed check targets"
-  ]
+  ],
+  "progression": {
+    "states": 16,
+    "startup": "Empty static belts, hidden output and orders.",
+    "output": "Learner initializes batch and reveals its dispenser value.",
+    "belts": "Student Boolean starts center; left unlocks at10 and right at13.",
+    "orders": "One center order until SetBatch; all3 then ingredient variables in next round.",
+    "controls": "Arrows move; A picks up; next A throws; delivery automatically checks."
+  }
 }

@@ -22,13 +22,13 @@ export const destination = Object.freeze({
   recorded_before_external_write: false,
   read_only_check: {
     date: '2026-09-22',
-    transport: 'Existing authenticated GitHub release and public-identity records; no V9 external write',
+    transport: 'Existing authenticated GitHub release and public-identity records; no V12 external write',
     authenticated_login: 'mrbrackebusch-code',
     canonical_remote: 'https://github.com/mrbrackebusch-code/makecode-arcade-tutorials.git',
-    target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V9 release and official no-CDN public identity verified in current records'
+    target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; v0.4.6 release and official no-CDN public identity verified in current records'
   },
-  existing_release: {tag:'v0.4.5',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.5',payload_commit:'35f45e96fd3daac53be3912ff3e0d51f5afe83e5',served_commit:'35f45e96fd3daac53be3912ff3e0d51f5afe83e5'},
-  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1&skipgithubcache=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'35f45e96fd3daac53be3912ff3e0d51f5afe83e5',release:'v0.4.5',media_revision:'c8c1a351bb9e652e',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
+  existing_release: {tag:'v0.4.6',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.6',payload_commit:'9d87d3bde06ea9bb4a848a0f4e6ccc6edd11e131',served_commit:'9d87d3bde06ea9bb4a848a0f4e6ccc6edd11e131'},
+  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1&skipgithubcache=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'9d87d3bde06ea9bb4a848a0f4e6ccc6edd11e131',release:'v0.4.6',media_revision:'c8c1a351bb9e652e',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
 });
 
 const canonicalGameFiles = [
@@ -52,6 +52,7 @@ const canonicalGameFiles = [
   'design/FINISHING_V9.md',
   'design/INSTRUCTION_LAYER_V10.md',
   'design/ADAPTATION_GUIDE_V11.md',
+  'design/FACTORY_BUILDUP_V12.md',
   'design/pedagogy/MICROSOFT_MIT_NOTICE.txt'
 ];
 const sourceFiles = [
@@ -84,9 +85,11 @@ function filesBelow(root, prefix = '') {
 
 const maintainers = `# Maintaining Cake Factory
 
-This is one independent MakeCode tutorial package. The student project is the root pxt.json plus comment-only main.ts and README.md. Both main.ts and the tutorial template contain only // Cake Factory followed by a newline: no executable learner code. README.md contains the hidden customts game resource, fourteen recoverable Blocks hints, and 17 demos. The complete game under review/solution is an informed review aid, outside the student project file list.
+This is one independent MakeCode tutorial package. The student project is the root pxt.json plus comment-only main.ts and README.md. Both main.ts and the tutorial template contain only // Cake Factory followed by a newline: no executable learner code. README.md contains the hidden customts game resource, sixteen recoverable Blocks hints, 19 demos, and 24 instruction SVGs. The complete game under review/solution is an informed review aid, outside the student project file list.
 
 Canonical authoring inputs are preserved under maintainer/games/bakery, with only the narrowly required source texts under maintainer/docs. They can rebuild the tutorial and solution without another game's source or the complete curriculum corpus. Node.js supplies the dependency-free authoring tools.
+
+The V12 progression starts with an empty factory and reveals coded on-start behavior, the Boolean belt, deliberate A pickup followed by A throw, automatic checks, the full three-order round, and later variable stations. Sixteen recoverable Blocks hints, 19 GIF demonstrations, and 24 instruction SVGs document that progression.
 
 From this package root:
 
@@ -97,7 +100,7 @@ The builder stages a new package under maintainer/games/bakery/generated/publica
 
 Carry the Microsoft MIT notice and source attributions forward. Preserve old Git commits, releases and content-addressed media revision directories when integrating a new package. This candidate remains unpromoted pending current runtime/instruction/GIF review, authenticated destination checks, exact versioned MakeCode release payload verification, and focused public startup/assets/affected-behavior review. Informed developer QA and the owner-cancelled learner audit are distinct; this package makes no human-learning claim.
 
-The existing destination is ${destination.repository_url}. Its intended explicit-path tutorial identity is ${destination.stable_student_url}. This generated V9 candidate is unpromoted until its exact payload, conflict state, public startup, assets and affected behavior are checked.
+The existing destination is ${destination.repository_url}. Its intended explicit-path tutorial identity is ${destination.stable_student_url}. This generated V12 candidate is unpromoted until its exact payload, conflict state, public startup, assets and affected behavior are checked.
 `;
 
 const notices = `# Source attribution and notices
@@ -171,7 +174,7 @@ export function assemblePublication({requireMedia = true, checkGenerated = true}
   }
   outputs.set('maintainer/BUILD_MANIFEST.json', Buffer.from(json(built.manifest)));
   const manifest = {
-    schema_version: 1, manifest_id: 'BAKERY-PUBLICATION-PACKAGE-V9', game_id: 'GAME-BAKERY',
+    schema_version: 1, manifest_id: 'BAKERY-PUBLICATION-PACKAGE-V12', game_id: 'GAME-BAKERY',
     status: 'NOT_FOR_DISTRIBUTION', ...destination,
     external_publication_performed: false, student_distribution_ready: false,
     local_tutorial_sha256: digest(built.tutorial), canonical_tutorial_sha256: digest(built.tutorial),

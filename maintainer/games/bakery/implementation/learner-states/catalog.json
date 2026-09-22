@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "catalog_id": "BAKERY-CUMULATIVE-STATES-V7",
+  "catalog_id": "BAKERY-CUMULATIVE-STATES-V12",
   "game_id": "GAME-BAKERY",
-  "activity_contract_id": "GLAC.BAKERY.V7",
+  "activity_contract_id": "GLAC.BAKERY.V12",
   "starter_source": "// Cake Factory\n",
   "starter_claim": "The supplied cake factory is available, but the learner workspace contains no numeric variables, Boolean, arithmetic, comparisons or authored handlers.",
   "variable_order": [
@@ -22,10 +22,11 @@
   "declaration_policy": "Initialized numeric declaration seeds are required by PXT when serializing Blocks. The ready Boolean is initialized false. Declarations are generated only after each learner explicitly creates the variable.",
   "states": [
     {
-      "id": "01-clean-tray",
+      "id": "01-show-batch",
       "through": 1,
       "tutorial_step": 1,
-      "action": "TraySelected",
+      "kind": "startup",
+      "action": null,
       "introduces_variables": [
         "batch"
       ],
@@ -35,15 +36,31 @@
       "operator": null,
       "comparison": null,
       "statements": [
-        "batch = bakery.trayAmount()",
+        "batch = 2",
         "bakery.showTray(batch)"
       ],
-      "claim": "The learner reads the central mixer's current supplied amount into batch and displays that read value; this does not apply a modifier."
+      "claim": "Learner construction 01-show-batch adds the declared operation to the factory."
     },
     {
-      "id": "02-catch-one",
+      "id": "02-start-belt",
       "through": 2,
       "tutorial_step": 2,
+      "kind": "startup",
+      "action": null,
+      "introduces_variables": [],
+      "uses_variables": [],
+      "operator": null,
+      "comparison": null,
+      "statements": [
+        "bakery.setConveyor(true)"
+      ],
+      "claim": "Learner construction 02-start-belt adds the declared operation to the factory."
+    },
+    {
+      "id": "03-add-one",
+      "through": 3,
+      "tutorial_step": 3,
+      "kind": "event",
       "action": "AddOne",
       "introduces_variables": [],
       "uses_variables": [
@@ -56,148 +73,13 @@
         "batch = batch + 1",
         "bakery.applyResult(batch)"
       ],
-      "claim": "The learner reads the central mixer amount and adds one exactly once."
+      "claim": "Learner construction 03-add-one adds the declared operation to the factory."
     },
     {
-      "id": "03-discard-one",
-      "through": 3,
-      "tutorial_step": 3,
-      "action": "RemoveOne",
-      "introduces_variables": [],
-      "uses_variables": [
-        "batch"
-      ],
-      "operator": "-",
-      "comparison": null,
-      "statements": [
-        "batch = bakery.trayAmount()",
-        "batch = batch - 1",
-        "bakery.applyResult(batch)"
-      ],
-      "claim": "The learner reads the central mixer amount and subtracts one exactly once."
-    },
-    {
-      "id": "04-double-batch",
+      "id": "04-equal-check",
       "through": 4,
       "tutorial_step": 4,
-      "action": "Double",
-      "introduces_variables": [],
-      "uses_variables": [
-        "batch"
-      ],
-      "operator": "*",
-      "comparison": null,
-      "statements": [
-        "batch = bakery.trayAmount()",
-        "batch = batch * 2",
-        "bakery.applyResult(batch)"
-      ],
-      "claim": "The learner reads the central mixer amount and doubles its current amount exactly once."
-    },
-    {
-      "id": "05-pack-pairs",
-      "through": 5,
-      "tutorial_step": 5,
-      "action": "Halve",
-      "introduces_variables": [],
-      "uses_variables": [
-        "batch"
-      ],
-      "operator": "/",
-      "comparison": null,
-      "statements": [
-        "batch = bakery.trayAmount()",
-        "batch = batch / 2",
-        "bakery.applyResult(batch)"
-      ],
-      "claim": "The learner reads the central mixer amount and stores half its current amount; this is a tray transformation, not box packing."
-    },
-    {
-      "id": "06-delivery",
-      "through": 6,
-      "tutorial_step": 6,
-      "action": "AddModifier",
-      "introduces_variables": [
-        "modifierNumber"
-      ],
-      "uses_variables": [
-        "batch",
-        "modifierNumber"
-      ],
-      "operator": "+",
-      "comparison": null,
-      "statements": [
-        "batch = bakery.trayAmount()",
-        "modifierNumber = bakery.modifierNumber()",
-        "batch = batch + modifierNumber",
-        "bakery.applyResult(batch)"
-      ],
-      "claim": "The learner addition reads the central mixer amount and the +2 or +3 modifier's printed input, then stores their sum."
-    },
-    {
-      "id": "07-serve-order",
-      "through": 7,
-      "tutorial_step": 7,
-      "action": "SubtractModifier",
-      "introduces_variables": [],
-      "uses_variables": [
-        "batch",
-        "modifierNumber"
-      ],
-      "operator": "-",
-      "comparison": null,
-      "statements": [
-        "batch = bakery.trayAmount()",
-        "modifierNumber = bakery.modifierNumber()",
-        "batch = batch - modifierNumber",
-        "bakery.applyResult(batch)"
-      ],
-      "claim": "The learner subtraction reads the central mixer amount and the -2 or -3 modifier's printed input, then stores the remainder."
-    },
-    {
-      "id": "08-bake-trays",
-      "through": 8,
-      "tutorial_step": 8,
-      "action": "MultiplyModifier",
-      "introduces_variables": [],
-      "uses_variables": [
-        "batch",
-        "modifierNumber"
-      ],
-      "operator": "*",
-      "comparison": null,
-      "statements": [
-        "batch = bakery.trayAmount()",
-        "modifierNumber = bakery.modifierNumber()",
-        "batch = batch * modifierNumber",
-        "bakery.applyResult(batch)"
-      ],
-      "claim": "The learner multiplication reads the central mixer amount and ×3 modifier's printed number, then triples the current amount."
-    },
-    {
-      "id": "09-pack-boxes",
-      "through": 9,
-      "tutorial_step": 9,
-      "action": "DivideModifier",
-      "introduces_variables": [],
-      "uses_variables": [
-        "batch",
-        "modifierNumber"
-      ],
-      "operator": "/",
-      "comparison": null,
-      "statements": [
-        "batch = bakery.trayAmount()",
-        "modifierNumber = bakery.modifierNumber()",
-        "batch = batch / modifierNumber",
-        "bakery.applyResult(batch)"
-      ],
-      "claim": "The learner division reads the central mixer amount and /3 modifier's printed number, then stores the quotient; all earlier modifiers remain available."
-    },
-    {
-      "id": "10-equal-check",
-      "through": 10,
-      "tutorial_step": 10,
+      "kind": "event",
       "action": "EqualCheck",
       "introduces_variables": [
         "deliveredNumber",
@@ -217,33 +99,32 @@
         "ready = orderTarget == deliveredNumber",
         "bakery.showCheck(ready)"
       ],
-      "claim": "The learner checks whether the fixed left order target is equal to the delivered right output number, stores the result in ready, and displays that Boolean check."
+      "claim": "Learner construction 04-equal-check adds the declared operation to the factory."
     },
     {
-      "id": "11-less-check",
-      "through": 11,
-      "tutorial_step": 11,
-      "action": "LessCheck",
+      "id": "05-subtract-one",
+      "through": 5,
+      "tutorial_step": 5,
+      "kind": "event",
+      "action": "RemoveOne",
       "introduces_variables": [],
       "uses_variables": [
-        "deliveredNumber",
-        "orderTarget",
-        "ready"
+        "batch"
       ],
-      "operator": null,
-      "comparison": "<",
+      "operator": "-",
+      "comparison": null,
       "statements": [
-        "orderTarget = bakery.leftAmount()",
-        "deliveredNumber = bakery.rightAmount()",
-        "ready = orderTarget < deliveredNumber",
-        "bakery.showCheck(ready)"
+        "batch = bakery.trayAmount()",
+        "batch = batch - 1",
+        "bakery.applyResult(batch)"
       ],
-      "claim": "The learner checks whether the fixed left order target is less than the delivered right output number, stores the result in ready, and displays that Boolean check."
+      "claim": "Learner construction 05-subtract-one adds the declared operation to the factory."
     },
     {
-      "id": "12-greater-check",
-      "through": 12,
-      "tutorial_step": 12,
+      "id": "06-greater-check",
+      "through": 6,
+      "tutorial_step": 6,
+      "kind": "event",
       "action": "GreaterCheck",
       "introduces_variables": [],
       "uses_variables": [
@@ -259,12 +140,159 @@
         "ready = orderTarget > deliveredNumber",
         "bakery.showCheck(ready)"
       ],
-      "claim": "The learner checks whether the fixed left order target is greater than the delivered right output number, stores the result in ready, and displays that Boolean check."
+      "claim": "Learner construction 06-greater-check adds the declared operation to the factory."
     },
     {
-      "id": "13-less-equal-check",
+      "id": "07-double",
+      "through": 7,
+      "tutorial_step": 7,
+      "kind": "event",
+      "action": "Double",
+      "introduces_variables": [],
+      "uses_variables": [
+        "batch"
+      ],
+      "operator": "*",
+      "comparison": null,
+      "statements": [
+        "batch = bakery.trayAmount()",
+        "batch = batch * 2",
+        "bakery.applyResult(batch)"
+      ],
+      "claim": "Learner construction 07-double adds the declared operation to the factory."
+    },
+    {
+      "id": "08-less-check",
+      "through": 8,
+      "tutorial_step": 8,
+      "kind": "event",
+      "action": "LessCheck",
+      "introduces_variables": [],
+      "uses_variables": [
+        "deliveredNumber",
+        "orderTarget",
+        "ready"
+      ],
+      "operator": null,
+      "comparison": "<",
+      "statements": [
+        "orderTarget = bakery.leftAmount()",
+        "deliveredNumber = bakery.rightAmount()",
+        "ready = orderTarget < deliveredNumber",
+        "bakery.showCheck(ready)"
+      ],
+      "claim": "Learner construction 08-less-check adds the declared operation to the factory."
+    },
+    {
+      "id": "09-halve",
+      "through": 9,
+      "tutorial_step": 9,
+      "kind": "event",
+      "action": "Halve",
+      "introduces_variables": [],
+      "uses_variables": [
+        "batch"
+      ],
+      "operator": "/",
+      "comparison": null,
+      "statements": [
+        "batch = bakery.trayAmount()",
+        "batch = batch / 2",
+        "bakery.applyResult(batch)"
+      ],
+      "claim": "Learner construction 09-halve adds the declared operation to the factory."
+    },
+    {
+      "id": "10-add-modifier",
+      "through": 10,
+      "tutorial_step": 10,
+      "kind": "event",
+      "action": "AddModifier",
+      "introduces_variables": [
+        "modifierNumber"
+      ],
+      "uses_variables": [
+        "batch",
+        "modifierNumber"
+      ],
+      "operator": "+",
+      "comparison": null,
+      "statements": [
+        "batch = bakery.trayAmount()",
+        "modifierNumber = bakery.modifierNumber()",
+        "batch = batch + modifierNumber",
+        "bakery.applyResult(batch)"
+      ],
+      "claim": "Learner construction 10-add-modifier adds the declared operation to the factory."
+    },
+    {
+      "id": "11-subtract-modifier",
+      "through": 11,
+      "tutorial_step": 11,
+      "kind": "event",
+      "action": "SubtractModifier",
+      "introduces_variables": [],
+      "uses_variables": [
+        "batch",
+        "modifierNumber"
+      ],
+      "operator": "-",
+      "comparison": null,
+      "statements": [
+        "batch = bakery.trayAmount()",
+        "modifierNumber = bakery.modifierNumber()",
+        "batch = batch - modifierNumber",
+        "bakery.applyResult(batch)"
+      ],
+      "claim": "Learner construction 11-subtract-modifier adds the declared operation to the factory."
+    },
+    {
+      "id": "12-multiply-modifier",
+      "through": 12,
+      "tutorial_step": 12,
+      "kind": "event",
+      "action": "MultiplyModifier",
+      "introduces_variables": [],
+      "uses_variables": [
+        "batch",
+        "modifierNumber"
+      ],
+      "operator": "*",
+      "comparison": null,
+      "statements": [
+        "batch = bakery.trayAmount()",
+        "modifierNumber = bakery.modifierNumber()",
+        "batch = batch * modifierNumber",
+        "bakery.applyResult(batch)"
+      ],
+      "claim": "Learner construction 12-multiply-modifier adds the declared operation to the factory."
+    },
+    {
+      "id": "13-divide-modifier",
       "through": 13,
       "tutorial_step": 13,
+      "kind": "event",
+      "action": "DivideModifier",
+      "introduces_variables": [],
+      "uses_variables": [
+        "batch",
+        "modifierNumber"
+      ],
+      "operator": "/",
+      "comparison": null,
+      "statements": [
+        "batch = bakery.trayAmount()",
+        "modifierNumber = bakery.modifierNumber()",
+        "batch = batch / modifierNumber",
+        "bakery.applyResult(batch)"
+      ],
+      "claim": "Learner construction 13-divide-modifier adds the declared operation to the factory."
+    },
+    {
+      "id": "14-less-equal-check",
+      "through": 14,
+      "tutorial_step": 14,
+      "kind": "event",
       "action": "LessEqualCheck",
       "introduces_variables": [],
       "uses_variables": [
@@ -280,12 +308,13 @@
         "ready = orderTarget <= deliveredNumber",
         "bakery.showCheck(ready)"
       ],
-      "claim": "The learner checks whether the fixed left order target is less than or equal to the delivered right output number, stores the result in ready, and displays that Boolean check."
+      "claim": "Learner construction 14-less-equal-check adds the declared operation to the factory."
     },
     {
-      "id": "14-greater-equal-check",
-      "through": 14,
-      "tutorial_step": 14,
+      "id": "15-greater-equal-check",
+      "through": 15,
+      "tutorial_step": 15,
+      "kind": "event",
       "action": "GreaterEqualCheck",
       "introduces_variables": [],
       "uses_variables": [
@@ -301,15 +330,33 @@
         "ready = orderTarget >= deliveredNumber",
         "bakery.showCheck(ready)"
       ],
-      "claim": "The learner checks whether the fixed left order target is greater than or equal to the delivered right output number, stores the result in ready, and displays that Boolean check."
+      "claim": "Learner construction 15-greater-equal-check adds the declared operation to the factory."
+    },
+    {
+      "id": "16-set-batch",
+      "through": 16,
+      "tutorial_step": 16,
+      "kind": "event",
+      "action": "SetBatch",
+      "introduces_variables": [],
+      "uses_variables": [
+        "batch"
+      ],
+      "operator": null,
+      "comparison": null,
+      "statements": [
+        "batch = 2",
+        "bakery.applyResult(batch)"
+      ],
+      "claim": "Learner construction 16-set-batch adds the declared operation to the factory."
     }
   ],
-  "final_play_step": 15,
+  "final_play_step": 17,
   "practice_steps": [
-    16,
-    17
+    18,
+    19
   ],
-  "final_play_state": "14-greater-equal-check",
+  "final_play_state": "16-set-batch",
   "experiments": [],
   "excluded_learner_constructs": [
     "conditionals",

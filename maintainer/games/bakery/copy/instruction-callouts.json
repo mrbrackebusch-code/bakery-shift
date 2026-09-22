@@ -1,102 +1,37 @@
 {
-  "schema_version": 1,
-  "source_capture_dir": "games/bakery/generated/evidence/instruction-layer-native-captures-03",
+  "schema_version": 2,
+  "source_capture_dir": "games/bakery/generated/evidence/factory-buildup-v12-native-captures",
   "method": "PUBLIC_RENDERBLOCKS_DOM",
   "callouts": {
-    "10": [
-      {
-        "text": "The comparison uses orderTarget on the left and deliveredNumber on the right, just like the statement in the game.",
-        "target": {
-          "kind": "label",
-          "text": "orderTarget",
-          "occurrence": 0
-        }
-      },
-      {
-        "text": "The = block answers true or false. Setting ready keeps that answer; show check uses it to animate the order.",
-        "target": {
-          "kind": "label",
-          "text": "=",
-          "occurrence": 0
-        }
-      }
-    ],
-    "11": [
-      {
-        "text": "Read left to right: is orderTarget less than deliveredNumber? 4 < 4 is false; 4 < 5 is true. Swapping the values changes the question.",
-        "target": {
-          "kind": "label",
-          "text": "<",
-          "occurrence": 0
-        }
-      }
-    ],
     "01": [
-      {
-        "text": "This block reads the pot's current amount. Setting batch keeps that number for us.",
-        "target": {
-          "kind": "label",
-          "text": "amount in the mixer",
-          "occurrence": 0
-        }
-      },
-      {
-        "text": "When we give batch to show, we send the saved number to the worker's display.",
-        "target": {
-          "kind": "label",
-          "text": "batch",
-          "occurrence": 0
-        }
-      }
+      {"text":"Start batch at 2.","target":{"kind":"label","text":"2","occurrence":0}},
+      {"text":"Show the number saved in batch here.","target":{"kind":"label","text":"show","occurrence":0}}
     ],
     "02": [
-      {
-        "text": "Here batch supplies 2 to +. The calculation makes 3, and set batch saves 3. Giving batch to put sends 3 to the pot.",
-        "target": {
-          "kind": "label",
-          "text": "+",
-          "occurrence": 0
-        }
-      }
+      {"text":"Set conveyor belt on true starts the belt and reveals the first usable modifier.","target":{"kind":"label","text":"set conveyor belt on","occurrence":0}}
+    ],
+    "03": [
+      {"text":"Add 1 to the number in batch.","target":{"kind":"label","text":"+","occurrence":0}},
+      {"text":"Send the new batch value to the mixer.","target":{"kind":"label","text":"put","occurrence":0}}
     ],
     "04": [
-      {
-        "text": "If batch holds 2, multiplying by 2 makes 4. The same code doubles each new amount we read from the pot.",
-        "target": {
-          "kind": "label",
-          "text": "×",
-          "occurrence": 0
-        }
-      }
+      {"text":"Compare the saved order target on the left with the delivered number on the right.","target":{"kind":"label","text":"=","occurrence":0}},
+      {"text":"Show the Boolean result saved in ready.","target":{"kind":"label","text":"ready","occurrence":0}}
     ],
-    "05": [
-      {
-        "text": "Dividing batch by 2 gives us half its value: 2 / 2 makes 1, while 4 / 2 makes 2.",
-        "target": {
-          "kind": "label",
-          "text": "/",
-          "occurrence": 0
-        }
-      }
+    "07": [
+      {"text":"Multiplying the current batch by two changes the value applied to the mixer.","target":{"kind":"label","text":"×","occurrence":0}}
     ],
-    "06": [
-      {
-        "text": "We save the modifier's printed number here. This event can use either 2 or 3 without changing our code.",
-        "target": {
-          "kind": "label",
-          "text": "number on the modifier",
-          "occurrence": 0
-        }
-      },
-      {
-        "text": "modifierNumber gives the calculation that saved number. If batch is 2 and modifierNumber is 3, their sum is 5.",
-        "target": {
-          "kind": "label",
-          "text": "modifierNumber",
-          "occurrence": 0
-        }
-      }
+    "09": [
+      {"text":"Dividing the current batch by two applies the whole-number result to the mixer.","target":{"kind":"label","text":"/","occurrence":0}}
+    ],
+    "10": [
+      {"text":"Save the modifier's printed number before using it in the expression.","target":{"kind":"label","text":"number on the modifier","occurrence":0}},
+      {"text":"Add modifierNumber to batch, save the sum, and put batch in the mixer.","target":{"kind":"label","text":"modifierNumber","occurrence":0}}
+    ],
+    "16": [
+      {"text":"Set batch to 2, whatever it held before.","target":{"kind":"label","text":"2","occurrence":0}},
+      {"text":"Send batch to the mixer.","target":{"kind":"label","text":"put","occurrence":0}}
     ]
   },
-  "claim_boundary": "Callout text is an editorial adaptation of the retained variable and comparison progression. Native target labels and occurrence positions come from the listed capture metadata; rendered placement remains pending root verification."
+  "claim_boundary":"Callouts identify meaning in the planned V12 native images. Target labels and rendered placement remain pending root runtime capture."
 }

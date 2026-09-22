@@ -1,7 +1,7 @@
 {
   "name": "bakery-shift",
   "description": "A moving cake-factory MakeCode Arcade tutorial for tiny arithmetic and Boolean comparisons.",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "dependencies": {
     "device": "*"
   },

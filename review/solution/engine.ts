@@ -33,23 +33,25 @@ namespace bakeryIcons {
     }
 
     export function carriedNumber(value: number): Image {
-        let p = image.create(34, 28)
-        rounded(p, 3, 6, 28, 20, 15)
-        p.fillRect(5, 8, 24, 16, 13)
-        p.fillRect(1, 11, 4, 9, 14); p.fillRect(29, 11, 4, 9, 14)
-        p.fillRect(2, 13, 2, 5, 5); p.fillRect(30, 13, 2, 5, 5)
-        p.fillRect(9, 3, 16, 4, 5); p.fillRect(11, 1, 12, 3, 14)
+        let p = image.create(40, 38)
+        rounded(p, 3, 2, 34, 29, 15)
+        p.fillRect(5, 4, 30, 23, 13)
+        p.fillRect(1, 10, 4, 11, 14); p.fillRect(35, 10, 4, 11, 14)
+        p.fillRect(2, 13, 2, 5, 5); p.fillRect(36, 13, 2, 5, 5)
+        p.fillRect(10, 0, 20, 4, 5); p.fillRect(13, 0, 14, 2, 14)
         let text = "" + value
         if (text.length <= 2) {
             let temp = image.create(text.length * 6 + 2, 8)
             temp.print(text, 0, 0, 15, image.font8)
-            let left = 17 - text.length * 6
-            for (let y = 0; y < 8; y++) for (let x = 0; x < temp.width; x++) if (temp.getPixel(x, y) != 0) p.fillRect(left + x * 2, 9 + y * 2, 2, 2, 15)
+            let left = 20 - text.length * 6
+            for (let y = 0; y < 8; y++) for (let x = 0; x < temp.width; x++) if (temp.getPixel(x, y) != 0) p.fillRect(left + x * 2, 7 + y * 2, 2, 2, 15)
         } else {
             if (text.length > 6) text = text.substr(0, 4) + ".."
             let font = text.length > 4 ? image.font5 : image.font8
-            p.print(text, 17 - Math.idiv(text.length * font.charWidth, 2), 12, 15, font)
+            p.print(text, 20 - Math.idiv(text.length * font.charWidth, 2), 8, 15, font)
         }
+        rounded(p, 7, 29, 26, 8, 2)
+        p.print("batch", 10, 30, 1, image.font5)
         return p
     }
 
@@ -191,6 +193,14 @@ namespace bakeryArt {
     }
     export function chef(frame: number = 0, carrying: boolean = false): Image { return bakeryIcons.chef(frame, carrying) }
     export function numericOutput(value: number): Image { return bakeryIcons.carriedNumber(value) }
+    export function resetCake(value: number): Image {
+        let p = image.create(34, 34)
+        p.drawTransparentImage(looseCake(), 4, 0)
+        number(p, value, 17, 7, 15)
+        round(p, 7, 27, 20, 7, 2)
+        p.print("set", 11, 28, 1, image.font5)
+        return p
+    }
     export function shadow(): Image { let p = image.create(28, 10); oval(p, 14, 5, 13, 4, 12); return p }
     export function drawBackground(): Image {
         let p = image.create(640, 480); p.fill(13)
@@ -234,19 +244,23 @@ namespace bakeryArt {
         // Dock foundation visually anchors the Boolean blocks.
         p.fillRect(0, 404, 640, 76, 15); p.fillRect(0, 404, 640, 4, 4)
         for (let x = 4; x < 640; x += 16) p.drawLine(x, 404, x + 5, 408, 5)
-        conveyorTreads(p, 0)
+        conveyorTreads(p, 0, 0)
         return p
     }
-    export function conveyorTreads(p: Image, offset: number) {
+    export function conveyorTreads(p: Image, offset: number, runningMask: number = 7) {
+        let lane = 0
         for (let y = 70; y <= 187; y++) {
             let drift = (y - 70) * 0.59
             for (let c of [96 + drift, 320, 544 - drift]) {
                 let x = Math.floor(c)
+                let laneOffset = (runningMask & (1 << lane)) != 0 ? offset : 0
                 p.fillRect(x - 63, y, 126, 1, 15); p.fillRect(x - 60, y, 120, 1, 12); p.fillRect(x - 54, y, 108, 1, 8)
                 p.fillRect(x - 59, y, 2, 1, 1); p.fillRect(x + 57, y, 2, 1, 6)
-                if ((y - offset + 10000) % 18 < 3) p.fillRect(x - 52, y, 104, 1, 6)
+                if ((y - laneOffset + 10000) % 18 < 3) p.fillRect(x - 52, y, 104, 1, 6)
                 if (y % 24 < 3) { p.fillRect(x - 62, y, 5, 1, 14); p.fillRect(x + 58, y, 5, 1, 14) }
+                lane++
             }
+            lane = 0
         }
         for (let c of [165, 320, 475]) {
             round(p, c - 66, 186, 132, 12, 15); round(p, c - 62, 186, 124, 8, 12)
@@ -278,18 +292,19 @@ namespace bakeryArt {
         let spin = tick % 4
         p.drawLine(304 - spin * 3, 239, 326, 234 + spin, 4); p.drawLine(329, 248, 343 + spin, 244, 4)
         if (active) { p.drawCircle(251, 249, 4, 5); p.drawCircle(389, 249, 4, 5) }
-        number(p, value, 320, 284, jammed ? 2 : 15)
         p.fillCircle(368, 296, 4, jammed ? 2 : 6)
     }
-    export function outputStand(p: Image, value: number, ready: boolean) {
+    export function outputStand(p: Image, value: number, ready: boolean, revealed: boolean = true) {
         // A short real chute connects the bowl to a numbered-output dispenser.
         p.fillRect(397, 285, 50, 12, 14); p.fillRect(397, 285, 50, 7, 12)
         for (let x = 402; x < 445; x += 9) p.fillRect(x, 287, 3, 4, 8)
         oval(p, 454, 351, 29, 7, 12)
         round(p, 427, 299, 54, 45, 15); round(p, 430, 297, 48, 42, 6)
         p.fillRect(435, 315, 38, 19, 8); p.fillRect(435, 300, 38, 3, 12)
-        p.drawTransparentImage(numericOutput(value), 437, 306)
-        p.fillCircle(475, 307, 3, ready ? 5 : 12)
+        if (revealed) {
+            p.drawTransparentImage(numericOutput(value), 434, 308)
+            p.fillCircle(475, 307, 3, ready ? 5 : 12)
+        }
         p.drawLine(440, 354, 447, 360, 6); p.drawLine(447, 360, 454, 354, 6)
     }
     export function sideStation(p: Image, id: number, value: number, op: number, unlocked: boolean, pulse: number, now: number) {
@@ -440,7 +455,9 @@ enum BakeryAction {
     //% block="a less than or equal to (≤) order checks a number"
     LessEqualCheck,
     //% block="a greater than or equal to (≥) order checks a number"
-    GreaterEqualCheck
+    GreaterEqualCheck,
+    //% block="a set 2 cake hits the mixer"
+    SetBatch
 }
 
 //% color=#bf693d icon="\uf1fd" block="Cake Factory" weight=90
@@ -515,9 +532,12 @@ namespace bakery {
     let spawnRound = [0, 1, 2]
     let manualAt = 0
     let outputCooldown = 0
-    let previewValue = 0
-    let previewUntil = 0
-    let previewReported = false
+    let outputRevealed = false
+    let conveyorConfigured = false
+    let conveyorOn = false
+    let learningStage = 0
+    let visibleOrders = 0
+    let runningMask = 0
     let hitAt = -10000
     let started = false
     let shiftDone = false
@@ -526,13 +546,21 @@ namespace bakery {
     let coins = 0
     let lastBonus = 0
     let lastTick = 0
-    let message = "Catch. Aim. A: throw into the mixer."
+    let message = ""
     let messageUntil = 0
 
     function trace(reason: string) {
         // @bakery-test-trace
     }
     function installed(action: number): boolean { return handlers[action] != null }
+    function teachingStage(): number {
+        let actions = [BakeryAction.AddOne, BakeryAction.EqualCheck, BakeryAction.RemoveOne, BakeryAction.GreaterCheck, BakeryAction.Double, BakeryAction.LessCheck, BakeryAction.Halve, BakeryAction.AddModifier, BakeryAction.SubtractModifier, BakeryAction.MultiplyModifier, BakeryAction.DivideModifier, BakeryAction.LessEqualCheck, BakeryAction.GreaterEqualCheck, BakeryAction.SetBatch]
+        for (let i = actions.length - 1; i >= 0; i--) if (installed(actions[i])) return i + 3
+        return conveyorConfigured ? 2 : outputRevealed ? 1 : 0
+    }
+    function displayOrder(m: number): number { return visibleOrders == 1 ? 1 : m }
+    function isCalculation(action: number): boolean { return action > BakeryAction.TraySelected && action < BakeryAction.EqualCheck || action == BakeryAction.SetBatch }
+    function laneRunning(lane: number): boolean { return conveyorOn && (lane == 1 || lane == 0 && learningStage >= 10 || lane == 2 && learningStage >= 13) }
     function tell(words: string, duration: number = 2600) { message = words; messageUntil = control.millis() + duration }
     function smallWhole(value: number): boolean { return value - value == 0 && Math.floor(value) == value }
     function numberText(value: number): string { let text = "" + value; return text.length > 9 ? text.substr(0, 9) : text }
@@ -544,6 +572,12 @@ namespace bakery {
     }
     //% blockId=bakery_on_action block="when $action" weight=100
     export function onAction(action: BakeryAction, handler: () => void) { handlers[action] = handler }
+    //% blockId=bakery_set_conveyor block="set conveyor belt on $on" weight=95
+    //% on.defl=true
+    export function setConveyor(on: boolean) {
+        conveyorConfigured = true; conveyorOn = on
+        trace("conveyor-set")
+    }
     //% blockId=bakery_tray_amount block="amount in the mixer" weight=70
     export function trayAmount(): number { return mixingValue }
     //% blockId=bakery_modifier_number block="number on the modifier" weight=65
@@ -554,19 +588,18 @@ namespace bakery {
     export function rightAmount(): number { return activeMachine >= 0 ? delivered[activeMachine] : 0 }
     //% blockId=bakery_show_check block="show check $value" weight=80
     export function showCheck(value: boolean) {
-        if (activeAction < BakeryAction.EqualCheck || activeMachine < 0) return
+        if (activeAction < BakeryAction.EqualCheck || activeAction > BakeryAction.GreaterEqualCheck || activeMachine < 0) return
         reported = true; signals[activeMachine] = value ? 1 : 0
         trace("check-reported")
     }
-    //% blockId=bakery_show_tray block="show $value from the mixer" weight=90
+    //% blockId=bakery_show_tray block="show $value at the batch dispenser" weight=90
     export function showTray(value: number) {
-        if (activeAction != BakeryAction.TraySelected) return
-        reported = true; previewValue = value; previewReported = true; previewUntil = control.millis() + 2100
+        mixingValue = value; outputRevealed = true
         trace("mixer-read")
     }
     //% blockId=bakery_apply_result block="put $value in the mixer" weight=85
     export function applyResult(value: number) {
-        if (activeAction <= BakeryAction.TraySelected || activeAction >= BakeryAction.EqualCheck || reported) return
+        if (!isCalculation(activeAction) || reported) return
         reported = true; mixingValue = value
         let valid = smallWhole(value)
         // Nonmutating observer: display the learner result, never replace it.
@@ -574,15 +607,16 @@ namespace bakery {
         if (activeOp == 1) valid = valid && beforeAction - value == activeNumber
         if (activeOp == 2) valid = valid && (beforeAction == 0 ? value == 0 : value / beforeAction == activeNumber)
         if (activeOp == 3) valid = valid && value * activeNumber == beforeAction
-        mixingJammed = mixingJammed || !valid
-        tell(mixingJammed ? "Check your calculation. Empty hands B: reset." : "New amount! Collect its numbered container.", 3400)
+        if (activeAction == BakeryAction.SetBatch) valid = valid && value == 2
+        mixingJammed = activeAction == BakeryAction.SetBatch ? !valid : mixingJammed || !valid
+        tell(mixingJammed ? "Check your calculation, then restart." : "Batch updated. Pick up its number with A.", 3400)
         hitAt = control.millis(); trace("result-applied")
     }
     function invoke(action: BakeryAction, machine: number) {
         activeAction = action; activeMachine = machine; beforeAction = mixingValue; reported = false
         if (installed(action)) handlers[action]()
-        if (!reported && action > BakeryAction.TraySelected && action < BakeryAction.EqualCheck) {
-            mixingJammed = true; tell("No mixer result. Check your code; B resets.", 4000)
+        if (!reported && isCalculation(action)) {
+            mixingJammed = true; tell("No mixer result. Check your code, then restart.", 4000)
         }
         trace("action-" + action); activeAction = -1; activeMachine = -1
     }
@@ -595,21 +629,25 @@ namespace bakery {
         return r == 0 ? a == b : r == 1 ? a < b : r == 2 ? a > b : r == 3 ? a <= b : a >= b
     }
     function receiveNumber(m: number, value: number) {
-        if (fulfilledAt[m] >= 0) return
+        if (m >= visibleOrders || fulfilledAt[m] >= 0) return
         delivered[m] = value; hasDelivery[m] = true; signals[m] = -1; jammed[m] = false; resultUntil[m] = 0
         if (checking == m) { checking = -1; checkPhase = -1 }
-        tell("Number docked. Walk over and press B to check.", 3400); trace("number-delivered")
+        trace("number-delivered"); beginCheck(m)
+    }
+    function beginCheck(m: number) {
+        jammed[m] = false; signals[m] = -1; checking = m; checkBegan = control.millis(); checkPhase = 0
+        tell("Left number... comparison... right number...", 1200); trace("check-started")
     }
     function finishCheck(m: number) {
         checkOrder(m); resultUntil[m] = control.millis() + 850
         if (signals[m] < 0) { tell("Build this check's event to connect it."); return }
-        if (signals[m] == 0) { tell("Not yet. Change a number, then B to check.", 3000); trace("order-false"); return }
+        if (signals[m] == 0) { tell("Not yet. Adjust batch and throw a new number.", 3000); trace("order-false"); return }
         if (!consistent(m)) { jammed[m] = true; tell("That TRUE does not match. Check your code.", 4000); trace("check-mismatch"); return }
         stamps++; fulfilledAt[m] = control.millis()
         lastBonus = Math.max(1, 5 - Math.idiv(control.millis() - orderBegan[m], 15000)); coins += lastBonus
-        popAt = control.millis(); popX = 108 + m * 212; popY = 426
+        popAt = control.millis(); popX = 108 + displayOrder(m) * 212; popY = 426
         tell("TRUE! Statement completed."); trace("order-filled")
-        if (stamps == 3) { shiftDone = true; clearPackets(); tell("Three TRUE statements! A: next round.", 100000); trace("shift-complete") }
+        if (visibleOrders == 3 && stamps == 3) { shiftDone = true; clearPackets(); tell("Three TRUE statements! A: next round.", 100000); trace("shift-complete") }
     }
     function updateChecks(now: number) {
         if (checking < 0) return
@@ -656,19 +694,27 @@ namespace bakery {
     function discardHeld() { if (held != null) held.destroy(); held = null; heldKind = -1; heldOp = -1; heldNumber = 0; charging = false }
     function startShift() {
         clearPackets(); while (shots.length) removeShot(shots.length - 1, "shot-cleared")
-        discardHeld(); checking = -1; checkPhase = -1; stamps = 0; coins = 0; shiftDone = false; previewUntil = 0; mixingJammed = false
-        if (roundNumber == 0) mixingValue = installed(BakeryAction.DivideModifier) && !installed(BakeryAction.EqualCheck) ? 3 : 2
+        discardHeld(); checking = -1; checkPhase = -1; stamps = 0; coins = 0; shiftDone = false; mixingJammed = false
+        learningStage = teachingStage()
+        visibleOrders = learningStage < 2 ? 0 : learningStage < 16 ? 1 : 3
+        runningMask = 0
+        for (let lane = 0; lane < 3; lane++) if (laneRunning(lane)) runningMask += lane == 0 ? 1 : lane == 1 ? 2 : 4
         mixingStart = mixingValue
         let center = roundNumber == 0 ? 3 : Math.max(2, Math.min(4, Math.abs(mixingValue)))
         relations = [0, installed(BakeryAction.GreaterCheck) ? 2 : 0, installed(BakeryAction.LessCheck) ? 1 : 0]
         if (installed(BakeryAction.LessEqualCheck) && (roundNumber % 2 == 0)) relations[2] = 3
         if (installed(BakeryAction.GreaterEqualCheck) && (roundNumber % 2 == 0)) relations[1] = 4
         targets = [center, relations[1] == 2 ? center - 1 : center - 2, relations[2] == 1 ? center + 1 : center + 2]
+        if (visibleOrders == 1) {
+            let stageTargets = [0, 0, 3, 3, 3, 1, 2, 4, 3, 1, 4, 0, 6, 2, 2, 2]
+            targets[0] = stageTargets[learningStage]
+            relations[0] = learningStage == 6 ? 2 : learningStage == 8 ? 1 : learningStage == 14 ? 3 : learningStage == 15 ? 4 : 0
+        }
         for (let i = 0; i < 3; i++) {
             signals[i] = -1; delivered[i] = 0; hasDelivery[i] = false; jammed[i] = false; fulfilledAt[i] = -1
             orderBegan[i] = control.millis(); spawnAt[i] = control.millis() + 200 + i * 600; spawnRound[i] = i
         }
-        variablesActive = roundNumber > 0 && installed(BakeryAction.GreaterEqualCheck)
+        variablesActive = roundNumber > 0 && visibleOrders == 3
         if (variablesActive) {
             for (let m = 0; m < 3; m++) {
                 orderVariables[m] = roundNumber == 1 && m == 0 ? 0 : Math.randomRange(0, 3); orderBases[m] = roundNumber == 1 && m == 0 ? 3 : Math.randomRange(1, 3)
@@ -677,32 +723,39 @@ namespace bakery {
         } else orderVariables = [-1, -1, -1]
         nextOperatorChange = control.millis() + 12000
         manualAt = control.millis() + 1800; outputCooldown = control.millis() + 500
-        tell(variablesActive ? "Icons are variables. Throw numbers at side counters." : "Catch a block. Hold A, aim, release to toss.", 5000); trace("shift-started")
+        if (variablesActive) tell("Icons are variables. Throw numbers at side counters.", 5000)
+        else if (learningStage == 0) tell("Welcome to the factory.", 5000)
+        else if (learningStage == 1) tell("Your batch number is ready at the dispenser.", 5000)
+        else if (!conveyorOn) tell("The conveyor is off.", 5000)
+        else tell("Make a number that makes the order true.", 5000)
+        trace("shift-started")
     }
     function nearMixer(): boolean {
         let dx = chef.x - 320, dy = chef.y - 256
         return dx * dx + dy * dy < 130 * 130
     }
     function nearOrder(): number {
-        if (chef == null || chef.y < 366) return -1
+        if (chef == null || chef.y < 366 || visibleOrders == 0) return -1
+        if (visibleOrders == 1) return chef.x >= 212 && chef.x < 424 ? 0 : -1
         return Math.max(0, Math.min(2, Math.idiv(chef.x, 212)))
     }
     function applyModifier(op: number, rhs: number) {
-        if (mixingJammed) { tell("Check your mixer code. Empty hands B resets."); return }
+        if (op == 4) { activeOp = 4; activeNumber = rhs; invoke(BakeryAction.SetBatch, -1); activeOp = -1; activeNumber = 0; return }
+        if (mixingJammed) { tell("Check your mixer code, then restart."); return }
         if (op == 3 && (rhs == 0 || mixingValue % rhs != 0)) { tell("That division needs a whole-number result."); trace("application-rejected"); return }
         let action = actionFor(op, rhs)
         if (!installed(action)) { tell("Build this modifier's event first."); trace("missing-handler"); return }
         activeOp = op; activeNumber = rhs; invoke(action, -1); activeOp = -1; activeNumber = 0
     }
-    function targetX(id: number): number { return id == 0 ? 320 : id <= 3 ? bakeryArt.deliverySocketX(id - 1) : id < 6 ? 44 : 596 }
+    function targetX(id: number): number { return id == 0 ? 320 : id <= 3 ? bakeryArt.deliverySocketX(displayOrder(id - 1)) : id < 6 ? 44 : 596 }
     function targetY(id: number): number { return id == 0 ? 247 : id <= 3 ? bakeryArt.deliverySocketY() : (id - 4) % 2 == 0 ? 247 : 343 }
     function chooseTarget(range: number): number {
         let chosen = -1, best = 100000
         for (let id = 0; id < 8; id++) {
             if (heldKind == 0 && id != 0 || heldKind == 1 && id == 0 || id >= 4 && !variablesActive) continue
-            if (id >= 1 && id <= 3 && fulfilledAt[id - 1] >= 0) continue
+            if (id >= 1 && id <= 3 && (id > visibleOrders || fulfilledAt[id - 1] >= 0)) continue
             // Aim toward the whole statement; the arc and reticle use its receiving socket.
-            let aimX = id >= 1 && id <= 3 ? 108 + (id - 1) * 212 : targetX(id)
+            let aimX = id >= 1 && id <= 3 ? 108 + displayOrder(id - 1) * 212 : targetX(id)
             let aimY = id >= 1 && id <= 3 ? 439 : targetY(id)
             let dx = aimX - chef.x, dy = aimY - chef.y
             let distance = Math.sqrt(dx * dx + dy * dy)
@@ -714,7 +767,7 @@ namespace bakery {
     controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         if (!started) return
         if (shiftDone) { roundNumber++; startShift(); return }
-        if (held == null) { if (nearMixer()) invoke(BakeryAction.TraySelected, -1); return }
+        if (held == null) { tryPickup(); return }
         charging = true; chargeBegan = control.millis(); trace("charge-started")
     })
     controller.A.onEvent(ControllerButtonEvent.Released, function () {
@@ -730,29 +783,40 @@ namespace bakery {
         shotFromX.push(chef.x); shotFromY.push(chef.y); shotToX.push(endX); shotToY.push(endY)
         shotDuration.push(450 + power * 300); shotHeight.push(38 + power * 65); shotTargets.push(target); shotShadows.push(shadow)
         shot.setPosition(chef.x, chef.y - 28); shadow.setPosition(chef.x, chef.y + 15)
-        trace("item-thrown"); discardHeld(); previewUntil = 0
+        trace("item-thrown"); discardHeld()
     })
     controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         if (!started || shiftDone) return
+        if (held != null) { discardHeld(); outputCooldown = control.millis() + 1000; tell("Hands free. A: pick up another item."); trace("item-discarded"); return }
         let m = nearOrder()
         if (m >= 0 && fulfilledAt[m] < 0) {
             if (!hasDelivery[m]) { tell("Toss a number into the empty socket first."); return }
             if (checking >= 0) return
-            jammed[m] = false; signals[m] = -1; checking = m; checkBegan = control.millis(); checkPhase = 0
-            tell("Read the left, the check, then the right.", 1200); trace("check-started"); return
+            beginCheck(m); return
         }
-        if (held != null) { discardHeld(); outputCooldown = control.millis() + 1000; tell("Hands free. Catch another item."); trace("item-discarded"); return }
-        if (nearMixer()) { mixingValue = mixingStart; mixingJammed = false; previewUntil = 0; tell("Mixer reset. Completed checks stay complete."); trace("mixer-reset") }
+        if (nearMixer() && installed(BakeryAction.SetBatch)) { applyModifier(4, 2); trace("mixer-reset") }
     })
 
     function spawn(lane: number, op: number, rhs: number, manual: boolean) {
-        let p = sprites.create(manual ? bakeryArt.looseCake() : bakeryArt.modifier(op, rhs), SpriteKind.Food)
+        let p = sprites.create(manual ? bakeryArt.resetCake(rhs) : bakeryArt.modifier(op, rhs), SpriteKind.Food)
         p.setPosition(manual ? 86 : [96, 320, 544][lane], manual ? 197 : 70); p.z = 3
         packets.push(p); packetOps.push(op); packetNumbers.push(rhs); packetLanes.push(lane); packetBorn.push(control.millis()); packetManual.push(manual)
         packetImages.push(p.image); packetFallPhases.push(-1)
         trace(manual ? "manual-arrived" : "packet-dropped")
     }
     function conveyorChoice(lane: number) {
+        // During construction, the center belt repeats the newest useful operation.
+        if (lane == 1 && learningStage < 16) {
+            let op = 0, rhs = 1
+            if (learningStage >= 5) op = 1
+            if (learningStage >= 7) { op = 2; rhs = 2 }
+            if (learningStage >= 9) op = 3
+            if (learningStage >= 10) { op = 0; rhs = 2 }
+            if (learningStage >= 11) op = 1
+            if (learningStage >= 12) { op = 2; rhs = 3 }
+            if (learningStage >= 13) op = 3
+            spawn(lane, op, rhs, false); return
+        }
         let ops = [0], nums = [1]
         if (installed(BakeryAction.RemoveOne)) { ops.push(1); nums.push(1) }
         if (installed(BakeryAction.Double)) { ops.push(2); nums.push(2) }
@@ -765,10 +829,10 @@ namespace bakery {
     }
     function updatePackets(dt: number) {
         let now = control.millis()
-        for (let lane = 0; lane < 3; lane++) if (now >= spawnAt[lane]) { conveyorChoice(lane); spawnAt[lane] = now + 2300 }
-        if (now >= manualAt) {
+        for (let lane = 0; lane < 3; lane++) if (laneRunning(lane) && now >= spawnAt[lane]) { conveyorChoice(lane); spawnAt[lane] = now + 2300 }
+        if (installed(BakeryAction.SetBatch) && now >= manualAt) {
             let exists = false; for (let flag of packetManual) if (flag) exists = true
-            if (!exists) spawn(0, 0, 1, true)
+            if (!exists) spawn(0, 4, 2, true)
             manualAt = now + 8000
         }
         for (let i = packets.length - 1; i >= 0; i--) {
@@ -789,15 +853,21 @@ namespace bakery {
                 }
                 packets[i].x += dt * [0.0171, 0, -0.0171][lane]; packets[i].y += dt * 0.028
             }
-            if (held == null && Math.abs(chef.x - packets[i].x) < (packetManual[i] ? 25 : 55) && Math.abs(chef.y - 12 - packets[i].y) < 30) {
+        }
+    }
+    function tryPickup() {
+        let now = control.millis()
+        for (let i = packets.length - 1; i >= 0; i--) {
+            if (!packetManual[i] && now - packetBorn[i] >= 4000) continue
+            if (Math.abs(chef.x - packets[i].x) < (packetManual[i] ? 25 : 55) && Math.abs(chef.y - 12 - packets[i].y) < 30) {
                 heldOp = packetOps[i]; heldNumber = packetNumbers[i]; heldKind = 0
-                held = sprites.create(packetManual[i] ? bakeryArt.looseCake() : bakeryArt.modifier(heldOp, heldNumber), SpriteKind.Food); held.z = 20
-                removePacket(i, "item-picked-up"); tell("Hold A to charge. Aim at the bowl, then release."); previewUntil = 0
+                held = sprites.create(packetManual[i] ? bakeryArt.resetCake(heldNumber) : bakeryArt.modifier(heldOp, heldNumber), SpriteKind.Food); held.z = 20
+                removePacket(i, "item-picked-up"); tell("Face the bowl. Press A to throw."); return
             }
         }
-        if (held == null && !mixingJammed && installed(BakeryAction.TraySelected) && now >= outputCooldown && Math.abs(chef.x - 454) < 20 && Math.abs(chef.y - 344) < 19) {
+        if (!mixingJammed && outputRevealed && now >= outputCooldown && Math.abs(chef.x - 454) < 24 && Math.abs(chef.y - 344) < 24) {
             heldKind = 1; heldOp = -1; heldNumber = mixingValue; held = sprites.create(bakeryArt.numericOutput(heldNumber), SpriteKind.Food); held.z = 20
-            outputCooldown = now + 1200; tell("Number ready! Toss to a check or an open counter.", 3400); trace("number-collected")
+            outputCooldown = now + 500; tell("A copy of batch. Face the order and press A.", 3400); trace("number-collected")
         }
     }
     function updateShots() {
@@ -834,15 +904,15 @@ namespace bakery {
         let now = control.millis(), m = nearOrder()
         screen.fillRect(0, 0, 640, 40, 8)
         screen.print("CAKE FACTORY", 10, 3, 13, hudFont)
-        screen.print("HOLD A: TOSS   B: CHECK / DROP", 329, 5, 12, image.font8)
-        for (let i = 0; i < 3; i++) { screen.drawCircle(207 + i * 21, 11, 6, 5); if (i < stamps) screen.fillCircle(207 + i * 21, 11, 4, 5) }
+        if (learningStage >= 3) screen.print("ARROWS: MOVE   A: PICK UP / THROW", 329, 5, 12, image.font8)
+        for (let i = 0; i < visibleOrders; i++) { screen.drawCircle(207 + i * 21, 11, 6, 5); if (i < stamps) screen.fillCircle(207 + i * 21, 11, 4, 5) }
         if (now < messageUntil) screen.print(message, 10, 26, 13, image.font8)
         bakeryArt.mixer(screen, mixingValue, heldKind == 0, mixingJammed, Math.idiv(now, 180))
-        bakeryArt.outputStand(screen, mixingValue, held == null && !mixingJammed)
+        bakeryArt.outputStand(screen, mixingValue, held == null && !mixingJammed, outputRevealed)
         for (let i = 0; i < 4; i++) bakeryArt.sideStation(screen, i, sideValues[i], sideOps[i], variablesActive, sideChanged[i] - now, 12000 - Math.max(0, nextOperatorChange - now))
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < visibleOrders; i++) {
             let stage = checking == i ? checkPhase : now < resultUntil[i] ? 4 : -1
-            bakeryArt.deliveryOrder(screen, i, hasDelivery[i] ? delivered[i] : -999999, targets[i], relations[i], signals[i], i == m, fulfilledAt[i] >= 0, stage, orderVariables[i], orderBases[i], checking == i ? now - checkBegan : -1, now < resultUntil[i] ? 850 - (resultUntil[i] - now) : -1)
+            bakeryArt.deliveryOrder(screen, displayOrder(i), hasDelivery[i] ? delivered[i] : -999999, targets[i], relations[i], signals[i], i == m, fulfilledAt[i] >= 0, stage, orderVariables[i], orderBases[i], checking == i ? now - checkBegan : -1, now < resultUntil[i] ? 850 - (resultUntil[i] - now) : -1)
         }
         if (held != null) {
             let power = charging ? Math.min(1, (now - chargeBegan) / 1000) : 0
@@ -861,10 +931,7 @@ namespace bakery {
             let angle = i * Math.PI / 4, radius = 4 + (now - popAt) / 13
             screen.fillRect(popX + Math.cos(angle) * radius, popY + Math.sin(angle) * radius - (now - popAt) / 30, 3, 3, i % 2 == 0 ? 5 : 1)
         }
-        if (mixingJammed) screen.print("B: RESET MIXER", 278, 337, 2, image.font8)
-        if (previewReported && now < previewUntil && held == null) {
-            screen.fillRect(295, 183, 50, 25, 1); screen.drawRect(295, 183, 50, 25, 6); screen.print(numberText(previewValue), 309, 188, 8, hudFont)
-        }
+        if (mixingJammed) screen.print(installed(BakeryAction.SetBatch) ? "USE A SET 2 CAKE" : "CHECK CODE, THEN RESTART", 253, 337, 2, image.font8)
         if (shiftDone && now > resultUntil[0] && now > resultUntil[1] && now > resultUntil[2]) {
             screen.fillRect(111, 130, 418, 160, 15); screen.fillRect(115, 134, 410, 152, 13)
             screen.printCenter("THREE TRUE STATEMENTS!", 155, 8, hudFont)
@@ -876,7 +943,7 @@ namespace bakery {
     game.onUpdate(function () {
         if (!started) return
         let now = control.millis(), dt = Math.min(80, now - lastTick); lastTick = now
-        moveAroundPot(); bakeryArt.conveyorTreads(scene.backgroundImage(), Math.idiv(now * 28, 1000))
+        moveAroundPot(); bakeryArt.conveyorTreads(scene.backgroundImage(), Math.idiv(now * 28, 1000), runningMask)
         let frame = Math.abs(chef.vx) + Math.abs(chef.vy) > 1 ? Math.idiv(now, 130) % 3 : 0
         chef.setImage(held != null ? carryingFrames[frame] : chefFrames[frame])
         if (!shiftDone) { updatePackets(dt); updateShots(); updateVariables(now); updateChecks(now) }

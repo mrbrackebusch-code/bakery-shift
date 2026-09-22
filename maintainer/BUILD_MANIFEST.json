@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "manifest_id": "BAKERY-BUILD-V9",
+  "manifest_id": "BAKERY-BUILD-V12",
   "game_id": "GAME-BAKERY",
-  "catalog_id": "BAKERY-CUMULATIVE-STATES-V7",
+  "catalog_id": "BAKERY-CUMULATIVE-STATES-V12",
   "asset_transport": "INLINE_TYPESCRIPT_IMAGES",
   "learner_variables": [
     "batch",
@@ -12,14 +12,14 @@
     "ready"
   ],
   "model_checks": {
-    "states": 14,
+    "states": 16,
     "experiments": 0,
     "variables": [
       "batch",
-      "modifierNumber",
       "deliveredNumber",
       "orderTarget",
-      "ready"
+      "ready",
+      "modifierNumber"
     ],
     "arithmetic_constructions": {
       "+": 2,
@@ -38,540 +38,605 @@
     "starter_executable_code": false
   },
   "source_hashes": {
-    "games/bakery/copy/tutorial-template.md": "027916f12fdb3ae03d7a2ad1b07105832c312af56b42ae31166668af81f48d49",
-    "games/bakery/implementation/learner-states/catalog.json": "5e464692c7fbbcfb84ee03fa9fd0a450673e23588c8f66242e58f5d636e6626e",
-    "games/bakery/implementation/supplied-world/icons.ts": "f3e71bc02b1fea3723694b1fd71f0460cf2b65545ede39e8210540d8372d0df7",
-    "games/bakery/implementation/supplied-world/engine.ts": "93424e9a467d472c0a650c5675a4ba352e6f95dd00b0de4ec6e89b705e311e41",
-    "games/bakery/implementation/supplied-world/art.ts": "ddea5745e867d2f7c637a657913d1f83ad3d09b284aace0f081244e8864ee55d",
-    "games/bakery/implementation/manifest.json": "2bc22a68e79203e5a1808458117722f23ee959f7c43da51b9732d118cb6a3864",
-    "games/bakery/tools/build.mjs": "c19256ff8f22aa87d07335869ebc68b1722da203a32b2828d2b01a6232ba5f08"
+    "games/bakery/copy/tutorial-template.md": "670c8aa28d977dd8f3db1ab33cda045e8f03496e8f12350b9a0262db2816fe17",
+    "games/bakery/implementation/learner-states/catalog.json": "bc9e45a25bcbc3ec1df2afa907b7a5ae3886fdf6aa78a66f7bc3116ae82c267a",
+    "games/bakery/implementation/supplied-world/icons.ts": "03d2e60f67c9da12306ff852b391747ea390e9a4fb2b978ac910fd16dca4ec89",
+    "games/bakery/implementation/supplied-world/engine.ts": "b131b71ee6090608842629532d31361fe9805ad7247d3b524f05ed860a44a789",
+    "games/bakery/implementation/supplied-world/art.ts": "db0b88bc5be3b51a44e512ddcaf9a7478b298bc53057e213f7a0eabbad9d4aeb",
+    "games/bakery/implementation/manifest.json": "f0011e8d2d7b4e1ff8b7a8d93bd9f786c34167c9043e2eb80726d44945b0297c",
+    "games/bakery/tools/build.mjs": "4e673127f62a975561488effadde9d4a7eb8635cd21f6fa6b187ee7889517f3d"
   },
   "output_hashes": {
-    "tutorial": "fb85c0b2d6497460bfbeb5718c3fa104e0f8d2150ddbd4a023e0897ca87ad753",
+    "tutorial": "7841219c5876095e4fdcf576ca3542e9ffba2f07973bac0eefff8fced48be7f1",
     "starter": "713f1c94893eb81611042d435586f6e4ddf0eb48960b24b306abb7feaed89fc7",
-    "solution": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874",
-    "engine": "eeb9590cf79c176fa9033ea8ddeb766ba1f1a5a56ae2a03f466b31af18981378",
+    "solution": "2c7171879cdd5f6a11354637ae4540f30342900916bc2d591f06b114edfaafd9",
+    "engine": "16bcdc837f0acb2d66e680d9cfee110354f0fe71ce4d557eeb65057908b9e99e",
     "states": {
-      "01-clean-tray": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",
-      "02-catch-one": "d302dc2aa8f117c2ca9a95f9f8b634534828a505ba801a7b033e0b72161282bc",
-      "03-discard-one": "c6e6b452e0e63966111f71c20b4a71d62a36381203dad83054e8d717fed02116",
-      "04-double-batch": "5a623b3741b6703e831d50f5c1d24ec1af61277ba969cb0f797d8233d45b64de",
-      "05-pack-pairs": "2f764077717819dc0cf3eaa5336a3c4e433d702d2ee234ff8c43a0d4b77cbc88",
-      "06-delivery": "27dae0e4b59e53731c75e1f254f0e89a7e08b47e0369df1d93968cf178f0197d",
-      "07-serve-order": "a6a92cb2c1934c41c64cfd67b9e2fb0d804edf3dc01c8916c915f604023fb368",
-      "08-bake-trays": "cbd292a06dcb50fc873fc9aa65947dc00b4f453b5c9d8dfc1ae81c0f55b5503a",
-      "09-pack-boxes": "2a1e87db7b50cf72544933f344feef945809c84dfc51ffe759595897fbc5e3e1",
-      "10-equal-check": "78be969592d3b2017acb093d9dcc322968a7ac0a15919aefe616b1641e213fd3",
-      "11-less-check": "828bccdf63fe2be303073122c2624f6c80c18b6c752951cfa4f6c3e20b9a966e",
-      "12-greater-check": "7d1ae2dfd294a5ecdce621e177ae5e50cf198f1fe48c724161f6d23d31f77733",
-      "13-less-equal-check": "b887a866566d7aa85a4a57be00a606035ed803700b3a7665935d35fbbb4d4f04",
-      "14-greater-equal-check": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874"
+      "01-show-batch": "8e7134432180c58c3011962096af5c4c167dab78fe31c8e50c9abdf3216b0478",
+      "02-start-belt": "e0779a1a452cab2522ffe787c672ea9ba358276e8baa06d7e3e952ddeef7fd7c",
+      "03-add-one": "05e4651e8d9000ff540337e5ab55ac783e2b92e72d6434a37f630017e585fd4d",
+      "04-equal-check": "f862ffc34b73ac869cf7b7a2b799efdd47d1838b538d22528ca156d80b23b65c",
+      "05-subtract-one": "ff4dc815bdbbe686c7b556772d58d9a160fbe746fed6b2c3c93f07c13e694cd9",
+      "06-greater-check": "9350f082a91ee07197b952c73a1d41749cf49c8bcc48ec41072dea9763fcac3e",
+      "07-double": "02a637397d4431d949ed41c676fa5f1d652779fd5a03a2ce247847e59055542b",
+      "08-less-check": "e5344b2c3dbc364e2a5340efb99b4abb67025861c5c93ccf73763db8f5dcee60",
+      "09-halve": "241f344f38ecdf41f8aab238b34874510c392225bdda56c6a837e6057eb60abe",
+      "10-add-modifier": "968c852b94c79515f87ed99c71c7a9835efc2e8e971808bd4b746c2da67cb3da",
+      "11-subtract-modifier": "14a4c292979ad560f4cff072a0252760035248642ee1e51097b5b3f8f7116a0b",
+      "12-multiply-modifier": "1eed0dc30aa9195f321e4bb08b7e713293aaaf27453e67d850bca818412161e0",
+      "13-divide-modifier": "8f488794532e249e1fe6bc099dee0d1c428885d830ba8832f5cd1549e60a311e",
+      "14-less-equal-check": "2a1a7cb51c931fa8a3b7d90fd8eb3dc585bcc4ddd250beafb39b15f68f6c83e8",
+      "15-greater-equal-check": "9da71e9108bf1fe4320153604bd319925f141de84c736752aed631a3b7649bd9",
+      "16-set-batch": "2c7171879cdd5f6a11354637ae4540f30342900916bc2d591f06b114edfaafd9"
     },
     "hints": {
-      "01-clean-tray": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",
-      "02-catch-one": "f2005cd28c7f33aa408809e9bd3570d59437850dd84130751ba507da8b545d5a",
-      "03-discard-one": "48154814c354fa29eca4ac334906320dfb1cc28493338271b236f8257c0ba52e",
-      "04-double-batch": "20c7d54e2e67eab5ecad98938c5edd0fb1f83a953d46a7a22cb4f3107106e5aa",
-      "05-pack-pairs": "0f62337b2368776cc032358d410a6fcb9b3f9c02ce20d1917994839541f65084",
-      "06-delivery": "4d86a319b5d2e36dbc32de91a5114b2c72f17ecad8d51dd26d26f12caea30bee",
-      "07-serve-order": "551ee6b71268e09d961c656134199c23746b6a367b2d170d065aa3d403105a22",
-      "08-bake-trays": "a39952e1da13ddbf068575dc6fb244bcbd125214edfbd46a884875004b68af3c",
-      "09-pack-boxes": "95c188bd976796ef100799a491a24e4520b21d7b975b216d439f6b4472cfe7ad",
-      "10-equal-check": "65299195fd2b4485a37dd84bb412c0393eff1cb293eb628272c779098c876e7c",
-      "11-less-check": "44bc31296cfb50c190296295b5c0463bdf48578c768be7d0748d50603dc0d4f3",
-      "12-greater-check": "d410a206886888a3a24c26c976e97e63529f3df91aabe9d12f33391b37824481",
-      "13-less-equal-check": "b2066360be0c5d8346a9a95adf4a86d7dfd0dc732958b4d89a9c1b261a030ec6",
-      "14-greater-equal-check": "90525e1b5ec850a9c3c6af13bd2333b20f4f1d16716e6a04d44e8fceb7414743"
+      "01-show-batch": "8e7134432180c58c3011962096af5c4c167dab78fe31c8e50c9abdf3216b0478",
+      "02-start-belt": "e0779a1a452cab2522ffe787c672ea9ba358276e8baa06d7e3e952ddeef7fd7c",
+      "03-add-one": "f2005cd28c7f33aa408809e9bd3570d59437850dd84130751ba507da8b545d5a",
+      "04-equal-check": "65299195fd2b4485a37dd84bb412c0393eff1cb293eb628272c779098c876e7c",
+      "05-subtract-one": "48154814c354fa29eca4ac334906320dfb1cc28493338271b236f8257c0ba52e",
+      "06-greater-check": "d410a206886888a3a24c26c976e97e63529f3df91aabe9d12f33391b37824481",
+      "07-double": "20c7d54e2e67eab5ecad98938c5edd0fb1f83a953d46a7a22cb4f3107106e5aa",
+      "08-less-check": "44bc31296cfb50c190296295b5c0463bdf48578c768be7d0748d50603dc0d4f3",
+      "09-halve": "0f62337b2368776cc032358d410a6fcb9b3f9c02ce20d1917994839541f65084",
+      "10-add-modifier": "4d86a319b5d2e36dbc32de91a5114b2c72f17ecad8d51dd26d26f12caea30bee",
+      "11-subtract-modifier": "551ee6b71268e09d961c656134199c23746b6a367b2d170d065aa3d403105a22",
+      "12-multiply-modifier": "a39952e1da13ddbf068575dc6fb244bcbd125214edfbd46a884875004b68af3c",
+      "13-divide-modifier": "95c188bd976796ef100799a491a24e4520b21d7b975b216d439f6b4472cfe7ad",
+      "14-less-equal-check": "b2066360be0c5d8346a9a95adf4a86d7dfd0dc732958b4d89a9c1b261a030ec6",
+      "15-greater-equal-check": "90525e1b5ec850a9c3c6af13bd2333b20f4f1d16716e6a04d44e8fceb7414743",
+      "16-set-batch": "7902f8727429d9630ef42c7693a7cd8a064de9f2dec4e8b25639d154f07bddaf"
     },
     "experiments": {}
   },
   "outputs": {
     "tutorial/README.md": {
-      "sha256": "fb85c0b2d6497460bfbeb5718c3fa104e0f8d2150ddbd4a023e0897ca87ad753",
-      "bytes": 67906
+      "sha256": "7841219c5876095e4fdcf576ca3542e9ffba2f07973bac0eefff8fced48be7f1",
+      "bytes": 69200
     },
-    "learner-states/01-clean-tray.ts": {
-      "sha256": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",
-      "bytes": 134
+    "learner-states/01-show-batch.ts": {
+      "sha256": "8e7134432180c58c3011962096af5c4c167dab78fe31c8e50c9abdf3216b0478",
+      "bytes": 38
     },
-    "learner-states/02-catch-one.ts": {
-      "sha256": "d302dc2aa8f117c2ca9a95f9f8b634534828a505ba801a7b033e0b72161282bc",
-      "bytes": 273
+    "learner-states/02-start-belt.ts": {
+      "sha256": "e0779a1a452cab2522ffe787c672ea9ba358276e8baa06d7e3e952ddeef7fd7c",
+      "bytes": 64
     },
-    "learner-states/03-discard-one.ts": {
-      "sha256": "c6e6b452e0e63966111f71c20b4a71d62a36381203dad83054e8d717fed02116",
-      "bytes": 415
+    "learner-states/03-add-one.ts": {
+      "sha256": "05e4651e8d9000ff540337e5ab55ac783e2b92e72d6434a37f630017e585fd4d",
+      "bytes": 203
     },
-    "learner-states/04-double-batch.ts": {
-      "sha256": "5a623b3741b6703e831d50f5c1d24ec1af61277ba969cb0f797d8233d45b64de",
-      "bytes": 554
+    "learner-states/04-equal-check.ts": {
+      "sha256": "f862ffc34b73ac869cf7b7a2b799efdd47d1838b538d22528ca156d80b23b65c",
+      "bytes": 476
     },
-    "learner-states/05-pack-pairs.ts": {
-      "sha256": "2f764077717819dc0cf3eaa5336a3c4e433d702d2ee234ff8c43a0d4b77cbc88",
-      "bytes": 692
+    "learner-states/05-subtract-one.ts": {
+      "sha256": "ff4dc815bdbbe686c7b556772d58d9a160fbe746fed6b2c3c93f07c13e694cd9",
+      "bytes": 618
     },
-    "learner-states/06-delivery.ts": {
-      "sha256": "27dae0e4b59e53731c75e1f254f0e89a7e08b47e0369df1d93968cf178f0197d",
-      "bytes": 917
+    "learner-states/06-greater-check.ts": {
+      "sha256": "9350f082a91ee07197b952c73a1d41749cf49c8bcc48ec41072dea9763fcac3e",
+      "bytes": 830
     },
-    "learner-states/07-serve-order.ts": {
-      "sha256": "a6a92cb2c1934c41c64cfd67b9e2fb0d804edf3dc01c8916c915f604023fb368",
-      "bytes": 1124
+    "learner-states/07-double.ts": {
+      "sha256": "02a637397d4431d949ed41c676fa5f1d652779fd5a03a2ce247847e59055542b",
+      "bytes": 969
     },
-    "learner-states/08-bake-trays.ts": {
-      "sha256": "cbd292a06dcb50fc873fc9aa65947dc00b4f453b5c9d8dfc1ae81c0f55b5503a",
-      "bytes": 1331
+    "learner-states/08-less-check.ts": {
+      "sha256": "e5344b2c3dbc364e2a5340efb99b4abb67025861c5c93ccf73763db8f5dcee60",
+      "bytes": 1178
     },
-    "learner-states/09-pack-boxes.ts": {
-      "sha256": "2a1e87db7b50cf72544933f344feef945809c84dfc51ffe759595897fbc5e3e1",
-      "bytes": 1536
+    "learner-states/09-halve.ts": {
+      "sha256": "241f344f38ecdf41f8aab238b34874510c392225bdda56c6a837e6057eb60abe",
+      "bytes": 1316
     },
-    "learner-states/10-equal-check.ts": {
-      "sha256": "78be969592d3b2017acb093d9dcc322968a7ac0a15919aefe616b1641e213fd3",
-      "bytes": 1809
+    "learner-states/10-add-modifier.ts": {
+      "sha256": "968c852b94c79515f87ed99c71c7a9835efc2e8e971808bd4b746c2da67cb3da",
+      "bytes": 1541
     },
-    "learner-states/11-less-check.ts": {
-      "sha256": "828bccdf63fe2be303073122c2624f6c80c18b6c752951cfa4f6c3e20b9a966e",
-      "bytes": 2018
+    "learner-states/11-subtract-modifier.ts": {
+      "sha256": "14a4c292979ad560f4cff072a0252760035248642ee1e51097b5b3f8f7116a0b",
+      "bytes": 1748
     },
-    "learner-states/12-greater-check.ts": {
-      "sha256": "7d1ae2dfd294a5ecdce621e177ae5e50cf198f1fe48c724161f6d23d31f77733",
-      "bytes": 2230
+    "learner-states/12-multiply-modifier.ts": {
+      "sha256": "1eed0dc30aa9195f321e4bb08b7e713293aaaf27453e67d850bca818412161e0",
+      "bytes": 1955
     },
-    "learner-states/13-less-equal-check.ts": {
-      "sha256": "b887a866566d7aa85a4a57be00a606035ed803700b3a7665935d35fbbb4d4f04",
-      "bytes": 2445
+    "learner-states/13-divide-modifier.ts": {
+      "sha256": "8f488794532e249e1fe6bc099dee0d1c428885d830ba8832f5cd1549e60a311e",
+      "bytes": 2160
     },
-    "learner-states/14-greater-equal-check.ts": {
-      "sha256": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874",
-      "bytes": 2663
+    "learner-states/14-less-equal-check.ts": {
+      "sha256": "2a1a7cb51c931fa8a3b7d90fd8eb3dc585bcc4ddd250beafb39b15f68f6c83e8",
+      "bytes": 2375
     },
-    "hints/01-clean-tray.ts": {
-      "sha256": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",
-      "bytes": 134
+    "learner-states/15-greater-equal-check.ts": {
+      "sha256": "9da71e9108bf1fe4320153604bd319925f141de84c736752aed631a3b7649bd9",
+      "bytes": 2593
     },
-    "hints/02-catch-one.ts": {
+    "learner-states/16-set-batch.ts": {
+      "sha256": "2c7171879cdd5f6a11354637ae4540f30342900916bc2d591f06b114edfaafd9",
+      "bytes": 2694
+    },
+    "hints/01-show-batch.ts": {
+      "sha256": "8e7134432180c58c3011962096af5c4c167dab78fe31c8e50c9abdf3216b0478",
+      "bytes": 38
+    },
+    "hints/02-start-belt.ts": {
+      "sha256": "e0779a1a452cab2522ffe787c672ea9ba358276e8baa06d7e3e952ddeef7fd7c",
+      "bytes": 64
+    },
+    "hints/03-add-one.ts": {
       "sha256": "f2005cd28c7f33aa408809e9bd3570d59437850dd84130751ba507da8b545d5a",
       "bytes": 153
     },
-    "hints/03-discard-one.ts": {
-      "sha256": "48154814c354fa29eca4ac334906320dfb1cc28493338271b236f8257c0ba52e",
-      "bytes": 156
-    },
-    "hints/04-double-batch.ts": {
-      "sha256": "20c7d54e2e67eab5ecad98938c5edd0fb1f83a953d46a7a22cb4f3107106e5aa",
-      "bytes": 153
-    },
-    "hints/05-pack-pairs.ts": {
-      "sha256": "0f62337b2368776cc032358d410a6fcb9b3f9c02ce20d1917994839541f65084",
-      "bytes": 152
-    },
-    "hints/06-delivery.ts": {
-      "sha256": "4d86a319b5d2e36dbc32de91a5114b2c72f17ecad8d51dd26d26f12caea30bee",
-      "bytes": 239
-    },
-    "hints/07-serve-order.ts": {
-      "sha256": "551ee6b71268e09d961c656134199c23746b6a367b2d170d065aa3d403105a22",
-      "bytes": 244
-    },
-    "hints/08-bake-trays.ts": {
-      "sha256": "a39952e1da13ddbf068575dc6fb244bcbd125214edfbd46a884875004b68af3c",
-      "bytes": 244
-    },
-    "hints/09-pack-boxes.ts": {
-      "sha256": "95c188bd976796ef100799a491a24e4520b21d7b975b216d439f6b4472cfe7ad",
-      "bytes": 242
-    },
-    "hints/10-equal-check.ts": {
+    "hints/04-equal-check.ts": {
       "sha256": "65299195fd2b4485a37dd84bb412c0393eff1cb293eb628272c779098c876e7c",
       "bytes": 273
     },
-    "hints/11-less-check.ts": {
-      "sha256": "44bc31296cfb50c190296295b5c0463bdf48578c768be7d0748d50603dc0d4f3",
-      "bytes": 271
+    "hints/05-subtract-one.ts": {
+      "sha256": "48154814c354fa29eca4ac334906320dfb1cc28493338271b236f8257c0ba52e",
+      "bytes": 156
     },
-    "hints/12-greater-check.ts": {
+    "hints/06-greater-check.ts": {
       "sha256": "d410a206886888a3a24c26c976e97e63529f3df91aabe9d12f33391b37824481",
       "bytes": 274
     },
-    "hints/13-less-equal-check.ts": {
+    "hints/07-double.ts": {
+      "sha256": "20c7d54e2e67eab5ecad98938c5edd0fb1f83a953d46a7a22cb4f3107106e5aa",
+      "bytes": 153
+    },
+    "hints/08-less-check.ts": {
+      "sha256": "44bc31296cfb50c190296295b5c0463bdf48578c768be7d0748d50603dc0d4f3",
+      "bytes": 271
+    },
+    "hints/09-halve.ts": {
+      "sha256": "0f62337b2368776cc032358d410a6fcb9b3f9c02ce20d1917994839541f65084",
+      "bytes": 152
+    },
+    "hints/10-add-modifier.ts": {
+      "sha256": "4d86a319b5d2e36dbc32de91a5114b2c72f17ecad8d51dd26d26f12caea30bee",
+      "bytes": 239
+    },
+    "hints/11-subtract-modifier.ts": {
+      "sha256": "551ee6b71268e09d961c656134199c23746b6a367b2d170d065aa3d403105a22",
+      "bytes": 244
+    },
+    "hints/12-multiply-modifier.ts": {
+      "sha256": "a39952e1da13ddbf068575dc6fb244bcbd125214edfbd46a884875004b68af3c",
+      "bytes": 244
+    },
+    "hints/13-divide-modifier.ts": {
+      "sha256": "95c188bd976796ef100799a491a24e4520b21d7b975b216d439f6b4472cfe7ad",
+      "bytes": 242
+    },
+    "hints/14-less-equal-check.ts": {
       "sha256": "b2066360be0c5d8346a9a95adf4a86d7dfd0dc732958b4d89a9c1b261a030ec6",
       "bytes": 277
     },
-    "hints/14-greater-equal-check.ts": {
+    "hints/15-greater-equal-check.ts": {
       "sha256": "90525e1b5ec850a9c3c6af13bd2333b20f4f1d16716e6a04d44e8fceb7414743",
       "bytes": 280
+    },
+    "hints/16-set-batch.ts": {
+      "sha256": "7902f8727429d9630ef42c7693a7cd8a064de9f2dec4e8b25639d154f07bddaf",
+      "bytes": 115
     },
     "starter/main.ts": {
       "sha256": "713f1c94893eb81611042d435586f6e4ddf0eb48960b24b306abb7feaed89fc7",
       "bytes": 16
     },
     "starter/engine.ts": {
-      "sha256": "eeb9590cf79c176fa9033ea8ddeb766ba1f1a5a56ae2a03f466b31af18981378",
-      "bytes": 51095
+      "sha256": "16bcdc837f0acb2d66e680d9cfee110354f0fe71ce4d557eeb65057908b9e99e",
+      "bytes": 54530
     },
     "starter/pxt.json": {
       "sha256": "1324c7cc17879840e51d5570d78f441773515611325d46afc6d97d055841f905",
       "bytes": 247
     },
     "solution/main.ts": {
-      "sha256": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874",
-      "bytes": 2663
+      "sha256": "2c7171879cdd5f6a11354637ae4540f30342900916bc2d591f06b114edfaafd9",
+      "bytes": 2694
     },
     "solution/engine.ts": {
-      "sha256": "eeb9590cf79c176fa9033ea8ddeb766ba1f1a5a56ae2a03f466b31af18981378",
-      "bytes": 51095
+      "sha256": "16bcdc837f0acb2d66e680d9cfee110354f0fe71ce4d557eeb65057908b9e99e",
+      "bytes": 54530
     },
     "solution/pxt.json": {
       "sha256": "e7cee09e0d7167be7456bd131b86fa5797d8efb5f811c4af1c0baec172ee3418",
       "bytes": 248
     },
-    "tutorial/assets/demos/01-clean-tray.gif": {
-      "sha256": "cd77ba3098669a007ad0a4f53986ecceb15a500b459fd168954be0e1c334fa34",
-      "bytes": 138748
+    "tutorial/assets/demos/01-show-batch.gif": {
+      "sha256": "ac7aa6182367652febde488b7f0e4a7a3c4b7d18dd8e2880c516148560ff12fd",
+      "bytes": 23860
     },
-    "tutorial/assets/demos/02-catch-one.gif": {
-      "sha256": "3a2a844f28facfa02c367ec91e7a86ff0324f66d8c8b72b53ca21032fbea1bd8",
-      "bytes": 232159
+    "tutorial/assets/demos/02-start-belt.gif": {
+      "sha256": "a7a5ff5d6b7a5769eb3f58054ab4797c6fbd5c9fd9f4cf59b2ba4f4b780ec0cf",
+      "bytes": 121341
     },
-    "tutorial/assets/demos/03-discard-one.gif": {
-      "sha256": "c918db5679aa4043492ed1999b456b77c7480cda18d44e9662c8c9ea6475913c",
-      "bytes": 229293
+    "tutorial/assets/demos/03-add-one.gif": {
+      "sha256": "1b8330d47193d5232747bb1ffbcd583306865a1fef2633318b8f3a7419d617b3",
+      "bytes": 82758
     },
-    "tutorial/assets/demos/04-double-batch.gif": {
-      "sha256": "f8bd5ffb58ffbd9a3b9ca684d7574fa81dd1ba1ec93af8f6fd69254d775f22ac",
-      "bytes": 270049
+    "tutorial/assets/demos/04-equal-check.gif": {
+      "sha256": "1aec3536887f7140a8437fb48356afc974cbfeea8ff8932b74a4edde1f8ce936",
+      "bytes": 614843
     },
-    "tutorial/assets/demos/05-pack-pairs.gif": {
-      "sha256": "eb0638fb14ccd68f9ec3ae2d4b11f1fbb1d7eeb563de722cef39fe23500d6cd8",
-      "bytes": 232550
+    "tutorial/assets/demos/05-subtract-one.gif": {
+      "sha256": "fa474196ffbca9f1e8ffc39d9586a54f0695046b04b6b04c70f9f71f7d772b8b",
+      "bytes": 307350
     },
-    "tutorial/assets/demos/06-delivery.gif": {
-      "sha256": "3e6e7246d4256492faa3c98ef01c05e54ef6ccfa04254ceb8bb8c59f43d2515c",
-      "bytes": 228227
+    "tutorial/assets/demos/06-greater-check.gif": {
+      "sha256": "167bd40a5db50328565271b8b9d2a2dddb87415447f42fc78ab05193133a4971",
+      "bytes": 613890
     },
-    "tutorial/assets/demos/07-serve-order.gif": {
-      "sha256": "009262bd33f5d41f150f8c5caa8a47b4a849dd1aa772999d8877828a232e110a",
-      "bytes": 233853
+    "tutorial/assets/demos/07-double.gif": {
+      "sha256": "5dba035fcbd278a6b82efe1676f616166f8827d463d8dc2f155f1107a255ee2a",
+      "bytes": 317254
     },
-    "tutorial/assets/demos/08-bake-trays.gif": {
-      "sha256": "6c4d350e57009f60750f73327de688d71d62ef39115de5276c1b43f0bca2af2e",
-      "bytes": 235771
+    "tutorial/assets/demos/08-less-check.gif": {
+      "sha256": "0bdbca3659fb164b9a4addc63a24e45be4cded963767e4521a500575d15087ac",
+      "bytes": 631835
     },
-    "tutorial/assets/demos/09-pack-boxes.gif": {
-      "sha256": "421f6da2e96100d037359e168a894e64c944aa90707f70fc88e1312d528b02a5",
-      "bytes": 233778
+    "tutorial/assets/demos/09-halve.gif": {
+      "sha256": "dc79f52c22022204db597259932259fc6864716c19b9c78989fb3bfa5d817d83",
+      "bytes": 314277
     },
-    "tutorial/assets/demos/10-equal-check.gif": {
-      "sha256": "1998706c2d31f67b258438a6beb793385ebdf8fe2dbf937ad39e53bb8d1c233d",
-      "bytes": 1822376
+    "tutorial/assets/demos/10-add-modifier.gif": {
+      "sha256": "1d61c5155fa35ae50d786aa70ae3a9c8f9cc7ffeb4da935e10dead7dfa2851af",
+      "bytes": 540123
     },
-    "tutorial/assets/demos/11-less-check.gif": {
-      "sha256": "f405918200f26099fc9eb9689ef27eca835d5f27cd84cb580e5e6a85c4a1f1dd",
-      "bytes": 1356894
+    "tutorial/assets/demos/11-subtract-modifier.gif": {
+      "sha256": "3bceefa4218f99a82d9d1eebf07955c7969d68d9310bc893941b7fffd791bfcf",
+      "bytes": 534039
     },
-    "tutorial/assets/demos/12-greater-check.gif": {
-      "sha256": "9cad6a2f4ac0914cd6f1baa9007b70dd7e84a5f25701f7fd6f3e00b35ea952de",
-      "bytes": 1817459
+    "tutorial/assets/demos/12-multiply-modifier.gif": {
+      "sha256": "ebabbfca2f4277807c6686729f18d79c916ebeb3e8762d0533042279cc61446f",
+      "bytes": 541593
     },
-    "tutorial/assets/demos/13-less-equal-check.gif": {
-      "sha256": "0656a0b88a336ad9ff309f4991e6e88c63f54368f575f48636c4a66a32ec9875",
-      "bytes": 593915
+    "tutorial/assets/demos/13-divide-modifier.gif": {
+      "sha256": "9634f8c53b6b5fb266a3555e934f3aba7260cb435f039b2e7359ec1b6bce3088",
+      "bytes": 1218281
     },
-    "tutorial/assets/demos/14-greater-equal-check.gif": {
-      "sha256": "0b17a3e54547bfbf6c61aac901e7a9eca87f991c8318f688ba2f3deffc84c8e7",
-      "bytes": 697986
+    "tutorial/assets/demos/14-less-equal-check.gif": {
+      "sha256": "19ce7eb4ac1aed9d8a6641ccbf89efca54342b1d4d8511e64f6fe74d7161382a",
+      "bytes": 519370
     },
-    "tutorial/assets/demos/15-factory-round.gif": {
-      "sha256": "8ca69c538e233d671c943b20874c544c87689a298d73f332ed4ebe5c62856fa7",
-      "bytes": 3014493
+    "tutorial/assets/demos/15-greater-equal-check.gif": {
+      "sha256": "1eb20f3fb4409774d95aff34bc9792ccf99ba26f2fea8a9efc3acb2aa1fa14a9",
+      "bytes": 519128
     },
-    "tutorial/assets/demos/16-boundary-checks.gif": {
-      "sha256": "6eb6c5b7adbd3882fc8f3641ccde6257f3cba1df5cdfe6bff1828fbe2e5f82ec",
-      "bytes": 1045677
+    "tutorial/assets/demos/16-set-batch.gif": {
+      "sha256": "40316dfeff0297d2d32836d86b014d724cb7e6c539f41bd115a22b190d8658ec",
+      "bytes": 725557
     },
-    "tutorial/assets/demos/17-reuse-number.gif": {
-      "sha256": "214390dbdebe0c2f2a0f410c4042221540c172c0a99ec38843905733f641e38e",
-      "bytes": 2076822
+    "tutorial/assets/demos/17-three-orders.gif": {
+      "sha256": "26385143f2c81ffbd629c746d6010f47f727b5a8a765195964b7eceb19e26a3b",
+      "bytes": 3110458
+    },
+    "tutorial/assets/demos/18-variable-stations.gif": {
+      "sha256": "e30410ed4668adfe374ed9a74dd878a153d760499ac71f65cad66ec168bcb84a",
+      "bytes": 1222634
+    },
+    "tutorial/assets/demos/19-reuse-batch.gif": {
+      "sha256": "d687d57bfc38cb9652e12ceaa4ae2fc978928eb318d1b6aa77793907d1694bee",
+      "bytes": 2164986
     },
     "tutorial/assets/instructions/01-assembled.svg": {
-      "sha256": "ff9eab6d3d0d0e4e16ebc36098636885e49b421e56ba00a731ddf225951c3f3e",
-      "bytes": 118600
+      "sha256": "cc812d425067ff635ff937f5c123d170d070643db500744a139ab4760871776d",
+      "bytes": 70084
     },
     "tutorial/assets/instructions/01-menu.svg": {
-      "sha256": "e62c73fc9af5504aa941ccc9f47e2cceb5f5db362d8bf5af684135ed3b07b271",
-      "bytes": 137708
+      "sha256": "1279b4183fc6aa9c4c9c6e9a1ff9c9a0e5cdd9e57ad00f804949fe343a5d68d8",
+      "bytes": 116132
     },
     "tutorial/assets/instructions/02-assembled.svg": {
-      "sha256": "610e548349aff40c7ad5b77c9584c399983f3f8f9b23997667d50e9bf7f8122b",
-      "bytes": 118197
+      "sha256": "f0e6a27b1c6465ca6a161a194ba62a4a5d47bd1b74218bdc2726ad84505e7765",
+      "bytes": 83616
     },
     "tutorial/assets/instructions/02-menu.svg": {
-      "sha256": "c8ae7f5cd756bb087b308ae89010855c1948c8da8301a974ba9b755f6cfec42c",
-      "bytes": 121712
+      "sha256": "d1b615d84199f1cc46a13d4f06ac790dfe3b6fe3274044d75994aec60a4559b6",
+      "bytes": 51832
     },
-    "tutorial/assets/instructions/03-adapt.svg": {
-      "sha256": "4c7bd8af67b6de4d17684747a6a113bd319103d379ff0742b8633b39bffec5dd",
-      "bytes": 197580
+    "tutorial/assets/instructions/03-assembled.svg": {
+      "sha256": "9ded0a7cd0b39b3e6bc80b688a8604881fa5b4760ccab247d0a5b40331d8fc61",
+      "bytes": 96969
+    },
+    "tutorial/assets/instructions/03-menu.svg": {
+      "sha256": "242c5cbda012346851a8858f3b2a04e0db44122cc95fd3964f865a176f4f4afa",
+      "bytes": 134096
     },
     "tutorial/assets/instructions/04-assembled.svg": {
-      "sha256": "3204108acce2f1a674a9ee3da8151856d382d1c97f5eb235ae49fe1743d155fc",
-      "bytes": 114077
+      "sha256": "4d2e92088893a263841bc79d997c429527c31b42382cae13933b8daaa957075c",
+      "bytes": 251600
     },
     "tutorial/assets/instructions/04-menu.svg": {
-      "sha256": "55a49743658b99c63406ca8f000bb414af6b5ed770d5c08ca99accc926dcc062",
-      "bytes": 124532
+      "sha256": "c11f6031bff9e69e3667d6bd61cce90d98781d6315a6078822010d540d4a1f54",
+      "bytes": 189104
     },
-    "tutorial/assets/instructions/05-assembled.svg": {
-      "sha256": "c5f475779d16bdda383833c7ad7883e64e85b70bce461497b19c6b6b7c16f52f",
-      "bytes": 106861
+    "tutorial/assets/instructions/05-adapt.svg": {
+      "sha256": "d1a9529acaf1d975b5094e6faa3be1d04e21f577cf6df35f26d57a1652a6e67a",
+      "bytes": 197720
     },
-    "tutorial/assets/instructions/05-menu.svg": {
-      "sha256": "71046870c2c56985e28733e3cd4a60113a6da7be0e6acf3c838813920e3b4f2d",
-      "bytes": 123812
+    "tutorial/assets/instructions/06-adapt.svg": {
+      "sha256": "86f9b8bb7015ee117f8a9b9a632705161405ee6d88ac40635b1569072b442517",
+      "bytes": 193324
     },
-    "tutorial/assets/instructions/06-assembled.svg": {
-      "sha256": "8445b31f22405a44f95d03c91d598827e283e5fdf2eb626d9499896a15a82093",
-      "bytes": 314968
+    "tutorial/assets/instructions/07-assembled.svg": {
+      "sha256": "cdc2e18351cdf6885c53546ddbaa25df841df9eb7f50a4e41c410f5baf80575e",
+      "bytes": 103021
     },
-    "tutorial/assets/instructions/06-menu.svg": {
-      "sha256": "5a251ef4a97301ca86bbd794347b88bc3e8be588e5ead6b8b4219050b9703d22",
-      "bytes": 144680
-    },
-    "tutorial/assets/instructions/07-adapt.svg": {
-      "sha256": "60231db71b3adaf2885ae404cb0ebb4c295a8cb6f0223b9e67d201f1e9e87b79",
-      "bytes": 205793
+    "tutorial/assets/instructions/07-menu.svg": {
+      "sha256": "9fef00835e9d73a2a98e03061a3a918e7102db0f8752c18d1f4766582ae2c675",
+      "bytes": 136976
     },
     "tutorial/assets/instructions/08-adapt.svg": {
-      "sha256": "a20e70aa6df08a93fb04275e8796bba33992556b76c6beeda80ab36b5c8d0aa3",
-      "bytes": 204017
+      "sha256": "e48d7324f12697eedc450370096b2a047ca397eb1018feba8d34ca67d4f5f59a",
+      "bytes": 192216
     },
-    "tutorial/assets/instructions/09-adapt.svg": {
-      "sha256": "19b5005ecd42a5adff8c742ae267c038d563756b7f50067411cd8dabd30ada38",
-      "bytes": 203649
+    "tutorial/assets/instructions/09-assembled.svg": {
+      "sha256": "4e440509fb7378411d696f2be13dac4a4abdbc4cdfcaeeb6e68ada130c13d3a3",
+      "bytes": 103069
+    },
+    "tutorial/assets/instructions/09-menu.svg": {
+      "sha256": "e3e5840a9cf46f8b52beb980e5954184c605dd246df9b562f6d8345571a49822",
+      "bytes": 136236
     },
     "tutorial/assets/instructions/10-assembled.svg": {
-      "sha256": "dde5caf6cd0ad8770c73fe53ab02f700d18ed0c172f7886145e1c9b3d57e8fc8",
-      "bytes": 291084
+      "sha256": "b91462afc97719dfdd1d9d9a7a1bb9b07faa514ca2f62f7c813dda16b5ade57a",
+      "bytes": 287536
     },
     "tutorial/assets/instructions/10-menu.svg": {
-      "sha256": "aae8e2bd68cb591a141f93e67186298cfc0598b0dd3fc85ca5c3180ad643d5c0",
-      "bytes": 159872
+      "sha256": "84b9ca62c7744ea0251240727cbf5bcd4cd32231a241a01fcdc2f52c0b4ae2d5",
+      "bytes": 175892
     },
-    "tutorial/assets/instructions/11-assembled.svg": {
-      "sha256": "814a721dfa13cdaa1aee7ece31a2a538609b5f65ab1e16aca1d6b92432db3d89",
-      "bytes": 260428
-    },
-    "tutorial/assets/instructions/11-menu.svg": {
-      "sha256": "6fcc9d9303e2a554f89764cff9c2684dabaf5468c2cc86b9c1a92ec95c6317f9",
-      "bytes": 84944
+    "tutorial/assets/instructions/11-adapt.svg": {
+      "sha256": "dde8f725fab7a44d918d38ec07728dfc27b560d02d36a54867a970383cfd878b",
+      "bytes": 205873
     },
     "tutorial/assets/instructions/12-adapt.svg": {
-      "sha256": "aa2b1a996368d461f5e7df1a70803a9d723093074f0ccbce1cca6990cd67f456",
-      "bytes": 195248
+      "sha256": "174fae6ba3915a8315b9558cdd8a4f6f156f9abc438157ee707c0916a60a89ff",
+      "bytes": 204093
     },
     "tutorial/assets/instructions/13-adapt.svg": {
-      "sha256": "4b04fc1063b4baba1e916aaea0d5e6215f5c00984fd8bcadf279eed01668fc05",
-      "bytes": 195712
+      "sha256": "751bef5c878f01cf3e8b01ff798079e7033f3ea124668070742a30c22aff6cf3",
+      "bytes": 203729
     },
     "tutorial/assets/instructions/14-adapt.svg": {
-      "sha256": "d0d03f397b5d5701d351865cb2a4f7cec7db9558f76bc2e098b35af69ea9fdde",
-      "bytes": 196984
+      "sha256": "cd985a382c61c56ba17bb611e0215e4c13af95f66a315b453cdd0ec7fc27c346",
+      "bytes": 196312
+    },
+    "tutorial/assets/instructions/15-adapt.svg": {
+      "sha256": "1e81706e88c9e30597b65bb46d39cdeb0cefb56e4649108288e263a8bc1897bd",
+      "bytes": 195860
+    },
+    "tutorial/assets/instructions/16-assembled.svg": {
+      "sha256": "c8129fc3d85db43712b86382d7bb17697007cca36847f9be248bde009ed90fbf",
+      "bytes": 76092
+    },
+    "tutorial/assets/instructions/16-menu.svg": {
+      "sha256": "31c9fad08429c38e6c179e2f6556d4780de508b89938534c7c27df76f7580885",
+      "bytes": 97704
     }
   },
   "demonstrations": [
     {
-      "path": "assets/demos/01-clean-tray.gif",
+      "path": "assets/demos/01-show-batch.gif",
       "present": true,
-      "sha256": "cd77ba3098669a007ad0a4f53986ecceb15a500b459fd168954be0e1c334fa34"
+      "sha256": "ac7aa6182367652febde488b7f0e4a7a3c4b7d18dd8e2880c516148560ff12fd"
     },
     {
-      "path": "assets/demos/02-catch-one.gif",
+      "path": "assets/demos/02-start-belt.gif",
       "present": true,
-      "sha256": "3a2a844f28facfa02c367ec91e7a86ff0324f66d8c8b72b53ca21032fbea1bd8"
+      "sha256": "a7a5ff5d6b7a5769eb3f58054ab4797c6fbd5c9fd9f4cf59b2ba4f4b780ec0cf"
     },
     {
-      "path": "assets/demos/03-discard-one.gif",
+      "path": "assets/demos/03-add-one.gif",
       "present": true,
-      "sha256": "c918db5679aa4043492ed1999b456b77c7480cda18d44e9662c8c9ea6475913c"
+      "sha256": "1b8330d47193d5232747bb1ffbcd583306865a1fef2633318b8f3a7419d617b3"
     },
     {
-      "path": "assets/demos/04-double-batch.gif",
+      "path": "assets/demos/04-equal-check.gif",
       "present": true,
-      "sha256": "f8bd5ffb58ffbd9a3b9ca684d7574fa81dd1ba1ec93af8f6fd69254d775f22ac"
+      "sha256": "1aec3536887f7140a8437fb48356afc974cbfeea8ff8932b74a4edde1f8ce936"
     },
     {
-      "path": "assets/demos/05-pack-pairs.gif",
+      "path": "assets/demos/05-subtract-one.gif",
       "present": true,
-      "sha256": "eb0638fb14ccd68f9ec3ae2d4b11f1fbb1d7eeb563de722cef39fe23500d6cd8"
+      "sha256": "fa474196ffbca9f1e8ffc39d9586a54f0695046b04b6b04c70f9f71f7d772b8b"
     },
     {
-      "path": "assets/demos/06-delivery.gif",
+      "path": "assets/demos/06-greater-check.gif",
       "present": true,
-      "sha256": "3e6e7246d4256492faa3c98ef01c05e54ef6ccfa04254ceb8bb8c59f43d2515c"
+      "sha256": "167bd40a5db50328565271b8b9d2a2dddb87415447f42fc78ab05193133a4971"
     },
     {
-      "path": "assets/demos/07-serve-order.gif",
+      "path": "assets/demos/07-double.gif",
       "present": true,
-      "sha256": "009262bd33f5d41f150f8c5caa8a47b4a849dd1aa772999d8877828a232e110a"
+      "sha256": "5dba035fcbd278a6b82efe1676f616166f8827d463d8dc2f155f1107a255ee2a"
     },
     {
-      "path": "assets/demos/08-bake-trays.gif",
+      "path": "assets/demos/08-less-check.gif",
       "present": true,
-      "sha256": "6c4d350e57009f60750f73327de688d71d62ef39115de5276c1b43f0bca2af2e"
+      "sha256": "0bdbca3659fb164b9a4addc63a24e45be4cded963767e4521a500575d15087ac"
     },
     {
-      "path": "assets/demos/09-pack-boxes.gif",
+      "path": "assets/demos/09-halve.gif",
       "present": true,
-      "sha256": "421f6da2e96100d037359e168a894e64c944aa90707f70fc88e1312d528b02a5"
+      "sha256": "dc79f52c22022204db597259932259fc6864716c19b9c78989fb3bfa5d817d83"
     },
     {
-      "path": "assets/demos/10-equal-check.gif",
+      "path": "assets/demos/10-add-modifier.gif",
       "present": true,
-      "sha256": "1998706c2d31f67b258438a6beb793385ebdf8fe2dbf937ad39e53bb8d1c233d"
+      "sha256": "1d61c5155fa35ae50d786aa70ae3a9c8f9cc7ffeb4da935e10dead7dfa2851af"
     },
     {
-      "path": "assets/demos/11-less-check.gif",
+      "path": "assets/demos/11-subtract-modifier.gif",
       "present": true,
-      "sha256": "f405918200f26099fc9eb9689ef27eca835d5f27cd84cb580e5e6a85c4a1f1dd"
+      "sha256": "3bceefa4218f99a82d9d1eebf07955c7969d68d9310bc893941b7fffd791bfcf"
     },
     {
-      "path": "assets/demos/12-greater-check.gif",
+      "path": "assets/demos/12-multiply-modifier.gif",
       "present": true,
-      "sha256": "9cad6a2f4ac0914cd6f1baa9007b70dd7e84a5f25701f7fd6f3e00b35ea952de"
+      "sha256": "ebabbfca2f4277807c6686729f18d79c916ebeb3e8762d0533042279cc61446f"
     },
     {
-      "path": "assets/demos/13-less-equal-check.gif",
+      "path": "assets/demos/13-divide-modifier.gif",
       "present": true,
-      "sha256": "0656a0b88a336ad9ff309f4991e6e88c63f54368f575f48636c4a66a32ec9875"
+      "sha256": "9634f8c53b6b5fb266a3555e934f3aba7260cb435f039b2e7359ec1b6bce3088"
     },
     {
-      "path": "assets/demos/14-greater-equal-check.gif",
+      "path": "assets/demos/14-less-equal-check.gif",
       "present": true,
-      "sha256": "0b17a3e54547bfbf6c61aac901e7a9eca87f991c8318f688ba2f3deffc84c8e7"
+      "sha256": "19ce7eb4ac1aed9d8a6641ccbf89efca54342b1d4d8511e64f6fe74d7161382a"
     },
     {
-      "path": "assets/demos/15-factory-round.gif",
+      "path": "assets/demos/15-greater-equal-check.gif",
       "present": true,
-      "sha256": "8ca69c538e233d671c943b20874c544c87689a298d73f332ed4ebe5c62856fa7"
+      "sha256": "1eb20f3fb4409774d95aff34bc9792ccf99ba26f2fea8a9efc3acb2aa1fa14a9"
     },
     {
-      "path": "assets/demos/16-boundary-checks.gif",
+      "path": "assets/demos/16-set-batch.gif",
       "present": true,
-      "sha256": "6eb6c5b7adbd3882fc8f3641ccde6257f3cba1df5cdfe6bff1828fbe2e5f82ec"
+      "sha256": "40316dfeff0297d2d32836d86b014d724cb7e6c539f41bd115a22b190d8658ec"
     },
     {
-      "path": "assets/demos/17-reuse-number.gif",
+      "path": "assets/demos/17-three-orders.gif",
       "present": true,
-      "sha256": "214390dbdebe0c2f2a0f410c4042221540c172c0a99ec38843905733f641e38e"
+      "sha256": "26385143f2c81ffbd629c746d6010f47f727b5a8a765195964b7eceb19e26a3b"
+    },
+    {
+      "path": "assets/demos/18-variable-stations.gif",
+      "present": true,
+      "sha256": "e30410ed4668adfe374ed9a74dd878a153d760499ac71f65cad66ec168bcb84a"
+    },
+    {
+      "path": "assets/demos/19-reuse-batch.gif",
+      "present": true,
+      "sha256": "d687d57bfc38cb9652e12ceaa4ae2fc978928eb318d1b6aa77793907d1694bee"
     }
   ],
   "instruction_media": [
     {
       "path": "assets/instructions/01-assembled.svg",
       "present": true,
-      "sha256": "ff9eab6d3d0d0e4e16ebc36098636885e49b421e56ba00a731ddf225951c3f3e"
+      "sha256": "cc812d425067ff635ff937f5c123d170d070643db500744a139ab4760871776d"
     },
     {
       "path": "assets/instructions/01-menu.svg",
       "present": true,
-      "sha256": "e62c73fc9af5504aa941ccc9f47e2cceb5f5db362d8bf5af684135ed3b07b271"
+      "sha256": "1279b4183fc6aa9c4c9c6e9a1ff9c9a0e5cdd9e57ad00f804949fe343a5d68d8"
     },
     {
       "path": "assets/instructions/02-assembled.svg",
       "present": true,
-      "sha256": "610e548349aff40c7ad5b77c9584c399983f3f8f9b23997667d50e9bf7f8122b"
+      "sha256": "f0e6a27b1c6465ca6a161a194ba62a4a5d47bd1b74218bdc2726ad84505e7765"
     },
     {
       "path": "assets/instructions/02-menu.svg",
       "present": true,
-      "sha256": "c8ae7f5cd756bb087b308ae89010855c1948c8da8301a974ba9b755f6cfec42c"
+      "sha256": "d1b615d84199f1cc46a13d4f06ac790dfe3b6fe3274044d75994aec60a4559b6"
     },
     {
-      "path": "assets/instructions/03-adapt.svg",
+      "path": "assets/instructions/03-assembled.svg",
       "present": true,
-      "sha256": "4c7bd8af67b6de4d17684747a6a113bd319103d379ff0742b8633b39bffec5dd"
+      "sha256": "9ded0a7cd0b39b3e6bc80b688a8604881fa5b4760ccab247d0a5b40331d8fc61"
+    },
+    {
+      "path": "assets/instructions/03-menu.svg",
+      "present": true,
+      "sha256": "242c5cbda012346851a8858f3b2a04e0db44122cc95fd3964f865a176f4f4afa"
     },
     {
       "path": "assets/instructions/04-assembled.svg",
       "present": true,
-      "sha256": "3204108acce2f1a674a9ee3da8151856d382d1c97f5eb235ae49fe1743d155fc"
+      "sha256": "4d2e92088893a263841bc79d997c429527c31b42382cae13933b8daaa957075c"
     },
     {
       "path": "assets/instructions/04-menu.svg",
       "present": true,
-      "sha256": "55a49743658b99c63406ca8f000bb414af6b5ed770d5c08ca99accc926dcc062"
+      "sha256": "c11f6031bff9e69e3667d6bd61cce90d98781d6315a6078822010d540d4a1f54"
     },
     {
-      "path": "assets/instructions/05-assembled.svg",
+      "path": "assets/instructions/05-adapt.svg",
       "present": true,
-      "sha256": "c5f475779d16bdda383833c7ad7883e64e85b70bce461497b19c6b6b7c16f52f"
+      "sha256": "d1a9529acaf1d975b5094e6faa3be1d04e21f577cf6df35f26d57a1652a6e67a"
     },
     {
-      "path": "assets/instructions/05-menu.svg",
+      "path": "assets/instructions/06-adapt.svg",
       "present": true,
-      "sha256": "71046870c2c56985e28733e3cd4a60113a6da7be0e6acf3c838813920e3b4f2d"
+      "sha256": "86f9b8bb7015ee117f8a9b9a632705161405ee6d88ac40635b1569072b442517"
     },
     {
-      "path": "assets/instructions/06-assembled.svg",
+      "path": "assets/instructions/07-assembled.svg",
       "present": true,
-      "sha256": "8445b31f22405a44f95d03c91d598827e283e5fdf2eb626d9499896a15a82093"
+      "sha256": "cdc2e18351cdf6885c53546ddbaa25df841df9eb7f50a4e41c410f5baf80575e"
     },
     {
-      "path": "assets/instructions/06-menu.svg",
+      "path": "assets/instructions/07-menu.svg",
       "present": true,
-      "sha256": "5a251ef4a97301ca86bbd794347b88bc3e8be588e5ead6b8b4219050b9703d22"
-    },
-    {
-      "path": "assets/instructions/07-adapt.svg",
-      "present": true,
-      "sha256": "60231db71b3adaf2885ae404cb0ebb4c295a8cb6f0223b9e67d201f1e9e87b79"
+      "sha256": "9fef00835e9d73a2a98e03061a3a918e7102db0f8752c18d1f4766582ae2c675"
     },
     {
       "path": "assets/instructions/08-adapt.svg",
       "present": true,
-      "sha256": "a20e70aa6df08a93fb04275e8796bba33992556b76c6beeda80ab36b5c8d0aa3"
+      "sha256": "e48d7324f12697eedc450370096b2a047ca397eb1018feba8d34ca67d4f5f59a"
     },
     {
-      "path": "assets/instructions/09-adapt.svg",
+      "path": "assets/instructions/09-assembled.svg",
       "present": true,
-      "sha256": "19b5005ecd42a5adff8c742ae267c038d563756b7f50067411cd8dabd30ada38"
+      "sha256": "4e440509fb7378411d696f2be13dac4a4abdbc4cdfcaeeb6e68ada130c13d3a3"
+    },
+    {
+      "path": "assets/instructions/09-menu.svg",
+      "present": true,
+      "sha256": "e3e5840a9cf46f8b52beb980e5954184c605dd246df9b562f6d8345571a49822"
     },
     {
       "path": "assets/instructions/10-assembled.svg",
       "present": true,
-      "sha256": "dde5caf6cd0ad8770c73fe53ab02f700d18ed0c172f7886145e1c9b3d57e8fc8"
+      "sha256": "b91462afc97719dfdd1d9d9a7a1bb9b07faa514ca2f62f7c813dda16b5ade57a"
     },
     {
       "path": "assets/instructions/10-menu.svg",
       "present": true,
-      "sha256": "aae8e2bd68cb591a141f93e67186298cfc0598b0dd3fc85ca5c3180ad643d5c0"
+      "sha256": "84b9ca62c7744ea0251240727cbf5bcd4cd32231a241a01fcdc2f52c0b4ae2d5"
     },
     {
-      "path": "assets/instructions/11-assembled.svg",
+      "path": "assets/instructions/11-adapt.svg",
       "present": true,
-      "sha256": "814a721dfa13cdaa1aee7ece31a2a538609b5f65ab1e16aca1d6b92432db3d89"
-    },
-    {
-      "path": "assets/instructions/11-menu.svg",
-      "present": true,
-      "sha256": "6fcc9d9303e2a554f89764cff9c2684dabaf5468c2cc86b9c1a92ec95c6317f9"
+      "sha256": "dde8f725fab7a44d918d38ec07728dfc27b560d02d36a54867a970383cfd878b"
     },
     {
       "path": "assets/instructions/12-adapt.svg",
       "present": true,
-      "sha256": "aa2b1a996368d461f5e7df1a70803a9d723093074f0ccbce1cca6990cd67f456"
+      "sha256": "174fae6ba3915a8315b9558cdd8a4f6f156f9abc438157ee707c0916a60a89ff"
     },
     {
       "path": "assets/instructions/13-adapt.svg",
       "present": true,
-      "sha256": "4b04fc1063b4baba1e916aaea0d5e6215f5c00984fd8bcadf279eed01668fc05"
+      "sha256": "751bef5c878f01cf3e8b01ff798079e7033f3ea124668070742a30c22aff6cf3"
     },
     {
       "path": "assets/instructions/14-adapt.svg",
       "present": true,
-      "sha256": "d0d03f397b5d5701d351865cb2a4f7cec7db9558f76bc2e098b35af69ea9fdde"
+      "sha256": "cd985a382c61c56ba17bb611e0215e4c13af95f66a315b453cdd0ec7fc27c346"
+    },
+    {
+      "path": "assets/instructions/15-adapt.svg",
+      "present": true,
+      "sha256": "1e81706e88c9e30597b65bb46d39cdeb0cefb56e4649108288e263a8bc1897bd"
+    },
+    {
+      "path": "assets/instructions/16-assembled.svg",
+      "present": true,
+      "sha256": "c8129fc3d85db43712b86382d7bb17697007cca36847f9be248bde009ed90fbf"
+    },
+    {
+      "path": "assets/instructions/16-menu.svg",
+      "present": true,
+      "sha256": "31c9fad08429c38e6c179e2f6556d4780de508b89938534c7c27df76f7580885"
     }
   ],
-  "claim_boundary": "Deterministic assembly and declared scope only; missing referenced media remain explicit. Compile, Blocks, runtime, browser and learner evidence are separate."
+  "claim_boundary": "Deterministic V12 assembly and declared scope only; missing referenced media remain explicit. Compile, Blocks, runtime, browser and learner evidence are separate."
 }

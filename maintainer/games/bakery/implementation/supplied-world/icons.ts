@@ -33,23 +33,25 @@ namespace bakeryIcons {
     }
 
     export function carriedNumber(value: number): Image {
-        let p = image.create(34, 28)
-        rounded(p, 3, 6, 28, 20, 15)
-        p.fillRect(5, 8, 24, 16, 13)
-        p.fillRect(1, 11, 4, 9, 14); p.fillRect(29, 11, 4, 9, 14)
-        p.fillRect(2, 13, 2, 5, 5); p.fillRect(30, 13, 2, 5, 5)
-        p.fillRect(9, 3, 16, 4, 5); p.fillRect(11, 1, 12, 3, 14)
+        let p = image.create(40, 38)
+        rounded(p, 3, 2, 34, 29, 15)
+        p.fillRect(5, 4, 30, 23, 13)
+        p.fillRect(1, 10, 4, 11, 14); p.fillRect(35, 10, 4, 11, 14)
+        p.fillRect(2, 13, 2, 5, 5); p.fillRect(36, 13, 2, 5, 5)
+        p.fillRect(10, 0, 20, 4, 5); p.fillRect(13, 0, 14, 2, 14)
         let text = "" + value
         if (text.length <= 2) {
             let temp = image.create(text.length * 6 + 2, 8)
             temp.print(text, 0, 0, 15, image.font8)
-            let left = 17 - text.length * 6
-            for (let y = 0; y < 8; y++) for (let x = 0; x < temp.width; x++) if (temp.getPixel(x, y) != 0) p.fillRect(left + x * 2, 9 + y * 2, 2, 2, 15)
+            let left = 20 - text.length * 6
+            for (let y = 0; y < 8; y++) for (let x = 0; x < temp.width; x++) if (temp.getPixel(x, y) != 0) p.fillRect(left + x * 2, 7 + y * 2, 2, 2, 15)
         } else {
             if (text.length > 6) text = text.substr(0, 4) + ".."
             let font = text.length > 4 ? image.font5 : image.font8
-            p.print(text, 17 - Math.idiv(text.length * font.charWidth, 2), 12, 15, font)
+            p.print(text, 20 - Math.idiv(text.length * font.charWidth, 2), 8, 15, font)
         }
+        rounded(p, 7, 29, 26, 8, 2)
+        p.print("batch", 10, 30, 1, image.font5)
         return p
     }
 
