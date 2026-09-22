@@ -27,13 +27,14 @@ export const destination = Object.freeze({
     canonical_remote: 'https://github.com/mrbrackebusch-code/makecode-arcade-tutorials.git',
     target_repository_result: 'Established public repository mrbrackebusch-code/bakery-shift; V9 release and official no-CDN public identity verified in current records'
   },
-  existing_release: {tag:'v0.4.3',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.3',payload_commit:'1a6b047d809f690616c053b0f3e8609172c1e902',served_commit:'07871a1cd029ef7683eb1997a2544eb8f101f0c4'},
-  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1&skipgithubcache=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'07871a1cd029ef7683eb1997a2544eb8f101f0c4',release:'V9',media_revision:'50bb2d5bb2067def',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
+  existing_release: {tag:'v0.4.4',release_url:'https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.4',payload_commit:'c0a10e100ad5efe9463114555f8185fa80992b3b',served_commit:'c0a10e100ad5efe9463114555f8185fa80992b3b'},
+  existing_public_identity: {stable_url:'https://arcade.makecode.com/?nocdn=1&skipgithubcache=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README',served_commit:'c0a10e100ad5efe9463114555f8185fa80992b3b',release:'v0.4.4',media_revision:'8a6b9ee391629723',historical_cache_release:'V5',historical_cache_commit:'3340e81fd43547c7b4c17560a75f344aa91a29b0'}
 });
 
 const canonicalGameFiles = [
   'copy/tutorial-template.md',
   'copy/instruction-callouts.json',
+  'copy/adaptation-callouts.json',
   'implementation/learner-states/catalog.json',
   'implementation/supplied-world/icons.ts',
   'implementation/supplied-world/engine.ts',
@@ -50,6 +51,7 @@ const canonicalGameFiles = [
   'design/COMPARISON_STYLE_V9.md',
   'design/FINISHING_V9.md',
   'design/INSTRUCTION_LAYER_V10.md',
+  'design/ADAPTATION_GUIDE_V11.md',
   'design/pedagogy/MICROSOFT_MIT_NOTICE.txt'
 ];
 const sourceFiles = [

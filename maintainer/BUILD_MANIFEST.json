@@ -38,7 +38,7 @@
     "starter_executable_code": false
   },
   "source_hashes": {
-    "games/bakery/copy/tutorial-template.md": "3d347adb7438e4589af3e0a543c4986a84232fb7f616c11282c49e3b31fc6e13",
+    "games/bakery/copy/tutorial-template.md": "7fba786988f3f5ae41f0c8614ad1922edebb056ad47f33c6ce5cec3acaf290f8",
     "games/bakery/implementation/learner-states/catalog.json": "5e464692c7fbbcfb84ee03fa9fd0a450673e23588c8f66242e58f5d636e6626e",
     "games/bakery/implementation/supplied-world/icons.ts": "f3e71bc02b1fea3723694b1fd71f0460cf2b65545ede39e8210540d8372d0df7",
     "games/bakery/implementation/supplied-world/engine.ts": "93424e9a467d472c0a650c5675a4ba352e6f95dd00b0de4ec6e89b705e311e41",
@@ -47,7 +47,7 @@
     "games/bakery/tools/build.mjs": "c19256ff8f22aa87d07335869ebc68b1722da203a32b2828d2b01a6232ba5f08"
   },
   "output_hashes": {
-    "tutorial": "d79748d70d8863bae78496d765b17845c32d06f2849a93ee61b365220eefec8f",
+    "tutorial": "f66d4eae1e8294a92535350a0f1ce293cbf219dce85745290c9193d0c625c017",
     "starter": "713f1c94893eb81611042d435586f6e4ddf0eb48960b24b306abb7feaed89fc7",
     "solution": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874",
     "engine": "eeb9590cf79c176fa9033ea8ddeb766ba1f1a5a56ae2a03f466b31af18981378",
@@ -87,8 +87,8 @@
   },
   "outputs": {
     "tutorial/README.md": {
-      "sha256": "d79748d70d8863bae78496d765b17845c32d06f2849a93ee61b365220eefec8f",
-      "bytes": 68311
+      "sha256": "f66d4eae1e8294a92535350a0f1ce293cbf219dce85745290c9193d0c625c017",
+      "bytes": 67922
     },
     "learner-states/01-clean-tray.ts": {
       "sha256": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",
@@ -310,6 +310,10 @@
       "sha256": "c8ae7f5cd756bb087b308ae89010855c1948c8da8301a974ba9b755f6cfec42c",
       "bytes": 121712
     },
+    "tutorial/assets/instructions/03-adapt.svg": {
+      "sha256": "4c7bd8af67b6de4d17684747a6a113bd319103d379ff0742b8633b39bffec5dd",
+      "bytes": 197580
+    },
     "tutorial/assets/instructions/04-assembled.svg": {
       "sha256": "3204108acce2f1a674a9ee3da8151856d382d1c97f5eb235ae49fe1743d155fc",
       "bytes": 114077
@@ -334,6 +338,18 @@
       "sha256": "5a251ef4a97301ca86bbd794347b88bc3e8be588e5ead6b8b4219050b9703d22",
       "bytes": 144680
     },
+    "tutorial/assets/instructions/07-adapt.svg": {
+      "sha256": "60231db71b3adaf2885ae404cb0ebb4c295a8cb6f0223b9e67d201f1e9e87b79",
+      "bytes": 205793
+    },
+    "tutorial/assets/instructions/08-adapt.svg": {
+      "sha256": "a20e70aa6df08a93fb04275e8796bba33992556b76c6beeda80ab36b5c8d0aa3",
+      "bytes": 204017
+    },
+    "tutorial/assets/instructions/09-adapt.svg": {
+      "sha256": "19b5005ecd42a5adff8c742ae267c038d563756b7f50067411cd8dabd30ada38",
+      "bytes": 203649
+    },
     "tutorial/assets/instructions/10-assembled.svg": {
       "sha256": "dde5caf6cd0ad8770c73fe53ab02f700d18ed0c172f7886145e1c9b3d57e8fc8",
       "bytes": 291084
@@ -349,6 +365,18 @@
     "tutorial/assets/instructions/11-menu.svg": {
       "sha256": "6fcc9d9303e2a554f89764cff9c2684dabaf5468c2cc86b9c1a92ec95c6317f9",
       "bytes": 84944
+    },
+    "tutorial/assets/instructions/12-adapt.svg": {
+      "sha256": "aa2b1a996368d461f5e7df1a70803a9d723093074f0ccbce1cca6990cd67f456",
+      "bytes": 195248
+    },
+    "tutorial/assets/instructions/13-adapt.svg": {
+      "sha256": "4b04fc1063b4baba1e916aaea0d5e6215f5c00984fd8bcadf279eed01668fc05",
+      "bytes": 195712
+    },
+    "tutorial/assets/instructions/14-adapt.svg": {
+      "sha256": "d0d03f397b5d5701d351865cb2a4f7cec7db9558f76bc2e098b35af69ea9fdde",
+      "bytes": 196984
     }
   },
   "demonstrations": [
@@ -460,6 +488,11 @@
       "sha256": "c8ae7f5cd756bb087b308ae89010855c1948c8da8301a974ba9b755f6cfec42c"
     },
     {
+      "path": "assets/instructions/03-adapt.svg",
+      "present": true,
+      "sha256": "4c7bd8af67b6de4d17684747a6a113bd319103d379ff0742b8633b39bffec5dd"
+    },
+    {
       "path": "assets/instructions/04-assembled.svg",
       "present": true,
       "sha256": "3204108acce2f1a674a9ee3da8151856d382d1c97f5eb235ae49fe1743d155fc"
@@ -490,6 +523,21 @@
       "sha256": "5a251ef4a97301ca86bbd794347b88bc3e8be588e5ead6b8b4219050b9703d22"
     },
     {
+      "path": "assets/instructions/07-adapt.svg",
+      "present": true,
+      "sha256": "60231db71b3adaf2885ae404cb0ebb4c295a8cb6f0223b9e67d201f1e9e87b79"
+    },
+    {
+      "path": "assets/instructions/08-adapt.svg",
+      "present": true,
+      "sha256": "a20e70aa6df08a93fb04275e8796bba33992556b76c6beeda80ab36b5c8d0aa3"
+    },
+    {
+      "path": "assets/instructions/09-adapt.svg",
+      "present": true,
+      "sha256": "19b5005ecd42a5adff8c742ae267c038d563756b7f50067411cd8dabd30ada38"
+    },
+    {
       "path": "assets/instructions/10-assembled.svg",
       "present": true,
       "sha256": "dde5caf6cd0ad8770c73fe53ab02f700d18ed0c172f7886145e1c9b3d57e8fc8"
@@ -508,6 +556,21 @@
       "path": "assets/instructions/11-menu.svg",
       "present": true,
       "sha256": "6fcc9d9303e2a554f89764cff9c2684dabaf5468c2cc86b9c1a92ec95c6317f9"
+    },
+    {
+      "path": "assets/instructions/12-adapt.svg",
+      "present": true,
+      "sha256": "aa2b1a996368d461f5e7df1a70803a9d723093074f0ccbce1cca6990cd67f456"
+    },
+    {
+      "path": "assets/instructions/13-adapt.svg",
+      "present": true,
+      "sha256": "4b04fc1063b4baba1e916aaea0d5e6215f5c00984fd8bcadf279eed01668fc05"
+    },
+    {
+      "path": "assets/instructions/14-adapt.svg",
+      "present": true,
+      "sha256": "d0d03f397b5d5701d351865cb2a4f7cec7db9558f76bc2e098b35af69ea9fdde"
     }
   ],
   "claim_boundary": "Deterministic assembly and declared scope only; missing referenced media remain explicit. Compile, Blocks, runtime, browser and learner evidence are separate."

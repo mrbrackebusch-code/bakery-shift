@@ -52,9 +52,11 @@ Catch `+ 1`. Move beside the pot, face it, and press **A**. The modifier flies i
 
 Sometimes a smaller number is more useful.
 
-### Build the next event
+### Copy and change the event
 
-Create **a - 1 modifier hits the mixer**. Reuse the previous pattern and choose subtraction.
+Right-click the top block of your step 2 event and choose **Duplicate**. Keep the original event.
+
+![Copy step 2's +1 event; change it to a -1 mixer event and subtraction](assets/instructions/03-adapt.svg)
 
 ### What you should see
 
@@ -124,9 +126,11 @@ Throw `+ 2` into a mixer holding `2`: the result is `4`. Try `+ 3` or another st
 
 A `- 2` or `- 3` modifier subtracts its printed amount.
 
-### Build the next event
+### Copy and change the event
 
-Add **a - 2 or - 3 modifier hits the mixer**. Reuse the two-input pattern and subtract the saved modifier number from the saved batch.
+Duplicate your step 6 printed-number event and keep the original.
+
+![Copy step 6's printed-number event; change it to a -2 or -3 event and subtraction](assets/instructions/07-adapt.svg)
 
 ### What you should see
 
@@ -138,9 +142,11 @@ Throw `- 2` at an amount of `2`: the result is `0`. Subtracting three from two w
 
 A `× 3` modifier offers another way to change a small amount quickly.
 
-### Build the next event
+### Copy and change the event
 
-Add **a × 3 modifier hits the mixer**. Reuse the two-input pattern and multiply ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``.
+Duplicate your step 6 printed-number event and keep the original.
+
+![Copy step 6's printed-number event; change it to a ×3 event and multiplication](assets/instructions/08-adapt.svg)
 
 ### What you should see
 
@@ -152,9 +158,11 @@ Throw `× 3` into a mixer holding `2`: the result is `6`. Compare that one throw
 
 You now have all four arithmetic operations with two variable inputs.
 
-### Build the next event
+### Copy and change the event
 
-Add **a / 3 modifier hits the mixer**. Reuse the two-input pattern and divide ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``.
+Duplicate your step 6 printed-number event and keep the original.
+
+![Copy step 6's printed-number event; change it to a /3 event and division](assets/instructions/09-adapt.svg)
 
 ### What you should see
 
@@ -206,9 +214,11 @@ The rightmost order asks for `4 < □`. Deliver `4` and press **B**: **FALSE**, 
 
 **Greater than (>)** checks whether the first value represents a larger quantity than the second.
 
-### Build the next event
+### Copy and change the event
 
-Add **a greater than (>) order checks a number**. Reuse the comparison pattern and choose `>`; the left value must be larger.
+Duplicate your step 11 less-than event and keep the original.
+
+![Copy step 11's less-than event; change it to greater-than and the greater-than comparison](assets/instructions/12-adapt.svg)
 
 ### What you should see
 
@@ -220,9 +230,11 @@ The middle order asks for `2 > □`. Deliver `2`, then press **B** for **FALSE**
 
 **Less than or equal to (≤)** accepts equality too. Both `5 ≤ 5` and `5 ≤ 6` are true.
 
-### Build the next event
+### Copy and change the event
 
-Add **a less than or equal to (≤) order checks a number**. Reuse the comparison pattern and choose `≤`; equality now counts as true.
+Duplicate your step 11 less-than event and keep the original.
+
+![Copy step 11's less-than event; change it to less-than-or-equal and the inclusive comparison](assets/instructions/13-adapt.svg)
 
 ### What you should see
 
@@ -234,9 +246,11 @@ The rightmost order now asks for `5 ≤ □`. Make and deliver `5`, then press *
 
 **Greater than or equal to (≥)** also accepts matching numbers. Both `1 ≥ 1` and `1 ≥ 0` are true.
 
-### Build the next event
+### Copy and change the event
 
-Add **a greater than or equal to (≥) order checks a number**. Reuse the comparison pattern and choose `≥`; equality now counts as true in the other direction.
+Duplicate your step 11 less-than event and keep the original.
+
+![Copy step 11's less-than event; change it to greater-than-or-equal and the inclusive comparison](assets/instructions/14-adapt.svg)
 
 ### What you should see
 
@@ -246,15 +260,11 @@ The middle order asks for `1 ≥ □`. Deliver `1` and press **B** for **TRUE**.
 
 ## 15. Run the factory
 
-Keep your code. Finish the first three order checks: `3 = □`, `1 ≥ □`, and `5 ≤ □`.
-
-### Choose your route
-
-Choose which order to finish first. You can use several small calculations or take a shorter route with multiplication or division.
+Finish `3 = □`, `1 ≥ □`, and `5 ≤ □`; pressing **B** checks each delivery while the mixer keeps its amount for the next calculation.
 
 ### What you should see
 
-One route makes `1`, then `3`, then `6`. Press **B** after each delivery to check the statement; solved checks stay **TRUE**, while false checks return to the original expression for retry. Collecting and delivering never empties the mixer: the next calculation starts with the amount you just made.
+One route makes `1`, then `3`, then `6`. Press **B** after each delivery; solved checks stay **TRUE**, while false checks return to the original expression for retry.
 
 ![Three calculated numbers are delivered and checked at the three different orders](assets/demos/15-factory-round.gif)
 
@@ -262,25 +272,19 @@ After the first three checks finish, press **A** once to unlock four side ingred
 
 ## 16. Use an ingredient variable
 
-Each side ingredient station has an icon representing the value currently shown on its side counter. The operator at a station switches every 12 seconds. Your supplied factory variables keep these station values separate from your learner variable ``||variables(noclick):batch||``.
+Throw a copied number at an ingredient station to change its value, then solve an order that uses that station's icon.
 
-### Choose a path
-
-After the first three checks, throw a copied number at a station to change it with that station's allowed operator. A later order refers to one station icon; `3 + [icon]` means three plus that station's value. Use a whole-number division result when division is selected, then use ``||variables(noclick):batch||`` to make and deliver the requested number.
+The order can show `3 + [icon]`, meaning three plus the station value. The operator switches every 12 seconds, and the supplied station variables stay separate from learner ``||variables(noclick):batch||``.
 
 ### What you should see
 
-The matching icon in the order uses the station's new value. Make a number that fits the changed statement, deliver it, and press **B** to check it.
+The matching icon shows the station value to use. Make a number for the changed statement, deliver it, and press **B** to check it.
 
 ![A variable change at a side station is reflected in the order's left value](assets/demos/16-boundary-checks.gif)
 
 ## 17. Keep the amount, change the plan
 
-Your code can use each new mixer amount without being rewritten.
-
-### Choose a path
-
-Make and deliver `3` for the equality order. Look back at the pot: it still holds `3`. Find a useful next calculation for another order. Doubling gives `6`; subtracting two gives `1`. Both use the amount already there.
+Deliver `3` to the equality order, then use the `3` still in the mixer to make a number for another order.
 
 ### What you should see
 

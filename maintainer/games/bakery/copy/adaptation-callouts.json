@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "step": "03",
+      "sourceStep": "02",
+      "sourceEvent": "a + 1 item hits the mixer",
+      "targetEvent": "a - 1 modifier hits the mixer",
+      "sourceOperator": "+",
+      "targetOperator": "-",
+      "callouts": ["event: a - 1 modifier hits the mixer", "operator: + → -"]
+    },
+    {
+      "step": "07",
+      "sourceStep": "06",
+      "sourceEvent": "a + 2 or + 3 modifier hits the mixer",
+      "targetEvent": "a - 2 or - 3 modifier hits the mixer",
+      "sourceOperator": "+",
+      "targetOperator": "-",
+      "callouts": ["event: a - 2 or - 3 modifier hits the mixer", "operator: + → -"]
+    },
+    {
+      "step": "08",
+      "sourceStep": "06",
+      "sourceEvent": "a + 2 or + 3 modifier hits the mixer",
+      "targetEvent": "a × 3 modifier hits the mixer",
+      "sourceOperator": "+",
+      "targetOperator": "×",
+      "callouts": ["event: a × 3 modifier hits the mixer", "operator: + → ×"]
+    },
+    {
+      "step": "09",
+      "sourceStep": "06",
+      "sourceEvent": "a + 2 or + 3 modifier hits the mixer",
+      "targetEvent": "a / 3 modifier hits the mixer",
+      "sourceOperator": "+",
+      "targetOperator": "/",
+      "callouts": ["event: a / 3 modifier hits the mixer", "operator: + → /"]
+    },
+    {
+      "step": "12",
+      "sourceStep": "11",
+      "sourceEvent": "a less than (<) order checks a number",
+      "targetEvent": "a greater than (>) order checks a number",
+      "sourceOperator": "<",
+      "targetOperator": ">",
+      "callouts": ["event: a greater than (>) order checks a number", "operator: < → >"]
+    },
+    {
+      "step": "13",
+      "sourceStep": "11",
+      "sourceEvent": "a less than (<) order checks a number",
+      "targetEvent": "a less than or equal to (≤) order checks a number",
+      "sourceOperator": "<",
+      "targetOperator": "≤",
+      "callouts": ["event: a less than or equal to (≤) order checks a number", "operator: < → ≤"]
+    },
+    {
+      "step": "14",
+      "sourceStep": "11",
+      "sourceEvent": "a less than (<) order checks a number",
+      "targetEvent": "a greater than or equal to (≥) order checks a number",
+      "sourceOperator": "<",
+      "targetOperator": "≥",
+      "callouts": ["event: a greater than or equal to (≥) order checks a number", "operator: < → ≥"]
+    }
+  ],
+  "claim_boundary": "These are copy cues for native source stacks, not finished answer blocks. Root owns the seven rendered adaptation images and their visual verification."
+}

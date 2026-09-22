@@ -18,17 +18,17 @@ A ``||variables(noclick):variable||`` is a container used to store values in you
 
 In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):batch||``.
 
-![Native menu blocks for creating batch, selecting the mixer, reading its amount and showing a value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/01-menu.svg)
+![Native menu blocks for creating batch, selecting the mixer, reading its amount and showing a value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/01-menu.svg)
 
 ### Make your code look like this
 
-![Read the mixer into batch, then show the value stored in batch](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/01-assembled.svg)
+![Read the mixer into batch, then show the value stored in batch](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/01-assembled.svg)
 
 ### What you should see
 
 With empty hands, stand below the pot and press **A**. Your display shows `2`. Reading the mixer does not change its amount. The bottom checks will be connected later.
 
-![Selecting the mixer shows its current number in a bubble](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/01-clean-tray.gif)
+![Selecting the mixer shows its current number in a bubble](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/01-clean-tray.gif)
 
 #### ~ tutorialhint
 
@@ -47,17 +47,17 @@ Keep your first event. This new event adds one when a `+ 1` item hits the pot. T
 
 ### Find these blocks
 
-![Native event, variable, arithmetic and mixer-result blocks for adding one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/02-menu.svg)
+![Native event, variable, arithmetic and mixer-result blocks for adding one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/02-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, set batch to batch plus one, then put batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/02-assembled.svg)
+![Read batch, set batch to batch plus one, then put batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/02-assembled.svg)
 
 ### What you should see
 
 Catch `+ 1`. Move beside the pot, face it, and press **A**. The modifier flies into the pot and `2` becomes `3` when it hits. Try another addition using the new starting amount.
 
-![A thrown plus-one modifier hits the mixer and changes two to three](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/02-catch-one.gif)
+![A thrown plus-one modifier hits the mixer and changes two to three](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/02-catch-one.gif)
 
 #### ~ tutorialhint
 
@@ -75,15 +75,17 @@ bakery.onAction(BakeryAction.AddOne, function () {
 
 Sometimes a smaller number is more useful.
 
-### Build the next event
+### Copy and change the event
 
-Create **a - 1 modifier hits the mixer**. Reuse the previous pattern and choose subtraction.
+Right-click the top block of your step 2 event and choose **Duplicate**. Keep the original event.
+
+![Copy step 2's +1 event; change it to a -1 mixer event and subtraction](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/03-adapt.svg)
 
 ### What you should see
 
 Throw `- 1` into the pot: `2` becomes `1`. With empty hands, press **B** beside the pot to reset its amount, then try a different calculation.
 
-![A thrown minus-one modifier changes the mixer from two to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/03-discard-one.gif)
+![A thrown minus-one modifier changes the mixer from two to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/03-discard-one.gif)
 
 #### ~ tutorialhint
 
@@ -103,17 +105,17 @@ A `× 2` modifier can do in one throw what repeated additions would take longer 
 
 ### Find these blocks
 
-![Native multiplication and factory blocks for the double event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/04-menu.svg)
+![Native multiplication and factory blocks for the double event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/04-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, multiply batch by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/04-assembled.svg)
+![Read batch, multiply batch by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/04-assembled.svg)
 
 ### What you should see
 
 Throw `× 2` into the pot. The amount doubles: `2` becomes `4`. The number on the modifier stays two; the amount it multiplies can change.
 
-![A times-two modifier doubles the mixer amount from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/04-double-batch.gif)
+![A times-two modifier doubles the mixer amount from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/04-double-batch.gif)
 
 #### ~ tutorialhint
 
@@ -133,17 +135,17 @@ Division makes a large amount smaller. A `/ 2` modifier divides it into two equa
 
 ### Find these blocks
 
-![Native division and factory blocks for dividing the mixer amount by two](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/05-menu.svg)
+![Native division and factory blocks for dividing the mixer amount by two](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/05-menu.svg)
 
 ### Make your code look like this
 
-![Read batch, divide it by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/05-assembled.svg)
+![Read batch, divide it by two, save it and put the result in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/05-assembled.svg)
 
 ### What you should see
 
 Throw `/ 2` into a mixer holding `2`. The result is `1`. This factory uses whole-number results: a division that would make a fraction leaves the amount unchanged. Adjust the amount before trying that division again.
 
-![Dividing two by two changes the mixer to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/05-pack-pairs.gif)
+![Dividing two by two changes the mixer to one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/05-pack-pairs.gif)
 
 #### ~ tutorialhint
 
@@ -165,11 +167,11 @@ The belts can now offer `+ 2` and `+ 3`. One event can use the number printed on
 
 In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it ``||variables(noclick):modifierNumber||``.
 
-![Native menu blocks for modifierNumber, its printed-number input and the addition event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/06-menu.svg)
+![Native menu blocks for modifierNumber, its printed-number input and the addition event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/06-menu.svg)
 
 ### Make your code look like this
 
-![Read batch and modifierNumber, add them, then put the saved batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/06-assembled.svg)
+![Read batch and modifierNumber, add them, then put the saved batch in the mixer](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/06-assembled.svg)
 
 ``||variables(noclick):batch||`` remembers the mixer amount; ``||variables(noclick):modifierNumber||`` remembers the modifier's printed number for this event.
 
@@ -177,7 +179,7 @@ In ``||variables(noclick):Variables||``, choose **Make a Variable** and name it 
 
 Throw `+ 2` into a mixer holding `2`: the result is `4`. Try `+ 3` or another starting amount and compare the result.
 
-![The plus-two modifier changes the mixer from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/06-delivery.gif)
+![The plus-two modifier changes the mixer from two to four](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/06-delivery.gif)
 
 #### ~ tutorialhint
 
@@ -197,15 +199,17 @@ bakery.onAction(BakeryAction.AddModifier, function () {
 
 A `- 2` or `- 3` modifier subtracts its printed amount.
 
-### Build the next event
+### Copy and change the event
 
-Add **a - 2 or - 3 modifier hits the mixer**. Reuse the two-input pattern and subtract the saved modifier number from the saved batch.
+Duplicate your step 6 printed-number event and keep the original.
+
+![Copy step 6's printed-number event; change it to a -2 or -3 event and subtraction](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/07-adapt.svg)
 
 ### What you should see
 
 Throw `- 2` at an amount of `2`: the result is `0`. Subtracting three from two would give `-1`. Negative numbers are smaller than zero.
 
-![Subtracting the printed two from two changes the mixer to zero](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/07-serve-order.gif)
+![Subtracting the printed two from two changes the mixer to zero](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/07-serve-order.gif)
 
 #### ~ tutorialhint
 
@@ -225,15 +229,17 @@ bakery.onAction(BakeryAction.SubtractModifier, function () {
 
 A `× 3` modifier offers another way to change a small amount quickly.
 
-### Build the next event
+### Copy and change the event
 
-Add **a × 3 modifier hits the mixer**. Reuse the two-input pattern and multiply ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``.
+Duplicate your step 6 printed-number event and keep the original.
+
+![Copy step 6's printed-number event; change it to a ×3 event and multiplication](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/08-adapt.svg)
 
 ### What you should see
 
 Throw `× 3` into a mixer holding `2`: the result is `6`. Compare that one throw with adding one four times.
 
-![Multiplying two by the printed three produces six](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/08-bake-trays.gif)
+![Multiplying two by the printed three produces six](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/08-bake-trays.gif)
 
 #### ~ tutorialhint
 
@@ -253,15 +259,17 @@ bakery.onAction(BakeryAction.MultiplyModifier, function () {
 
 You now have all four arithmetic operations with two variable inputs.
 
-### Build the next event
+### Copy and change the event
 
-Add **a / 3 modifier hits the mixer**. Reuse the two-input pattern and divide ``||variables(noclick):batch||`` by ``||variables(noclick):modifierNumber||``.
+Duplicate your step 6 printed-number event and keep the original.
+
+![Copy step 6's printed-number event; change it to a /3 event and division](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/09-adapt.svg)
 
 ### What you should see
 
 This step starts the mixer at `3`. Throw `/ 3` into it: the result is `1`. The next modifier will use that new amount. Remember that division needs a whole-number result here.
 
-![Dividing three by the modifier's printed three leaves one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/09-pack-boxes.gif)
+![Dividing three by the modifier's printed three leaves one](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/09-pack-boxes.gif)
 
 #### ~ tutorialhint
 
@@ -287,17 +295,17 @@ Connect the orders' checks. A **Boolean** value is either ``||logic(noclick):tru
 
 In ``||variables(noclick):Variables||``, use **Make a Variable** separately for ``||variables(noclick):orderTarget||``, ``||variables(noclick):deliveredNumber||``, and ``||variables(noclick):ready||``.
 
-![Native comparison, Boolean and factory inputs and output, with variable creation](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/10-menu.svg)
+![Native comparison, Boolean and factory inputs and output, with variable creation](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/10-menu.svg)
 
 ### Make your code look like this
 
-![Read orderTarget and deliveredNumber; set ready to their equality comparison; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/10-assembled.svg)
+![Read orderTarget and deliveredNumber; set ready to their equality comparison; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/10-assembled.svg)
 
 ### What you should see
 
 With empty hands, touch the number dispenser to the pot's right to collect its current number, then throw that container down at `3 = □`. Walk to the order and press **B**: its left value, comparison, and right value highlight in order, then **FALSE** appears briefly and the original expression returns with a quiet cross. Add one in the mixer, collect its new number, and deliver `3`. Press **B** again to see **TRUE** and a blue Boolean block; delivery itself stays neutral. The target stays three throughout.
 
-![Three equals two checks FALSE; making and delivering three checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/10-equal-check.gif)
+![Three equals two checks FALSE; making and delivering three checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/10-equal-check.gif)
 
 #### ~ tutorialhint
 
@@ -320,17 +328,17 @@ bakery.onAction(BakeryAction.EqualCheck, function () {
 
 ### Find these blocks
 
-![Native less-than comparison and its factory check event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/11-menu.svg)
+![Native less-than comparison and its factory check event](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/11-menu.svg)
 
 ### Make your code look like this
 
-![Read both inputs; set ready to orderTarget less than deliveredNumber; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/instructions/11-assembled.svg)
+![Read both inputs; set ready to orderTarget less than deliveredNumber; show check ready](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/11-assembled.svg)
 
 ### What you should see
 
 The rightmost order asks for `4 < □`. Deliver `4` and press **B**: **FALSE**, because the numbers are equal. Add one, deliver `5`, and check again: **TRUE**. The number on the right has changed.
 
-![Four less than four checks FALSE; four less than five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/11-less-check.gif)
+![Four less than four checks FALSE; four less than five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/11-less-check.gif)
 
 #### ~ tutorialhint
 
@@ -351,15 +359,17 @@ bakery.onAction(BakeryAction.LessCheck, function () {
 
 **Greater than (>)** checks whether the first value represents a larger quantity than the second.
 
-### Build the next event
+### Copy and change the event
 
-Add **a greater than (>) order checks a number**. Reuse the comparison pattern and choose `>`; the left value must be larger.
+Duplicate your step 11 less-than event and keep the original.
+
+![Copy step 11's less-than event; change it to greater-than and the greater-than comparison](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/12-adapt.svg)
 
 ### What you should see
 
 The middle order asks for `2 > □`. Deliver `2`, then press **B** for **FALSE**. Subtract one in the mixer, deliver `1`, and press **B** again for **TRUE**. Matching numbers make `=` true, but make both `<` and `>` false.
 
-![Two greater than two checks FALSE; two greater than one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/12-greater-check.gif)
+![Two greater than two checks FALSE; two greater than one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/12-greater-check.gif)
 
 #### ~ tutorialhint
 
@@ -380,15 +390,17 @@ bakery.onAction(BakeryAction.GreaterCheck, function () {
 
 **Less than or equal to (≤)** accepts equality too. Both `5 ≤ 5` and `5 ≤ 6` are true.
 
-### Build the next event
+### Copy and change the event
 
-Add **a less than or equal to (≤) order checks a number**. Reuse the comparison pattern and choose `≤`; equality now counts as true.
+Duplicate your step 11 less-than event and keep the original.
+
+![Copy step 11's less-than event; change it to less-than-or-equal and the inclusive comparison](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/13-adapt.svg)
 
 ### What you should see
 
 The rightmost order now asks for `5 ≤ □`. Make and deliver `5`, then press **B** for **TRUE**. A larger delivered number also works; `4` does not. The sign itself tells you which numbers qualify.
 
-![Five less than or equal to five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/13-less-equal-check.gif)
+![Five less than or equal to five checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/13-less-equal-check.gif)
 
 #### ~ tutorialhint
 
@@ -409,15 +421,17 @@ bakery.onAction(BakeryAction.LessEqualCheck, function () {
 
 **Greater than or equal to (≥)** also accepts matching numbers. Both `1 ≥ 1` and `1 ≥ 0` are true.
 
-### Build the next event
+### Copy and change the event
 
-Add **a greater than or equal to (≥) order checks a number**. Reuse the comparison pattern and choose `≥`; equality now counts as true in the other direction.
+Duplicate your step 11 less-than event and keep the original.
+
+![Copy step 11's less-than event; change it to greater-than-or-equal and the inclusive comparison](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/instructions/14-adapt.svg)
 
 ### What you should see
 
 The middle order asks for `1 ≥ □`. Deliver `1` and press **B** for **TRUE**. Zero or a negative number also works here. A larger delivered number, such as `2`, makes this statement **FALSE** after the check.
 
-![One greater than or equal to one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/14-greater-equal-check.gif)
+![One greater than or equal to one checks TRUE after B](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/14-greater-equal-check.gif)
 
 #### ~ tutorialhint
 
@@ -436,47 +450,37 @@ bakery.onAction(BakeryAction.GreaterEqualCheck, function () {
 
 ## 15. Run the factory
 
-Keep your code. Finish the first three order checks: `3 = □`, `1 ≥ □`, and `5 ≤ □`.
-
-### Choose your route
-
-Choose which order to finish first. You can use several small calculations or take a shorter route with multiplication or division.
+Finish `3 = □`, `1 ≥ □`, and `5 ≤ □`; pressing **B** checks each delivery while the mixer keeps its amount for the next calculation.
 
 ### What you should see
 
-One route makes `1`, then `3`, then `6`. Press **B** after each delivery to check the statement; solved checks stay **TRUE**, while false checks return to the original expression for retry. Collecting and delivering never empties the mixer: the next calculation starts with the amount you just made.
+One route makes `1`, then `3`, then `6`. Press **B** after each delivery; solved checks stay **TRUE**, while false checks return to the original expression for retry.
 
-![Three calculated numbers are delivered and checked at the three different orders](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/15-factory-round.gif)
+![Three calculated numbers are delivered and checked at the three different orders](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/15-factory-round.gif)
 
 After the first three checks finish, press **A** once to unlock four side ingredient stations. The next round keeps your mixer amount and brings new checks.
 
 ## 16. Use an ingredient variable
 
-Each side ingredient station has an icon representing the value currently shown on its side counter. The operator at a station switches every 12 seconds. Your supplied factory variables keep these station values separate from your learner variable ``||variables(noclick):batch||``.
+Throw a copied number at an ingredient station to change its value, then solve an order that uses that station's icon.
 
-### Choose a path
-
-After the first three checks, throw a copied number at a station to change it with that station's allowed operator. A later order refers to one station icon; `3 + [icon]` means three plus that station's value. Use a whole-number division result when division is selected, then use ``||variables(noclick):batch||`` to make and deliver the requested number.
+The order can show `3 + [icon]`, meaning three plus the station value. The operator switches every 12 seconds, and the supplied station variables stay separate from learner ``||variables(noclick):batch||``.
 
 ### What you should see
 
-The matching icon in the order uses the station's new value. Make a number that fits the changed statement, deliver it, and press **B** to check it.
+The matching icon shows the station value to use. Make a number for the changed statement, deliver it, and press **B** to check it.
 
-![A variable change at a side station is reflected in the order's left value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/16-boundary-checks.gif)
+![A variable change at a side station is reflected in the order's left value](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/16-boundary-checks.gif)
 
 ## 17. Keep the amount, change the plan
 
-Your code can use each new mixer amount without being rewritten.
-
-### Choose a path
-
-Make and deliver `3` for the equality order. Look back at the pot: it still holds `3`. Find a useful next calculation for another order. Doubling gives `6`; subtracting two gives `1`. Both use the amount already there.
+Deliver `3` to the equality order, then use the `3` still in the mixer to make a number for another order.
 
 ### What you should see
 
 A numbered container carries a copy. Your next modifier changes the mixer, while a completed order keeps its delivered number. Try another route through the same three checks, using a different combination of arithmetic operations.
 
-![The mixer keeps three after delivery, then doubling makes six for a different order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/8a6b9ee391629723/demos/17-reuse-number.gif)
+![The mixer keeps three after delivery, then doubling makes six for a different order](https://raw.githubusercontent.com/mrbrackebusch-code/bakery-shift/main/assets/c8c1a351bb9e652e/demos/17-reuse-number.gif)
 
 ```template
 // Cake Factory
