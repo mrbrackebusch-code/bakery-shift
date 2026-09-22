@@ -1,0 +1,16 @@
+{
+  "name": "bakery-solution",
+  "version": "0.0.0",
+  "dependencies": {
+    "device": "*"
+  },
+  "files": [
+    "engine.ts",
+    "main.ts"
+  ],
+  "preferredEditor": "blocksprj",
+  "supportedTargets": [
+    "arcade"
+  ],
+  "testDependencies": {}
+}
