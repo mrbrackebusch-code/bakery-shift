@@ -284,7 +284,7 @@ The matching icon shows the station value to use. Make a number for the changed 
 
 ## 17. Keep the amount, change the plan
 
-Deliver `3` to the equality order, then use the `3` still in the mixer to make a number for another order.
+Fill one order, then use the amount still in the mixer to make a number for another order.
 
 ### What you should see
 

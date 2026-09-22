@@ -38,7 +38,7 @@
     "starter_executable_code": false
   },
   "source_hashes": {
-    "games/bakery/copy/tutorial-template.md": "7fba786988f3f5ae41f0c8614ad1922edebb056ad47f33c6ce5cec3acaf290f8",
+    "games/bakery/copy/tutorial-template.md": "027916f12fdb3ae03d7a2ad1b07105832c312af56b42ae31166668af81f48d49",
     "games/bakery/implementation/learner-states/catalog.json": "5e464692c7fbbcfb84ee03fa9fd0a450673e23588c8f66242e58f5d636e6626e",
     "games/bakery/implementation/supplied-world/icons.ts": "f3e71bc02b1fea3723694b1fd71f0460cf2b65545ede39e8210540d8372d0df7",
     "games/bakery/implementation/supplied-world/engine.ts": "93424e9a467d472c0a650c5675a4ba352e6f95dd00b0de4ec6e89b705e311e41",
@@ -47,7 +47,7 @@
     "games/bakery/tools/build.mjs": "c19256ff8f22aa87d07335869ebc68b1722da203a32b2828d2b01a6232ba5f08"
   },
   "output_hashes": {
-    "tutorial": "f66d4eae1e8294a92535350a0f1ce293cbf219dce85745290c9193d0c625c017",
+    "tutorial": "fb85c0b2d6497460bfbeb5718c3fa104e0f8d2150ddbd4a023e0897ca87ad753",
     "starter": "713f1c94893eb81611042d435586f6e4ddf0eb48960b24b306abb7feaed89fc7",
     "solution": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874",
     "engine": "eeb9590cf79c176fa9033ea8ddeb766ba1f1a5a56ae2a03f466b31af18981378",
@@ -87,8 +87,8 @@
   },
   "outputs": {
     "tutorial/README.md": {
-      "sha256": "f66d4eae1e8294a92535350a0f1ce293cbf219dce85745290c9193d0c625c017",
-      "bytes": 67922
+      "sha256": "fb85c0b2d6497460bfbeb5718c3fa104e0f8d2150ddbd4a023e0897ca87ad753",
+      "bytes": 67906
     },
     "learner-states/01-clean-tray.ts": {
       "sha256": "d8d7dec578a82ee80ce1b2549e363f306e5c5eb74df502ea0e41899ebcb519cc",

@@ -19,24 +19,24 @@
     "target_repository_result": "Established public repository mrbrackebusch-code/bakery-shift; V9 release and official no-CDN public identity verified in current records"
   },
   "existing_release": {
-    "tag": "v0.4.4",
-    "release_url": "https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.4",
-    "payload_commit": "c0a10e100ad5efe9463114555f8185fa80992b3b",
-    "served_commit": "c0a10e100ad5efe9463114555f8185fa80992b3b"
+    "tag": "v0.4.5",
+    "release_url": "https://github.com/mrbrackebusch-code/bakery-shift/releases/tag/v0.4.5",
+    "payload_commit": "35f45e96fd3daac53be3912ff3e0d51f5afe83e5",
+    "served_commit": "35f45e96fd3daac53be3912ff3e0d51f5afe83e5"
   },
   "existing_public_identity": {
     "stable_url": "https://arcade.makecode.com/?nocdn=1&skipgithubcache=1#tutorial:https://github.com/mrbrackebusch-code/bakery-shift/README",
-    "served_commit": "c0a10e100ad5efe9463114555f8185fa80992b3b",
-    "release": "v0.4.4",
-    "media_revision": "8a6b9ee391629723",
+    "served_commit": "35f45e96fd3daac53be3912ff3e0d51f5afe83e5",
+    "release": "v0.4.5",
+    "media_revision": "c8c1a351bb9e652e",
     "historical_cache_release": "V5",
     "historical_cache_commit": "3340e81fd43547c7b4c17560a75f344aa91a29b0"
   },
   "external_publication_performed": false,
   "student_distribution_ready": false,
-  "local_tutorial_sha256": "f66d4eae1e8294a92535350a0f1ce293cbf219dce85745290c9193d0c625c017",
-  "canonical_tutorial_sha256": "f66d4eae1e8294a92535350a0f1ce293cbf219dce85745290c9193d0c625c017",
-  "tutorial_sha256": "50e0029c08e10ac61d046368def71eaf0967da0149eb1d370b6fd0138bae4463",
+  "local_tutorial_sha256": "fb85c0b2d6497460bfbeb5718c3fa104e0f8d2150ddbd4a023e0897ca87ad753",
+  "canonical_tutorial_sha256": "fb85c0b2d6497460bfbeb5718c3fa104e0f8d2150ddbd4a023e0897ca87ad753",
+  "tutorial_sha256": "6df94a0b5dacaaf563bf0d1ab320ed4b111a680742cd2c3f846426a00829c22f",
   "media_revision": "c8c1a351bb9e652e",
   "media_mappings": [
     {
@@ -269,7 +269,7 @@
     }
   ],
   "canonical_source_sha256": {
-    "games/bakery/copy/tutorial-template.md": "6746d0bcb3c3acdab670dde0571752e3ac522d099316be894a8c73800491d252",
+    "games/bakery/copy/tutorial-template.md": "ee129bbfa1baac059020ff4c05840ded67bdac7f500c3f0564a74b5a2905f62b",
     "games/bakery/copy/instruction-callouts.json": "678469939bbe44f3e4e1494563c4d18a8e59f2e011b51d2db3d2a7a75a54e6ef",
     "games/bakery/copy/adaptation-callouts.json": "ed88d51222131cc3b02104903edfb6188a2c511cf8bf7eee9371f4169d26ec91",
     "games/bakery/implementation/learner-states/catalog.json": "5e464692c7fbbcfb84ee03fa9fd0a450673e23588c8f66242e58f5d636e6626e",
@@ -278,7 +278,7 @@
     "games/bakery/implementation/supplied-world/art.ts": "1136f40e531430dff4d7e0da486732594b18d2b68fb1640c3d6b0b47867488a7",
     "games/bakery/implementation/manifest.json": "f7897508c4996ffb8d0d66dfa0d5878b78cde0bb0188ddb6c4ef7b0898e9ed51",
     "games/bakery/tools/build.mjs": "c19256ff8f22aa87d07335869ebc68b1722da203a32b2828d2b01a6232ba5f08",
-    "games/bakery/tools/build-publication.mjs": "92fea347bccb8164aab361adfeeac0d544a1dbd339161066d694e6740039326b",
+    "games/bakery/tools/build-publication.mjs": "6f38ccc299a3f71ddae4f4300873c8f1cf6619bc4a25d594820382afdad4c6c5",
     "games/bakery/design/pedagogy/FACTORY_SOURCE_PACKET_2026-09-21.md": "8b91aa571203947ab091f0458f1b1a3856c406d7622dc380ccf255ff0ab99cda",
     "games/bakery/design/pedagogy/MIXER_SOURCE_ADDENDUM_V7.md": "9e5100cce65e2c8463a37d207d5c77ce51c8f44e17201def2afe0e90d91a8d11",
     "games/bakery/design/pedagogy/WORLD_SOURCE_ADDENDUM_V9.md": "94949ffffffbed5136b8c45e7d25d9b417357e3c64b0368f3b60b60f0eacce70",
@@ -297,7 +297,7 @@
     "docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/LICENSE-MIT.txt": "c544adf8f0d43453d9fdf6c11da19605d12d89806a7870653169b8cc97f5bb53",
     "games/bakery/assets/demos/manifest.json": "f89dfa4f2a749de2fe11fca906c45b6d3688bf15dc98f1e6ec9b017aaa7e7b2d"
   },
-  "source_build_manifest_sha256": "e36a67223927b1aa5df2544acd0cab909b512dfa6982b96009669579a789f7d2",
+  "source_build_manifest_sha256": "891df5e02936d12eae099435ed13cc8060fa1588304523dbd29690d507a1817b",
   "output_sha256": {
     "assets/c8c1a351bb9e652e/demos/01-clean-tray.gif": "cd77ba3098669a007ad0a4f53986ecceb15a500b459fd168954be0e1c334fa34",
     "assets/c8c1a351bb9e652e/demos/02-catch-one.gif": "3a2a844f28facfa02c367ec91e7a86ff0324f66d8c8b72b53ca21032fbea1bd8",
@@ -340,7 +340,7 @@
     "assets/demos/c8c1a351bb9e652e/manifest.json": "f89dfa4f2a749de2fe11fca906c45b6d3688bf15dc98f1e6ec9b017aaa7e7b2d",
     "LICENSES/Microsoft-MIT.txt": "c544adf8f0d43453d9fdf6c11da19605d12d89806a7870653169b8cc97f5bb53",
     "main.ts": "713f1c94893eb81611042d435586f6e4ddf0eb48960b24b306abb7feaed89fc7",
-    "maintainer/BUILD_MANIFEST.json": "e36a67223927b1aa5df2544acd0cab909b512dfa6982b96009669579a789f7d2",
+    "maintainer/BUILD_MANIFEST.json": "891df5e02936d12eae099435ed13cc8060fa1588304523dbd29690d507a1817b",
     "maintainer/docs/pedagogy/corpus/sources/makecode-ap-csp/raw/production/1C-039/boolean-variables.md": "3f78aef8507e18928d59589e63dacdfb3abecab88aa9a7de55048de6551f1fd3",
     "maintainer/docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/LICENSE-MIT.txt": "c544adf8f0d43453d9fdf6c11da19605d12d89806a7870653169b8cc97f5bb53",
     "maintainer/docs/pedagogy/corpus/sources/makecode-arcade-csintro/raw/production/1A-005/variable-math.md": "2f4dc0ac5450df06d60ea6c3e2f3dfd9f928fc4d867f88ba7daddd40ab40f063",
@@ -387,7 +387,7 @@
     "maintainer/games/bakery/assets/instructions/14-adapt.svg": "d0d03f397b5d5701d351865cb2a4f7cec7db9558f76bc2e098b35af69ea9fdde",
     "maintainer/games/bakery/copy/adaptation-callouts.json": "ed88d51222131cc3b02104903edfb6188a2c511cf8bf7eee9371f4169d26ec91",
     "maintainer/games/bakery/copy/instruction-callouts.json": "678469939bbe44f3e4e1494563c4d18a8e59f2e011b51d2db3d2a7a75a54e6ef",
-    "maintainer/games/bakery/copy/tutorial-template.md": "6746d0bcb3c3acdab670dde0571752e3ac522d099316be894a8c73800491d252",
+    "maintainer/games/bakery/copy/tutorial-template.md": "ee129bbfa1baac059020ff4c05840ded67bdac7f500c3f0564a74b5a2905f62b",
     "maintainer/games/bakery/design/ADAPTATION_GUIDE_V11.md": "bd9749e786e9f009e80b9c19d2f5327beabaab70aee7f9856643f5a4e7e2786c",
     "maintainer/games/bakery/design/COMPARISON_STYLE_V9.md": "cf47995f197c5c812bd343b418a8302c018a0ba597a761214a7dc53408775719",
     "maintainer/games/bakery/design/FACTORY_MIXER_REVISION_V7.md": "281609b9293726b73dc15e601df52adf0fce24c8da48d83ad8c9daf07b1289af",
@@ -404,11 +404,11 @@
     "maintainer/games/bakery/implementation/supplied-world/art.ts": "1136f40e531430dff4d7e0da486732594b18d2b68fb1640c3d6b0b47867488a7",
     "maintainer/games/bakery/implementation/supplied-world/engine.ts": "3900b25227ecdd01c93ad4af44960307e184ca778b6448da1e6ce0c661f63137",
     "maintainer/games/bakery/implementation/supplied-world/icons.ts": "199ecf75a98554cef28c0111a7525638117caed8610e68759b786e27998dc5f3",
-    "maintainer/games/bakery/tools/build-publication.mjs": "92fea347bccb8164aab361adfeeac0d544a1dbd339161066d694e6740039326b",
+    "maintainer/games/bakery/tools/build-publication.mjs": "6f38ccc299a3f71ddae4f4300873c8f1cf6619bc4a25d594820382afdad4c6c5",
     "maintainer/games/bakery/tools/build.mjs": "c19256ff8f22aa87d07335869ebc68b1722da203a32b2828d2b01a6232ba5f08",
     "MAINTAINING.md": "c876d5d2465d09b2fe09dde6620e989c6fb4f15863bd8979537b4d2ab5a74bd5",
     "pxt.json": "69ea090cfe3186fab9062a819cf2dda47dbdf54c9b46f4b2a4c5f923d68cc454",
-    "README.md": "50e0029c08e10ac61d046368def71eaf0967da0149eb1d370b6fd0138bae4463",
+    "README.md": "6df94a0b5dacaaf563bf0d1ab320ed4b111a680742cd2c3f846426a00829c22f",
     "review/README.md": "3f7f8b3a31aeb4fdf438be8e4947351b801e357772c5df425407827143b80320",
     "review/solution/engine.ts": "eeb9590cf79c176fa9033ea8ddeb766ba1f1a5a56ae2a03f466b31af18981378",
     "review/solution/main.ts": "bf6ae78c8db9607c62317be451fa564c20ee9888fe040cdc68bb8c2654433874",
